@@ -16,7 +16,7 @@ const Header = () => {
           <Link href="/">
             <a>
               <Image
-                src="/images/l-isola-delle-storie-logo-xvii.svg"
+                src="/images/l-isola-delle-storie-logo-xvii-oriz.svg"
                 alt="logo"
                 layout="fill"
                 className={styles.logo}
