@@ -52,15 +52,15 @@
 
     .whenTitle {
       position: absolute;
-      right: 0px;
-      bottom: 9px;
+      right: 15px;
+      bottom: 8px;
       color: var(--main-text-color);
       display: flex;
       flex-direction: column;
 
       .place {
         font-family: "AbsaraSans-Bold";
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         letter-spacing: 0.01rem;
       }
 
