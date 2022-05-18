@@ -70,7 +70,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps = async (context: any) => {
   if (!context) return { props: {} };
   const pageURI = createURI(context);
-  const page = await getPageByURI(pageURI);
+  //const page = await getPageByURI(pageURI);
+  const page = null;
   let guests = null;
   let places = null;
 
