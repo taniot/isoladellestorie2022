@@ -1,0 +1,116 @@
+.banner {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--main-bg-color);
+  background-image: url("/images/isola-delle-storie-2022.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 0px bottom;
+  position: relative;
+
+  @screen sm {
+    background-color: gray;
+  }
+
+  @screen md {
+    background-color: green;
+  }
+
+  @screen lg {
+    background-color: red;
+    background-size: contain;
+    background-position: 0px bottom;
+  }
+
+  @screen xl {
+    background-color: blue;
+  }
+
+  @screen 2xl {
+    background-color: purple;
+  }
+
+  .slogan {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 14rem;
+    left: 2rem;
+    right: 2rem;
+    .title {
+      font-size: 3.8em;
+      font-family: "AbsaraSans-Thin";
+      line-height: 1;
+      letter-spacing: 0.05rem;
+      color: var(--main-title-color);
+      margin-bottom: 0.5rem;
+    }
+    .subTitle {
+      font-size: 1.3rem;
+      font-family: "AbsaraSans-Light-Italic";
+      font-style: italic;
+      color: var(--main-text-color);
+    }
+  }
+}
+
+/*
+.bannerImage {
+  position: absolute;
+  background-image: url("/images/isola-delle-storie-2022.png");
+  background-repeat: no-repeat;
+  background-position: 100px 0;
+  background-size: contain;
+  height: 95%;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+}
+
+.slogan {
+  position: absolute;
+  left: 700px;
+  top: 260px;
+
+  .title {
+    font-size: 10rem;
+    font-family: "AbsaraSans-Thin";
+    line-height: 0.9;
+    letter-spacing: 0.05rem;
+    color: var(--main-title-color);
+    margin-bottom: 25px;
+    padding-top: 35px;
+    position: relative;
+  }
+
+  .subTitle {
+    font-size: 2.425rem;
+    font-family: "AbsaraSans-Light-Italic";
+    font-style: italic;
+    color: var(--main-text-color);
+  }
+
+  .whenTitle {
+    position: absolute;
+    font-size: 2rem;
+    right: 35px;
+    bottom: 19px;
+    color: var(--main-text-color);
+    display: flex;
+    flex-direction: column;
+
+    .place {
+      font-family: "AbsaraSans-Bold";
+      font-size: 3rem;
+      letter-spacing: 0.01rem;
+      margin-bottom: 11px;
+    }
+
+    .date {
+      font-family: "AbsaraSans-Bold";
+      font-size: 1.8rem;
+      letter-spacing: 0.03rem;
+    }
+  }
+}
+*/

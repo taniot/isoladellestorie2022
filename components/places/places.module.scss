@@ -1,0 +1,50 @@
+.contentContainer {
+  @apply w-10/12 md:w-7/12 mx-auto;
+  .pageContentContainer {
+    padding: 20px;
+
+    .pageContent {
+      font-family: "font77190";
+      font-weight: normal;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+      p {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+.grid_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  .grid_item {
+    position: relative;
+    height: auto;
+    width: 33.333%;
+    padding: 20px;
+
+    .image_container {
+      img {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transition: all 5s ease-in-out;
+        border: 2px dashed #222 !important;
+        padding: 5px !important;
+      }
+    }
+
+    .grid_item_content {
+      margin-top: 20px;
+      h2 {
+        font-family: "font77190";
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
