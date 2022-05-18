@@ -41,12 +41,34 @@
       letter-spacing: 0.05rem;
       color: var(--main-title-color);
       margin-bottom: 0.5rem;
+      position: relative;
     }
     .subTitle {
       font-size: 1.3rem;
       font-family: "AbsaraSans-Light-Italic";
       font-style: italic;
       color: var(--main-text-color);
+    }
+
+    .whenTitle {
+      position: absolute;
+      right: 0px;
+      bottom: 9px;
+      color: var(--main-text-color);
+      display: flex;
+      flex-direction: column;
+
+      .place {
+        font-family: "AbsaraSans-Bold";
+        font-size: 1.6rem;
+        letter-spacing: 0.01rem;
+      }
+
+      .date {
+        font-family: "AbsaraSans-Bold";
+        font-size: 1rem;
+        letter-spacing: 0.03rem;
+      }
     }
   }
 }

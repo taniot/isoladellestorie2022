@@ -9,6 +9,10 @@ const Intro = () => (
           L’Isola delle
           <br />
           Storie
+          <span className={styles.whenTitle}>
+            <span className={styles.place}>Gavoi</span>
+            <span className={styles.date}>01.07 - 03.07.2022</span>
+          </span>
         </h1>
         <h2 className={styles.subTitle}>Festival Letterario della Sardegna</h2>
       </div>
