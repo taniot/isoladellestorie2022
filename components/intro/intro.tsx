@@ -16,6 +16,9 @@ const Intro = () => (
         </h1>
         <h2 className={styles.subTitle}>Festival Letterario della Sardegna</h2>
       </div>
+      <div className={styles.hashTag}>
+        <h3>#gavoifest2022</h3>
+      </div>
     </Div100vh>
   </>
 );
