@@ -1,11 +1,15 @@
 .banner {
   width: 100vw;
   background-color: var(--main-bg-color);
-  background-image: url("/images/isola-delle-storie-2022.png");
+  background-image: url("/images/copertina.jpg");
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: 0px bottom;
+  background-position: 0px top;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 200px;
 
   @screen sm {
     background-color: gray;
@@ -16,7 +20,7 @@
   }
 
   @screen lg {
-    background-size: contain;
+    background-color: violet;
   }
 
   @screen xl {
@@ -28,12 +32,6 @@
   }
 
   .slogan {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 8rem;
-    left: 2rem;
-    right: 2rem;
     .title {
       font-size: 3.8em;
       font-family: "AbsaraSans-Thin";

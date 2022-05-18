@@ -11,7 +11,6 @@ interface Props {
 const Layout: FC<Props> = ({ children }) => {
   return (
     <div>
-      <Header />
       <main className={styles.main}>{children}</main>
       <Footer />
     </div>
