@@ -4,7 +4,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import styles from "./places.module.scss";
 
-const Places = ({ data }) => {
+const Places = ({ data }: { data: any }) => {
   const [posts, setPosts] = useState(data.slice(0, 9));
   const [hasMore, setHasMore] = useState(true);
 
@@ -28,7 +28,7 @@ const Places = ({ data }) => {
             endMessage={<h4>Nothing more to show</h4>}
           >
             <div className={styles.grid_list}>
-              {posts.map((data) => (
+              {posts.map((data: any) => (
                 <div key={uuidv4()} className={styles.grid_item}>
                   <div className={styles.grid_item_inner}>
                     <div className={styles.grid_item_content}>
