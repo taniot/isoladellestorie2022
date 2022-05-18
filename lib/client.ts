@@ -1,8 +1,8 @@
 import { GraphQLClient } from "graphql-request";
 
 let endpoint;
-if (process.env.WP_HOSTNAME) {
-  endpoint = process.env.WP_HOSTNAME;
+if (process.env.DB_HOSTNAME) {
+  endpoint = process.env.DB_HOSTNAME;
 } else {
   throw new Error("WP_HOSTNAME environment variable is not set");
 }
