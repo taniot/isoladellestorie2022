@@ -18,9 +18,7 @@
   }
 
   @screen lg {
-    background-color: red;
     background-size: contain;
-    background-position: 0px bottom;
   }
 
   @screen xl {
@@ -29,29 +27,6 @@
 
   @screen 2xl {
     background-color: purple;
-  }
-
-  .slogan {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 15rem;
-    left: 2rem;
-    right: 2rem;
-    .title {
-      font-size: 3.8em;
-      font-family: "AbsaraSans-Thin";
-      line-height: 1;
-      letter-spacing: 0.05rem;
-      color: var(--main-title-color);
-      margin-bottom: 0.5rem;
-    }
-    .subTitle {
-      font-size: 1.3rem;
-      font-family: "AbsaraSans-Light-Italic";
-      font-style: italic;
-      color: var(--main-text-color);
-    }
   }
 }
 
