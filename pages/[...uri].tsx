@@ -88,11 +88,11 @@ export const getStaticProps = async (context: any) => {
       };
 
     case "ospiti":
-      guests = await getGuestsFake(100);
+      //guests = await getGuestsFake(100);
       break;
 
     case "accoglienza":
-      places = await getPlacesFake(100);
+      //places = await getPlacesFake(100);
       break;
 
     default:
