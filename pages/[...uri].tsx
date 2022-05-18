@@ -7,7 +7,15 @@ import Places from "../components/places/places";
 import styles from "../styles/pageDefault.module.scss";
 import Header from "../components/header/header";
 
-const PageDefault = ({ page, guests, places }) => {
+const PageDefault = ({
+  page,
+  guests,
+  places,
+}: {
+  page: any;
+  guests: any;
+  places: any;
+}) => {
   if (!page) return <div>No page</div>;
   //console.log({ guests });
   return (
@@ -42,10 +50,10 @@ export default PageDefault;
 export const getStaticPaths: GetStaticPaths = async () => {
   const pages = await getPages();
 
-  const paths = pages.map((page) => {
+  const paths = pages.map((page: any) => {
     return {
       params: {
-        uri: page.uri.split("/").filter((element) => {
+        uri: page.uri.split("/").filter((element: any) => {
           return element !== "";
         }),
       },
@@ -59,8 +67,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  console.log(context.params);
+export const getStaticProps = async (context: any) => {
+  if (!context) return { props: {} };
   const pageURI = createURI(context);
   const page = await getPageByURI(pageURI);
   let guests = null;
