@@ -11,17 +11,19 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logoContainer}>
-        <Link href="/">
-          <a>
-            <Image
-              src="/images/l-isola-delle-storie-logo-xvii.svg"
-              alt="logo"
-              layout="fill"
-              className={styles.logo}
-            />
-          </a>
-        </Link>
+      <div className={styles.logoArea}>
+        <div className={styles.logoContainer}>
+          <Link href="/">
+            <a>
+              <Image
+                src="/images/l-isola-delle-storie-logo-xvii.svg"
+                alt="logo"
+                layout="fill"
+                className={styles.logo}
+              />
+            </a>
+          </Link>
+        </div>
       </div>
       <div className={styles.menuContainer}>
         <a href="#">Scopri il festival</a>

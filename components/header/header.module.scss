@@ -8,11 +8,15 @@
   width: 100vw;
   z-index: 10;
 
-  .logoContainer {
-    position: relative;
+  .logoArea {
     margin: 30px 30px;
     z-index: 2;
-    border-top: 0;
+    height: 80px;
+    overflow-y: hidden;
+  }
+
+  .logoContainer {
+    position: relative;
     width: 54px;
     height: 130px;
   }
