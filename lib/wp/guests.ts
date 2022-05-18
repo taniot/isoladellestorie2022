@@ -23,6 +23,8 @@ const qGetGuests = gql`
 export const getGuests = async () => {
   const query = qGetGuests;
 
+  if (!client) return null;
+
   try {
     const data = await client.request(query);
     return data?.ospiti?.nodes;

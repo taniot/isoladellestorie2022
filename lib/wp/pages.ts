@@ -37,6 +37,7 @@ const qGetPageByURI = gql`
 */
 export const getPages = async (locale?: string) => {
   const query = qGetPages;
+  if (!client) return null;
 
   try {
     const data = await client.request(query);
