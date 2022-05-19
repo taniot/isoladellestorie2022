@@ -4,7 +4,7 @@
   flex-direction: column;
   background-color: var(--main-bg-color);
   align-items: center;
-  justify-content: center;
+  justify-content: end;
 
   .imgBg {
     display: none;
@@ -19,7 +19,8 @@
   }
 
   .slogan {
-    @apply w-10/12 mx-auto;
+    @apply w-10/12 mx-auto pb-10;
+
     .titleContainer {
       position: relative;
     }
