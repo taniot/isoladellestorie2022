@@ -17,12 +17,21 @@ const Header = () => {
         <div className={styles.logoContainer}>
           <Link href="/">
             <a>
-              <Image
-                src="/images/l-isola-delle-storie-logo-xvii.svg"
-                alt="logo"
-                layout="fill"
-                className={styles.logo}
-              />
+              {isSmall ? (
+                <Image
+                  src="/images/l-isola-delle-storie-logo-xvii-oriz.svg"
+                  alt="logo"
+                  layout="fill"
+                  className={styles.logo}
+                />
+              ) : (
+                <Image
+                  src="/images/l-isola-delle-storie-logo-xvii.svg"
+                  alt="logo"
+                  layout="fill"
+                  className={styles.logo}
+                />
+              )}
             </a>
           </Link>
         </div>
