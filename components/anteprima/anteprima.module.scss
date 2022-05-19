@@ -1,0 +1,31 @@
+.container {
+  @apply w-10/12 mx-auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4em 0em;
+
+  h2 {
+    font-family: "AbsaraSans-Bold";
+
+    border-bottom: 2px dashed var(--main-text-color);
+    display: inline-block;
+    font-size: 1.375em;
+    line-height: 1.2727272727em;
+    padding-bottom: 0.5454545455em;
+  }
+
+  .hero_list {
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    width: 100%;
+    margin-top: 1.1666666667em;
+    font-size: 2.25rem;
+    font-family: "AbsaraSans";
+    .hero_small {
+      padding-top: 2rem;
+      font-size: 1.25rem;
+    }
+  }
+}

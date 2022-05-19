@@ -20,7 +20,6 @@
   .slogan {
     @apply w-10/12 mx-auto;
     margin-top: 160px;
-    padding-top: 20px;
 
     .titleContainer {
       position: relative;
@@ -37,7 +36,6 @@
     .subTitle {
       font-size: 1.4rem;
       font-family: "AbsaraSans-Light-Italic";
-
       letter-spacing: -0.019rem;
       color: var(--main-text-color);
     }
