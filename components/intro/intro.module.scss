@@ -3,8 +3,30 @@
   display: flex;
   background-color: var(--main-bg-color);
   height: 70vh;
+  justify-content: center;
+  align-items: center;
   .slogan {
-    display: none;
+    @apply w-10/12 mx-auto;
+
+    .title {
+      font-size: 5rem;
+      font-family: "AbsaraSans-Thin";
+      line-height: 1;
+      letter-spacing: 0.1rem;
+      color: var(--main-title-color);
+      margin-bottom: 1rem;
+    }
+    .subTitle {
+      font-size: 1.8rem;
+      font-family: "AbsaraSans-Light-Italic";
+      font-style: italic;
+      letter-spacing: -0.019rem;
+      color: var(--main-text-color);
+    }
+
+    .whenTitle {
+      display: none;
+    }
   }
 
   // @screen sm {
