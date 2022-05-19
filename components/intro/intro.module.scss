@@ -5,15 +5,13 @@
   height: 70vh;
   justify-content: center;
   align-items: center;
-  background-image: url("/cover/02.png");
-  // background-position: -180px -120px;
-  background-repeat: no-repeat;
-  // background-size: 1000px;
-  background-size: cover;
-  object-fit: cover;
 
   .slogan {
-    @apply w-10/12 mx-auto mt-20;
+    @apply relative w-10/12 mx-auto mt-20;
+
+    .titleContainer {
+      position: relative;
+    }
 
     .title {
       font-size: 4rem;
@@ -32,7 +30,26 @@
     }
 
     .whenTitle {
-      display: none;
+      position: absolute;
+      right: 12px;
+      bottom: 6px;
+      color: var(--main-text-color);
+      display: flex;
+      flex-direction: column;
+
+      .place {
+        font-family: "AbsaraSans-Bold";
+        font-size: 1.8rem;
+        letter-spacing: 0.04rem;
+        line-height: 0.8;
+      }
+
+      .date {
+        font-family: "AbsaraSans-Bold";
+        font-size: 1rem;
+        letter-spacing: 0.03rem;
+        margin-left: 1px;
+      }
     }
   }
 
