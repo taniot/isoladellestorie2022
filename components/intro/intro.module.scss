@@ -3,8 +3,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--main-bg-color);
-  height: 75vh;
-  justify-content: center;
+  height: 400px;
 
   .imgBg {
     display: none;
@@ -20,7 +19,7 @@
 
   .slogan {
     @apply w-10/12 mx-auto;
-
+    margin-top: 160px;
     padding-top: 20px;
 
     .titleContainer {
@@ -37,8 +36,8 @@
     }
     .subTitle {
       font-size: 1.4rem;
-      font-family: "AbsaraSans";
-      font-style: italic;
+      font-family: "AbsaraSans-Light-Italic";
+
       letter-spacing: -0.019rem;
       color: var(--main-text-color);
     }
