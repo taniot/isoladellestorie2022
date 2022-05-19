@@ -3,18 +3,20 @@
   display: flex;
   background-color: var(--main-bg-color);
   height: 70vh;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
   background-image: url("/images/isola-delle-storie-2022.png");
-  background-position: -180px -120px;
+  background-position: -50px 250px;
   background-repeat: no-repeat;
-  background-size: 1000px;
+  background-size: 300px;
 
   .slogan {
-    @apply w-10/12 mx-auto mt-20;
+    @apply w-8/12;
+    position: absolute;
+    right: 20px;
+    top: 70px;
 
     .title {
-      font-size: 4rem;
+      font-size: 3rem;
       font-family: "AbsaraSans-Thin";
       line-height: 1;
       letter-spacing: 0;
@@ -22,7 +24,7 @@
       margin-bottom: 1rem;
     }
     .subTitle {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       font-family: "AbsaraSans-Light-Italic";
       font-style: italic;
       letter-spacing: -0.019rem;
