@@ -5,9 +5,11 @@ import { Squash as Hamburger } from "hamburger-react";
 import Nav from "../nav/nav";
 import { useContext } from "react";
 import Link from "next/link";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 const Header = () => {
   const context = useContext(AppContext);
   const { state, setIsMainMenuOpen } = context;
+  const isSmall = useMediaQuery("(max-width: 768px)");
 
   return (
     <header className={styles.header}>
@@ -29,12 +31,12 @@ const Header = () => {
         <Hamburger
           toggled={state?.isMainMenuOpen}
           toggle={setIsMainMenuOpen}
-          size={30}
+          size={isSmall ? 24 : 30}
           color={state?.isMainMenuOpen ? "whitesmoke" : "black"}
           label="Show menu"
         />
       </div>
-      <div className={styles.comingSoon}>#gavoifest2022</div>
+
       <Nav />
     </header>
   );

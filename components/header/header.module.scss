@@ -10,15 +10,15 @@
 
   .logoContainer {
     position: relative;
-    margin: 50px 80px;
+    margin: 20px 40px;
     z-index: 2;
     border-top: 0;
-    width: 90px;
-    height: 200px;
+    width: 51px;
+    height: 120px;
   }
 
   .menuContainer {
-    margin: 40px 50px;
+    margin: 10px 20px;
     z-index: 2;
     display: flex; //flex
     align-items: center;
@@ -31,16 +31,28 @@
     }
   }
 
-  .comingSoon {
-    margin: 50px;
-    z-index: 2;
-    display: none; //flex
-    align-items: center;
-    background-color: #fc0d1b;
-    padding: 10px 50px;
-    font-family: "AbsaraSans-Thin";
-    font-size: 1rem;
-    letter-spacing: 0.2rem;
-    color: var(--main-title-color);
+  @screen sm {
+    .logoContainer {
+      position: relative;
+      margin: 50px 80px;
+      z-index: 2;
+      border-top: 0;
+      width: 90px;
+      height: 200px;
+    }
+
+    .menuContainer {
+      margin: 40px 50px;
+      z-index: 2;
+      display: flex; //flex
+      align-items: center;
+      a {
+        font-family: "font77190";
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        margin: 3px 0 0 0;
+        padding: 0;
+      }
+    }
   }
 }
