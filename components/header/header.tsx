@@ -16,7 +16,7 @@ const Header = () => {
           <Link href="/">
             <a>
               <Image
-                src="/images/l-isola-delle-storie-logo-xvii-oriz.svg"
+                src="/images/l-isola-delle-storie-logo-xvii.svg"
                 alt="logo"
                 layout="fill"
                 className={styles.logo}
@@ -26,15 +26,15 @@ const Header = () => {
         </div>
       </div>
       <div className={styles.menuContainer}>
-        <a href="#">Scopri il festival</a>
         <Hamburger
           toggled={state?.isMainMenuOpen}
           toggle={setIsMainMenuOpen}
-          size={20}
+          size={30}
           color={state?.isMainMenuOpen ? "whitesmoke" : "black"}
           label="Show menu"
         />
       </div>
+      <div className={styles.comingSoon}>#gavoifest2022</div>
       <Nav />
     </header>
   );

@@ -1,81 +1,286 @@
 .banner {
-  width: 100vw;
-  background-color: var(--main-bg-color);
-  background-image: url("/images/copertina.jpg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: 0px top;
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 200px;
-
+  background-color: var(--main-bg-color);
   @screen sm {
-    background-color: gray;
+    height: 400px;
+    //background-color: lime;
+    background-image: url("/images/isola-delle-storie-2022.png");
+    background-position: 170px bottom;
+    background-repeat: no-repeat;
+    background-size: 400px;
+    .slogan {
+      @apply w-6/12;
+      margin-left: 390px;
+      margin-top: 200px;
+      //background-color: red;
+      .title {
+        font-size: 2.8rem;
+        font-family: "AbsaraSans-Thin";
+        line-height: 1;
+        letter-spacing: 0.1rem;
+        color: var(--main-title-color);
+        margin-bottom: 1rem;
+        position: relative;
+      }
+      .subTitle {
+        font-size: 1.2rem;
+        font-family: "AbsaraSans-Light-Italic";
+        font-style: italic;
+        letter-spacing: -0.019rem;
+        color: var(--main-text-color);
+      }
+
+      .whenTitle {
+        position: absolute;
+        right: 90px;
+        bottom: 86px;
+        color: var(--main-text-color);
+
+        display: flex;
+        flex-direction: column;
+
+        .place {
+          font-family: "AbsaraSans-Bold";
+          font-size: 3rem;
+          letter-spacing: 0.04rem;
+          line-height: 1.1;
+        }
+
+        .date {
+          font-family: "AbsaraSans-Bold";
+          font-size: 1.7rem;
+          letter-spacing: 0.03rem;
+        }
+      }
+    }
   }
 
   @screen md {
-    background-color: green;
+    height: 500px;
+    //background-color: red;
+    background-image: url("/images/isola-delle-storie-2022.png");
+    background-position: 150px bottom;
+    background-repeat: no-repeat;
+    background-size: 600px;
+    .slogan {
+      width: 400px;
+      min-width: 400px;
+      margin-left: 490px;
+      margin-top: 190px;
+      //background-color: yellow;
+      position: relative;
+      .title {
+        font-size: 4rem;
+        font-family: "AbsaraSans-Thin";
+        line-height: 1;
+        letter-spacing: 0.1rem;
+        color: var(--main-title-color);
+        margin-bottom: 1.4rem;
+        position: relative;
+      }
+      .subTitle {
+        font-size: 1.4rem;
+        font-family: "AbsaraSans-Light-Italic";
+        font-style: italic;
+        letter-spacing: -0.019rem;
+        color: var(--main-text-color);
+      }
+
+      .whenTitle {
+        position: absolute;
+        right: 75px;
+        bottom: 188px;
+        color: var(--main-text-color);
+
+        display: flex;
+        flex-direction: column;
+
+        .place {
+          font-family: "AbsaraSans-Bold";
+          font-size: 2rem;
+          letter-spacing: 0.04rem;
+          line-height: 0.7;
+        }
+
+        .date {
+          font-family: "AbsaraSans-Bold";
+          font-size: 1rem;
+          letter-spacing: 0.03rem;
+        }
+      }
+    }
   }
 
   @screen lg {
-    background-color: violet;
+    //background-color: purple;
+    background-image: url("/images/isola-delle-storie-2022.png");
+    background-position: 120px top;
+    background-repeat: no-repeat;
+    background-size: 900px;
+    height: 650px;
+    max-height: 800px;
+    .slogan {
+      width: 400px;
+      min-width: 400px;
+      margin-left: 600px;
+      margin-top: 250px;
+      //background-color: red;
+      position: relative;
+      .title {
+        font-size: 5rem;
+        font-family: "AbsaraSans-Thin";
+        line-height: 1;
+        letter-spacing: 0.1rem;
+        color: var(--main-title-color);
+        margin-bottom: 1.4rem;
+        position: relative;
+      }
+      .subTitle {
+        font-size: 1.7rem;
+        font-family: "AbsaraSans-Light-Italic";
+        font-style: italic;
+        letter-spacing: -0.019rem;
+        color: var(--main-text-color);
+      }
+
+      .whenTitle {
+        position: absolute;
+        right: 30px;
+        bottom: 248px;
+        color: var(--main-text-color);
+
+        display: flex;
+        flex-direction: column;
+
+        .place {
+          font-family: "AbsaraSans-Bold";
+          font-size: 2rem;
+          letter-spacing: 0.04rem;
+          line-height: 1.1;
+        }
+
+        .date {
+          font-family: "AbsaraSans-Bold";
+          font-size: 1rem;
+          letter-spacing: 0.03rem;
+        }
+      }
+    }
   }
 
   @screen xl {
-    background-color: blue;
+    height: 100vh;
+    //background-color: orange;
+    background-image: url("/images/isola-delle-storie-2022.png");
+    background-position: 100px top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 800px;
+    max-height: 800px;
+    .slogan {
+      width: 550px;
+      min-width: 550px;
+      margin-left: 640px;
+      margin-top: 270px;
+      //background-color: red;
+      position: relative;
+      .title {
+        font-size: clamp(1rem, -0.875rem + 10vw, 6.5rem);
+        font-family: "AbsaraSans-Thin";
+        line-height: 1;
+        letter-spacing: 0.1rem;
+        color: var(--main-title-color);
+        margin-bottom: 1.4rem;
+        position: relative;
+      }
+      .subTitle {
+        font-size: 1.7rem;
+        font-family: "AbsaraSans-Light-Italic";
+        font-style: italic;
+        letter-spacing: -0.019rem;
+        color: var(--main-text-color);
+      }
+
+      .whenTitle {
+        position: absolute;
+        right: 26px;
+        bottom: 331px;
+        color: var(--main-text-color);
+
+        display: flex;
+        flex-direction: column;
+
+        .place {
+          font-family: "AbsaraSans-Bold";
+          font-size: 3rem;
+          letter-spacing: 0.04rem;
+          line-height: 0.8;
+        }
+
+        .date {
+          font-family: "AbsaraSans-Bold";
+          font-size: 1.7rem;
+          letter-spacing: 0.03rem;
+        }
+      }
+    }
   }
 
   @screen 2xl {
-    background-color: purple;
-  }
-
-  .slogan {
-    .title {
-      font-size: 3.8em;
-      font-family: "AbsaraSans-Thin";
-      line-height: 1;
-      letter-spacing: 0.05rem;
-      color: var(--main-title-color);
-      margin-bottom: 1rem;
+    //background-color: blue;
+    background-image: url("/images/isola-delle-storie-2022.png");
+    background-position: 200px 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 800px;
+    max-height: 800px;
+    .slogan {
+      width: 650px;
+      min-width: 650px;
+      margin-left: 750px;
+      margin-top: 302px;
       position: relative;
-    }
-    .subTitle {
-      font-size: 1.3rem;
-      font-family: "AbsaraSans-Light-Italic";
-      font-style: italic;
-      color: var(--main-text-color);
-    }
-
-    .whenTitle {
-      position: absolute;
-      right: 15px;
-      bottom: 8px;
-      color: var(--main-text-color);
-      display: flex;
-      flex-direction: column;
-
-      .place {
-        font-family: "AbsaraSans-Bold";
-        font-size: 1.5rem;
-        letter-spacing: 0.01rem;
+      //background-color: red;
+      .title {
+        font-size: 7.5rem;
+        font-family: "AbsaraSans-Thin";
+        line-height: 0.9;
+        letter-spacing: 0.4rem;
+        color: var(--main-title-color);
+        margin-bottom: 1.4rem;
+        position: relative;
+      }
+      .subTitle {
+        font-size: 2.1rem;
+        font-family: "AbsaraSans-Light-Italic";
+        font-style: italic;
+        letter-spacing: -0.019rem;
+        color: var(--main-text-color);
       }
 
-      .date {
-        font-family: "AbsaraSans-Bold";
-        font-size: 1rem;
-        letter-spacing: 0.03rem;
+      .whenTitle {
+        position: absolute;
+        right: 43px;
+        bottom: 287px;
+        color: var(--main-text-color);
+        display: flex;
+        flex-direction: column;
+
+        .place {
+          font-family: "AbsaraSans-Bold";
+          font-size: 3rem;
+          letter-spacing: 0.04rem;
+          line-height: 1.1;
+        }
+
+        .date {
+          font-family: "AbsaraSans-Bold";
+          font-size: 1.7rem;
+          letter-spacing: 0.03rem;
+        }
       }
     }
-  }
-
-  .hashTag {
-    position: absolute;
-    font-family: "AbsaraSans";
-    font-size: 1.2rem;
-    bottom: 6rem;
-    left: 14rem;
   }
 }
 
@@ -139,3 +344,27 @@
   }
 }
 */
+
+.bg {
+  animation: slide 1000s linear infinite;
+  background-color: yellow;
+  background: url("/cover/02.png") repeat-x;
+
+  width: 7680px;
+  opacity: 0.8;
+  bottom: 0;
+  left: -50%;
+  position: absolute;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+@keyframes slide {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(-2000px); /* The image width */
+  }
+}
