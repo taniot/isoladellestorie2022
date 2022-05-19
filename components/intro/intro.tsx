@@ -3,6 +3,7 @@ import Div100vh from "react-div-100vh";
 
 const Intro = () => (
   <div className={styles.banner}>
+    <div className={styles.imgBg}></div>
     <div className={styles.slogan}>
       <div className={styles.titleContainer}>
         <h1 className={styles.title}>L’Isola delle Storie</h1>

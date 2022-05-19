@@ -1,13 +1,26 @@
 .banner {
   position: relative;
   display: flex;
+  flex-direction: column;
   background-color: var(--main-bg-color);
   height: 70vh;
   justify-content: center;
-  align-items: center;
+
+  .imgBg {
+    @apply w-10/12 mx-auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    //background-color: red;
+    height: 220px;
+    background-image: url("/images/isola-delle-storie-2022.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 30px 20px;
+  }
 
   .slogan {
-    @apply relative w-10/12 mx-auto mt-20;
+    @apply w-10/12 mx-auto;
+
+    padding-top: 20px;
 
     .titleContainer {
       position: relative;
