@@ -5,7 +5,7 @@ import Div100vh from "react-div-100vh";
 import cls from "classnames";
 
 const Intro = () => (
-  <div className={styles.banner}>
+  <Div100vh className={styles.banner}>
     <div className={styles.imgBg}></div>
     <div className={styles.slogan}>
       <div className={styles.titleContainer}>
@@ -22,7 +22,7 @@ const Intro = () => (
         <path className={arrow.a3} d="M0 40 L30 72 L60 40"></path>
       </svg>
     </div>
-  </div>
+  </Div100vh>
 );
 
 export default Intro;
