@@ -6,18 +6,18 @@
   justify-content: center;
   align-items: center;
   .slogan {
-    @apply w-10/12 mx-auto;
+    @apply w-10/12 mx-auto mt-20;
 
     .title {
-      font-size: 5rem;
+      font-size: 4rem;
       font-family: "AbsaraSans-Thin";
       line-height: 1;
-      letter-spacing: 0.1rem;
+      letter-spacing: 0;
       color: var(--main-title-color);
       margin-bottom: 1rem;
     }
     .subTitle {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       font-family: "AbsaraSans-Light-Italic";
       font-style: italic;
       letter-spacing: -0.019rem;
