@@ -7,14 +7,15 @@
   align-items: center;
   width: 100vw;
   z-index: 10;
+  background-color: var(--main-bg-color);
 
   .logoContainer {
     position: relative;
-    margin: 30px;
+    margin: 40px 20px;
     z-index: 2;
     border-top: 0;
-    width: 150px;
-    height: 25px;
+    width: 170px;
+    height: 30px;
   }
 
   .menuContainer {
