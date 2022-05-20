@@ -6,8 +6,6 @@ import AppContext from "../store/AppContext";
 import languageObject from "../languagesObject";
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
-  const startIndex = 2;
-
   const [currentLanguage, setCurrentLanguage] =
     useState<keyof typeof languageObject>("en");
   const [isMainMenuOpen, setIsMainMenuOpen] = useState<boolean>(false);

@@ -1,14 +1,13 @@
 import styles from "./intro.module.scss";
-import arrow from "./arrow.module.scss";
-import Div100vh from "react-div-100vh";
-Image;
-
-import cls from "classnames";
 import Image from "next/image";
 
 const Intro = () => (
   <div className={styles.banner}>
-    <Image src="/images/test_svg_mobile7.svg" layout="fill" />
+    <Image
+      src="/images/test_svg_3.svg"
+      layout="fill"
+      alt="Isola delle Storie 2022"
+    />
   </div>
 );
 

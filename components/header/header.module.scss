@@ -1,5 +1,5 @@
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   display: flex;
@@ -7,7 +7,7 @@
   align-items: center;
   width: 100vw;
   z-index: 10;
-  background-color: var(--main-bg-color);
+  //background-color: var(--main-bg-color);
 
   .logoContainer {
     position: relative;
@@ -24,19 +24,31 @@
     display: flex; //flex
     align-items: center;
   }
+}
 
-  @screen sm {
+@screen md {
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100vw;
+    z-index: 10;
+    //background-color: var(--main-bg-color);
+
     .logoContainer {
       position: relative;
       margin: 50px 80px;
       z-index: 2;
       border-top: 0;
-      width: 90px;
-      height: 200px;
+      width: 80px;
+      height: 180px;
     }
 
     .menuContainer {
-      margin: 40px 50px;
+      margin: 40px 60px;
       z-index: 2;
       display: flex; //flex
       align-items: center;
