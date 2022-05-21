@@ -7,7 +7,7 @@ const Intro = () => {
   return (
     <>
       {isSmall ? (
-        <Div100vh className={styles.banner}>
+        <div className={styles.banner}>
           <div className={styles.headerSpace}></div>
           <div className={styles.sloganSpace}>
             <div className={styles.slogan}>
@@ -24,7 +24,7 @@ const Intro = () => {
               alt="Isola delle Storie 2022"
             />
           </div>
-        </Div100vh>
+        </div>
       ) : (
         <div className={styles.banner}>
           <Image
