@@ -37,9 +37,9 @@
       @apply relative;
       width: 10rem;
       min-width: 10rem;
-      height: 12rem;
-      min-height: 12rem;
-      margin-bottom: 55px;
+      height: 7rem;
+      min-height: 7rem;
+      margin-bottom: 40px;
 
       .logo {
         @apply antialiased opacity-100 h-auto;
@@ -56,13 +56,14 @@
 
       .socialIcon {
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        transition: all 5s ease-in-out;
-        border: 1px dashed #222;
+        border-radius: 50%;
+        //transition: all 5s ease-in-out;
+        //border: 1px dashed #222;
         padding: 14px;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #efefef;
+        background-color: #f1e596;
 
         .icon {
           font-size: 1.2rem;
@@ -81,6 +82,7 @@
       .owner {
         font-family: "AbsaraSans";
         font-size: 2rem;
+        text-align: center;
       }
 
       .legalData {

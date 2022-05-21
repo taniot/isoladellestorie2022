@@ -12,7 +12,7 @@ const Footer = () => (
     <div className={styles.footerContainer}>
       <div className={styles.logoContainer}>
         <Image
-          src="/images/l-isola-delle-storie-logo.svg"
+          src="/images/l-isola-delle-storie.svg"
           layout="fill"
           alt="Gae"
           className={styles.logo}

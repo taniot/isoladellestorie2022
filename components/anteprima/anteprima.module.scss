@@ -2,7 +2,7 @@
 }
 
 .container {
-  @apply w-9/12 mx-auto;
+  @apply w-11/12 mx-auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,19 +11,19 @@
 
   .title {
     font-family: "AbsaraSans";
-    border-bottom-color: rgb(0, 0, 0);
+    border-bottom-color: var(--main-bg-color);
     border-bottom-style: solid;
     border-bottom-width: 3px;
     display: inline-block;
     font-size: 28px;
-    line-height: 38px;
+    line-height: 18px;
     padding-bottom: 20px;
   }
 
   .hero_list {
     display: block;
     text-align: center;
-    font-size: 6.875em;
+    font-size: 7rem;
     margin: 0.9090909091em auto 0;
     font-family: "AbsaraSans-Thin";
     letter-spacing: -0.1rem;
