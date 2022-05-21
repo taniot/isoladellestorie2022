@@ -83,6 +83,5 @@ body::before {
 }
 
 a {
-  cursor: var(--cursor-hover);
-  color: #3a3a3a;
+  cursor: var(--cursor-hover) !important;
 }
