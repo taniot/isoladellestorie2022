@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Div100vh from "react-div-100vh";
 const Intro = () => {
-  const isSmall = useMediaQuery("(max-width: 1024px)");
+  const isSmall = useMediaQuery("(max-width: 768px)");
   return (
     <>
       {isSmall ? (

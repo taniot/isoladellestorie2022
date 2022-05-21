@@ -19,7 +19,9 @@
   }
 
   .imageSpace {
-    //background-color: red;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
   }
 
   @screen lg {
@@ -27,7 +29,7 @@
   }
 
   @screen xl {
-    height: 100vh;
+    height: 90vh;
   }
 
   @screen 2xl {
