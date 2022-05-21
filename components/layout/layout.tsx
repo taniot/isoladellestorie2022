@@ -10,7 +10,8 @@ interface Props {
 
 const Layout: FC<Props> = ({ children }) => {
   return (
-    <div>
+    <div className={styles.layout}>
+      <div className={styles.rotate}></div>
       <Scroll />
       <Header />
       <main className={styles.main}>{children}</main>

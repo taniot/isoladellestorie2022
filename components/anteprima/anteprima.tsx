@@ -26,7 +26,7 @@ const Anteprima = () => (
         </li>
       </ul>
       <a href="#" className={styles.button}>
-        e tanti altri presto online!
+        più altri da annunciare!
       </a>
     </div>
   </section>

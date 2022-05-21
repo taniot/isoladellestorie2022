@@ -9,7 +9,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 const Header = () => {
   const context = useContext(AppContext);
   const { state, setIsMainMenuOpen } = context;
-  const isSmall = useMediaQuery("(max-width: 768px)");
+  const isSmall = useMediaQuery("(max-width: 1023px)");
 
   return (
     <header className={styles.header}>

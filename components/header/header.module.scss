@@ -25,7 +25,7 @@
   }
 }
 
-@screen md {
+@screen lg {
   .header {
     position: fixed;
     top: 0;
@@ -35,7 +35,44 @@
     align-items: flex-start;
     width: 100vw;
     z-index: 10;
-    //background-color: var(--main-bg-color);
+    //background-color: pink;
+
+    .logoContainer {
+      position: relative;
+      margin: 40px 60px;
+      z-index: 2;
+      border-top: 0;
+      width: 60px;
+      height: 160px;
+    }
+
+    .menuContainer {
+      margin: 40px 60px;
+      z-index: 2;
+      display: flex; //flex
+      align-items: center;
+      a {
+        font-family: "font77190";
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        margin: 3px 0 0 0;
+        padding: 0;
+      }
+    }
+  }
+}
+
+@screen xl {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100vw;
+    z-index: 10;
+    //background-color: pink;
 
     .logoContainer {
       position: relative;

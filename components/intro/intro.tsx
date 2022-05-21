@@ -3,11 +3,15 @@ import Image from "next/image";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Div100vh from "react-div-100vh";
 const Intro = () => {
-  const isSmall = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery("(max-width: 639px)");
+  const isTablet = useMediaQuery("(min-width: 640px) and (max-width: 1023px)");
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+
   return (
     <>
-      {isSmall ? (
+      {isMobile && (
         <div className={styles.banner}>
+          <div className={styles.device}>mobile</div>
           <div className={styles.headerSpace}></div>
           <div className={styles.sloganSpace}>
             <div className={styles.slogan}>
@@ -19,18 +23,38 @@ const Intro = () => {
             </div>
           </div>
           <div className={styles.imageSpace}>
-            <img
+            <Image
               src="/images/donna-isola-storie.png"
               alt="Isola delle Storie 2022"
+              layout="fill"
+              objectFit="contain"
+              objectPosition="center bottom"
             />
           </div>
         </div>
-      ) : (
+      )}
+
+      {isTablet && (
         <div className={styles.banner}>
+          <div className={styles.device}>tablet</div>
           <Image
-            src="/images/intro.svg"
+            src="/images/intro-test.svg"
             layout="fill"
             alt="Isola delle Storie 2022"
+            objectFit="contain"
+            objectPosition="center bottom"
+          />
+        </div>
+      )}
+      {isDesktop && (
+        <div className={styles.banner}>
+          <div className={styles.device}>desktop</div>
+          <Image
+            src="/images/intro-test.svg"
+            layout="fill"
+            alt="Isola delle Storie 2022"
+            objectFit="contain"
+            objectPosition="center bottom"
           />
         </div>
       )}

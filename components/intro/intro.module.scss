@@ -5,9 +5,18 @@
   flex-direction: column;
   justify-content: space-between;
   height: 90vh;
+  min-height: 800px;
+  //max-width: 550px;
+
   .headerSpace {
     // background-color: pink;
     height: 120px;
+  }
+
+  .device {
+    position: fixed;
+    top: 0;
+    background-color: gray;
   }
 
   .sloganSpace {
@@ -22,17 +31,51 @@
     position: relative;
     display: flex;
     align-items: flex-end;
+    height: 30vh;
+    min-height: 400px;
+  }
+
+  @screen sm {
+    //background-color: orange;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    height: 60vh;
+    min-height: unset;
+    max-width: unset;
+  }
+
+  @screen md {
+    background-color: purple;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    height: 75vh;
+    min-height: unset;
   }
 
   @screen lg {
+    background-color: green;
     height: 70vh;
+    min-width: 1100px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: left;
+    min-height: 600px;
   }
 
   @screen xl {
+    background-color: pink;
     height: 90vh;
+    min-height: 800px;
   }
 
   @screen 2xl {
+    background-color: red;
     height: 100vh;
+    min-height: 800px;
   }
 }
