@@ -29,6 +29,7 @@ const Intro = () => {
               layout="fill"
               objectFit="contain"
               objectPosition="center bottom"
+              priority
             />
           </div>
         </div>

@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 90vh;
-  min-height: 800px;
+  //min-height: 800px;
   //max-width: 550px;
 
   .headerSpace {
@@ -25,14 +25,15 @@
     flex-grow: 1;
     justify-content: center;
     align-items: center;
+    min-height: min-content;
   }
 
   .imageSpace {
     position: relative;
     display: flex;
     align-items: flex-end;
-    height: 30vh;
-    min-height: 400px;
+    height: 40vh;
+    min-height: auto;
   }
 
   @screen sm {
@@ -53,7 +54,7 @@
     flex-direction: row;
     align-items: flex-end;
     height: 75vh;
-    min-height: unset;
+    min-height: 700px;
   }
 
   @screen lg {
