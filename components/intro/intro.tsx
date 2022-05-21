@@ -7,12 +7,7 @@ const Intro = () => {
   return (
     <>
       {isSmall ? (
-        <Div100vh className={styles.banner}>
-          <img
-            src="/images/test_svg_mobile12.svg"
-            alt="Isola delle Storie 2022"
-          />
-        </Div100vh>
+        <Div100vh className={styles.banner}></Div100vh>
       ) : (
         <div className={styles.banner}>
           <Image

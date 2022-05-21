@@ -4,6 +4,10 @@
   background-color: var(--main-bg-color);
   justify-content: center;
   align-items: flex-end;
+  background-image: url("/images/donna-isola-storie.png");
+  background-position: 0 bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
 
   @screen lg {
     height: 70vh;
