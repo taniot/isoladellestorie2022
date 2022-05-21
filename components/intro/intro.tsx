@@ -9,7 +9,7 @@ const Intro = () => {
       {isSmall ? (
         <Div100vh className={styles.banner}>
           <Image
-            src="/images/intro-mobile.svg"
+            src="/images/test_svg_mobile11.svg"
             layout="fill"
             alt="Isola delle Storie 2022"
           />
