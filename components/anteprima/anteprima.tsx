@@ -1,29 +1,32 @@
 import styles from "./anteprima.module.scss";
+import cls from "classnames";
 
 const Anteprima = () => (
   <section className={styles.anteprima}>
     <div className={styles.container}>
-      <h2 className={styles.title}>In questa edizione</h2>
+      <h2 className={styles.title}>Anteprima Ospiti XVII</h2>
       <ul className={styles.hero_list}>
-        <li className={styles.hero_name}>
-          Mariangela Gualtieri <span className={styles.trattino}>-</span>{" "}
+        <li className={cls(styles.hero_name, styles.color1)}>
+          Mariangela Gualtieri<span className={styles.trattino}>,</span>{" "}
         </li>
-        <li className={styles.hero_name}>
-          Daria Bignardi <span className={styles.trattino}>-</span>{" "}
+        <li className={cls(styles.hero_name, styles.color2)}>
+          Daria Bignardi<span className={styles.trattino}>,</span>{" "}
         </li>
-        <li className={styles.hero_name}>
-          Paola Saluzzi <span className={styles.trattino}>-</span>{" "}
+        <li className={cls(styles.hero_name, styles.color3)}>
+          Paola Saluzzi<span className={styles.trattino}>,</span>{" "}
         </li>
-        <li className={styles.hero_name}>
-          Loredana Lipperini <span className={styles.trattino}>-</span>{" "}
+        <li className={cls(styles.hero_name, styles.color1)}>
+          Loredana Lipperini<span className={styles.trattino}>,</span>{" "}
         </li>
-        <li className={styles.hero_name}>
-          Gabriele Romagnoli <span className={styles.trattino}>-</span>{" "}
+        <li className={cls(styles.hero_name, styles.color2)}>
+          Gabriele Romagnoli<span className={styles.trattino}>,</span>{" "}
         </li>
-        <li className={styles.hero_name}>Jonathan Bazzi </li>
+        <li className={cls(styles.hero_name, styles.color3)}>
+          Jonathan Bazzi{" "}
+        </li>
       </ul>
       <a href="#" className={styles.button}>
-        e molti altri presto online
+        e tanti altri presto online!
       </a>
     </div>
   </section>

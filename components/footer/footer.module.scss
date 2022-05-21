@@ -1,6 +1,5 @@
 .footer {
   background-color: var(--main-bg-color);
-  //background-color: whitesmoke;
   margin-top: auto;
   position: relative;
   min-height: 500px;
@@ -8,26 +7,10 @@
   justify-content: center;
   align-items: center;
 
-  // &::before {
-  //   background-color: var(--main-bg-color);
-  //   //background-color: black;
-  //   mask-image: url("/images/divider-top.svg");
-  //   mask-repeat: no-repeat;
-  //   mask-size: cover;
-  //   left: 0;
-  //   top: -120px;
-  //   content: "";
-  //   height: 100%;
-  //   max-height: 400px;
-  //   position: absolute;
-  //   width: 100%;
-  // }
-
   .footerContainer {
     padding-top: 100px;
     padding-bottom: 100px;
     @apply w-11/12 mx-auto;
-    //background-color: pink;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -35,10 +18,10 @@
 
     .logoContainer {
       @apply relative;
-      width: 10rem;
-      min-width: 10rem;
-      height: 7rem;
-      min-height: 7rem;
+      width: 8rem;
+      min-width: 8rem;
+      height: 5rem;
+      min-height: 5rem;
       margin-bottom: 40px;
 
       .logo {
@@ -51,15 +34,14 @@
       justify-content: center;
       align-items: center;
       display: flex;
-
-      gap: 2rem;
+      gap: 1.5rem;
 
       .socialIcon {
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
         border-radius: 50%;
         //transition: all 5s ease-in-out;
         //border: 1px dashed #222;
-        padding: 14px;
+        padding: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -81,13 +63,96 @@
 
       .owner {
         font-family: "AbsaraSans";
-        font-size: 2rem;
+        font-size: 1.5rem;
+        line-height: 1.3;
         text-align: center;
+        margin-bottom: 10px;
       }
 
       .legalData {
         font-family: "AbsaraSans-Thin";
-        font-size: 1.1rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+@screen md {
+  .footer {
+    background-color: var(--main-bg-color);
+    margin-top: auto;
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .footerContainer {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      @apply w-11/12 mx-auto;
+      //background-color: pink;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      .logoContainer {
+        @apply relative;
+        width: 10rem;
+        min-width: 10rem;
+        height: 7rem;
+        min-height: 7rem;
+        margin-bottom: 40px;
+
+        .logo {
+          @apply antialiased opacity-100 h-auto;
+        }
+      }
+
+      .socialContainer {
+        @apply relative;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+
+        gap: 2rem;
+
+        .socialIcon {
+          border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+          border-radius: 50%;
+          //transition: all 5s ease-in-out;
+          //border: 1px dashed #222;
+          padding: 14px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #f1e596;
+
+          .icon {
+            font-size: 1.2rem;
+            color: #222;
+          }
+        }
+      }
+
+      .infoContainer {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 45px;
+
+        .owner {
+          font-family: "AbsaraSans";
+          font-size: 2rem;
+          text-align: center;
+        }
+
+        .legalData {
+          font-family: "AbsaraSans-Thin";
+          font-size: 1.1rem;
+        }
       }
     }
   }
