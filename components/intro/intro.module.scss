@@ -2,12 +2,25 @@
   position: relative;
   display: flex;
   background-color: var(--main-bg-color);
-  justify-content: center;
-  align-items: flex-end;
-  background-image: url("/images/donna-isola-storie.png");
-  background-position: 0 bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .headerSpace {
+    // background-color: pink;
+    height: 120px;
+  }
+
+  .sloganSpace {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imageSpace {
+    //background-color: red;
+  }
 
   @screen lg {
     height: 70vh;
