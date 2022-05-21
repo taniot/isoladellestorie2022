@@ -2,13 +2,13 @@
   background-color: var(--main-bg-color);
   margin-top: auto;
   position: relative;
-  min-height: 500px;
+  //min-height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .footerContainer {
-    padding-top: 100px;
+    padding-top: 30px;
     padding-bottom: 100px;
     @apply w-11/12 mx-auto;
     justify-content: center;
@@ -22,10 +22,31 @@
       min-width: 5rem;
       height: 5rem;
       min-height: 5rem;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
 
       .logo {
         @apply antialiased opacity-100 h-auto;
+      }
+    }
+
+    .infoContainer {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 25px;
+
+      .owner {
+        font-family: "AbsaraSans";
+        font-size: 1rem;
+        line-height: 1.3;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .legalData {
+        font-family: "AbsaraSans-Thin";
+        font-size: 0.8rem;
       }
     }
 
@@ -51,27 +72,6 @@
           font-size: 1.2rem;
           color: #222;
         }
-      }
-    }
-
-    .infoContainer {
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 45px;
-
-      .owner {
-        font-family: "AbsaraSans";
-        font-size: 1rem;
-        line-height: 1.3;
-        text-align: center;
-        margin-bottom: 10px;
-      }
-
-      .legalData {
-        font-family: "AbsaraSans-Thin";
-        font-size: 0.8rem;
       }
     }
   }
