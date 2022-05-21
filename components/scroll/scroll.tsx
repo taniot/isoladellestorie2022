@@ -8,16 +8,13 @@ const Scroll = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      console.log(window.scrollY);
       if (window.scrollY > 200) {
         setShowBtn(true);
-        console.log({ showBtn });
       } else {
         setShowBtn(false);
-        console.log({ showBtn });
       }
     });
-  }, []);
+  }, [showBtn]);
 
   const goToTop = () => {
     window.scrollTo({

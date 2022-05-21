@@ -2,32 +2,18 @@
   position: relative;
   display: flex;
   background-color: var(--main-bg-color);
-
   justify-content: center;
   align-items: center;
 
-  @screen md {
-    //background-color: green;
-    height: 50vh;
-
-    //min-height: 450px;
-  }
-
   @screen lg {
-    //background-color: red;
     height: 70vh;
-    //min-height: 550px;
   }
 
   @screen xl {
-    //background-color: pink;
-    height: 85vh;
-    //min-height: 600px;
+    height: 100vh;
   }
 
   @screen 2xl {
-    //background-color: purple;
-    height: 90vh;
-    //min-height: 700px;
+    height: 100vh;
   }
 }

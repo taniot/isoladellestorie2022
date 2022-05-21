@@ -3,13 +3,13 @@ import Image from "next/image";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Div100vh from "react-div-100vh";
 const Intro = () => {
-  const isSmall = useMediaQuery("(max-width: 768px)");
+  const isSmall = useMediaQuery("(max-width: 1024px)");
   return (
     <>
       {isSmall ? (
         <Div100vh className={styles.banner}>
           <Image
-            src="/images/test_svg_mobile9.svg"
+            src="/images/intro-mobile.svg"
             layout="fill"
             alt="Isola delle Storie 2022"
           />
@@ -17,7 +17,7 @@ const Intro = () => {
       ) : (
         <div className={styles.banner}>
           <Image
-            src="/images/test_svg_3.svg"
+            src="/images/intro.svg"
             layout="fill"
             alt="Isola delle Storie 2022"
           />
