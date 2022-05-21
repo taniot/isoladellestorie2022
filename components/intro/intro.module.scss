@@ -71,7 +71,8 @@
   @screen xl {
     background-color: pink;
     height: 90vh;
-    min-height: 800px;
+    //min-height: 800px;
+    min-height: unset;
   }
 
   @screen 2xl {
