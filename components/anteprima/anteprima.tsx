@@ -1,35 +1,48 @@
 import styles from "./anteprima.module.scss";
 import cls from "classnames";
 
-const Anteprima = () => (
-  <section className={styles.anteprima}>
-    <div className={styles.container}>
-      <h2 className={styles.title}>Anteprima Ospiti XVII</h2>
-      <ul className={styles.hero_list}>
-        <li className={cls(styles.hero_name, styles.color1)}>
-          Mariangela Gualtieri<span className={styles.trattino}>,</span>{" "}
-        </li>
-        <li className={cls(styles.hero_name, styles.color2)}>
-          Daria Bignardi<span className={styles.trattino}>,</span>{" "}
-        </li>
-        <li className={cls(styles.hero_name, styles.color3)}>
-          Paola Saluzzi<span className={styles.trattino}>,</span>{" "}
-        </li>
-        <li className={cls(styles.hero_name, styles.color1)}>
-          Loredana Lipperini<span className={styles.trattino}>,</span>{" "}
-        </li>
-        <li className={cls(styles.hero_name, styles.color2)}>
-          Gabriele Romagnoli<span className={styles.trattino}>,</span>{" "}
-        </li>
-        <li className={cls(styles.hero_name, styles.color3)}>
-          Jonathan Bazzi{" "}
-        </li>
-      </ul>
-      <a href="#" className={styles.button}>
-        più altri da annunciare!
-      </a>
-    </div>
-  </section>
-);
+const Anteprima = () => {
+  return (
+    <section className={styles.anteprima}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>L’Isola XVII presenta</h2>
+        <ul className={styles.hero_list}>
+          <li className={cls(styles.hero_name, styles.color1)}>
+            <span className={styles.lowLight}>Mariangela</span>{" "}
+            <span className={styles.highLight}>Gualtieri</span>
+            <span className={styles.trattino}>,</span>{" "}
+          </li>
+          <li className={cls(styles.hero_name, styles.color2)}>
+            <span className={styles.lowLight}>Daria</span>{" "}
+            <span className={styles.highLight}>Bignardi</span>
+            <span className={styles.trattino}>,</span>{" "}
+          </li>
+          <li className={cls(styles.hero_name, styles.color3)}>
+            <span className={styles.lowLight}>Paola</span>{" "}
+            <span className={styles.highLight}>Saluzzi</span>
+            <span className={styles.trattino}>,</span>{" "}
+          </li>
+          <li className={cls(styles.hero_name, styles.color1)}>
+            <span className={styles.lowLight}>Loredana</span>{" "}
+            <span className={styles.highLight}>Lipperini</span>
+            <span className={styles.trattino}>,</span>{" "}
+          </li>
+          <li className={cls(styles.hero_name, styles.color2)}>
+            <span className={styles.lowLight}>Gabriele</span>{" "}
+            <span className={styles.highLight}>Romagnoli</span>
+            <span className={styles.trattino}>,</span>{" "}
+          </li>
+          <li className={cls(styles.hero_name, styles.color3)}>
+            <span className={styles.lowLight}>Jonathan</span>{" "}
+            <span className={styles.highLight}>Bazzi</span>{" "}
+          </li>
+        </ul>
+        <a href="#" className={styles.button}>
+          e altri presto in arrivo!
+        </a>
+      </div>
+    </section>
+  );
+};
 
 export default Anteprima;

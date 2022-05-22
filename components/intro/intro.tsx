@@ -1,7 +1,6 @@
 import styles from "./intro.module.scss";
 import Image from "next/image";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import Div100vh from "react-div-100vh";
 const Intro = () => {
   const isMobile = useMediaQuery("(max-width: 639px)");
   const isTablet = useMediaQuery("(min-width: 640px) and (max-width: 1023px)");

@@ -2,75 +2,91 @@
   background-color: var(--main-bg-color);
   margin-top: auto;
   position: relative;
-  //min-height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .footerContainer {
-    padding-top: 30px;
-    padding-bottom: 100px;
     @apply w-11/12 mx-auto;
-    justify-content: center;
-    align-items: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 50px 50px 80px 50px;
 
-    .logoContainer {
-      @apply relative;
-      width: 5rem;
-      min-width: 5rem;
-      height: 5rem;
-      min-height: 5rem;
-      margin-bottom: 10px;
+    .logoArea {
+      display: flex;
+      order: 1;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
 
-      .logo {
-        @apply antialiased opacity-100 h-auto;
+      .logoContainer {
+        @apply relative;
+        width: 6rem;
+        height: 4rem;
+        margin-bottom: 30px;
+
+        .logo {
+          @apply antialiased opacity-100 h-auto;
+        }
+      }
+
+      .socialContainer {
+        @apply relative;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        gap: 2rem;
+        .socialIcon {
+          border-radius: 50%;
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #f1e596;
+
+          .icon {
+            font-size: 1rem;
+            color: var(--main-text-color);
+          }
+        }
       }
     }
 
     .infoContainer {
-      align-items: center;
-      justify-content: center;
+      order: 2;
       display: flex;
       flex-direction: column;
-      margin-bottom: 25px;
+      align-items: center;
+      margin-bottom: 2rem;
 
-      .owner {
+      h2 {
         font-family: "AbsaraSans";
+        font-size: 1.3rem;
+      }
+      p {
+        font-family: "AbsaraSans-Thin";
         font-size: 1rem;
-        line-height: 1.3;
-        text-align: center;
-        margin-bottom: 10px;
       }
 
       .legalData {
-        font-family: "AbsaraSans-Thin";
-        font-size: 0.8rem;
+        margin-top: 1rem;
       }
     }
 
-    .socialContainer {
-      @apply relative;
-      justify-content: center;
-      align-items: center;
+    .devContainer {
+      order: 3;
       display: flex;
-      gap: 1.5rem;
+      flex-direction: column;
+      align-items: center;
 
-      .socialIcon {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        border-radius: 50%;
-        //transition: all 5s ease-in-out;
-        //border: 1px dashed #222;
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #f1e596;
+      p {
+        font-family: "AbsaraSans-Thin";
+        font-size: 1rem;
 
-        .icon {
-          font-size: 1.2rem;
-          color: #222;
+        &.poweredBy {
+          margin-top: 1rem;
         }
       }
     }
@@ -84,74 +100,96 @@
     position: relative;
     min-height: 500px;
     display: flex;
+
     justify-content: center;
     align-items: center;
 
     .footerContainer {
-      padding-top: 100px;
-      padding-bottom: 100px;
+      padding: 80px 50px;
       @apply w-11/12 mx-auto;
-      //background-color: pink;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-between;
+      align-items: flex-start;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
 
-      .logoContainer {
-        @apply relative;
-        width: 10rem;
-        min-width: 10rem;
-        height: 7rem;
-        min-height: 7rem;
-        margin-bottom: 40px;
-
-        .logo {
-          @apply antialiased opacity-100 h-auto;
-        }
-      }
-
-      .socialContainer {
-        @apply relative;
+      .logoArea {
+        order: 2;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        display: flex;
+        .logoContainer {
+          @apply relative;
+          @apply w-2/12;
+          width: 9rem;
+          height: 12rem;
+          margin-bottom: 60px;
 
-        gap: 2rem;
+          .logo {
+            @apply antialiased opacity-100 h-auto;
+          }
+        }
 
-        .socialIcon {
-          border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-          border-radius: 50%;
-          //transition: all 5s ease-in-out;
-          //border: 1px dashed #222;
-          padding: 14px;
-          display: flex;
+        .socialContainer {
+          @apply relative;
           justify-content: center;
           align-items: center;
-          background-color: #f1e596;
+          display: flex;
+          gap: 2rem;
 
-          .icon {
-            font-size: 1.2rem;
-            color: #222;
+          .socialIcon {
+            padding: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f1e596;
+
+            .icon {
+              font-size: 1.2rem;
+              color: #222;
+            }
           }
         }
       }
 
       .infoContainer {
-        align-items: center;
-        justify-content: center;
+        order: 1;
+        @apply w-5/12;
         display: flex;
         flex-direction: column;
-        margin-bottom: 45px;
+        margin-top: 20px;
 
         .owner {
-          font-family: "AbsaraSans";
-          font-size: 2rem;
-          text-align: center;
-        }
+          h2 {
+            font-family: "AbsaraSans";
+            font-size: 1.3rem;
+          }
+          p {
+            font-family: "AbsaraSans-Thin";
+            font-size: 1rem;
+          }
 
-        .legalData {
+          .legalData {
+            margin-top: 1rem;
+          }
+        }
+      }
+
+      .devContainer {
+        order: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        @apply w-5/12;
+        margin-top: 20px;
+
+        p {
           font-family: "AbsaraSans-Thin";
-          font-size: 1.1rem;
+          font-size: 1rem;
+
+          &.poweredBy {
+            margin-top: 1rem;
+          }
         }
       }
     }
