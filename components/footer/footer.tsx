@@ -54,7 +54,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.devContainer}>
-          <p>Per le foto si ringrazia: Francesca Marchi</p>
+          <p>Fotografia: Francesca Marchi</p>
           <p>Illustrazione: Toni Demuro</p>
           <p>Progetto Grafico: Sabina Era</p>
           <p className={styles.poweredBy}>Powered by taniot</p>
