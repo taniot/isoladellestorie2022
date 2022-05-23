@@ -1,5 +1,5 @@
 .contentContainer {
-  @apply w-10/12 md:w-9/12 mx-auto;
+  @apply w-11/12 md:w-9/12 mx-auto;
   .pageContentContainer {
     padding: 20px;
 
@@ -25,15 +25,29 @@
   .grid_item {
     position: relative;
     height: auto;
-    width: 33.333%;
+    width: 100%;
     padding: 20px;
 
+    @screen md {
+      width: 25%;
+      padding: 20px;
+    }
+
     .image_container {
+      border: 3px solid var(--main-bg-color);
+      border-image-outset: 1rem;
+      border-radius: 50%;
+
+      padding: 10px;
+      display: flex;
+
       img {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        transition: all 5s ease-in-out;
-        border: 1px dashed #222 !important;
-        padding: 5px !important;
+        filter: grayscale(100%);
+        border-radius: 50%;
+
+        &:hover {
+          filter: unset;
+        }
       }
     }
 
@@ -43,27 +57,10 @@
       justify-content: center;
       margin-top: 20px;
       h2 {
-        font-family: "font77190";
-        font-size: 1rem;
-        font-weight: 700;
-        text-transform: uppercase;
+        font-family: "AbsaraSans";
+        font-size: 1.4rem;
+        color: #7e7f7f;
       }
     }
-  }
-}
-
-// 40% 30% 70% / 60% 30% 70% 40%;
-
-@keyframes morph {
-  0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-
-  50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-  }
-
-  100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
 }

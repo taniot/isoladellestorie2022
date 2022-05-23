@@ -94,7 +94,7 @@ const Footer = () => {
           </p>
 
           <p className={styles.poweredBy}>
-            Powered by <strong>taniot</strong>
+            powered by <strong>taniot</strong>
           </p>
         </div>
       </div>
