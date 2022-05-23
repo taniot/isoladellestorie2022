@@ -3,9 +3,12 @@ import Image from "next/image";
 import { GrFacebookOption, GrInstagram, GrTwitter } from "react-icons/gr";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
+import Script from "next/script";
+const Iubenda = require("react-iubenda-policy");
+
 const Footer = () => {
-  const isMobile = useMediaQuery("(max-width: 639px)");
-  const isTablet = useMediaQuery("(min-width: 640px) and (max-width: 1023px)");
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1023px)");
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   return (
@@ -17,7 +20,21 @@ const Footer = () => {
           <p>Via Garibaldi 2, Gavoi (NU)</p>
           <p>info@isoladellestorie.it</p>
           <p className={styles.legalData}>
-            Informativa Privacy – Cookie Policy
+            <a
+              href="https://www.iubenda.com/privacy-policy/96389350"
+              className="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iub-legal-only iubenda-noiframe "
+              title="Privacy Policy"
+            >
+              Privacy Policy
+            </a>{" "}
+            –{" "}
+            <a
+              href="https://www.iubenda.com/privacy-policy/96389350/cookie-policy"
+              className="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe "
+              title="Cookie Policy"
+            >
+              Cookie Policy
+            </a>
           </p>
         </div>
         <div className={styles.logoArea}>
@@ -54,12 +71,36 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.devContainer}>
-          <p>Fotografia: Francesca Marchi</p>
-          <p>Illustrazione: Toni Demuro</p>
-          <p>Progetto Grafico: Sabina Era</p>
-          <p className={styles.poweredBy}>Powered by taniot</p>
+          <p>
+            Illustrazione: <strong>Toni Demuro</strong>
+          </p>
+          <p>
+            Progetto Grafico: <strong>Sabina Era</strong>
+          </p>
+
+          <p className={styles.poweredBy}>
+            Powered by <strong>taniot</strong>
+          </p>
         </div>
       </div>
+      <Script
+        id="privacy-policy"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+    (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);
+  `,
+        }}
+      />
+      <Script
+        id="cookie-policy"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+    (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);
+  `,
+        }}
+      />
     </footer>
   );
 };

@@ -5,7 +5,7 @@ const Anteprima = () => {
   return (
     <section className={styles.anteprima}>
       <div className={styles.container}>
-        <h2 className={styles.title}>L’Isola XVII presenta</h2>
+        <h2 className={styles.title}>All’Isola delle Storie XVII</h2>
         <ul className={styles.hero_list}>
           <li className={cls(styles.hero_name, styles.color1)}>
             <span className={styles.lowLight}>Mariangela</span>{" "}
@@ -38,7 +38,7 @@ const Anteprima = () => {
           </li>
         </ul>
         <a href="#" className={styles.button}>
-          e altri presto in arrivo!
+          e tanti altri presto online!
         </a>
       </div>
     </section>

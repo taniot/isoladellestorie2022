@@ -7,11 +7,17 @@
   align-items: center;
 }
 
-.pageHeaderContainer {
-  @apply w-7/12 mx-auto;
-  .pageHeader {
+.pageHeader {
+  background-color: var(--main-bg-color);
+
+  .pageHeaderContainer {
+    @apply w-7/12 mx-auto;
+    height: 50vh;
     text-align: center;
     justify-content: center;
+    align-items: center;
+    display: flex;
+
     h1 {
       font-size: 10rem;
       font-family: "AbsaraSans-Thin";
@@ -20,6 +26,14 @@
       letter-spacing: -0.3rem;
       color: var(--main-title-color);
     }
+  }
+}
+
+.pageBody {
+  .pageBodyContainer {
+    @apply w-7/12 mx-auto my-20;
+    font-family: "AbsaraSans-Thin";
+    font-size: 1.5rem;
   }
 }
 

@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 50px 80px 50px;
+    padding: 70px 50px 80px 50px;
 
     .logoArea {
       display: flex;
@@ -96,6 +96,7 @@
 @screen md {
   .footer {
     background-color: var(--main-bg-color);
+
     margin-top: auto;
     position: relative;
     min-height: 500px;
@@ -121,8 +122,8 @@
         .logoContainer {
           @apply relative;
           @apply w-2/12;
-          width: 9rem;
-          height: 12rem;
+          width: 7rem;
+          height: 10rem;
           margin-bottom: 60px;
 
           .logo {
@@ -158,20 +159,20 @@
         display: flex;
         flex-direction: column;
         margin-top: 20px;
+        align-items: flex-start;
 
-        .owner {
-          h2 {
-            font-family: "AbsaraSans";
-            font-size: 1.3rem;
-          }
-          p {
-            font-family: "AbsaraSans-Thin";
-            font-size: 1rem;
-          }
+        h2 {
+          font-family: "AbsaraSans";
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+        }
+        p {
+          font-family: "AbsaraSans-Thin";
+          font-size: 1rem;
+        }
 
-          .legalData {
-            margin-top: 1rem;
-          }
+        .legalData {
+          margin-top: 1.5rem;
         }
       }
 
@@ -188,7 +189,84 @@
           font-size: 1rem;
 
           &.poweredBy {
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@screen lg {
+  .footer {
+    .footerContainer {
+      .logoArea {
+        .logoContainer {
+          .logo {
+          }
+        }
+
+        .socialContainer {
+          @apply relative;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          gap: 2rem;
+
+          .socialIcon {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f1e596;
+
+            .icon {
+              font-size: 1.5rem;
+              color: #222;
+            }
+          }
+        }
+      }
+
+      .infoContainer {
+        order: 1;
+        @apply w-5/12;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        align-items: flex-start;
+
+        h2 {
+          font-family: "AbsaraSans";
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+        p {
+          font-family: "AbsaraSans-Thin";
+          font-size: 1rem;
+          line-height: 1.7rem;
+        }
+
+        .legalData {
+          margin-top: 1.5rem;
+        }
+      }
+
+      .devContainer {
+        order: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        @apply w-5/12;
+        margin-top: 20px;
+
+        p {
+          font-family: "AbsaraSans-Thin";
+          font-size: 1rem;
+          line-height: 1.7rem;
+
+          &.poweredBy {
+            margin-top: 1.5rem;
           }
         }
       }

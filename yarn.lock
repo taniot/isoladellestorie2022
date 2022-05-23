@@ -1728,6 +1728,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
+"react-iubenda-policy@^0.1.1":
+  "integrity" "sha512-KUvsYAbzY3HxxN5Mo8v/39E9iCQ80jv2ZYN1xaKZIvNVNRNp9Uymzy9+qIxXCiDQp8blQcFZJ1a0J/ZY4Z3vNA=="
+  "resolved" "https://registry.npmjs.org/react-iubenda-policy/-/react-iubenda-policy-0.1.1.tgz"
+  "version" "0.1.1"
+
 "react@*", "react@^16 || ^17 || ^18", "react@^16.8 || ^17 || ^18", "react@^17.0.2 || ^18.0.0-0", "react@^18.1.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.0.0", "react@>=16.8 || ^17.0.0 || ^18.0.0", "react@>=16.8.0", "react@18.1.0":
   "integrity" "sha512-4oL8ivCz5ZEPyclFQXaNksK3adutVS8l2xzZU0cqEFrE9Sb7fC0EFK5uEk74wIreL1DERyjvsU915j1pcT2uEQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.1.0.tgz"
