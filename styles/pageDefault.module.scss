@@ -10,22 +10,42 @@
 //header
 .pageHeaderContainer {
   background-color: var(--main-bg-color);
-
   .pageHeader {
-    @apply w-7/12 mx-auto;
-    height: 50vh;
-    text-align: center;
+    @apply w-11/12 mx-auto;
+    height: 40vh;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     display: flex;
 
     h1 {
-      font-size: 10rem;
+      font-size: 4rem;
       font-family: "AbsaraSans-Thin";
       line-height: 1;
-
-      letter-spacing: -0.3rem;
       color: var(--main-title-color);
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@screen md {
+  .pageHeaderContainer {
+    background-color: var(--main-bg-color);
+    .pageHeader {
+      @apply w-7/12 mx-auto;
+      height: 50vh;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+
+      h1 {
+        font-size: 10rem;
+        font-family: "AbsaraSans-Thin";
+        line-height: 1;
+
+        letter-spacing: -0.3rem;
+        color: var(--main-title-color);
+      }
     }
   }
 }
@@ -34,10 +54,23 @@
 .sectionContainer {
   //default contentContainer
   .contentContainer {
-    @apply w-6/12 mx-auto my-20;
+    @apply w-10/12 mx-auto my-10;
     font-family: "AbsaraSans-Thin";
-    font-size: 1.5rem;
-    line-height: 3rem;
+    font-size: 1.25rem;
+    line-height: 1.9;
+    text-align: justify;
+  }
+}
+
+@screen md {
+  .sectionContainer {
+    //default contentContainer
+    .contentContainer {
+      @apply w-6/12 mx-auto my-20;
+      font-family: "AbsaraSans-Thin";
+      font-size: 1.5rem;
+      line-height: 3rem;
+    }
   }
 }
 
