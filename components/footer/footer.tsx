@@ -58,14 +58,29 @@ const Footer = () => {
             )}
           </div>
           <div className={styles.socialContainer}>
-            <a className={styles.socialIcon}>
+            <a
+              href="https://www.facebook.com/isoladellestorie/"
+              className={styles.socialIcon}
+              target="_blank"
+              rel="noreferrer"
+            >
               <GrFacebookOption className={styles.icon} />
             </a>
-            <a className={styles.socialIcon}>
+            <a
+              href="https://www.instagram.com/gavoifestival/"
+              className={styles.socialIcon}
+              target="_blank"
+              rel="noreferrer"
+            >
               <GrInstagram className={styles.icon} />
             </a>
 
-            <a className={styles.socialIcon}>
+            <a
+              href="https://twitter.com/gavoifestival"
+              className={styles.socialIcon}
+              target="_blank"
+              rel="noreferrer"
+            >
               <GrTwitter className={styles.icon} />
             </a>
           </div>
