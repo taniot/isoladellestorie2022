@@ -13,8 +13,10 @@ const Nav = () => {
     >
       <ul className={styles.menu}>
         <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
+        <li>Chi Siamo</li>
+        <li>Ospiti</li>
+        <li>Programma</li>
+        <li>Partner</li>
       </ul>
     </nav>
   );
