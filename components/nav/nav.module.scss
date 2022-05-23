@@ -30,8 +30,27 @@
   align-items: center;
 
   li {
+    text-align: center;
+    width: 100%;
     font-family: "AbsaraSans-Thin";
-    font-size: 5rem;
+    font-size: 3rem;
     color: white;
+    border-bottom: 1px dotted white;
+  }
+}
+
+@screen md {
+  .menu {
+    @apply w-10/12 mx-auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      font-family: "AbsaraSans-Thin";
+      font-size: 5rem;
+      color: white;
+    }
   }
 }

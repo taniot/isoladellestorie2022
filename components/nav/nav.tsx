@@ -18,7 +18,11 @@ const Nav = () => {
       className={cls(styles.nav, state?.isMainMenuOpen ? styles.visible : "")}
     >
       <ul className={styles.menu}>
-        <li>Home</li>
+        <li>
+          <Link href="/">
+            <a onClick={() => closeMenu()}>Home</a>
+          </Link>
+        </li>
         <li>
           <Link href="/associazione/chi-siamo/">
             <a onClick={() => closeMenu()}>Chi Siamo</a>
