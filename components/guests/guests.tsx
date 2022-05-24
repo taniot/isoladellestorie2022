@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import styles from "./guests.module.scss";
 import Link from "next/link";
+import GuestImage from "./image";
 
 const Guests = ({ data }: { data: any }) => {
   const [posts, setPosts] = useState(data.slice(0, 8));
@@ -30,31 +31,27 @@ const Guests = ({ data }: { data: any }) => {
             endMessage={<h4>Nothing more to show</h4>}
           >
             <div className={styles.grid_list}>
-              {posts.map((data: any) => (
-                <div key={uuidv4()} className={styles.grid_item}>
-                  <Link href={`/ospiti/${data.slug}/`}>
-                    <a className={styles.grid_item_link}>
-                      <div className={styles.image_container}>
-                        {data.image ? (
-                          <Image
-                            src={data.image}
-                            alt={data.title}
-                            layout="fill"
-                            priority={true}
-                          />
-                        ) : (
-                          <div className={styles.noImage}>no photo</div>
-                        )}
-                      </div>
+              {posts.map(
+                (data: {
+                  title: string;
+                  image: string;
+                  slug: string;
+                  tagLine: string;
+                }) => (
+                  <div key={uuidv4()} className={styles.grid_item}>
+                    <Link href={`/ospiti/${data.slug}/`}>
+                      <a className={styles.grid_item_link}>
+                        <GuestImage title={data.title} image={data.image} />
 
-                      <h2 className={styles.grid_item_title}>{data.title}</h2>
-                      <p className={styles.grid_item_description}>
-                        {data.tagLine}
-                      </p>
-                    </a>
-                  </Link>
-                </div>
-              ))}
+                        <h2 className={styles.grid_item_title}>{data.title}</h2>
+                        <p className={styles.grid_item_description}>
+                          {data.tagLine}
+                        </p>
+                      </a>
+                    </Link>
+                  </div>
+                )
+              )}
             </div>
           </InfiniteScroll>
         </div>

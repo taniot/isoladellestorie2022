@@ -64,9 +64,19 @@ export const getGuestBySlug = async (slug: string) => {
   if (!client) return null;
 
   try {
-    const data = await client.request(query, variables);
+    const { ospite } = await client.request(query, variables);
 
-    return data.ospite;
+    return {
+      title: ospite?.title,
+      nome: ospite.dettagliOspite.nome,
+      cognome: ospite.dettagliOspite.cognome,
+      slug: ospite?.slug,
+      ordinamento: ospite.dettagliOspite.ordinamento,
+      image: ospite?.featuredImage?.node?.guid || null,
+      tagLine: ospite?.dettagliOspite?.jobTitleIt || null,
+      descrizioneIt: ospite?.dettagliOspite?.descrizioneIt || null,
+      descrizioneEn: ospite?.dettagliOspite?.descrizioneEn || null,
+    };
   } catch (error) {
     console.log({ error });
     return null;

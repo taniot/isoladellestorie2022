@@ -1,100 +1,38 @@
 .contentContainer {
-  @apply w-11/12 md:w-9/12 mx-auto;
+  background-color: transparent;
+  margin-bottom: 150px;
   .pageContentContainer {
-    padding: 20px;
-  }
-}
-
-.grid_list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  .grid_item {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    //background-color: yellow;
-    width: 250px;
-    margin-bottom: 30px;
-    .image_container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      border: 4px solid var(--main-bg-color);
-      display: flex;
-      padding: 8px;
-      img {
-        border-radius: 50%;
-      }
-      .noImage {
-        width: 200px;
-        height: 200px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-      }
-    }
-    .grid_item_title {
-      font-family: "AbsaraSans";
-      font-size: 1.4rem;
-      padding: 20px 0 0px 0;
-      text-align: center;
-    }
-    .grid_item_description {
-      font-family: "AbsaraSans-Thin";
-      font-size: 1rem;
-      text-align: center;
-    }
-  }
-}
-
-@screen md {
-  .grid_list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    .grid_item {
+    .grid_list {
+      @apply w-11/12 mx-auto;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      //background-color: yellow;
-      width: 270px;
-      margin-bottom: 30px;
-      .image_container {
-        position: relative;
-        width: 270px;
-        height: 270px;
-        border-radius: 50%;
-        border: 4px solid var(--main-bg-color);
-        display: flex;
-        padding: 8px;
-        img {
-          border-radius: 50%;
-        }
-        .noImage {
-          height: 250px;
-          width: 250px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 50%;
-        }
-      }
-      .grid_item_title {
-        font-family: "AbsaraSans";
-        font-size: 1.4rem;
-        padding: 20px 0 0px 0;
-        text-align: center;
-      }
-      .grid_item_description {
-        font-family: "AbsaraSans-Thin";
-        font-size: 1rem;
+      flex-wrap: wrap;
+      gap: 5rem;
+      .grid_item {
+        margin-bottom: 2rem;
 
-        text-align: center;
+        .grid_item_link {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-wrap: wrap;
+
+          .grid_item_title {
+            font-family: "AbsaraSans";
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.1rem;
+            max-width: 280px;
+            text-align: center;
+            line-height: 1.5;
+          }
+
+          .grid_item_description {
+            font-family: "AbsaraSans";
+            font-size: 1.2rem;
+            color: var(--main-bg-color);
+          }
+        }
       }
     }
   }
