@@ -4,16 +4,19 @@ import { getPlacesFake } from "../lib/wp/places";
 import { getPageByURI, getPages } from "../lib/wp/pages";
 import Guests from "../components/guests/guests";
 import Places from "../components/places/places";
+import Partner from "../components/partner/partner";
 import styles from "../styles/pageDefault.module.scss";
 
 const PageDefault = ({
   page,
   guests,
   places,
+  partner,
 }: {
   page: any;
   guests: any;
   places: any;
+  partner: any;
 }) => {
   if (!page) return <div>No page</div>;
   //console.log({ guests });
@@ -26,6 +29,7 @@ const PageDefault = ({
             <h1>{page.title}</h1>
           </div>
         </div>
+        <div>navbar</div>
 
         <section className={styles.sectionContainer}>
           <div className={styles.contentContainer}>
@@ -36,9 +40,10 @@ const PageDefault = ({
               />
             </div>
           </div>
-          {guests && <Guests data={guests} />}
-          {places && <Places data={places} />}
         </section>
+        {guests && <Guests data={guests} />}
+        {places && <Places data={places} />}
+        {partner && <Partner data={partner} />}
       </div>
     </>
   );
@@ -72,6 +77,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   const page = await getPageByURI(pageURI);
   let guests = null;
   let places = null;
+  let partner = null;
 
   if (!page)
     return {
@@ -94,6 +100,10 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       places = await getPlacesFake(100);
       break;
 
+    case "partner":
+      partner = true;
+      break;
+
     default:
       //caso default;
       break;
@@ -104,6 +114,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       page,
       guests,
       places,
+      partner,
     },
   };
 };

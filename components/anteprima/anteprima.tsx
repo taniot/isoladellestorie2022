@@ -1,5 +1,6 @@
 import styles from "./anteprima.module.scss";
 import cls from "classnames";
+import Link from "next/link";
 
 const Anteprima = () => {
   return (
@@ -37,9 +38,9 @@ const Anteprima = () => {
             <span className={styles.highLight}>Bazzi</span>{" "}
           </li>
         </ul>
-        <a href="#" className={styles.button}>
-          e tanti altri presto online!
-        </a>
+        <Link href="/ospiti/">
+          <a className={styles.button}>Scopri tutti gli ospiti</a>
+        </Link>
       </div>
     </section>
   );

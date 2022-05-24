@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import About from "../components/about/about";
 import Anteprima from "../components/anteprima/anteprima";
 import Intro from "../components/intro/intro";
 const Home: NextPage = () => {
@@ -6,6 +7,7 @@ const Home: NextPage = () => {
     <>
       <Intro />
       <Anteprima />
+      <About />
     </>
   );
 };

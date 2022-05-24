@@ -32,27 +32,24 @@ const Guests = ({ data }: { data: any }) => {
             <div className={styles.grid_list}>
               {posts.map((data: any) => (
                 <div key={uuidv4()} className={styles.grid_item}>
-                  <div className={styles.grid_item_inner}>
-                    <Link href={`/ospiti/${data.slug}/`}>
-                      <a className={styles.grid_item_link}>
-                        <div className={styles.image_container}>
-                          <Image
-                            src={data.image}
-                            alt={data.title}
-                            height={500}
-                            width={500}
-                            priority={true}
-                          />
-                        </div>
+                  <Link href={`/ospiti/${data.slug}/`}>
+                    <a className={styles.grid_item_link}>
+                      <div className={styles.image_container}>
+                        <Image
+                          src={data.image}
+                          alt={data.title}
+                          height={500}
+                          width={500}
+                          priority={true}
+                        />
+                      </div>
 
-                        <div className={styles.grid_item_content}>
-                          <h2 className={styles.grid_item_title}>
-                            {data.title}
-                          </h2>
-                        </div>
-                      </a>
-                    </Link>
-                  </div>
+                      <h2 className={styles.grid_item_title}>{data.title}</h2>
+                      <p className={styles.grid_item_description}>
+                        {data.tagLine}
+                      </p>
+                    </a>
+                  </Link>
                 </div>
               ))}
             </div>

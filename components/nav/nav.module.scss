@@ -11,9 +11,10 @@
   top: 0;
   transition: all 0.3s ease-in-out;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  padding-top: 100px;
 }
 
 .visible {
@@ -22,35 +23,33 @@
   overflow-y: hidden;
 }
 
-.menu {
-  @apply w-10/12 mx-auto;
+.menuContainer {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  li {
-    text-align: center;
-    width: 100%;
-    font-family: "AbsaraSans-Thin";
-    font-size: 3rem;
-    color: white;
-    border-bottom: 1px dotted white;
-  }
+  @apply w-9/12 mx-auto;
+  //background-color: red;
+  justify-content: space-evenly;
 }
 
-@screen md {
-  .menu {
-    @apply w-10/12 mx-auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.menu {
+  //background-color: white;
 
-    li {
-      font-family: "AbsaraSans-Thin";
-      font-size: 5rem;
-      color: white;
-    }
+  h2 {
+    font-family: "AbsaraSans";
+    font-size: 2rem;
+    text-align: center;
+    color: var(--main-text-color);
+    border-bottom: 3px solid white;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  li {
+    font-family: "AbsaraSans-Thin";
+    font-size: 1.7rem;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
   }
 }

@@ -1,0 +1,16 @@
+.partners {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.image {
+  width: 260px;
+  height: 150px;
+  border: 1px solid var(--secondary-bg-color);
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

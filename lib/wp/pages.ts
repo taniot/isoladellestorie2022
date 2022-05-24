@@ -41,6 +41,7 @@ export const getPages = async (locale?: string) => {
 
   try {
     const data = await client.request(query);
+
     return data?.pages?.nodes;
   } catch (error) {
     console.log({ error });

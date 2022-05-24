@@ -1,0 +1,21 @@
+.about {
+  background-color: var(--secondary-bg-color);
+  .container {
+    @apply w-10/12 mx-auto;
+    padding: 100px;
+
+    .section {
+      display: flex;
+      .imageContainer {
+        @apply w-6/12;
+      }
+      .textContainer {
+        @apply w-6/12;
+      }
+    }
+
+    .reverse {
+      flex-direction: row-reverse;
+    }
+  }
+}

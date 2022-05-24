@@ -40,11 +40,13 @@ export const getGuestsFake = async (count: number) => {
   for (let index = 0; index < count; index++) {
     const title = faker.name.firstName() + " " + faker.name.lastName();
     const slug = slugify(title, { lower: true, strict: true });
+    const tagLine = faker.name.jobTitle();
 
     data.push({
       title,
       slug,
       image: faker.image.people(500, 500, true),
+      tagLine,
     });
   }
 
