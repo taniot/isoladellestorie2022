@@ -41,7 +41,6 @@ const PageDefault = ({
             <h1>{page.title}</h1>
           </div>
         </div>
-        <div>navbar</div>
 
         <section className={styles.sectionContainer}>
           <div className={styles.contentContainer}>
