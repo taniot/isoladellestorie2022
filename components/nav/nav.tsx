@@ -28,12 +28,12 @@ const Nav = () => {
             </li>
             <li>
               <Link href="/info-visitatori/dove-mangiare/">
-                <a>Dove mangiare</a>
+                <a onClick={closeMenu}>Dove mangiare</a>
               </Link>
             </li>
             <li>
               <Link href="/info-visitatori/come-arrivare/">
-                <a>Come arrivare</a>
+                <a onClick={closeMenu}>Come arrivare</a>
               </Link>
             </li>
           </ul>
@@ -43,7 +43,7 @@ const Nav = () => {
           <ul>
             <li>
               <Link href="/ospiti/">
-                <a>Ospiti</a>
+                <a onClick={closeMenu}>Ospiti</a>
               </Link>
             </li>
             <li>Programma</li>
@@ -58,23 +58,23 @@ const Nav = () => {
           <ul>
             <li>
               <Link href="/associazione/chi-siamo/">
-                <a>Chi siamo</a>
+                <a onClick={closeMenu}>Chi siamo</a>
               </Link>
             </li>
 
             <li>
               <Link href="/associazione/sostieni-lisola/">
-                <a>Sostieni L’Isola</a>
+                <a onClick={closeMenu}>Sostieni L’Isola</a>
               </Link>
             </li>
             <li>
               <Link href="/sponsor/">
-                <a>Sponsor</a>
+                <a onClick={closeMenu}>Sponsor</a>
               </Link>
             </li>
             <li>
               <Link href="/associazione/contatti/">
-                <a>Contatti</a>
+                <a onClick={closeMenu}>Contatti</a>
               </Link>
             </li>
           </ul>
