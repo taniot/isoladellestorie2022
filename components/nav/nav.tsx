@@ -9,7 +9,7 @@ const Nav = () => {
   const context = useContext(AppContext);
   const { state, setIsMainMenuOpen } = context;
 
-  const closeMenu = () => {
+  const closeMenu = (e: { preventDefault: () => void }) => {
     if (setIsMainMenuOpen) setIsMainMenuOpen(false);
   };
 
@@ -23,7 +23,7 @@ const Nav = () => {
           <ul>
             <li>
               <Link href="/info-visitatori/dove-dormire/">
-                <a>Dove dormire</a>
+                <a onClick={closeMenu}>Dove dormire</a>
               </Link>
             </li>
             <li>

@@ -6,14 +6,21 @@
 }
 
 .grid_list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  text-align: center;
-  grid-gap: 30px 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
   .grid_item {
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    //background-color: yellow;
+    width: 270px;
+    margin-bottom: 30px;
     .image_container {
+      position: relative;
+      width: 270px;
+      height: 270px;
       border-radius: 50%;
       //background: var(--main-bg-color);
       border: 4px solid var(--main-bg-color);
@@ -22,16 +29,28 @@
       img {
         border-radius: 50%;
       }
+
+      .noImage {
+        height: 250px;
+        width: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
     }
 
     .grid_item_title {
       font-family: "AbsaraSans";
       font-size: 1.4rem;
       padding: 20px 0 0px 0;
+      text-align: center;
     }
     .grid_item_description {
       font-family: "AbsaraSans-Thin";
       font-size: 1rem;
+
+      text-align: center;
     }
   }
 }

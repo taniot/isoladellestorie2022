@@ -8,7 +8,11 @@ const nextConfig = {
   },
   trailingSlash: true,
   images: {
-    domains: ["cloudflare-ipfs.com", "loremflickr.com"],
+    domains: [
+      "cloudflare-ipfs.com",
+      "loremflickr.com",
+      "cms2022.isoladellestorie.it",
+    ],
   },
   async rewrites() {
     return [

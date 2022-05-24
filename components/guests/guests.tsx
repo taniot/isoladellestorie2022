@@ -35,13 +35,16 @@ const Guests = ({ data }: { data: any }) => {
                   <Link href={`/ospiti/${data.slug}/`}>
                     <a className={styles.grid_item_link}>
                       <div className={styles.image_container}>
-                        <Image
-                          src={data.image}
-                          alt={data.title}
-                          height={500}
-                          width={500}
-                          priority={true}
-                        />
+                        {data.image ? (
+                          <Image
+                            src={data.image}
+                            alt={data.title}
+                            layout="fill"
+                            priority={true}
+                          />
+                        ) : (
+                          <div className={styles.noImage}>no photo</div>
+                        )}
                       </div>
 
                       <h2 className={styles.grid_item_title}>{data.title}</h2>

@@ -1,11 +1,15 @@
 import { GetStaticPaths, GetStaticProps, PreviewData } from "next";
-import { getGuests, getGuestsFake } from "../lib/wp/guests";
+import { getGuests } from "../lib/wp/guests";
 import { getPlacesFake } from "../lib/wp/places";
 import { getPageByURI, getPages } from "../lib/wp/pages";
 import Guests from "../components/guests/guests";
 import Places from "../components/places/places";
 import Partner from "../components/partner/partner";
 import styles from "../styles/pageDefault.module.scss";
+
+import AppContext from "../store/AppContext";
+import { useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 
 const PageDefault = ({
   page,
@@ -18,14 +22,22 @@ const PageDefault = ({
   places: any;
   partner: any;
 }) => {
+  const context = useContext(AppContext);
+  const { state, setIsMainMenuOpen } = context;
+
+  const router = useRouter();
+
+  useEffect(() => {
+    console.log({ router });
+  }, []);
+
   if (!page) return <div>No page</div>;
-  //console.log({ guests });
+
   return (
     <>
       <div className={styles.pageContainer}>
         <div className={styles.pageHeaderContainer}>
           <div className={styles.pageHeader}>
-            {" "}
             <h1>{page.title}</h1>
           </div>
         </div>
@@ -93,7 +105,9 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       };
 
     case "ospiti":
-      guests = await getGuestsFake(100);
+      //guests = await getGuestsFake(100);
+      guests = await getGuests();
+      console.log({ guests });
       break;
 
     case "accoglienza":
