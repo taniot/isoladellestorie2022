@@ -3,7 +3,7 @@ import Link from "next/link";
 import parse from "html-react-parser";
 import Image from "next/image";
 Image;
-const News = ({ data }) => {
+const News = ({ data }: { data: any }) => {
   if (!data) return null;
 
   return (

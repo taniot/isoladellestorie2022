@@ -3,14 +3,14 @@ import cls from "classnames";
 import Link from "next/link";
 import Image from "next/image";
 
-const HomePartner = ({ data }) => {
+const HomePartner = ({ data }: { data: any }) => {
   if (!data) return null;
   return (
     <section className={styles.anteprima}>
       <div className={styles.container}>
         <h2 className={styles.title}>Sostenuto da</h2>
         <div className={styles.sponsor_list}>
-          {data.map((sponsor) => (
+          {data.map((sponsor: any) => (
             <a
               key={sponsor.title}
               href={sponsor.link}

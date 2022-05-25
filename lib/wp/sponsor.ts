@@ -44,7 +44,7 @@ export const getSponsors = async (tipologia?: string) => {
   try {
     const data = await client.request(query);
 
-    result = data.sponsors.nodes.map((sponsor) => {
+    result = data.sponsors.nodes.map((sponsor: any) => {
       return {
         title: sponsor?.title,
         order: sponsor?.menuOrder,
@@ -55,10 +55,10 @@ export const getSponsors = async (tipologia?: string) => {
     });
 
     if (tipologia) {
-      result = result.filter((sponsor) => sponsor.type === tipologia);
+      result = result.filter((sponsor: any) => sponsor.type === tipologia);
     }
 
-    result.sort((a, b) => a.order - b.order);
+    result.sort((a: any, b: any) => a.order - b.order);
 
     return result;
   } catch (error) {

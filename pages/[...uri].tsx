@@ -23,13 +23,8 @@ const PageDefault = ({
   partner: any;
 }) => {
   const context = useContext(AppContext);
-  const { state, setIsMainMenuOpen } = context;
 
   const router = useRouter();
-
-  useEffect(() => {
-    console.log({ router });
-  }, []);
 
   if (!page) return <div>No page</div>;
 
