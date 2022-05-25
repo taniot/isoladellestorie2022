@@ -18,11 +18,12 @@
     display: flex;
 
     h1 {
-      font-size: 4rem;
+      font-size: 2.3rem;
       font-family: "AbsaraSans-Thin";
       line-height: 1;
       color: var(--main-title-color);
       margin-bottom: 2rem;
+      text-align: center;
     }
   }
 }
@@ -56,8 +57,8 @@
   .contentContainer {
     @apply w-10/12 mx-auto my-10;
     font-family: "AbsaraSans-Thin";
-    font-size: 1.5rem;
-    line-height: 1.9;
+    font-size: 1.1rem;
+    line-height: 1.7;
     text-align: justify;
   }
 }
