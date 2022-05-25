@@ -1,5 +1,5 @@
 .nav {
-  @apply z-50;
+  @apply z-20;
   opacity: 0;
   visibility: hidden;
   position: fixed;
@@ -10,11 +10,15 @@
   left: 0;
   top: 0;
   transition: all 0.3s ease-in-out;
+}
+
+.navCointainer {
+  width: 100%;
+  height: 100vh;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 100px;
 }
 
 .visible {
@@ -23,33 +27,139 @@
   overflow-y: hidden;
 }
 
+.headerNav {
+  position: absolute;
+  top: 0px;
+  display: none;
+}
+
 .menuContainer {
   display: flex;
-  @apply w-9/12 mx-auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @apply w-11/12 mx-auto;
+
   //background-color: red;
-  justify-content: space-evenly;
+  border-top: 2px solid var(--secondary-bg-color);
+  border-bottom: 2px solid var(--secondary-bg-color);
+  padding: 50px 0;
 }
 
 .menu {
-  //background-color: white;
+  margin-bottom: 20px;
+  &.visitatori {
+    order: 2;
+  }
+
+  &.main {
+    order: 1;
+  }
+
+  &.chisiamo {
+    order: 3;
+  }
 
   h2 {
     font-family: "AbsaraSans";
-    font-size: 2rem;
+    font-size: 1.3rem;
     text-align: center;
     color: var(--main-text-color);
-    border-bottom: 3px solid white;
-    margin-bottom: 20px;
+    border-bottom: 1px solid var(--secondary-bg-color);
+    margin-bottom: 10px;
     text-transform: uppercase;
   }
+  ul {
+    li {
+      font-family: "AbsaraSans";
+      font-size: 1rem;
+      text-align: center;
+      color: white;
+      text-transform: uppercase;
+      margin-bottom: 10px;
 
-  li {
-    font-family: "AbsaraSans-Thin";
-    font-size: 1.7rem;
-    text-align: center;
-    color: white;
-    text-transform: uppercase;
+      a {
+        border-bottom: 1px solid var(--secondary-bg-color);
+      }
+    }
+  }
+  &.main li {
+    font-size: 1.3rem;
+  }
+}
 
-    margin-bottom: 10px;
+@screen md {
+  .navCointainer {
+    width: 100%;
+    height: 100vh;
+    //background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .headerNav {
+    top: 0;
+    display: unset;
+  }
+
+  .menuContainer {
+    display: flex;
+    flex-direction: row;
+    @apply w-11/12 mx-auto;
+    justify-content: space-evenly;
+    //background-color: red;
+    border-top: 2px solid var(--secondary-bg-color);
+    border-bottom: 2px solid var(--secondary-bg-color);
+    padding: 50px 0;
+  }
+
+  .menu {
+    //background-color: white;
+
+    &.visitatori {
+      order: 1;
+    }
+
+    &.main {
+      order: 2;
+    }
+
+    &.chisiamo {
+      order: 3;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      font-family: "AbsaraSans";
+      font-size: 1.7rem;
+      text-align: center;
+      color: var(--main-text-color);
+      border-bottom: 1px solid var(--secondary-bg-color);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    li {
+      font-family: "AbsaraSans";
+      font-size: 1.5rem;
+      text-align: center;
+      color: white;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+
+      a {
+        border-bottom: 1px solid var(--secondary-bg-color);
+      }
+    }
+
+    &.main li {
+      font-size: 2.1rem;
+    }
   }
 }

@@ -7,9 +7,10 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 5rem;
+      gap: 3rem;
       .grid_item {
         margin-bottom: 2rem;
+        width: 300px;
 
         .grid_item_link {
           display: flex;

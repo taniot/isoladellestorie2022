@@ -74,6 +74,8 @@ export const getGuestBySlug = async (slug: string) => {
       ordinamento: ospite.dettagliOspite.ordinamento,
       image: ospite?.featuredImage?.node?.guid || null,
       tagLine: ospite?.dettagliOspite?.jobTitleIt || null,
+      jobTitleIt: ospite?.dettagliOspite?.jobTitleIt || null,
+      jobTitleEn: ospite?.dettagliOspite?.jobTitleEn || null,
       descrizioneIt: ospite?.dettagliOspite?.descrizioneIt || null,
       descrizioneEn: ospite?.dettagliOspite?.descrizioneEn || null,
     };

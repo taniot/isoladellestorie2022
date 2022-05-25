@@ -5,9 +5,15 @@ import News from "../components/news/news";
 import { getPosts } from "../lib/wp/news";
 import HomePartner from "../components/home/partner";
 import { getSponsors } from "../lib/wp/sponsor";
-const Home: NextPage = (props) => {
-  const { guests, news, sponsors } = props;
-
+const Home = ({
+  guests,
+  news,
+  sponsors,
+}: {
+  guests: {};
+  news: {};
+  sponsors: {};
+}) => {
   return (
     <>
       <Intro />

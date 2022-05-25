@@ -52,15 +52,12 @@
       display: flex;
       //background-color: pink;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       .image {
         @apply w-5/12;
-        //background-color: red;
       }
       .text {
         @apply w-7/12 pl-10;
-
-        //background-color: yellow;
 
         h2 {
           font-family: "AbsaraSans-Thin";

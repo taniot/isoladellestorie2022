@@ -1,11 +1,21 @@
-.image_container {
-  position: relative;
+.borderContainer {
+  display: flex;
   border-radius: 50%;
   border: 4px solid var(--main-bg-color);
   padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+  display: inline-block;
+}
+
+.image_container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  height: 240px;
   max-width: 300px;
 
   img {
@@ -13,8 +23,9 @@
   }
 
   .noImage {
-    width: 280px;
-    height: 280px;
+    width: inherit;
+    height: inherit;
+    max-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;

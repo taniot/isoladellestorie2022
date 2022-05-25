@@ -3,6 +3,7 @@ import { getGuests, getGuestBySlug } from "../../lib/wp/guests";
 import styles from "../../styles/pageDefault.module.scss";
 import parse from "html-react-parser";
 import GuestImage from "../../components/guests/image";
+import cls from "classnames";
 
 const Ospite = ({ guest }: { guest: any }) => {
   return (
@@ -18,17 +19,40 @@ const Ospite = ({ guest }: { guest: any }) => {
           <div className={styles.guestContentContainer}>
             <div className={styles.guestHeader}>
               {guest.nome && guest.cognome ? (
-                <h1>
-                  <span className={styles.nome}>{guest.nome}</span>{" "}
-                  <span className={styles.cognome}>{guest.cognome}</span>
-                </h1>
+                <>
+                  <h2>
+                    <span className={styles.nome}>{guest.nome}</span>{" "}
+                    <span className={styles.cognome}>{guest.cognome}</span>
+                  </h2>
+                  <h3>{guest.jobTitleIt}</h3>
+                </>
               ) : (
-                <h1>{guest.title}</h1>
+                <>
+                  <h2>{guest.title}</h2>
+                  <h3>{guest.jobTitleIt}</h3>
+                </>
               )}
             </div>
             <div className={styles.guestBody}>
               <div className={styles.image}>
                 <GuestImage title={guest.title} image={guest.image} />
+                <div className={styles.giorniFestival}>
+                  <div className={styles.plus}>+</div>
+                  <h4>I giorni del festival</h4>
+                  <ul>
+                    <li>
+                      <span className={cls(styles.dayNumber, styles.active)}>
+                        01
+                      </span>
+                    </li>
+                    <li>
+                      <span className={styles.dayNumber}>02</span>
+                    </li>
+                    <li>
+                      <span className={styles.dayNumber}>03</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div className={styles.text}>
                 {parse(guest.descrizioneIt ? guest.descrizioneIt : "")}
