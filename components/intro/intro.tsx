@@ -16,14 +16,14 @@ const Intro = () => {
             <div className={styles.slogan}>
               <Image
                 layout="fill"
-                src="/images/test_svg_mobile13.svg"
+                src="/images/intro-mobile-top.svg"
                 alt="Isola delle Storie 2022"
               />
             </div>
           </div>
           <div className={styles.imageSpace}>
             <Image
-              src="/images/donna-isola-storie.png"
+              src="/images/intro-mobile-bottom.png"
               alt="Isola delle Storie 2022"
               layout="fill"
               objectFit="contain"
@@ -38,7 +38,7 @@ const Intro = () => {
         <div className={styles.banner}>
           <div className={styles.device}>tablet</div>
           <Image
-            src="/images/intro-test.svg"
+            src="/images/intro-desktop.png"
             layout="fill"
             alt="Isola delle Storie 2022"
             objectFit="contain"
@@ -50,7 +50,7 @@ const Intro = () => {
         <div className={styles.banner}>
           <div className={styles.device}>desktop</div>
           <Image
-            src="/images/intro-test.svg"
+            src="/images/intro-desktop.png"
             layout="fill"
             alt="Isola delle Storie 2022"
             objectFit="contain"

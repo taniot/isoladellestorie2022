@@ -11,19 +11,20 @@
 .pageHeaderContainer {
   background-color: var(--main-bg-color);
   .pageHeader {
-    @apply w-11/12 mx-auto;
-    height: 30vh;
+    @apply w-10/12 mx-auto;
+    height: 40vh;
     justify-content: center;
     align-items: flex-end;
     display: flex;
 
     h1 {
-      font-size: 2.3rem;
-      font-family: "AbsaraSans";
-      line-height: 1;
+      font-size: 3rem;
+      font-family: "AbsaraSans-Thin";
+      line-height: 1.2;
       color: var(--main-title-color);
       margin-bottom: 2rem;
       text-align: center;
+      text-transform: uppercase;
     }
   }
 }
