@@ -124,6 +124,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       places,
       partner,
     },
+    revalidate: 60,
   };
 };
 
