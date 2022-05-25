@@ -3,6 +3,7 @@ import cls from "classnames";
 import { useContext } from "react";
 import AppContext from "../../store/AppContext";
 import Link from "next/link";
+import Div100vh from "react-div-100vh";
 
 const Nav = () => {
   const context = useContext(AppContext);
@@ -13,7 +14,7 @@ const Nav = () => {
   };
 
   return (
-    <nav
+    <Div100vh
       className={cls(styles.nav, state?.isMainMenuOpen ? styles.visible : "")}
     >
       <div className={styles.navCointainer}>
@@ -95,7 +96,7 @@ const Nav = () => {
           </div>
         </div>
       </div>
-    </nav>
+    </Div100vh>
   );
 };
 
