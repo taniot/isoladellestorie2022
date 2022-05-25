@@ -18,6 +18,7 @@ const Intro = () => {
                 layout="fill"
                 src="/images/intro-mobile-top.svg"
                 alt="Isola delle Storie 2022"
+                priority
               />
             </div>
           </div>
@@ -43,6 +44,7 @@ const Intro = () => {
             alt="Isola delle Storie 2022"
             objectFit="contain"
             objectPosition="center bottom"
+            priority
           />
         </div>
       )}
