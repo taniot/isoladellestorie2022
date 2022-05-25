@@ -50,6 +50,7 @@
   margin-bottom: 20px;
   &.visitatori {
     order: 2;
+    display: none;
   }
 
   &.main {
@@ -58,6 +59,7 @@
 
   &.chisiamo {
     order: 3;
+    display: none;
   }
 
   h2 {
