@@ -9,6 +9,7 @@
   width: 100vw;
 
   .logoContainer {
+    @apply z-30;
     position: relative;
     margin: 40px 40px;
 

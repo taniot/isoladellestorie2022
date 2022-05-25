@@ -11,12 +11,16 @@ const Header = () => {
   const { state, setIsMainMenuOpen } = context;
   const isSmall = useMediaQuery("(max-width: 1023px)");
 
+  const closeMenu = (e: { preventDefault: () => void }) => {
+    if (setIsMainMenuOpen) setIsMainMenuOpen(false);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.logoArea}>
         <div className={styles.logoContainer}>
           <Link href="/">
-            <a>
+            <a onClick={closeMenu}>
               {isSmall ? (
                 <Image
                   src="/images/l-isola-delle-storie-logo-xvii-oriz.svg"

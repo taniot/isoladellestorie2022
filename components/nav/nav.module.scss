@@ -27,27 +27,7 @@
   overflow-y: hidden;
 }
 
-.headerNav {
-  position: absolute;
-  top: 0px;
-  display: none;
-}
-
-.menuContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  @apply w-11/12 mx-auto;
-
-  //background-color: red;
-  border-top: 2px solid var(--secondary-bg-color);
-  border-bottom: 2px solid var(--secondary-bg-color);
-  padding: 50px 0;
-}
-
 .menu {
-  margin-bottom: 20px;
   &.visitatori {
     order: 2;
     display: none;
@@ -55,6 +35,9 @@
 
   &.main {
     order: 1;
+    h2 {
+      display: none;
+    }
   }
 
   &.chisiamo {
@@ -64,37 +47,42 @@
 
   h2 {
     font-family: "AbsaraSans";
-    font-size: 1.3rem;
+    font-size: 2.1rem;
     text-align: center;
-    color: var(--main-text-color);
-    border-bottom: 1px solid var(--secondary-bg-color);
-    margin-bottom: 10px;
+    color: white;
+    border-bottom: 0px solid var(--secondary-bg-color);
+    margin-bottom: 20px;
     text-transform: uppercase;
   }
+
   ul {
     li {
-      font-family: "AbsaraSans";
-      font-size: 1rem;
-      text-align: center;
-      color: white;
-      text-transform: uppercase;
       margin-bottom: 10px;
+      font-family: "AbsaraSans-Thin";
+      text-align: center;
+      color: black;
+      text-transform: uppercase;
 
       a {
+        font-size: 1.2rem;
+        padding-bottom: 5px;
         border-bottom: 1px solid var(--secondary-bg-color);
+        display: inline-block;
       }
     }
   }
+
   &.main li {
-    font-size: 1.3rem;
+    a {
+      font-size: 2.1rem;
+    }
   }
 }
 
-@screen md {
+@screen xl {
   .navCointainer {
     width: 100%;
     height: 100vh;
-    //background-color: red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,25 +91,25 @@
 
   .headerNav {
     top: 0;
+    left: 50px;
     display: unset;
   }
 
   .menuContainer {
     display: flex;
     flex-direction: row;
-    @apply w-11/12 mx-auto;
+    @apply w-10/12 mx-auto;
     justify-content: space-evenly;
-    //background-color: red;
-    border-top: 2px solid var(--secondary-bg-color);
-    border-bottom: 2px solid var(--secondary-bg-color);
+    align-items: flex-start;
+    // border-top: 3px solid var(--secondary-bg-color);
+    border-bottom: 3px solid var(--secondary-bg-color);
     padding: 50px 0;
   }
 
   .menu {
-    //background-color: white;
-
     &.visitatori {
       order: 1;
+      display: block;
     }
 
     &.main {
@@ -130,38 +118,40 @@
 
     &.chisiamo {
       order: 3;
-    }
-
-    ul {
-      margin: 0;
-      padding: 0;
+      display: block;
     }
 
     h2 {
       font-family: "AbsaraSans";
-      font-size: 1.7rem;
+      font-size: 2.1rem;
       text-align: center;
-      color: var(--main-text-color);
-      border-bottom: 1px solid var(--secondary-bg-color);
+      color: white;
+      border-bottom: 0px solid var(--secondary-bg-color);
       margin-bottom: 20px;
       text-transform: uppercase;
     }
 
-    li {
-      font-family: "AbsaraSans";
-      font-size: 1.5rem;
-      text-align: center;
-      color: white;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+    ul {
+      li {
+        margin-bottom: 10px;
+        font-family: "AbsaraSans-Thin";
+        text-align: center;
+        color: black;
+        text-transform: uppercase;
 
-      a {
-        border-bottom: 1px solid var(--secondary-bg-color);
+        a {
+          font-size: 1.2rem;
+          padding-bottom: 5px;
+          border-bottom: 1px solid var(--secondary-bg-color);
+          display: inline-block;
+        }
       }
     }
 
     &.main li {
-      font-size: 2.1rem;
+      a {
+        font-size: 2.1rem;
+      }
     }
   }
 }
