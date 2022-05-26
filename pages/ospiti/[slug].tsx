@@ -58,7 +58,7 @@ const Ospite = ({ guest }: { guest: any }) => {
               <div className={styles.text}>
                 {parse(guest.descrizioneIt ? guest.descrizioneIt : "")}
 
-                <Link href="/ospiti/">
+                <Link href="/ospiti/" scroll={false}>
                   <a className={styles.back}>
                     <span>
                       <CgArrowLongLeft />

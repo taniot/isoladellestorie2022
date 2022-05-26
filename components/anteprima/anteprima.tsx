@@ -7,8 +7,12 @@ const Anteprima = () => {
     <div className={styles.container}>
       <ul className={styles.hero_list}>
         <li className={cls(styles.hero_name, styles.color1)}>
-          <span className={styles.lowLight}>Mariangela</span>{" "}
-          <span className={styles.highLight}>Gualtieri</span>
+          <Link href="/ospiti/mariangela-gualtieri/">
+            <a>
+              <span className={styles.lowLight}>Mariangela</span>{" "}
+              <span className={styles.highLight}>Gualtieri</span>
+            </a>
+          </Link>
           <span className={styles.trattino}>,</span>{" "}
         </li>
         <li className={cls(styles.hero_name, styles.color2)}>
@@ -32,8 +36,12 @@ const Anteprima = () => {
           <span className={styles.trattino}>,</span>{" "}
         </li>
         <li className={cls(styles.hero_name, styles.color3)}>
-          <span className={styles.lowLight}>Jonathan</span>{" "}
-          <span className={styles.highLight}>Bazzi</span>{" "}
+          <Link href="/ospiti/jonathan-bazzi/">
+            <a>
+              <span className={styles.lowLight}>Jonathan</span>{" "}
+              <span className={styles.highLight}>Bazzi</span>{" "}
+            </a>
+          </Link>
         </li>
       </ul>
     </div>
