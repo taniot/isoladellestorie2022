@@ -12,7 +12,6 @@ const GuestImage = ({ title, image }: { title: string; image?: string }) => {
             priority={true}
             width="280px"
             height="280px"
-            layout="fill"
             objectFit="cover"
             objectPosition="center"
           />
