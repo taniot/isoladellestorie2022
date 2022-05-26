@@ -9,13 +9,11 @@
   --secondary-bg-color: #f1e596;
   --main-title-color: #fff;
   --main-text-color: #1d1d1b;
-
-  --cursor-default: url(/images/cursor.png), auto;
-  --cursor-hover: url(/images/cursor-hover.png), pointer;
 }
 
 html {
   scroll-behavior: smooth;
+  cursor: none !important;
   cursor: url(/images/cursor.png), auto;
 }
 
@@ -25,7 +23,6 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  cursor: var(--cursor-default);
 }
 
 body {
@@ -47,54 +44,8 @@ a {
   box-sizing: border-box;
 }
 
-body::before {
-  animation: grain 8s steps(10) infinite;
-  //background-image: url("/images/noise.png");
-  content: "";
-  height: 300%;
-  left: -50%;
-  opacity: 0.6;
-  position: fixed;
-  top: -100%;
-  width: 300%;
-}
-
-@keyframes grain {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  10% {
-    transform: translate(-5%, -10%);
-  }
-  20% {
-    transform: translate(-15%, 5%);
-  }
-  30% {
-    transform: translate(7%, -25%);
-  }
-  40% {
-    transform: translate(-5%, 25%);
-  }
-  50% {
-    transform: translate(-15%, 10%);
-  }
-  60% {
-    transform: translate(15%, 0%);
-  }
-  70% {
-    transform: translate(0%, 15%);
-  }
-  80% {
-    transform: translate(3%, 35%);
-  }
-  90% {
-    transform: translate(-10%, 10%);
-  }
-}
-
-a {
-  cursor: var(--cursor-hover) !important;
+a:hover {
+  cursor: url(/images/cursor-hover.png), hand;
 }
 
 /* Make images easier to work with */
@@ -110,24 +61,4 @@ button,
 textarea,
 select {
   font: inherit;
-}
-
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-.iub_header {
-  display: none;
 }

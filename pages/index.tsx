@@ -5,6 +5,7 @@ import News from "../components/news/news";
 import { getPosts } from "../lib/wp/news";
 import HomePartner from "../components/home/partner";
 import { getSponsors } from "../lib/wp/sponsor";
+import HomeSection from "../components/home/section";
 const Home = ({
   guests,
   news,
@@ -14,12 +15,41 @@ const Home = ({
   news: {};
   sponsors: {};
 }) => {
+  const ospitiSection = {
+    title: "Scopri tutti gli ospiti",
+    url: "/ospiti/",
+    target: "",
+  };
+
+  const newsSection = {
+    title: "Leggi tutte le news",
+    url: "/news/",
+    target: "",
+  };
+
+  const sponsorSection = {
+    title: "Tutti gli sponsor",
+    url: "/sponsor/",
+    target: "",
+  };
+
   return (
     <>
       <Intro />
-      <Anteprima />
-      <News data={news} />
-      <HomePartner data={sponsors} />
+
+      <HomeSection title="All’Isola delle Storie XVII" linkTo={ospitiSection}>
+        <Anteprima />
+      </HomeSection>
+      <HomeSection
+        bgColor="#f1e596"
+        title="Succede all’Isola XVII"
+        linkTo={newsSection}
+      >
+        <News data={news} />
+      </HomeSection>
+      <HomeSection title="Sostenuto da" linkTo={sponsorSection}>
+        <HomePartner data={sponsors} />
+      </HomeSection>
     </>
   );
 };

@@ -100,7 +100,8 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       break;
 
     case "accoglienza":
-      places = await getPlacesFake(100);
+      //places = await getPlacesFake(100);
+      places = null;
       break;
 
     case "partner":

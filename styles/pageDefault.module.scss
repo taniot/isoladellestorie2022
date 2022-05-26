@@ -52,6 +52,29 @@
   }
 }
 
+@screen lg {
+  .pageHeaderContainer {
+    background-color: var(--main-bg-color);
+    .pageHeader {
+      @apply w-10/12 mx-auto;
+      height: 35vh;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+
+      h1 {
+        font-size: 5rem;
+        font-family: "AbsaraSans-Thin";
+        line-height: 1;
+
+        letter-spacing: unset;
+        color: var(--main-title-color);
+      }
+    }
+  }
+}
+
 //section
 .sectionContainer {
   //default contentContainer
@@ -106,6 +129,11 @@
           font-family: "AbsaraSans-Thin";
           font-size: 2rem;
 
+          .image {
+            text-align: center;
+            margin-bottom: 1.5rem;
+          }
+
           h1,
           h2 {
             font-size: 5rem;
@@ -119,7 +147,7 @@
             &::after {
               content: "";
               display: block;
-              margin: 0.22em auto 0 auto;
+              margin: 0.1rem auto 0 auto;
               width: 100px;
               border-top: 3px solid #ccc;
             }
@@ -137,61 +165,57 @@
         .guestBody {
           display: flex;
 
-          .image {
-            @apply w-4/12;
-            text-align: center;
+          .text {
+            @apply w-8/12 mx-auto;
+          }
+        }
 
-            .giorniFestival {
-              .plus {
-                font-family: "AbsaraSans";
-                color: var(--main-bg-color);
-                font-size: 2rem;
-              }
-
-              h4 {
-                font-family: "AbsaraSans";
-                text-transform: uppercase;
-                font-size: 1.2rem;
-                color: #7e7f7f;
-                margin-bottom: 10px;
-              }
-              ul {
-                margin: 0;
-                padding: 0;
-                @apply w-6/12 mx-auto;
-                display: flex;
-                justify-content: center;
-                li {
-                  display: flex;
-                  margin-bottom: 10px;
-                  align-items: center;
-                  .dayNumber {
-                    display: flex;
-                    padding: 5px;
-                    font-size: 1rem;
-                    border-radius: 50%;
-                    border: 2px solid #7e7f7f;
-                    width: 50px;
-                    height: 50px;
-                    justify-content: center;
-                    align-items: center;
-                    margin-right: 10px;
-                    font-family: "AbsaraSans";
-                    background-color: #efefef;
-                    color: #7e7f7f;
-                  }
-
-                  .active {
-                    background-color: var(--main-bg-color);
-                    color: var(--main-text-color);
-                  }
-                }
-              }
-            }
+        .giorniFestival {
+          margin-top: 1rem;
+          .plus {
+            font-family: "AbsaraSans";
+            color: var(--main-bg-color);
+            font-size: 2rem;
           }
 
-          .text {
-            @apply w-7/12;
+          h4 {
+            font-family: "AbsaraSans";
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            color: #7e7f7f;
+            margin-bottom: 10px;
+          }
+          ul {
+            margin: 0;
+            padding: 0;
+            @apply w-6/12 mx-auto;
+            display: flex;
+            justify-content: center;
+            li {
+              display: flex;
+              margin-bottom: 10px;
+              align-items: center;
+              .dayNumber {
+                display: flex;
+                padding: 5px;
+                font-size: 1rem;
+                border-radius: 50%;
+                border: 2px solid #7e7f7f;
+                width: 50px;
+                height: 50px;
+                justify-content: center;
+                align-items: center;
+                margin-right: 10px;
+                font-family: "AbsaraSans";
+                background-color: #efefef;
+                color: #7e7f7f;
+              }
+
+              .active {
+                background-color: var(--main-bg-color);
+                color: var(--main-text-color);
+              }
+            }
           }
         }
       }

@@ -27,6 +27,7 @@ const Header = () => {
                   alt="logo"
                   layout="fill"
                   className={styles.logo}
+                  priority
                 />
               ) : (
                 <Image
@@ -34,6 +35,7 @@ const Header = () => {
                   alt="logo"
                   layout="fill"
                   className={styles.logo}
+                  priority
                 />
               )}
             </a>

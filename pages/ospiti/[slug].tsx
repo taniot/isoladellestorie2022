@@ -8,16 +8,14 @@ import cls from "classnames";
 const Ospite = ({ guest }: { guest: any }) => {
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.pageHeaderContainer}>
-        <div className={styles.pageHeader}>
-          <h1>Ospiti</h1>
-        </div>
-      </div>
-
       <section className={styles.sectionContainer}>
         <div className={styles.contentContainer}>
           <div className={styles.guestContentContainer}>
             <div className={styles.guestHeader}>
+              <div className={styles.image}>
+                <GuestImage title={guest.title} image={guest.image} />
+              </div>
+
               {guest.nome && guest.cognome ? (
                 <>
                   <h2>
@@ -32,28 +30,24 @@ const Ospite = ({ guest }: { guest: any }) => {
                   <h3>{guest.jobTitleIt}</h3>
                 </>
               )}
+              <div className={styles.giorniFestival}>
+                <ul>
+                  <li>
+                    <span className={cls(styles.dayNumber, styles.active)}>
+                      01
+                    </span>
+                  </li>
+                  <li>
+                    <span className={styles.dayNumber}>02</span>
+                  </li>
+                  <li>
+                    <span className={styles.dayNumber}>03</span>
+                  </li>
+                </ul>
+                <h4>I giorni del festival</h4>
+              </div>
             </div>
             <div className={styles.guestBody}>
-              <div className={styles.image}>
-                <GuestImage title={guest.title} image={guest.image} />
-                <div className={styles.giorniFestival}>
-                  <div className={styles.plus}>+</div>
-                  <h4>I giorni del festival</h4>
-                  <ul>
-                    <li>
-                      <span className={cls(styles.dayNumber, styles.active)}>
-                        01
-                      </span>
-                    </li>
-                    <li>
-                      <span className={styles.dayNumber}>02</span>
-                    </li>
-                    <li>
-                      <span className={styles.dayNumber}>03</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
               <div className={styles.text}>
                 {parse(guest.descrizioneIt ? guest.descrizioneIt : "")}
               </div>

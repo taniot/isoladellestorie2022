@@ -9,7 +9,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const [currentLanguage, setCurrentLanguage] =
     useState<keyof typeof languageObject>("en");
   const [isMainMenuOpen, setIsMainMenuOpen] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if ((router.isReady && router.locale === "en") || router.locale === "it") {
@@ -18,12 +18,12 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
 
     const handleComplete = () => {
       setIsLoading(false);
-      console.log("sono esecuto");
+      //console.log("sono esecuto");
     };
 
     const handleGae = () => {
-      setIsLoading(true);
-      console.log("comincia");
+      //setIsLoading(true);
+      //console.log("comincia");
     };
 
     //console.log({ isLoading });
