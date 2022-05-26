@@ -8,8 +8,9 @@ import Partner from "../components/partner/partner";
 import styles from "../styles/pageDefault.module.scss";
 
 import AppContext from "../store/AppContext";
-import { useEffect, useContext } from "react";
+
 import { useRouter } from "next/router";
+import { getSponsors } from "../lib/wp/sponsor";
 
 const PageDefault = ({
   page,
@@ -22,10 +23,6 @@ const PageDefault = ({
   places: any;
   partner: any;
 }) => {
-  const context = useContext(AppContext);
-
-  const router = useRouter();
-
   if (!page) return <div>No page</div>;
 
   return (
@@ -99,9 +96,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       };
 
     case "ospiti":
-      //guests = await getGuestsFake(100);
       guests = await getGuests();
-      console.log({ guests });
       break;
 
     case "accoglienza":
@@ -109,7 +104,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       break;
 
     case "partner":
-      partner = true;
+      partner = await getSponsors();
       break;
 
     default:

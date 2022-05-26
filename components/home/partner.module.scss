@@ -60,7 +60,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 100px;
+
     padding-bottom: 20px;
 
     .title {
@@ -69,7 +69,6 @@
       line-height: 28px;
       padding-bottom: 20px;
       margin-bottom: 40px;
-
       font-family: "AbsaraSans";
       border-bottom-color: var(--main-bg-color);
       border-bottom-style: solid;
@@ -92,6 +91,23 @@
         align-items: center;
         margin: 20px;
         position: relative;
+
+        &.noImage {
+          //border: 1px solid #ccc;
+          font-family: "AbsaraSans";
+          padding: 0 70px;
+          text-align: center;
+          font-size: 0.9rem;
+
+          span {
+            border: 2px solid var(--secondary-bg-color);
+            background-color: whitesmoke;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
       }
     }
 
