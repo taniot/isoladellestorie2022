@@ -74,7 +74,7 @@ const Nav = () => {
                 <a href="#">News & Stampa</a>
               </li>
               <li>
-                <Link href="/programma/">
+                <Link href="/sponsor/">
                   <a onClick={closeMenu}>Sponsor</a>
                 </Link>
               </li>
