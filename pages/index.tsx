@@ -23,7 +23,7 @@ const Home = ({
 
   const newsSection = {
     title: "Leggi tutte le news",
-    url: "/news/",
+    url: "#",
     target: "",
   };
 

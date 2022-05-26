@@ -25,6 +25,7 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-iubenda-policy": "^0.1.1",
     "sass": "^1.52.0",
+    "sharp": "^0.30.5",
     "slugify": "^1.6.5",
     "uuid": "^8.3.2"
   },
