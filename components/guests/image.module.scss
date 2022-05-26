@@ -14,9 +14,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 200px;
-  max-width: 300px;
+  max-width: 400px;
 
   img {
     border-radius: 50%;
@@ -25,11 +23,11 @@
   .noImage {
     width: inherit;
     height: inherit;
-    max-width: 300px;
+    max-width: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #dedede;
+    background-color: #fefefe;
     border-radius: 50%;
   }
 }

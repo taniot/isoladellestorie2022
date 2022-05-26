@@ -4,6 +4,7 @@ import { GrFacebookOption, GrInstagram, GrTwitter } from "react-icons/gr";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 import Script from "next/script";
+import Link from "next/link";
 const Iubenda = require("react-iubenda-policy");
 
 const Footer = () => {
@@ -14,6 +15,26 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
+        <div className={styles.logoContainer}>
+          {isMobile ? (
+            <Image
+              src="/images/l-isola-delle-storie.svg"
+              layout="fill"
+              alt="L’Isola delle Storie 2022"
+              className={styles.logo}
+              priority
+            />
+          ) : (
+            <Image
+              src="/images/l-isola-delle-storie.svg"
+              layout="fill"
+              alt="L’Isola delle Storie 2022"
+              className={styles.logo}
+              priority
+            />
+          )}
+        </div>
+
         <div className={styles.infoContainer}>
           <h2>©XVII L’Isola delle Storie</h2>
           <p>C.F. e P.IVA 93024780913</p>
@@ -27,75 +48,46 @@ const Footer = () => {
             >
               Privacy Policy
             </a>{" "}
-            –{" "}
+            -{" "}
             <a
               href="https://www.iubenda.com/privacy-policy/96389350/cookie-policy"
               className="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe "
               title="Cookie Policy"
             >
               Cookie Policy
-            </a>
+            </a>{" "}
+            -{" "}
+            <Link href="/credits/">
+              <a>Credits</a>
+            </Link>
           </p>
         </div>
-        <div className={styles.logoArea}>
-          <div className={styles.logoContainer}>
-            {isMobile ? (
-              <Image
-                src="/images/l-isola-delle-storie.svg"
-                layout="fill"
-                alt="L’Isola delle Storie 2022"
-                className={styles.logo}
-                priority
-              />
-            ) : (
-              <Image
-                src="/images/l-isola-delle-storie-logo.svg"
-                layout="fill"
-                alt="L’Isola delle Storie 2022"
-                className={styles.logo}
-                priority
-              />
-            )}
-          </div>
-          <div className={styles.socialContainer}>
-            <a
-              href="https://www.facebook.com/isoladellestorie/"
-              className={styles.socialIcon}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <GrFacebookOption className={styles.icon} />
-            </a>
-            <a
-              href="https://www.instagram.com/gavoifestival/"
-              className={styles.socialIcon}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <GrInstagram className={styles.icon} />
-            </a>
+        <div className={styles.socialContainer}>
+          <a
+            href="https://www.facebook.com/isoladellestorie/"
+            className={styles.socialIcon}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <GrFacebookOption className={styles.icon} />
+          </a>
+          <a
+            href="https://www.instagram.com/gavoifestival/"
+            className={styles.socialIcon}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <GrInstagram className={styles.icon} />
+          </a>
 
-            <a
-              href="https://twitter.com/gavoifestival"
-              className={styles.socialIcon}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <GrTwitter className={styles.icon} />
-            </a>
-          </div>
-        </div>
-        <div className={styles.devContainer}>
-          <p>
-            Illustrazione: <strong>Toni Demuro</strong>
-          </p>
-          <p>
-            Progetto Grafico: <strong>Sabina Era</strong>
-          </p>
-
-          <p className={styles.poweredBy}>
-            powered by <strong>taniot</strong>
-          </p>
+          <a
+            href="https://twitter.com/gavoifestival"
+            className={styles.socialIcon}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <GrTwitter className={styles.icon} />
+          </a>
         </div>
       </div>
       <Script

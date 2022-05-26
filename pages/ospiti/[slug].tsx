@@ -4,6 +4,8 @@ import styles from "../../styles/pageDefault.module.scss";
 import parse from "html-react-parser";
 import GuestImage from "../../components/guests/image";
 import cls from "classnames";
+import { CgArrowLongLeft } from "react-icons/cg";
+import Link from "next/link";
 
 const Ospite = ({ guest }: { guest: any }) => {
   return (
@@ -13,7 +15,12 @@ const Ospite = ({ guest }: { guest: any }) => {
           <div className={styles.guestContentContainer}>
             <div className={styles.guestHeader}>
               <div className={styles.image}>
-                <GuestImage title={guest.title} image={guest.image} />
+                <GuestImage
+                  title={guest.title}
+                  image={guest.image}
+                  width={280}
+                  height={280}
+                />
               </div>
 
               {guest.nome && guest.cognome ? (
@@ -50,6 +57,15 @@ const Ospite = ({ guest }: { guest: any }) => {
             <div className={styles.guestBody}>
               <div className={styles.text}>
                 {parse(guest.descrizioneIt ? guest.descrizioneIt : "")}
+
+                <Link href="/ospiti/">
+                  <a className={styles.back}>
+                    <span>
+                      <CgArrowLongLeft />
+                    </span>
+                    <span className={styles.textBack}>Torna agli Ospiti</span>
+                  </a>
+                </Link>
               </div>
             </div>
           </div>

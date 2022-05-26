@@ -54,12 +54,6 @@ const Nav = () => {
               </li>
 
               <li>
-                <Link href="/programma/">
-                  <a onClick={closeMenu}>Mostre</a>
-                </Link>
-              </li>
-
-              <li>
                 <Link href="/news/">
                   <a onClick={closeMenu}>News & Stampa</a>
                 </Link>

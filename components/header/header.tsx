@@ -6,6 +6,7 @@ import Nav from "../nav/nav";
 import { useContext } from "react";
 import Link from "next/link";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import cls from "classnames";
 const Header = () => {
   const context = useContext(AppContext);
   const { state, setIsMainMenuOpen } = context;
@@ -42,7 +43,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
-      <div className={styles.menuContainer}>
+      <div className={cls(styles.menuContainer)}>
         <Hamburger
           toggled={state?.isMainMenuOpen}
           toggle={setIsMainMenuOpen}

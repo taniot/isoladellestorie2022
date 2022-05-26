@@ -1,5 +1,5 @@
 import styles from "./scroll.module.scss";
-import { CgArrowLongUp } from "react-icons/cg";
+import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import cls from "classnames";
 import { useEffect, useState } from "react";
 
@@ -27,7 +27,7 @@ const Scroll = () => {
     <>
       {showBtn && (
         <div className={styles.topToBtn} onClick={goToTop}>
-          <span></span>
+          <BsFillArrowUpCircleFill className={cls(styles.icon, "icon")} />
         </div>
       )}
     </>

@@ -13,44 +13,20 @@
     align-items: center;
     padding: 70px 50px 80px 50px;
 
-    .logoArea {
+    .logoContainer {
       display: flex;
       order: 1;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin-bottom: 2rem;
+      position: relative;
+      width: 9rem;
+      height: 5rem;
+      margin-bottom: 30px;
 
-      .logoContainer {
-        @apply relative;
-        width: 6rem;
-        height: 4rem;
-        margin-bottom: 30px;
-
-        .logo {
-          @apply antialiased opacity-100 h-auto;
-        }
-      }
-
-      .socialContainer {
-        @apply relative;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        gap: 2rem;
-        .socialIcon {
-          border-radius: 50%;
-          padding: 10px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: #f1e596;
-
-          .icon {
-            font-size: 1rem;
-            color: var(--main-text-color);
-          }
-        }
+      .logo {
+        @apply antialiased opacity-100 h-auto;
       }
     }
 
@@ -64,212 +40,41 @@
       h2 {
         font-family: "AbsaraSans";
         font-size: 1.3rem;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
       }
       p {
-        font-family: "AbsaraSans-Thin";
-        font-size: 1rem;
+        font-family: "MontSerrat";
+        font-weight: normal;
+        font-size: 0.9rem;
+        line-height: 1.6rem;
       }
 
       .legalData {
+        font-family: "MontSerrat";
+        font-size: 0.7rem;
         margin-top: 1rem;
       }
     }
 
-    .devContainer {
+    .socialContainer {
       order: 3;
-      display: flex;
-      flex-direction: column;
+      @apply relative;
+      justify-content: center;
       align-items: center;
-
-      p {
-        font-family: "AbsaraSans-Thin";
-        font-size: 1rem;
-
-        &.poweredBy {
-          margin-top: 1rem;
-        }
-      }
-    }
-  }
-}
-
-@screen md {
-  .footer {
-    background-color: var(--main-bg-color);
-
-    margin-top: auto;
-    position: relative;
-    min-height: 500px;
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    .footerContainer {
-      padding: 80px 50px;
-      @apply w-11/12 mx-auto;
-      justify-content: space-between;
-      align-items: flex-start;
       display: flex;
-      flex-direction: row;
-
-      .logoArea {
-        order: 2;
+      gap: 2rem;
+      .socialIcon {
+        border-radius: 50%;
+        padding: 15px;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        .logoContainer {
-          @apply relative;
-          @apply w-2/12;
-          width: 7rem;
-          height: 10rem;
-          margin-bottom: 60px;
+        background-color: #f1e596;
 
-          .logo {
-            @apply antialiased opacity-100 h-auto;
-          }
-        }
-
-        .socialContainer {
-          @apply relative;
-          justify-content: center;
-          align-items: center;
-          display: flex;
-          gap: 2rem;
-
-          .socialIcon {
-            padding: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f1e596;
-
-            .icon {
-              font-size: 1.2rem;
-              color: #222;
-            }
-          }
-        }
-      }
-
-      .infoContainer {
-        order: 1;
-        @apply w-5/12;
-        display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-        align-items: flex-start;
-
-        h2 {
-          font-family: "AbsaraSans";
-          font-size: 1.2rem;
-          margin-bottom: 0.5rem;
-        }
-        p {
-          font-family: "AbsaraSans-Thin";
-          font-size: 1rem;
-        }
-
-        .legalData {
-          margin-top: 1.5rem;
-        }
-      }
-
-      .devContainer {
-        order: 3;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        @apply w-5/12;
-        margin-top: 20px;
-
-        p {
-          font-family: "AbsaraSans-Thin";
-          font-size: 1rem;
-
-          &.poweredBy {
-            margin-top: 1.5rem;
-          }
-        }
-      }
-    }
-  }
-}
-
-@screen lg {
-  .footer {
-    .footerContainer {
-      .logoArea {
-        .logoContainer {
-          width: 9rem;
-          height: 12rem;
-          .logo {
-          }
-        }
-
-        .socialContainer {
-          @apply relative;
-          justify-content: center;
-          align-items: center;
-          display: flex;
-          gap: 2rem;
-
-          .socialIcon {
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f1e596;
-
-            .icon {
-              font-size: 1.5rem;
-              color: #222;
-            }
-          }
-        }
-      }
-
-      .infoContainer {
-        order: 1;
-        @apply w-5/12;
-        display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-        align-items: flex-start;
-
-        h2 {
-          font-family: "AbsaraSans";
-          font-size: 1.5rem;
-          margin-bottom: 0.5rem;
-        }
-        p {
-          font-family: "AbsaraSans-Thin";
-          font-size: 1rem;
-          line-height: 1.7rem;
-        }
-
-        .legalData {
-          margin-top: 1.5rem;
-        }
-      }
-
-      .devContainer {
-        order: 3;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        @apply w-5/12;
-        margin-top: 20px;
-
-        p {
-          font-family: "AbsaraSans-Thin";
-          font-size: 1rem;
-          line-height: 1.7rem;
-
-          &.poweredBy {
-            margin-top: 1.5rem;
-          }
+        .icon {
+          font-size: 1.375rem;
+          color: var(--main-text-color);
         }
       }
     }

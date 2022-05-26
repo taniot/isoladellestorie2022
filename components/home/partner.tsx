@@ -3,15 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import cls from "classnames";
 
-const HomePartner = ({
-  data,
-  title = "Sostenuto da",
-  showButton = true,
-}: {
-  data: any;
-  title?: string;
-  showButton?: boolean;
-}) => {
+const HomePartner = ({ data }: { data: any }) => {
   if (!data) return null;
   return (
     <div className={styles.container}>

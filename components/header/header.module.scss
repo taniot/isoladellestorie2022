@@ -64,7 +64,6 @@
 
 @screen xl {
   .header {
-    //background: red;
     position: absolute;
     top: 0;
     left: 0;
@@ -76,7 +75,7 @@
     //background-color: pink;
 
     .logoContainer {
-      position: relative;
+      position: fixed;
       margin: 50px 80px;
 
       border-top: 0;
@@ -85,8 +84,9 @@
     }
 
     .menuContainer {
+      position: fixed;
+      right: 0;
       margin: 40px 60px;
-
       display: flex; //flex
       align-items: center;
       a {

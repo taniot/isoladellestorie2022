@@ -13,8 +13,6 @@
 
 html {
   scroll-behavior: smooth;
-  cursor: none !important;
-  cursor: url(/images/cursor.png), auto;
 }
 
 html,
@@ -42,10 +40,13 @@ a {
 
 * {
   box-sizing: border-box;
+  cursor: url(/images/cursor.png), auto;
 }
 
-a:hover {
-  cursor: url(/images/cursor-hover.png), hand;
+a:hover,
+.icon,
+.hamburger-react {
+  cursor: url(/images/cursor-hover.png), auto !important;
 }
 
 /* Make images easier to work with */
@@ -61,4 +62,19 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+.image-container {
+  width: 100%;
+
+  > span {
+    position: unset !important;
+  }
+
+  .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
 }

@@ -10,13 +10,14 @@ const News = ({ data }: { data: any }) => {
     <div className={styles.container}>
       <div className={styles.newsContainer}>
         <div className={styles.image}>
-          <Image
-            src={data[0].featuredImage.node.guid}
-            width={530}
-            height={400}
-            alt={data[0].title}
-            priority
-          />
+          <div className={"image-container"}>
+            <Image
+              src={data[0].featuredImage.node.guid}
+              alt={data[0].title}
+              className={"image"}
+              layout="fill"
+            />
+          </div>
         </div>
         <div className={styles.text}>
           <h2>{data[0].title}</h2>
