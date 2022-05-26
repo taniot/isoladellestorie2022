@@ -55,6 +55,7 @@
       a {
         font-size: 1.2rem;
         padding-bottom: 5px;
+
         border-bottom: 1px solid var(--secondary-bg-color);
         display: inline-block;
       }
@@ -78,10 +79,31 @@
     flex-direction: column;
   }
 
-  .headerNav {
-    top: 0;
-    left: 50px;
-    display: unset;
+  .navHeader {
+    position: absolute;
+    top: 40px;
+    //background-color: red;
+    display: flex;
+    @apply w-full mx-auto;
+    //background-color: red;
+    justify-content: center;
+    align-items: center;
+
+    .langMenu {
+      position: absolute;
+      left: 50px;
+      color: white;
+      font-family: "AbsaraSans";
+    }
+
+    .logoContainer {
+      width: 6rem;
+      height: 3rem;
+
+      .logo {
+        @apply antialiased opacity-100 h-auto;
+      }
+    }
   }
 
   .menuContainer {
@@ -90,12 +112,13 @@
     @apply w-10/12 mx-auto;
     justify-content: space-evenly;
     align-items: flex-start;
-    // border-top: 3px solid var(--secondary-bg-color);
+    border-top: 3px solid var(--secondary-bg-color);
     border-bottom: 3px solid var(--secondary-bg-color);
     padding: 50px 0;
   }
 
   .menu {
+    @apply w-3/12;
     &.visitatori {
       order: 1;
       display: block;

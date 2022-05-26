@@ -4,6 +4,7 @@ import { useContext } from "react";
 import AppContext from "../../store/AppContext";
 import Link from "next/link";
 import Div100vh from "react-div-100vh";
+import Image from "next/image";
 
 const Nav = () => {
   const context = useContext(AppContext);
@@ -18,6 +19,22 @@ const Nav = () => {
       className={cls(styles.nav, state?.isMainMenuOpen ? styles.visible : "")}
     >
       <div className={styles.navCointainer}>
+        <div className={styles.navHeader}>
+          <div className={styles.langMenu}>ENGLISH VERSION</div>
+          <div className={styles.logoContainer}>
+            <Link href="/">
+              <a onClick={closeMenu}>
+                <Image
+                  src="/images/l-isola-delle-storie.svg"
+                  layout="fill"
+                  alt="L’Isola delle Storie 2022"
+                  className={styles.logo}
+                  priority
+                />
+              </a>
+            </Link>
+          </div>
+        </div>
         <div className={styles.menuContainer}>
           <div className={cls(styles.menu, styles.visitatori)}>
             <h2>Info Visitatori</h2>
@@ -54,9 +71,7 @@ const Nav = () => {
               </li>
 
               <li>
-                <Link href="/news/">
-                  <a onClick={closeMenu}>News & Stampa</a>
-                </Link>
+                <a href="#">News & Stampa</a>
               </li>
               <li>
                 <Link href="/programma/">
