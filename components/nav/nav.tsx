@@ -85,7 +85,7 @@ const Nav = () => {
             <h2>Chi Siamo</h2>
             <ul>
               <li>
-                <Link href="/associazione/chi-siamo/">
+                <Link href="/associazione/lisola-delle-storie/">
                   <a onClick={closeMenu}>L’Isola delle Storie</a>
                 </Link>
               </li>
