@@ -11,6 +11,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const [currentLanguage, setCurrentLanguage] =
     useState<keyof typeof languageObject>("en");
   const [isMainMenuOpen, setIsMainMenuOpen] = useState<boolean>(false);
+
   const [guests, setGuests] = useState<any[]>([]);
   const [events, setEvents] = useState<any[]>([]);
 
@@ -49,6 +50,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
           contents: languageObject[currentLanguage],
           language: currentLanguage,
           isMainMenuOpen,
+
           guests,
           events,
         },

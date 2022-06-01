@@ -6,26 +6,36 @@ import Places from "../components/places/places";
 import Partner from "../components/partner/partner";
 import styles from "../styles/pageDefault.module.scss";
 import { getSponsors } from "../lib/wp/sponsor";
+import Eventi from "../components/eventi/eventi";
+import { useContext, useEffect, useState } from "react";
+import AppContext from "../store/AppContext";
 
 const PageDefault = ({
   page,
   guests,
   places,
   partner,
+  events,
 }: {
   page: any;
   guests: any;
   places: any;
   partner: any;
+  events: any;
 }) => {
+  const context = useContext(AppContext);
+  const { state } = context;
+
   if (!page) return <div>No page</div>;
+  if (events) events = state?.events;
 
   return (
     <>
       <div className={styles.pageContainer}>
         <div className={styles.pageHeaderContainer}>
           <div className={styles.pageHeader}>
-            <h1>{page.title}</h1>
+            <h1>{page.parentTitle ? page.parentTitle : page.title}</h1>
+            <h2>{page.parentTitle ? page.title : null}</h2>
           </div>
         </div>
 
@@ -42,6 +52,7 @@ const PageDefault = ({
         {guests && <Guests data={guests} />}
         {places && <Places data={places} />}
         {partner && <Partner data={partner} />}
+        {events && <Eventi data={events} />}
       </div>
     </>
   );
@@ -73,16 +84,18 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   if (!context) return { props: {} };
   const pageURI = createURI(context);
   const page = await getPageByURI(pageURI);
+  console.log({ page });
   let guests = null;
   let places = null;
   let partner = null;
+  let events = null;
 
   if (!page)
     return {
       notFound: true,
     };
 
-  switch (page.dettagliPagina.template) {
+  switch (page.template) {
     case "nopage":
       return {
         notFound: true,
@@ -101,6 +114,10 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       partner = await getSponsors();
       break;
 
+    case "eventi":
+      events = true;
+      break;
+
     default:
       //caso default;
       break;
@@ -112,6 +129,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       guests,
       places,
       partner,
+      events,
     },
     revalidate: 60,
   };

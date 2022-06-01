@@ -12,9 +12,9 @@
   background-color: var(--main-bg-color);
   .pageHeader {
     @apply w-10/12 mx-auto relative;
-    height: 40vh;
+    height: 85vh;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     display: flex;
 
     h1 {
@@ -83,7 +83,7 @@
           display: block;
           margin: 1rem auto 0 auto;
           width: 50px;
-          border-top: 2px solid var(--main-text-color);
+          border-top: 3px solid var(--main-text-color);
         }
       }
     }

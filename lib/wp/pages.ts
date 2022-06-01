@@ -22,11 +22,22 @@ const qGetPageByURI = gql`
       id
       title
       content
+      parent {
+        node {
+          ... on Page {
+            title
+          }
+        }
+      }
       dettagliPagina {
         template
         tipologiaAccoglienza {
           slug
         }
+        tipologiaEventi {
+          slug
+        }
+        dateEventi
       }
     }
   }
@@ -57,7 +68,23 @@ export const getPageByURI = async (uri: string) => {
 
   try {
     const data = await client.request(query, variables);
-    return data?.page;
+    //return data?.page;
+
+    return {
+      id: data?.page?.id,
+      title: data?.page?.title,
+      content: data?.page?.content,
+      template: data?.page?.dettagliPagina?.template,
+      parentTitle: data?.page?.parent?.node?.title || null,
+      accoglienza: {
+        tipologia:
+          data?.page?.dettagliPagina?.tipologiaAccoglienza?.slug || null,
+      },
+      eventi: {
+        tipologia: data?.page?.dettagliPagina?.tipologiaEventi?.slug || null,
+        data: data?.page?.dettagliPagina?.dateEventi || null,
+      },
+    };
   } catch (error) {
     console.log({ error });
     return null;

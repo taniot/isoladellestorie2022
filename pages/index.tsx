@@ -6,15 +6,7 @@ import { getPosts } from "../lib/wp/news";
 import HomePartner from "../components/home/partner";
 import { getSponsors } from "../lib/wp/sponsor";
 import HomeSection from "../components/home/section";
-const Home = ({
-  guests,
-  news,
-  sponsors,
-}: {
-  guests: {};
-  news: {};
-  sponsors: {};
-}) => {
+const Home = ({ news, sponsors }: { news: {}; sponsors: {} }) => {
   const ospitiSection = {
     title: "Scopri tutti gli ospiti",
     url: "/ospiti/",
@@ -37,12 +29,12 @@ const Home = ({
     <>
       <Intro />
 
-      <HomeSection title="All’Isola delle Storie XVII" linkTo={ospitiSection}>
+      <HomeSection title="A L’Isola delle Storie XVII" linkTo={ospitiSection}>
         <Anteprima />
       </HomeSection>
       <HomeSection
         bgColor="#f1e596"
-        title="Succede all’Isola XVII"
+        title="Succede a L’Isola XVII"
         linkTo={newsSection}
       >
         <News data={news} />

@@ -1,5 +1,4 @@
 import styles from "./partner.module.scss";
-import Link from "next/link";
 import Image from "next/image";
 import cls from "classnames";
 

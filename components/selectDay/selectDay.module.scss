@@ -1,9 +1,27 @@
 .button {
-  @apply relative w-full cursor-default   py-2 pl-3 pr-10 text-center focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .selected {
-  font-family: "AbsaraSans";
-  font-size: 1.3rem;
+  font-family: "AbsaraSans-TF-Light";
+  font-size: 1.6rem;
   text-transform: uppercase;
+}
+
+.selectorIcon {
+  @apply h-4 w-4;
+  color: var(--main-text-color);
+}
+
+.daySelectContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  margin-bottom: 2rem;
 }

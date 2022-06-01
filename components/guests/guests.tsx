@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Image from "next/image";
-
 import styles from "./guests.module.scss";
 import Link from "next/link";
 import GuestImage from "./image";
@@ -13,8 +11,6 @@ const Guests = ({ data }: { data: any }) => {
 
   const getMorePost = async () => {
     const res = data.slice(posts.length, posts.length + 8);
-    console.log({ data });
-    console.log({ res });
     if (!res) setHasMore(false);
     setPosts((posts: any) => [...posts, ...res]);
   };

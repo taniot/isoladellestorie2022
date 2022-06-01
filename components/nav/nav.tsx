@@ -85,20 +85,20 @@ const Nav = () => {
             <h2>Chi Siamo</h2>
             <ul>
               <li>
-                <Link href="/associazione/lisola-delle-storie/">
-                  <a onClick={closeMenu}>L’Isola delle Storie</a>
+                <Link href="/chi-siamo/lassociazione-lisola-delle-storie/">
+                  <a onClick={closeMenu}>L’Associazione L’Isola delle Storie</a>
                 </Link>
               </li>
 
               <li>
-                <Link href="/associazione/sostieni-lisola/">
-                  <a onClick={closeMenu}>Sostieni L’Isola</a>
+                <Link href="/chi-siamo/il-festival/">
+                  <a onClick={closeMenu}>Il Festival</a>
                 </Link>
               </li>
 
               <li>
-                <Link href="/associazione/contatti/">
-                  <a onClick={closeMenu}>Contatti</a>
+                <Link href="/chi-siamo/il-luogo/">
+                  <a onClick={closeMenu}>Il Luogo</a>
                 </Link>
               </li>
             </ul>

@@ -5,6 +5,8 @@ const Eventi = (eventi: any) => {
   const { data } = eventi;
   let current: null = null;
 
+  if (data.length === 0) return <div>Loading...</div>;
+
   return (
     <>
       <div className="w-9/12 mx-auto">
@@ -13,8 +15,6 @@ const Eventi = (eventi: any) => {
             if (current === categoriaEvento.luogo) return false;
             current = categoriaEvento.luogo;
             let result = data.filter((gae: any) => gae.luogo === current);
-            console.log({ current });
-            console.log({ result });
             return (
               <div key={current} className="flex justify-between mb-20">
                 <div className={styles.whereContainer}>

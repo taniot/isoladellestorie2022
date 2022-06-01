@@ -1,5 +1,4 @@
 import styles from "../../styles/pageDefault.module.scss";
-import stylesPartner from "./partner.module.scss";
 import HomePartner from "../home/partner";
 import HomeSection from "../home/section";
 
