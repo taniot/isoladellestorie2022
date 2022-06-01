@@ -1,9 +1,10 @@
 import styles from "./header.module.scss";
 import Image from "next/image";
-import AppContext from "../../store/AppContext";
+
 import { Squash as Hamburger } from "hamburger-react";
 import Nav from "../nav/nav";
 import { useContext } from "react";
+import AppContext from "../../store/AppContext";
 import Link from "next/link";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import cls from "classnames";

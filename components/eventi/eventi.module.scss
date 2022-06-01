@@ -1,0 +1,87 @@
+.whereContainer {
+  @apply w-4/12;
+  border-right: 1px dashed var(--main-text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.where {
+  font-size: 1.6rem;
+  line-height: 1.25;
+  margin-bottom: 0;
+
+  font-family: "AbsaraSans";
+}
+
+.theme {
+  font-size: 1.1rem;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-family: "AbsaraSans";
+  color: var(--main-bg-color);
+}
+
+.time {
+  font-family: "MontSerrat";
+  font-size: 0.9rem;
+  background-color: var(--main-bg-color);
+  padding: 5px 10px;
+  color: white;
+}
+
+.evento {
+  margin-bottom: 2rem;
+  padding: 20px 30px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.title {
+  font-family: "AbsaraSans";
+  padding: 5px 10px 0 0px;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.main {
+  //background-color: #efefef;
+  //padding: 10px;
+  .title {
+    //font-size: 1.5rem;
+  }
+}
+
+.description {
+  padding: 5px 10px 0 0px;
+  font-size: 1.2rem;
+
+  strong,
+  b {
+    font-family: "AbsaraSans";
+  }
+
+  a {
+    border-bottom: 1px dashed var(--main-bg-color);
+    &:hover {
+      color: var(--main-bg-color);
+    }
+  }
+}
+
+.menuProgramma {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  li {
+    a {
+      padding: 10px;
+      font-size: 0.85rem;
+
+      font-family: "MontSerrat";
+      background-color: var(--secondary-bg-color);
+      border-radius: 10px;
+    }
+  }
+}

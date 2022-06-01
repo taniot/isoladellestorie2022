@@ -4,43 +4,43 @@ import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import AppContext from "../store/AppContext";
 import languageObject from "../languagesObject";
+import { getGuests } from "../lib/wp/guests";
+import { getEvents } from "../lib/wp/events";
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const [currentLanguage, setCurrentLanguage] =
     useState<keyof typeof languageObject>("en");
   const [isMainMenuOpen, setIsMainMenuOpen] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [guests, setGuests] = useState<any[]>([]);
+  const [events, setEvents] = useState<any[]>([]);
 
   useEffect(() => {
     if ((router.isReady && router.locale === "en") || router.locale === "it") {
       setCurrentLanguage(router.locale);
     }
-
-    const handleComplete = () => {
-      setIsLoading(false);
-      //console.log("sono esecuto");
-    };
-
-    const handleGae = () => {
-      //setIsLoading(true);
-      //console.log("comincia");
-    };
-
-    //console.log({ isLoading });
-
-    router.events.on("routeChangeStart", handleGae);
-    router.events.on("routeChangeComplete", handleComplete);
-    router.events.on("routeChangeError", handleComplete);
-
-    return () => {
-      router.events.off("routeChangeComplete", handleComplete);
-      router.events.off("routeChangeError", handleComplete);
-    };
-  }, [router, isLoading]);
+  }, [router]);
 
   useEffect(() => {
     document.body.className = isMainMenuOpen ? "menu-open" : "menu-closed";
   }, [isMainMenuOpen]);
+
+  useEffect(() => {
+    const populateGuests = async () => {
+      return await getGuests();
+    };
+
+    populateGuests()
+      .then((data) => setGuests(data))
+      .catch((error) => console.log(error));
+
+    const populateEvents = async () => {
+      return await getEvents();
+    };
+
+    populateEvents()
+      .then((data) => setEvents(data))
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <AppContext.Provider
@@ -49,13 +49,15 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
           contents: languageObject[currentLanguage],
           language: currentLanguage,
           isMainMenuOpen,
+          guests,
+          events,
         },
         setIsMainMenuOpen,
         setCurrentLanguage,
       }}
     >
       <Layout>
-        {isLoading ? <div>Loading</div> : <Component {...pageProps} />}
+        <Component {...pageProps} />
       </Layout>
     </AppContext.Provider>
   );

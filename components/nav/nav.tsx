@@ -40,11 +40,6 @@ const Nav = () => {
             <h2>Info Visitatori</h2>
             <ul>
               <li>
-                <Link href="/info-visitatori/come-arrivare/">
-                  <a onClick={closeMenu}>Come Arrivare</a>
-                </Link>
-              </li>
-              <li>
                 <Link href="/info-visitatori/dove-dormire/">
                   <a onClick={closeMenu}>Dove Dormire</a>
                 </Link>
@@ -67,6 +62,11 @@ const Nav = () => {
               <li>
                 <Link href="/programma/">
                   <a onClick={closeMenu}>Programma</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/laboratori/">
+                  <a onClick={closeMenu}>Laboratori</a>
                 </Link>
               </li>
 

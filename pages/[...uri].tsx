@@ -1,15 +1,10 @@
 import { GetStaticPaths, GetStaticProps, PreviewData } from "next";
 import { getGuests } from "../lib/wp/guests";
-import { getPlacesFake } from "../lib/wp/places";
 import { getPageByURI, getPages } from "../lib/wp/pages";
 import Guests from "../components/guests/guests";
 import Places from "../components/places/places";
 import Partner from "../components/partner/partner";
 import styles from "../styles/pageDefault.module.scss";
-
-import AppContext from "../store/AppContext";
-
-import { useRouter } from "next/router";
 import { getSponsors } from "../lib/wp/sponsor";
 
 const PageDefault = ({
@@ -86,8 +81,6 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
     return {
       notFound: true,
     };
-
-  console.log({ page });
 
   switch (page.dettagliPagina.template) {
     case "nopage":

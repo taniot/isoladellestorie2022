@@ -1,0 +1,9 @@
+.button {
+  @apply relative w-full cursor-default   py-2 pl-3 pr-10 text-center focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm;
+}
+
+.selected {
+  font-family: "AbsaraSans";
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}

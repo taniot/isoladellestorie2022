@@ -41,14 +41,14 @@ const Ospite = ({ guest }: { guest: any }) => {
                 <ul>
                   <li>
                     <span className={cls(styles.dayNumber, styles.active)}>
-                      01
+                      01/07
                     </span>
                   </li>
                   <li>
-                    <span className={styles.dayNumber}>02</span>
+                    <span className={styles.dayNumber}>02/07</span>
                   </li>
                   <li>
-                    <span className={styles.dayNumber}>03</span>
+                    <span className={styles.dayNumber}>03/07</span>
                   </li>
                 </ul>
                 <h4>I giorni del festival</h4>

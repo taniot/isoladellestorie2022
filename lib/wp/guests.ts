@@ -100,7 +100,12 @@ export const getGuests = async () => {
       (item: {
         title: string;
         slug: string;
-        dettagliOspite: { ordinamento: string; jobTitleIt: string };
+        dettagliOspite: {
+          ordinamento: string;
+          jobTitleIt: string;
+          nome: string;
+          cognome: string;
+        };
         featuredImage: { node: { guid: string } };
       }) => {
         return {
@@ -109,6 +114,8 @@ export const getGuests = async () => {
           ordinamento: item.dettagliOspite.ordinamento,
           image: item?.featuredImage?.node?.guid || null,
           tagLine: item?.dettagliOspite?.jobTitleIt || null,
+          nome: item?.dettagliOspite?.nome || null,
+          cognome: item?.dettagliOspite?.cognome || null,
         };
       }
     );
