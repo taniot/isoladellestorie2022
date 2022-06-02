@@ -10,10 +10,11 @@ interface MyContext {
     contents: valueof<typeof languageObject>;
     language: keyof typeof languageObject;
     isMainMenuOpen: boolean;
-
+    loading: boolean;
     guests: any[];
     events: any[];
   };
+  setLoading?: Dispatch<SetStateAction<boolean>>;
   setIsMainMenuOpen?: Dispatch<SetStateAction<boolean>>;
   setCurrentLanguage?: Dispatch<SetStateAction<keyof typeof languageObject>>;
 }

@@ -11,7 +11,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const [currentLanguage, setCurrentLanguage] =
     useState<keyof typeof languageObject>("en");
   const [isMainMenuOpen, setIsMainMenuOpen] = useState<boolean>(false);
-
+  const [loading, setLoading] = useState<boolean>(true);
   const [guests, setGuests] = useState<any[]>([]);
   const [events, setEvents] = useState<any[]>([]);
 
@@ -41,6 +41,8 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
     populateEvents()
       .then((data) => setEvents(data))
       .catch((error) => console.log(error));
+
+    setLoading(true);
   }, []);
 
   return (
@@ -50,10 +52,11 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
           contents: languageObject[currentLanguage],
           language: currentLanguage,
           isMainMenuOpen,
-
+          loading,
           guests,
           events,
         },
+        setLoading,
         setIsMainMenuOpen,
         setCurrentLanguage,
       }}

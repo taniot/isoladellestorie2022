@@ -9,6 +9,7 @@ import { getSponsors } from "../lib/wp/sponsor";
 import Eventi from "../components/eventi/eventi";
 import { useContext, useEffect, useState } from "react";
 import AppContext from "../store/AppContext";
+import SelectDay from "../components/selectDay/selectDay";
 
 const PageDefault = ({
   page,
@@ -36,6 +37,7 @@ const PageDefault = ({
           <div className={styles.pageHeader}>
             <h1>{page.parentTitle ? page.parentTitle : page.title}</h1>
             <h2>{page.parentTitle ? page.title : null}</h2>
+            <SelectDay days={null} selectedDay={null} setSelectedDay={null} />
           </div>
         </div>
 
@@ -52,7 +54,7 @@ const PageDefault = ({
         {guests && <Guests data={guests} />}
         {places && <Places data={places} />}
         {partner && <Partner data={partner} />}
-        {events && <Eventi data={events} />}
+        {events && <Eventi data={page.eventi} />}
       </div>
     </>
   );
@@ -90,7 +92,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   let partner = null;
   let events = null;
 
-  if (!page)
+  if (!page?.id)
     return {
       notFound: true,
     };

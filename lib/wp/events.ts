@@ -97,7 +97,7 @@ export const getEvents = async (tipologia?: string) => {
     // }
 
     result.sort((a: any, b: any) => a.dataOrd - b.dataOrd);
-    console.log({ result });
+    //console.log({ result });
     return result;
   } catch (error) {
     console.log({ error });

@@ -1,6 +1,5 @@
-import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
-import { Menu, Transition } from "@headlessui/react";
-import styles from "./selectDay.module.scss";
+import { Menu } from "@headlessui/react";
+import Link from "next/link";
 
 const SelectDay = ({
   days,
@@ -18,27 +17,24 @@ const SelectDay = ({
       </Menu.Button>
       <Menu.Items className="absolute mt-1 right-0">
         <Menu.Item>
-          {({ active }) => (
-            <a
-              className={`${active && "bg-blue-500 text-white"} ...`}
-              href="/account-settings"
-            >
-              Account settings
-            </a>
-          )}
+          <Link href="/programma/mercoledi-22-giugno-2022/">
+            <a>Mercoledì</a>
+          </Link>
         </Menu.Item>
         <Menu.Item>
-          {({ active }) => (
-            <a
-              className={`${active && "bg-blue-500 text-white"} ...`}
-              href="/documentation"
-            >
-              Documentation
-            </a>
-          )}
+          <Link href="/programma/venerdi-1-luglio-2022/">
+            <a>Venerdì</a>
+          </Link>
         </Menu.Item>
-        <Menu.Item disabled>
-          <span className="opacity-75 ...">Invite a friend (coming soon!)</span>
+        <Menu.Item>
+          <Link href="/programma/sabato-2-luglio-2022/">
+            <a>Sabato</a>
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link href="/programma/domenica-3-luglio-2022/">
+            <a>Domenica</a>
+          </Link>
         </Menu.Item>
       </Menu.Items>
     </Menu>

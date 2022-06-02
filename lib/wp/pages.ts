@@ -71,10 +71,10 @@ export const getPageByURI = async (uri: string) => {
     //return data?.page;
 
     return {
-      id: data?.page?.id,
-      title: data?.page?.title,
-      content: data?.page?.content,
-      template: data?.page?.dettagliPagina?.template,
+      id: data?.page?.id || null,
+      title: data?.page?.title || null,
+      content: data?.page?.content || null,
+      template: data?.page?.dettagliPagina?.template || null,
       parentTitle: data?.page?.parent?.node?.title || null,
       accoglienza: {
         tipologia:
