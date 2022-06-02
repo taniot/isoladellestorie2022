@@ -43,9 +43,15 @@ a {
   cursor: url(/images/cursor.png), auto;
 }
 
+a,
 a:hover,
+a:visited,
+a:any-link,
+a:focus,
+a > *,
 .icon,
-.hamburger-react {
+.hamburger-react,
+.logoImg {
   cursor: url(/images/cursor-hover.png), auto !important;
 }
 

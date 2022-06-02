@@ -1,43 +1,41 @@
-import { Menu } from "@headlessui/react";
+import styles from "./selectDay.module.scss";
+import classNames from "classnames";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const SelectDay = ({
-  days,
-  selectedDay,
-  setSelectedDay,
-}: {
-  days: any;
-  selectedDay: any;
-  setSelectedDay: any;
-}) => {
+const SelectDay = ({ page }: { page: any }) => {
+  const [daysEventi, setDaysEventi] = useState([]);
+
+  useEffect(() => {
+    const sortedChildren = (children: any) => {
+      return children.sort(
+        (a: any, b: any) => Date.parse(a.dateEventi) - Date.parse(b.dateEventi)
+      );
+    };
+
+    setDaysEventi(sortedChildren(page?.parent?.children));
+  }, [daysEventi, page.parent]);
+
   return (
-    <Menu as="div" className="relative">
-      <Menu.Button className="px-4 py-2 rounded bg-blue-600 text-white ...">
-        Options
-      </Menu.Button>
-      <Menu.Items className="absolute mt-1 right-0">
-        <Menu.Item>
-          <Link href="/programma/mercoledi-22-giugno-2022/">
-            <a>Mercoledì</a>
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
-          <Link href="/programma/venerdi-1-luglio-2022/">
-            <a>Venerdì</a>
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
-          <Link href="/programma/sabato-2-luglio-2022/">
-            <a>Sabato</a>
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
-          <Link href="/programma/domenica-3-luglio-2022/">
-            <a>Domenica</a>
-          </Link>
-        </Menu.Item>
-      </Menu.Items>
-    </Menu>
+    <div className={styles.giorniFestival}>
+      <ul>
+        {daysEventi.map((day: any, index: number) => {
+          const date = new Date(day.dateEventi);
+          return (
+            <li key={index}>
+              <Link href={day.uri}>
+                <a>
+                  <span className={classNames(styles.dayNumber)}>
+                    {date.getDate()}/{date.getMonth() + 1}
+                  </span>
+                </a>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+      <h4>I giorni del festival</h4>
+    </div>
   );
 };
 

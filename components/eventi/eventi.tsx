@@ -12,13 +12,10 @@ const Eventi = (info: any) => {
 
   useEffect(() => {
     let result: any[] | undefined = state?.events;
-    console.log({ result });
 
     if (result) {
       if (data.categoria) {
         result = result.filter((evento) => {
-          // console.log(evento.categoria.toLowerCase(), "evento");
-          // console.log(data.tipologia.toLowerCase(), "filtro");
           return (
             evento?.categoria?.toLowerCase() === data?.categoria?.toLowerCase()
           );
@@ -27,8 +24,6 @@ const Eventi = (info: any) => {
       console.log({ result });
       if (data.data) {
         result = result.filter((evento) => {
-          // console.log(evento.data, "evento");
-          // console.log(evento.data, "filtro");
           return evento.data == data.data;
         });
       }

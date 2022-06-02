@@ -1,18 +1,12 @@
 import styles from "./pageHeader.module.scss";
-import {
-  ArrowNarrowLeftIcon,
-  ArrowNarrowRightIcon,
-  ChevronDoubleLeftIcon,
-  ChevronDoubleRightIcon,
-  ChevronLeftIcon,
-} from "@heroicons/react/solid";
+import SelectDay from "../selectDay/selectDay";
+
 const PageHeader = ({ page }: { page: any }) => (
   <div className={styles.pageHeaderContainer}>
     <div className={styles.pageHeader}>
-      <h1>{page?.parentTitle || page?.title || `Titolo`}</h1>
-      <div className="flex items-center">
-        <h2>{page?.parentTitle ? page?.title : null} </h2>
-      </div>
+      <h1>{page?.parent?.title || page?.title || `Titolo`}</h1>
+      <h2>{page?.parent?.title ? page?.title : null}</h2>
+      {page.template === "eventi" && <SelectDay page={page} />}
     </div>
   </div>
 );

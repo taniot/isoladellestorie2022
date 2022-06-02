@@ -37,11 +37,13 @@ const Anteprima = () => {
                   key={ospite.title}
                   className={cls(styles.hero_name, styles.color2)}
                 >
-                  <span className={styles.lowLight}>{ospite.nome}</span>{" "}
-                  <span className={styles.highLight}>{ospite.cognome}</span>
-                  {index + 1 !== anteprima.length && (
-                    <span className={styles.trattino}>,</span>
-                  )}{" "}
+                  <a href="#">
+                    <span className={styles.lowLight}>{ospite.nome}</span>{" "}
+                    <span className={styles.highLight}>{ospite.cognome}</span>
+                    {index + 1 !== anteprima.length && (
+                      <span className={styles.trattino}>,</span>
+                    )}{" "}
+                  </a>
                 </li>
               );
             }

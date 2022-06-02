@@ -3,7 +3,7 @@
   background-color: var(--main-bg-color);
   .pageHeader {
     @apply w-10/12 mx-auto relative;
-    height: 85vh;
+
     justify-content: center;
     align-items: center;
     display: flex;
@@ -30,7 +30,7 @@
     background-color: var(--main-bg-color);
     .pageHeader {
       @apply w-10/12 mx-auto;
-      height: 35vh;
+
       text-align: center;
       justify-content: center;
       align-items: center;
@@ -51,12 +51,12 @@
   .pageHeaderContainer {
     background-color: var(--main-bg-color);
     position: relative;
-
+    padding: 50px 0;
     .pageHeader {
       @apply w-10/12 mx-auto;
-      height: 35vh;
+      min-height: 200px;
       text-align: center;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       display: flex;
       flex-direction: column;

@@ -28,7 +28,7 @@ const Header = () => {
                   src="/images/l-isola-delle-storie-logo-xvii-oriz.svg"
                   alt="logo"
                   layout="fill"
-                  className={styles.logo}
+                  className={cls(styles.logo, "logoImg")}
                   priority
                 />
               ) : (
@@ -36,7 +36,7 @@ const Header = () => {
                   src="/images/l-isola-delle-storie-logo-xvii.svg"
                   alt="logo"
                   layout="fill"
-                  className={styles.logo}
+                  className={cls(styles.logo, "logoImg")}
                   priority
                 />
               )}

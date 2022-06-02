@@ -22,6 +22,7 @@ const qGetEvents = gql`
           nascondiOraInizio
           finanziamentoIt
           finanziamentoEn
+          nascondiTitolo
         }
         categorieEventi {
           nodes {
@@ -46,8 +47,36 @@ const qGetEvents = gql`
   }
 `;
 
-export const ProgramFormat = (data: any) => {
-  console.log(data);
+export const setLuogoTipologiaGroups = (eventi: any) => {
+  let currentLuogo = null;
+  let currentTipologia = null;
+  let groups = [];
+
+  for (const evento of eventi) {
+    if (
+      evento.luogo !== currentLuogo ||
+      evento.tipologia !== currentTipologia
+    ) {
+      groups.push({
+        luogo: evento.luogo,
+        tipologia: evento.tipologia,
+        luogoName: evento.luogoName,
+        tipologiaName:
+          evento.tipologia === "segnaposto-a" ||
+          evento.tipologia === "segnaposto-b"
+            ? null
+            : evento.tipologiaName,
+      });
+      currentLuogo = evento.luogo;
+      currentTipologia = evento.tipologia;
+    }
+  }
+
+  return groups;
+};
+
+export const setOreGroups = (eventi: any) => {
+  return eventi;
 };
 
 /*
@@ -99,6 +128,7 @@ export const getEvents = async (tipologia?: string) => {
         luogoName: evento?.luoghiEventi?.nodes[0]?.name || null,
         eventoPrincipale: evento?.dettaglioEvento?.eventoPrincipale || false,
         nascondiOraInizio: evento?.dettaglioEvento?.nascondiOraInizio || false,
+        nascondiTitolo: evento?.dettaglioEvento?.nascondiTitolo || false,
       };
     });
 

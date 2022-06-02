@@ -15,7 +15,15 @@
 
     .contentContainer {
       .pageContentContainer {
-        @apply w-8/12 mx-auto my-20;
+        @apply w-8/12 mx-auto mt-20 mb-10;
+
+        h2 {
+          font-size: 3rem;
+          text-align: center;
+          color: var(--main-text-color);
+          line-height: 3.8rem;
+          margin-bottom: 0;
+        }
       }
     }
   }

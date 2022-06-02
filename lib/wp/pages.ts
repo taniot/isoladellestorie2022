@@ -26,6 +26,18 @@ const qGetPageByURI = gql`
         node {
           ... on Page {
             title
+            children {
+              nodes {
+                id
+                uri
+                ... on Page {
+                  dettagliPagina {
+                    template
+                    dateEventi
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -70,12 +82,30 @@ export const getPageByURI = async (uri: string) => {
     const data = await client.request(query, variables);
     //return data?.page;
 
+    let setChildren = [];
+
+    if (data?.page?.parent?.node?.children) {
+      const pageChildren = data?.page?.parent?.node?.children.nodes;
+
+      setChildren = pageChildren.map((child: any) => {
+        return {
+          id: child?.id,
+          uri: child?.uri,
+          template: child?.dettagliPagina?.template || null,
+          dateEventi: child?.dettagliPagina?.dateEventi || null,
+        };
+      });
+    }
     return {
       id: data?.page?.id || null,
       title: data?.page?.title || null,
       content: data?.page?.content || null,
       template: data?.page?.dettagliPagina?.template || null,
       parentTitle: data?.page?.parent?.node?.title || null,
+      parent: {
+        title: data?.page?.parent?.node?.title || null,
+        children: setChildren,
+      },
       accoglienza: {
         tipologia:
           data?.page?.dettagliPagina?.tipologiaAccoglienza?.slug || null,

@@ -1,27 +1,43 @@
-.button {
-  display: flex;
-  align-items: center;
-  width: 300px;
-  margin: 0 auto;
-  justify-content: center;
-}
+.giorniFestival {
+  margin-top: 1rem;
 
-.selected {
-  font-family: "AbsaraSans-TF-Light";
-  font-size: 1.6rem;
-  text-transform: uppercase;
-}
+  h4 {
+    font-family: "AbsaraSans";
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--main-text-color);
+    margin-bottom: 10px;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    @apply w-6/12 mx-auto;
+    display: flex;
+    justify-content: center;
+    li {
+      display: flex;
+      margin-bottom: 10px;
+      align-items: center;
+      .dayNumber {
+        display: flex;
+        font-size: 0.82rem;
+        border-radius: 50%;
+        border: 2px solid #7e7f7f;
+        height: 65px;
+        width: 65px;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        font-family: "MontSerrat";
+        letter-spacing: 0.1rem;
+        background-color: var(--secondary-bg-color);
+        color: var(--main-text-color);
+      }
 
-.selectorIcon {
-  @apply h-4 w-4;
-  color: var(--main-text-color);
-}
-
-.daySelectContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-
-  margin-bottom: 2rem;
+      .active {
+        background-color: var(--secondary-bg-color);
+        color: var(--main-text-color);
+      }
+    }
+  }
 }

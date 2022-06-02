@@ -11,7 +11,8 @@ const Programma = ({ evento }: { evento: any }) => (
     <span className={styles.time}>
       {evento.nascondiOraInizio ? "a seguire" : `ore ${evento.oraInizio}`}
     </span>
-    <h4 className={styles.title}>{evento.title}</h4>
+    {!evento.nascondiTitolo && <h4 className={styles.title}>{evento.title}</h4>}
+
     <div className={styles.description}>
       {parse(evento.descrizioneIt ? evento?.descrizioneIt?.trim() : "")}
     </div>
