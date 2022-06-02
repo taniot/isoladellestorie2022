@@ -1,8 +1,10 @@
 .borderContainer {
   display: flex;
-  border-radius: 50%;
-  border: 6px solid var(--main-bg-color);
-  // padding: 8px;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  border: 7px solid var(--main-bg-color);
+  border: 7px solid whitesmoke;
+
+  padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,9 +17,11 @@
   justify-content: center;
   align-items: center;
   max-width: 400px;
+  background-color: white;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 
   img {
-    border-radius: 50%;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
 
   .noImage {
@@ -28,6 +32,6 @@
     justify-content: center;
     align-items: center;
     background-color: #fefefe;
-    border-radius: 50%;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
 }

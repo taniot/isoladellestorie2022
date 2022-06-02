@@ -34,7 +34,7 @@ const qGetPageByURI = gql`
         tipologiaAccoglienza {
           slug
         }
-        tipologiaEventi {
+        categoriaEventi {
           slug
         }
         dateEventi
@@ -81,7 +81,7 @@ export const getPageByURI = async (uri: string) => {
           data?.page?.dettagliPagina?.tipologiaAccoglienza?.slug || null,
       },
       eventi: {
-        tipologia: data?.page?.dettagliPagina?.tipologiaEventi?.slug || null,
+        categoria: data?.page?.dettagliPagina?.categoriaEventi?.slug || null,
         data: data?.page?.dettagliPagina?.dateEventi || null,
       },
     };

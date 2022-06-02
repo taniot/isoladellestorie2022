@@ -10,6 +10,7 @@ import Eventi from "../components/eventi/eventi";
 import { useContext, useEffect, useState } from "react";
 import AppContext from "../store/AppContext";
 import SelectDay from "../components/selectDay/selectDay";
+import PageHeader from "../components/pageHeader/pageHeader";
 
 const PageDefault = ({
   page,
@@ -28,19 +29,11 @@ const PageDefault = ({
   const { state } = context;
 
   if (!page) return <div>No page</div>;
-  if (events) events = state?.events;
 
   return (
     <>
       <div className={styles.pageContainer}>
-        <div className={styles.pageHeaderContainer}>
-          <div className={styles.pageHeader}>
-            <h1>{page.parentTitle ? page.parentTitle : page.title}</h1>
-            <h2>{page.parentTitle ? page.title : null}</h2>
-            <SelectDay days={null} selectedDay={null} setSelectedDay={null} />
-          </div>
-        </div>
-
+        <PageHeader page={page} />
         <section className={styles.sectionContainer}>
           <div className={styles.contentContainer}>
             <div className={styles.pageContentContainer}>

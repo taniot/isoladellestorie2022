@@ -1,0 +1,42 @@
+.evento {
+  @apply w-6/12;
+  padding: 20px 30px;
+  border-right: 1px dashed var(--main-bg-color);
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: "AbsaraSans";
+  padding: 5px 10px 0 0px;
+  font-size: 1.3rem;
+  font-style: italic;
+  margin-top: 0.75rem;
+}
+
+.time {
+  font-family: "MontSerrat";
+  font-size: 0.9rem;
+  background-color: var(--main-bg-color);
+  padding: 5px 10px;
+  color: white;
+}
+
+.description {
+  padding: 5px 10px 0 0px;
+  font-family: "AbsaraSans-Thin";
+  font-size: 1.1rem;
+  line-height: 1.7rem;
+  margin-bottom: 1rem;
+
+  strong,
+  b {
+    font-family: "AbsaraSans";
+  }
+
+  a {
+    border-bottom: 1px dashed var(--main-bg-color);
+    &:hover {
+      color: var(--main-bg-color);
+    }
+  }
+}

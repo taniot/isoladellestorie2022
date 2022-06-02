@@ -11,13 +11,19 @@ const Anteprima = () => {
   const [anteprima, setAnteprima] = useState<any[]>([]);
 
   useEffect(() => {
-    if (state && state.guests.length > 0) {
-      const shuffled = state.guests
-        .filter((ospite) => ospite.nome && ospite.cognome)
-        .sort(() => 0.5 - Math.random());
+    const randomGuests = () => {
+      if (state && state.guests.length > 0) {
+        const shuffled = state.guests
+          .filter((ospite) => ospite.nome && ospite.cognome)
+          .sort(() => 0.5 - Math.random());
 
-      setAnteprima(shuffled.slice(0, 5));
-    }
+        setAnteprima(shuffled.slice(0, 5));
+      }
+    };
+
+    //setInterval(randomGuests, 5000);
+
+    randomGuests();
   }, [state]);
 
   return (

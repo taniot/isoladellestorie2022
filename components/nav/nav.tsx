@@ -60,12 +60,12 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/programma/">
+                <Link href="/programma/mercoledi-22-giugno-2022/">
                   <a onClick={closeMenu}>Programma</a>
                 </Link>
               </li>
               <li>
-                <Link href="/laboratori/">
+                <Link href="/laboratori/sabato-2-luglio-2022/">
                   <a onClick={closeMenu}>Laboratori</a>
                 </Link>
               </li>

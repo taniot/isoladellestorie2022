@@ -20,6 +20,8 @@ const qGetEvents = gql`
           infoEventoEn
           eventoPrincipale
           nascondiOraInizio
+          finanziamentoIt
+          finanziamentoEn
         }
         categorieEventi {
           nodes {
@@ -79,14 +81,22 @@ export const getEvents = async (tipologia?: string) => {
           evento?.dettaglioEvento.infoEventoEn ||
           evento?.dettaglioEvento?.infoEventoIt ||
           null,
+        finanziamentoIt: evento?.dettaglioEvento?.finanziamentoIt,
+        finanziamentoEn:
+          evento?.dettaglioEvento.finanziamentoEn ||
+          evento?.dettaglioEvento?.finanziamentoIt ||
+          null,
         dataOrd: Date.parse(
           evento?.dettaglioEvento?.dataEvento +
             " " +
             evento?.dettaglioEvento?.oraInizio
         ),
-        categoria: evento?.categorieEventi?.nodes[0]?.name || null,
-        tipologia: evento?.tipologieEventi?.nodes[0]?.name || null,
-        luogo: evento?.luoghiEventi?.nodes[0]?.name || null,
+        categoria: evento?.categorieEventi?.nodes[0]?.slug || null,
+        tipologia: evento?.tipologieEventi?.nodes[0]?.slug || null,
+        luogo: evento?.luoghiEventi?.nodes[0]?.slug || null,
+        categoriaName: evento?.categorieEventi?.nodes[0]?.name || null,
+        tipologiaName: evento?.tipologieEventi?.nodes[0]?.name || null,
+        luogoName: evento?.luoghiEventi?.nodes[0]?.name || null,
         eventoPrincipale: evento?.dettaglioEvento?.eventoPrincipale || false,
         nascondiOraInizio: evento?.dettaglioEvento?.nascondiOraInizio || false,
       };
