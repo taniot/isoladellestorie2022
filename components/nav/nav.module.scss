@@ -20,13 +20,14 @@
 }
 
 .navCointainer {
-  background-color: red;
+  //background-color: red;
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  padding: 25px 0;
 }
 
 .logoContainer,
@@ -50,7 +51,8 @@
 
     li {
       text-align: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      font-family: "AbsaraSans-Thin";
     }
 
     &.visitatori {
