@@ -73,7 +73,6 @@ const Guest = ({ guest }: { guest: any }) => {
               ))}
             </div>
           </div>
-
           <Back link="/ospiti/" text="Torna agli Ospiti" />
         </div>
       </div>

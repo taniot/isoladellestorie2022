@@ -1,9 +1,8 @@
 .borderContainer {
   display: flex;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  border: 7px solid white;
-
-  padding: 8px;
+  border-width: 5px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

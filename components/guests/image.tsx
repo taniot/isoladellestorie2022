@@ -6,14 +6,16 @@ const GuestImage = ({
   image,
   width = 200,
   height = 200,
+  borderColor = "#fff",
 }: {
   title: string;
   image?: string;
   width?: number;
   height?: number;
+  borderColor?: string;
 }) => {
   return (
-    <div className={styles.borderContainer}>
+    <div className={styles.borderContainer} style={{ borderColor }}>
       <div className={styles.image_container} style={{ width, height }}>
         {image ? (
           <Image

@@ -23,7 +23,11 @@ const Guests = (info: any) => {
                 <div key={uuidv4()} className={styles.grid_item}>
                   <Link href={`/ospiti/${data.slug}/`}>
                     <a className={styles.grid_item_link}>
-                      <GuestImage title={data.title} image={data.image} />
+                      <GuestImage
+                        title={data.title}
+                        image={data.image}
+                        borderColor="#e6cd00"
+                      />
 
                       <h2 className={styles.grid_item_title}>{data.title}</h2>
                       <p className={styles.grid_item_description}>
