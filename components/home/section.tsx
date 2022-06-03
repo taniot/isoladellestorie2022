@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Component, FC } from "react";
+import { FC } from "react";
 import styles from "./section.module.scss";
-
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 interface Section {
   title: string;
   bgColor?: string;
@@ -15,13 +15,14 @@ interface Section {
 }
 
 const HomeSection: FC<Section> = (props) => {
+  const isMobile = useMediaQuery("(max-width: 639px)");
   const {
     title,
     bgColor = "white",
     linkTo,
     children,
     showButton = true,
-    paddingY = 100,
+    paddingY = isMobile ? 50 : 100,
   } = props;
   return (
     <div

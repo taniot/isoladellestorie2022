@@ -1,5 +1,5 @@
 .container {
-  @apply w-11/12 mx-auto;
+  @apply w-10/12 mx-auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +7,7 @@
   .hero_list {
     display: block;
     text-align: center;
-    font-size: 2.65rem;
+    font-size: 2rem;
     font-family: "AbsaraSans-Thin";
     letter-spacing: -0.1rem;
     line-height: 1.6;
