@@ -3,9 +3,10 @@ import parse from "html-react-parser";
 import GuestImage from "../guests/image";
 import cls from "classnames";
 import Back from "../back/back";
-import { v4 as uuidv4 } from "uuid";
-import { compareAsc, format } from "date-fns";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+
 const Guest = ({ guest }: { guest: any }) => {
+  const isMobile = useMediaQuery("(max-width: 639px)");
   return (
     <section className={styles.guest}>
       <div className={styles.guestContentContainer}>
@@ -14,8 +15,8 @@ const Guest = ({ guest }: { guest: any }) => {
             <GuestImage
               title={guest.title}
               image={guest.image}
-              width={280}
-              height={280}
+              width={isMobile ? 200 : 280}
+              height={isMobile ? 200 : 280}
             />
           </div>
 
