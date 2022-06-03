@@ -57,8 +57,8 @@ const Footer = () => {
               Cookie Policy
             </a>{" "}
             -{" "}
-            <Link href="/credits/">
-              <a>Credits</a>
+            <Link href="/info-visitatori/contatti/">
+              <a>Contatti</a>
             </Link>
           </p>
         </div>

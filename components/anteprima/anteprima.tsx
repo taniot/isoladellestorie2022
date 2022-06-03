@@ -12,7 +12,7 @@ const Anteprima = () => {
 
   useEffect(() => {
     const randomGuests = () => {
-      if (state && state.guests.length > 0) {
+      if (state && state.guests?.length > 0) {
         const shuffled = state.guests
           .filter((ospite) => ospite.nome && ospite.cognome)
           .sort(() => 0.5 - Math.random());

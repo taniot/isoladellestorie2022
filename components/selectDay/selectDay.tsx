@@ -26,7 +26,13 @@ const SelectDay = ({ page }: { page: any }) => {
               <Link href={day.uri}>
                 <a>
                   <span className={classNames(styles.dayNumber)}>
-                    {date.getDate()}/{date.getMonth() + 1}
+                    {date.getDate() >= 10
+                      ? date.getDate()
+                      : `0` + date.getDate()}
+                    /
+                    {date.getMonth() >= 10
+                      ? date.getMonth() + 1
+                      : `0` + (date.getMonth() + 1)}
                   </span>
                 </a>
               </Link>

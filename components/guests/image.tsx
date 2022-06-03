@@ -22,7 +22,7 @@ const GuestImage = ({
             priority={true}
             layout="fill"
             objectFit="cover"
-            objectPosition="center"
+            objectPosition="top"
           />
         ) : (
           <div className={styles.noImage}>

@@ -8,12 +8,43 @@
   padding-right: 50px;
 }
 
+.progContainer {
+  @apply w-7/12;
+  padding-left: 50px;
+}
+
+.timeContainer {
+  @apply w-4/12;
+  border-right: 1px dashed var(--main-text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding-right: 50px;
+}
+
+.labContainer {
+  @apply w-8/12;
+  padding-left: 50px;
+}
+
 .where {
-  font-size: 2.1rem;
+  font-size: 1.8rem;
   line-height: 1.25;
   margin-bottom: 0;
   font-family: "AbsaraSans";
   text-align: right;
+}
+
+.mainTime {
+  font-size: 1.4rem;
+  line-height: 1.25;
+  margin-bottom: 0;
+  font-family: "MontSerrat";
+  text-align: right;
+  background-color: var(--new-color);
+  padding: 5px 13px;
+  color: white;
 }
 
 .theme {

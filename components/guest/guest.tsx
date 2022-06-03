@@ -4,6 +4,7 @@ import GuestImage from "../guests/image";
 import cls from "classnames";
 import { CgArrowLongLeft } from "react-icons/cg";
 import Link from "next/link";
+import Back from "../back/back";
 
 const Guest = ({ guest }: { guest: any }) => {
   return (
@@ -53,15 +54,7 @@ const Guest = ({ guest }: { guest: any }) => {
         <div className={styles.guestBody}>
           <div className={styles.text}>
             {parse(guest.descrizioneIt ? guest.descrizioneIt : "")}
-
-            <Link href="/ospiti/" scroll={false}>
-              <a className={styles.back}>
-                <span>
-                  <CgArrowLongLeft />
-                </span>
-                <span className={styles.textBack}>Torna agli Ospiti</span>
-              </a>
-            </Link>
+            <Back link="/ospiti/" text="Torna agli Ospiti" />
           </div>
         </div>
       </div>

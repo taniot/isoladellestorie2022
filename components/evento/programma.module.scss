@@ -1,5 +1,5 @@
 .evento {
-  padding: 20px 30px;
+  margin-bottom: 2rem;
   &:last-child {
     margin-bottom: 0;
   }
@@ -7,27 +7,26 @@
 
 .title {
   font-family: "AbsaraSans";
-  padding: 5px 10px 0 0px;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
   font-style: italic;
-  margin-top: 0.75rem;
 }
 
 .time {
   font-family: "MontSerrat";
-  font-size: 0.9rem;
-  background-color: var(--main-bg-color);
-  padding: 5px 10px;
+  font-size: 0.785rem;
+  background-color: var(--new-color);
+  padding: 3px 8px;
   color: white;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-radius: 5px;
 }
 
 .description {
-  padding: 5px 10px 0 0px;
   font-family: "AbsaraSans-Thin";
-  font-size: 1.19rem;
-  line-height: 1.75;
-  margin-bottom: 1rem;
-
+  font-size: 1.1rem;
   strong,
   b {
     font-family: "AbsaraSans";

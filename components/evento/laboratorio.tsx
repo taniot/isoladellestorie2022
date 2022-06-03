@@ -10,21 +10,25 @@ const Laboratorio = ({ evento }: { evento: any }) => {
         evento.eventoPrincipale ? styles.main : ""
       )}
     >
-      <span className={styles.time}>
-        {evento.nascondiOraInizio ? "a seguire" : `ore ${evento.oraInizio}`}
-        {evento.oraFine && ` - ${evento.oraFine}`}
-      </span>
       <h4 className={styles.title}>{evento.title}</h4>
+      <p className={styles.where}>{evento.luogoName}</p>
       <div className={styles.description}>
         {parse(evento.descrizioneIt ? evento.descrizioneIt : "")}
+        {evento.noteEtaRichiesta}
       </div>
       <div className={styles.description}>
         {parse(evento.infoIt ? evento.infoIt : "")}
       </div>
 
-      <div className={styles.description}>
+      <div className={styles.finanziamento}>
         {parse(evento.finanziamentoIt ? evento.finanziamentoIt : "")}
       </div>
+      {(evento.etaRichiesta || evento.maxIscritti) && (
+        <div className={styles.info}>
+          <span className={styles.etaLabel}>{evento.etaRichiesta}</span>
+          <span className={styles.maxIscrittiLabel}>{evento.maxIscritti}</span>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,9 +1,10 @@
-import styles from "./news.module.scss";
+import styles from "./newsLight.module.scss";
 import Link from "next/link";
 import parse from "html-react-parser";
 import Image from "next/image";
-Image;
-const News = ({ data }: { data: any }) => {
+import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
+
+const NewsLight = ({ data }: { data: any }) => {
   if (!data) return null;
 
   return (
@@ -22,12 +23,20 @@ const News = ({ data }: { data: any }) => {
           </div>
         </div>
         <div className={styles.text}>
-          <h2>{data.title}</h2>
+          <Link href={`/news/${data.slug}/`}>
+            <a>
+              <h2>{data.title}</h2>
+            </a>
+          </Link>
           <div className={styles.excerpt}>{parse(data.excerpt)}</div>
+          <div className={styles.readMore}>
+            <span>Leggi di più</span>
+            <ArrowNarrowRightIcon className="w-5 h-5 ml-2" />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default News;
+export default NewsLight;

@@ -1,50 +1,55 @@
-.contentContainer {
-  @apply w-10/12 md:w-7/12 mx-auto;
-  .pageContentContainer {
-    padding: 20px;
-
-    .pageContent {
-      font-family: "font77190";
-      font-weight: normal;
-      font-size: 1.4rem;
-      line-height: 2.4rem;
-      p {
-        margin-bottom: 2rem;
-      }
-    }
-  }
+.whereContainer {
+  @apply w-4/12;
+  border-right: 1px dashed var(--main-text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding-right: 50px;
 }
 
-.grid_list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
-  justify-content: space-between;
+.where {
+  font-size: 1.8rem;
+  line-height: 1.25;
+  margin-bottom: 0;
+  font-family: "AbsaraSans";
+  text-align: right;
+}
 
-  .grid_item {
-    position: relative;
-    height: auto;
-    width: 33.333%;
-    padding: 20px;
+.theme {
+  font-size: 1.3rem;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-family: "AbsaraSans";
+  color: var(--main-bg-color);
+}
 
-    .image_container {
-      img {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        transition: all 5s ease-in-out;
-        border: 2px dashed #222 !important;
-        padding: 5px !important;
-      }
-    }
+.place {
+  @apply w-full  flex;
+}
 
-    .grid_item_content {
-      margin-top: 20px;
-      h2 {
-        font-family: "font77190";
-        font-size: 1rem;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
+.title {
+  font-family: "AbsaraSans";
+
+  font-size: 1.2rem;
+}
+
+.description {
+  padding: 5px 10px 0 0px;
+  font-family: "AbsaraSans-Thin";
+  font-size: 1.19rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+
+  strong,
+  b {
+    font-family: "AbsaraSans";
+  }
+
+  a {
+    border-bottom: 1px dashed var(--main-bg-color);
+    &:hover {
+      color: var(--main-bg-color);
     }
   }
 }

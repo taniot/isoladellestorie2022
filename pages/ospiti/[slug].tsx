@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getGuests, getGuestBySlug } from "../../lib/wp/guests";
-import styles from "../../styles/pageDefault.module.scss";
 
 import Guest from "../../components/guest/guest";
 

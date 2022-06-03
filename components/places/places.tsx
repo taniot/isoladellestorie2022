@@ -1,52 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import InfiniteScroll from "react-infinite-scroll-component";
+import { setLuogoGroups } from "../../lib/wp/places";
 
 import styles from "./places.module.scss";
 
 const Places = ({ data }: { data: any }) => {
-  const [posts, setPosts] = useState(data.slice(0, 9));
-  const [hasMore, setHasMore] = useState(true);
-
-  const getMorePost = async () => {
-    const res = data.slice(posts.length, posts.length + 9);
-    console.log({ data });
-    console.log({ res });
-    if (!res) setHasMore(false);
-    setPosts((posts: any) => [...posts, ...res]);
-  };
+  const [placesGroups, setPlacesGroups] = useState<any[]>([]);
+  useEffect(() => {
+    if (data) {
+      const groups = setLuogoGroups(data);
+      setPlacesGroups(groups);
+    }
+  }, [data]);
 
   return (
-    <>
-      <div className={styles.contentContainer}>
-        <div className={styles.pageContentContainer}>
-          <InfiniteScroll
-            dataLength={posts.length}
-            next={getMorePost}
-            hasMore={hasMore}
-            loader={<h3></h3>}
-            endMessage={<h4>Nothing more to show</h4>}
-          >
-            <div className={styles.grid_list}>
-              {posts.map((data: any) => (
-                <div key={uuidv4()} className={styles.grid_item}>
-                  <div className={styles.grid_item_inner}>
-                    <div className={styles.grid_item_content}>
-                      <h2 className={styles.grid_item_title}>{data.title}</h2>
-                      <p>{data.address}</p>
-                      <p>{data.city}</p>
-                      <p>{data.email.toLowerCase()}</p>
-                      <p>{data.phone1}</p>
-                      <p>{data.phone2}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+    <div className="w-8/12 mx-auto my-20">
+      {placesGroups.map((group: any) => {
+        let places = data
+          .filter((place: any) => place.city.slug === group.slug)
+          .sort((a: any, b: any) => a.title.localeCompare(b.title));
+
+        return (
+          <div key={uuidv4()} className="flex mb-10">
+            <div className={styles.whereContainer}>
+              <p className={styles.where}>{group.luogo.toUpperCase()}</p>
+              {group.distanza && (
+                <p className={styles.theme}>{group.distanza} km da Gavoi</p>
+              )}
             </div>
-          </InfiniteScroll>
-        </div>
-      </div>
-    </>
+
+            <div className="">
+              {places.map((place: any) => {
+                return (
+                  <div key={uuidv4()} className={styles.place}>
+                    <div className={styles.title}>{place.title}</div>
+                    <div>{place.address}</div>
+                    <div>{place.phone1}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 

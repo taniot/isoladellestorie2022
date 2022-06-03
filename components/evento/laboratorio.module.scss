@@ -1,32 +1,60 @@
 .evento {
   @apply w-full;
-
   margin-bottom: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .title {
   font-family: "AbsaraSans";
-  padding: 5px 10px 0 0px;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
   font-style: italic;
-  margin-top: 0.75rem;
 }
 
-.time {
+.info {
+  border-top: 1px dashed #efefef;
+  border-bottom: 1px dashed #efefef;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.where {
+  font-family: "AbsaraSans";
+  text-transform: uppercase;
+  color: #78b960;
+}
+
+.etaLabel {
+  background-color: var(--secondary-bg-color);
+  padding: 3px 8px;
   font-family: "MontSerrat";
-  font-size: 0.9rem;
-  background-color: var(--main-bg-color);
-  padding: 5px 10px;
-  color: white;
+  color: var(--main-text-color);
+  font-size: 0.785rem;
+  border-radius: 5px;
+
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.maxIscrittiLabel {
+  background-color: var(--secondary-bg-color);
+  padding: 3px 8px;
+  font-family: "MontSerrat";
+  color: var(--main-text-color);
+  font-size: 0.8rem;
+  border-radius: 5px;
+
+  display: inline-block;
 }
 
 .description {
-  padding: 5px 10px 0 0px;
+  padding: 5px 0 0 0;
   font-family: "AbsaraSans-Thin";
   font-size: 1.1rem;
-  line-height: 1.7rem;
-  margin-bottom: 1rem;
-
   strong,
   b {
     font-family: "AbsaraSans";
@@ -38,4 +66,10 @@
       color: var(--main-bg-color);
     }
   }
+}
+
+.finanziamento {
+  padding: 5px 0 0px;
+  font-family: "AbsaraSans";
+  color: var(--main-text-color);
 }

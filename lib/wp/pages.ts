@@ -43,6 +43,8 @@ const qGetPageByURI = gql`
       }
       dettagliPagina {
         template
+        subtitleIt
+        subtitleEn
         tipologiaAccoglienza {
           slug
         }
@@ -96,12 +98,17 @@ export const getPageByURI = async (uri: string) => {
         };
       });
     }
+    console.log(data.page.dettagliPagina);
     return {
       id: data?.page?.id || null,
       title: data?.page?.title || null,
+      subtitleIt: data?.page?.dettagliPagina?.subtitleIt || null,
+      subtitleEn:
+        data?.page?.dettagliPagina?.subtitleEn ||
+        data?.page?.dettagliPagina?.subtitleIt ||
+        null,
       content: data?.page?.content || null,
       template: data?.page?.dettagliPagina?.template || null,
-      parentTitle: data?.page?.parent?.node?.title || null,
       parent: {
         title: data?.page?.parent?.node?.title || null,
         children: setChildren,

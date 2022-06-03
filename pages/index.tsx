@@ -6,6 +6,7 @@ import { getPosts } from "../lib/wp/news";
 import HomePartner from "../components/home/partner";
 import { getSponsors } from "../lib/wp/sponsor";
 import HomeSection from "../components/home/section";
+import { isArray } from "util";
 const Home = ({ news, sponsors }: { news: {}; sponsors: {} }) => {
   const ospitiSection = {
     title: "Scopri tutti gli ospiti",
@@ -15,7 +16,7 @@ const Home = ({ news, sponsors }: { news: {}; sponsors: {} }) => {
 
   const newsSection = {
     title: "Leggi tutte le news",
-    url: "#",
+    url: "/news/",
     target: "",
   };
 
@@ -48,8 +49,12 @@ const Home = ({ news, sponsors }: { news: {}; sponsors: {} }) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   let guests = null;
-  let news = await getPosts("IT", 1);
+  let news = await getPosts(1, "IT");
   let sponsors = await getSponsors("sostenuto-da");
+
+  if (Array.isArray(news)) {
+    news = news[0];
+  }
 
   return {
     props: {

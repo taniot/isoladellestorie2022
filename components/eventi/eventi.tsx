@@ -21,13 +21,11 @@ const Eventi = (info: any) => {
           );
         });
       }
-      console.log({ result });
       if (data.data) {
         result = result.filter((evento) => {
           return evento.data == data.data;
         });
       }
-      console.log({ result });
     }
 
     setEventi(result);

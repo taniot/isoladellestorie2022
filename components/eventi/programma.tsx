@@ -15,18 +15,18 @@ const ProgrammaList = ({ eventi }: { eventi: any }) => {
 
   useEffect(() => {
     const groups = setLuogoTipologiaGroups(eventi);
-    console.log({ groups });
 
     setEventiGroups(groups);
   }, [eventi]);
 
   return (
     <section>
-      <div className="w-10/12 mx-auto">
+      <div className="w-8/12 mx-auto">
         {eventiGroups?.map((group, index) => {
           let result = eventi.filter(
-            (gae: any) =>
-              gae.luogo === group.luogo && gae.tipologia === group.tipologia
+            (evento: any) =>
+              evento.luogo === group.luogo &&
+              evento.tipologia === group.tipologia
           );
           return (
             <div
@@ -37,7 +37,7 @@ const ProgrammaList = ({ eventi }: { eventi: any }) => {
                 <p className={styles.where}>{group.luogoName.toUpperCase()}</p>
                 <p className={styles.theme}>{group.tipologiaName}</p>
               </div>
-              <div className="w-7/12">
+              <div className={styles.progContainer}>
                 {result.map((evento: any) => (
                   <Evento key={evento.id} evento={evento} />
                 ))}

@@ -120,7 +120,7 @@
   .menu {
     @apply w-3/12;
     &.visitatori {
-      order: 1;
+      order: 3;
       display: block;
     }
 
@@ -133,7 +133,7 @@
     }
 
     &.chisiamo {
-      order: 3;
+      order: 1;
       display: block;
     }
 
@@ -156,7 +156,7 @@
         text-transform: uppercase;
 
         a {
-          font-size: 1.2rem;
+          font-size: 1rem;
           padding-bottom: 5px;
           border-bottom: 1px solid var(--secondary-bg-color);
           display: inline-block;

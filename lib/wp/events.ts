@@ -23,6 +23,10 @@ const qGetEvents = gql`
           finanziamentoIt
           finanziamentoEn
           nascondiTitolo
+          etaRichiesta
+          noteEtaRichiesta
+          maxIscritti
+          prenotazioneOnline
         }
         categorieEventi {
           nodes {
@@ -76,7 +80,25 @@ export const setLuogoTipologiaGroups = (eventi: any) => {
 };
 
 export const setOreGroups = (eventi: any) => {
-  return eventi;
+  let currentOraInizio = null;
+  let currentOraFine = null;
+  let groups = [];
+
+  for (const evento of eventi) {
+    if (
+      evento.oraInizio !== currentOraInizio ||
+      evento.oraFine !== currentOraFine
+    ) {
+      groups.push({
+        oraInizio: evento.oraInizio,
+        oraFine: evento.oraFine,
+      });
+      currentOraInizio = evento.oraInizio;
+      currentOraFine = evento.oraFine;
+    }
+  }
+
+  return groups;
 };
 
 /*
@@ -100,7 +122,8 @@ export const getEvents = async (tipologia?: string) => {
         data: evento?.dettaglioEvento?.dataEvento,
         oraInizio: evento?.dettaglioEvento?.oraInizio || null,
         oraFine: evento?.dettaglioEvento?.oraFine || null,
-        descrizioneIt: evento?.dettaglioEvento?.descrizioneEventoIt || null,
+        descrizioneIt:
+          changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt) || null,
         descrizioneEn:
           evento?.dettaglioEvento?.descrizioneEventoEn ||
           evento?.dettaglioEvento?.descrizioneEventoIt ||
@@ -120,6 +143,11 @@ export const getEvents = async (tipologia?: string) => {
             " " +
             evento?.dettaglioEvento?.oraInizio
         ),
+        dataOrdFine: Date.parse(
+          evento?.dettaglioEvento?.dataEvento +
+            " " +
+            evento?.dettaglioEvento?.oraFine
+        ),
         categoria: evento?.categorieEventi?.nodes[0]?.slug || null,
         tipologia: evento?.tipologieEventi?.nodes[0]?.slug || null,
         luogo: evento?.luoghiEventi?.nodes[0]?.slug || null,
@@ -129,18 +157,27 @@ export const getEvents = async (tipologia?: string) => {
         eventoPrincipale: evento?.dettaglioEvento?.eventoPrincipale || false,
         nascondiOraInizio: evento?.dettaglioEvento?.nascondiOraInizio || false,
         nascondiTitolo: evento?.dettaglioEvento?.nascondiTitolo || false,
+        etaRichiesta: evento?.dettaglioEvento?.etaRichiesta || null,
+        noteEtaRichiesta: evento?.dettaglioEvento?.noteEtaRichiesta || null,
+        maxIscritti: evento?.dettaglioEvento?.maxIscritti || null,
+        prenotazioneOnline:
+          evento?.dettaglioEvento?.prenotazioneOnline || false,
       };
     });
 
-    // if (tipologia) {
-    //   result = result.filter((sponsor: any) => sponsor.type === tipologia);
-    // }
-
-    result.sort((a: any, b: any) => a.dataOrd - b.dataOrd);
-    //console.log({ result });
+    result.sort(
+      (a: any, b: any) => a.dataOrd - b.dataOrd || a.dataOrdFine - b.dataOrdFine
+    );
     return result;
   } catch (error) {
     console.log({ error });
     return null;
   }
+};
+
+const changeLinkGuest = (text: string) => {
+  return text.replaceAll(
+    "https://cms2022.isoladellestorie.it/guests/",
+    "/ospiti/"
+  );
 };

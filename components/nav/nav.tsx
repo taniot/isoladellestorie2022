@@ -49,6 +49,16 @@ const Nav = () => {
                   <a onClick={closeMenu}>Dove Mangiare</a>
                 </Link>
               </li>
+              <li>
+                <Link href="/info-visitatori/sostieni-lisola/">
+                  <a onClick={closeMenu}>Sostieni L’Isola</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/info-visitatori/contatti/">
+                  <a onClick={closeMenu}>Contatti</a>
+                </Link>
+              </li>
             </ul>
           </div>
           <div className={cls(styles.menu, styles.main)}>
@@ -71,8 +81,11 @@ const Nav = () => {
               </li>
 
               <li>
-                <a href="#">News & Stampa</a>
+                <Link href="/news/">
+                  <a onClick={closeMenu}>News & Stampa</a>
+                </Link>
               </li>
+
               <li>
                 <Link href="/sponsor/">
                   <a onClick={closeMenu}>Sponsor</a>
