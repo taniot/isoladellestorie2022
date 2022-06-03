@@ -15,7 +15,7 @@ const LaboratoriList = ({ eventi }: { eventi: any }) => {
   }, [eventi]);
 
   return (
-    <div className="w-9/12 mx-auto">
+    <div className="w-full mx-auto">
       {eventiGroups?.map((group, index) => {
         let result = eventi?.filter(
           (evento: any) =>

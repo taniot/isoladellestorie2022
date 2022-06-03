@@ -21,7 +21,7 @@ const ProgrammaList = ({ eventi }: { eventi: any }) => {
 
   return (
     <section>
-      <div className="w-8/12 mx-auto">
+      <div className="w-10/12 mx-auto">
         {eventiGroups?.map((group, index) => {
           let result = eventi.filter(
             (evento: any) =>

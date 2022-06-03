@@ -2,7 +2,8 @@ import styles from "../../styles/pageDefault.module.scss";
 import HomePartner from "../home/partner";
 import HomeSection from "../home/section";
 
-const Partner = ({ data }: { data: any }) => {
+const Partner = (info: any) => {
+  const { data, page } = info;
   return (
     <>
       <div className={styles.contentContainer}>

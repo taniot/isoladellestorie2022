@@ -2,7 +2,8 @@ import { v4 as uuidv4 } from "uuid";
 import NewsLight from "../news/newsLight";
 import styles from "./newsList.module.scss";
 
-const NewsList = ({ data }: { data: any }) => {
+const NewsList = (info: any) => {
+  const { data, page } = info;
   return (
     <div className={styles.container}>
       {!data && <div>No news found</div>}

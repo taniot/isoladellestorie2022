@@ -35,6 +35,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       guest,
     },
+    revalidate: 10,
   };
 };
 

@@ -1,11 +1,13 @@
 .whereContainer {
-  @apply w-4/12;
-  border-right: 1px dashed var(--main-text-color);
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
-  padding-right: 50px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.placesContainer {
+  @apply flex flex-wrap;
+  margin-top: 10px;
 }
 
 .where {
@@ -13,33 +15,67 @@
   line-height: 1.25;
   margin-bottom: 0;
   font-family: "AbsaraSans";
-  text-align: right;
+  text-align: center;
+
+  &:after {
+    content: "";
+    border-bottom: 1px dashed var(--main-text-color);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    display: block;
+
+    width: 200px;
+  }
 }
 
 .theme {
-  font-size: 1.3rem;
-  margin-bottom: 0;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
-  font-family: "AbsaraSans";
-  color: var(--main-bg-color);
+  font-family: "MontSerrat";
+  text-align: right;
+  background-color: var(--new-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .place {
-  @apply w-full  flex;
+  @apply w-4/12 mb-5;
+}
+.placeBox {
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px;
+  height: 100%;
+  &:nth-last-col {
+    margin-right: 0;
+  }
+  border: 1px solid #ccc;
 }
 
 .title {
   font-family: "AbsaraSans";
+  font-size: 1.1rem;
+}
 
-  font-size: 1.2rem;
+.icons {
+  margin-top: 15px;
+}
+
+.icon {
+  background-color: var(--secondary-bg-color);
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--main-text-color);
+  margin-right: 5px;
 }
 
 .description {
-  padding: 5px 10px 0 0px;
-  font-family: "AbsaraSans-Thin";
-  font-size: 1.19rem;
+  font-family: "MontSerrat";
+  font-size: 0.875rem;
   line-height: 1.75;
-  margin-bottom: 1rem;
 
   strong,
   b {

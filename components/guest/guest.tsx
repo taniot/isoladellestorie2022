@@ -2,9 +2,9 @@ import styles from "./guest.module.scss";
 import parse from "html-react-parser";
 import GuestImage from "../guests/image";
 import cls from "classnames";
-import { CgArrowLongLeft } from "react-icons/cg";
-import Link from "next/link";
 import Back from "../back/back";
+import { v4 as uuidv4 } from "uuid";
+import dateFormat from "dateformat";
 
 const Guest = ({ guest }: { guest: any }) => {
   return (
@@ -54,8 +54,27 @@ const Guest = ({ guest }: { guest: any }) => {
         <div className={styles.guestBody}>
           <div className={styles.text}>
             {parse(guest.descrizioneIt ? guest.descrizioneIt : "")}
-            <Back link="/ospiti/" text="Torna agli Ospiti" />
+            <div>
+              <h2>Eventi</h2>
+              {guest?.eventi?.map((evento: any) => (
+                <div key={uuidv4()}>
+                  <p className={styles.dataEvento}>
+                    {dateFormat(
+                      Date.parse(evento?.dettaglioEvento?.dataEvento),
+                      "dd/mm/yyyy"
+                    )}{" "}
+                    ore {evento?.dettaglioEvento?.oraInizio}
+                    {evento?.tipologieEventi?.nodes[0]?.name} - {evento?.title}
+                  </p>
+                  <p className={styles.dataEvento}>
+                    {evento?.luoghiEventi?.nodes[0]?.name}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
+
+          <Back link="/ospiti/" text="Torna agli Ospiti" />
         </div>
       </div>
     </section>

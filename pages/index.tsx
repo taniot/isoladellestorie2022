@@ -6,7 +6,6 @@ import { getPosts } from "../lib/wp/news";
 import HomePartner from "../components/home/partner";
 import { getSponsors } from "../lib/wp/sponsor";
 import HomeSection from "../components/home/section";
-import { isArray } from "util";
 const Home = ({ news, sponsors }: { news: {}; sponsors: {} }) => {
   const ospitiSection = {
     title: "Scopri tutti gli ospiti",

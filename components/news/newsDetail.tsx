@@ -32,8 +32,9 @@ const NewsDetail = ({ data }: { data: any }) => {
                 </div>
                 <div className={styles.excerpt}>{parse(data.excerpt)}</div>
               </div>
-
-              <div className={styles.content}>{parse(data.content)}</div>
+              {data?.content && (
+                <div className={styles.content}>{parse(data.content)}</div>
+              )}
 
               {data.dettagliArticoli?.comunicatoStampa?.guid && (
                 <div className={styles.download}>

@@ -45,6 +45,38 @@ const qGetGuest = gql`
         jobTitleEn
         descrizioneIt
         descrizioneEn
+        ospiteEvento {
+          ... on Evento {
+            title
+            categorieEventi {
+              nodes {
+                name
+                slug
+              }
+            }
+            luoghiEventi {
+              nodes {
+                name
+                slug
+              }
+            }
+            tipologieEventi {
+              nodes {
+                name
+                slug
+              }
+            }
+            dettaglioEvento {
+              descrizioneEventoIt
+              descrizioneEventoEn
+              dataEvento
+              oraInizio
+              oraFine
+              nascondiTitolo
+              nascondiOraInizio
+            }
+          }
+        }
       }
       featuredImage {
         node {
@@ -78,6 +110,7 @@ export const getGuestBySlug = async (slug: string) => {
       jobTitleEn: ospite?.dettagliOspite?.jobTitleEn || null,
       descrizioneIt: ospite?.dettagliOspite?.descrizioneIt || null,
       descrizioneEn: ospite?.dettagliOspite?.descrizioneEn || null,
+      eventi: ospite?.dettagliOspite?.ospiteEvento || [],
     };
   } catch (error) {
     console.log({ error });

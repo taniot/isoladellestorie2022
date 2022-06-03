@@ -2,15 +2,11 @@ import styles from "./footer.module.scss";
 import Image from "next/image";
 import { GrFacebookOption, GrInstagram, GrTwitter } from "react-icons/gr";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-
 import Script from "next/script";
 import Link from "next/link";
-const Iubenda = require("react-iubenda-policy");
 
 const Footer = () => {
   const isMobile = useMediaQuery("(max-width: 767px)");
-  const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1023px)");
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   return (
     <footer className={styles.footer}>

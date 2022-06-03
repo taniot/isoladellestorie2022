@@ -2,9 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import AppContext from "../../store/AppContext";
 import ProgrammaList from "./programma";
 import LaboratoriList from "./laboratori";
+import styles from "./eventi.module.scss";
+import parse from "html-react-parser";
 
 const Eventi = (info: any) => {
-  const { data } = info;
+  const { data, page } = info;
   const context = useContext(AppContext);
   const { state, setLoading } = context;
 
@@ -32,10 +34,18 @@ const Eventi = (info: any) => {
   }, [data.data, data.categoria, info, setLoading, state?.events]);
 
   return (
-    <>
-      {data.categoria === "programma" && <ProgrammaList eventi={eventi} />}
-      {data.categoria === "laboratori" && <LaboratoriList eventi={eventi} />}
-    </>
+    <section className={styles.eventi}>
+      {page.content && (
+        <div className={styles.pageContentContainer}>
+          <div className={styles.pageContent}>{parse(page.content)}</div>
+        </div>
+      )}
+
+      <div className={styles.contentContainer}>
+        {data.categoria === "programma" && <ProgrammaList eventi={eventi} />}
+        {data.categoria === "laboratori" && <LaboratoriList eventi={eventi} />}
+      </div>
+    </section>
   );
 };
 

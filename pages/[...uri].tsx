@@ -20,6 +20,7 @@ const PageDefault = ({
   partner,
   events,
   news,
+  defaultPage,
 }: {
   page: any;
   guests: any;
@@ -27,13 +28,14 @@ const PageDefault = ({
   partner: any;
   events: any;
   news: any;
+  defaultPage: boolean;
 }) => {
   return (
     <>
       <div className={styles.pageContainer}>
         <PageHeader page={page} />
-        <section className={styles.sectionContainer}>
-          {page.content && (
+        {defaultPage && (
+          <section className={styles.sectionContainer}>
             <div className={styles.contentContainer}>
               <div className={styles.pageContentContainer}>
                 <div
@@ -42,13 +44,14 @@ const PageDefault = ({
                 />
               </div>
             </div>
-          )}
-        </section>
-        {guests && <Guests data={guests} />}
-        {places && <Places data={places} />}
-        {partner && <Partner data={partner} />}
-        {events && <Eventi data={page.eventi} />}
-        {news && <NewsList data={news} />}
+          </section>
+        )}
+
+        {guests && <Guests data={guests} page={page} />}
+        {places && <Places data={places} page={page} />}
+        {partner && <Partner data={partner} page={page} />}
+        {events && <Eventi data={page.eventi} page={page} />}
+        {news && <NewsList data={news} page={page} />}
       </div>
     </>
   );
@@ -82,6 +85,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   const pageURI = createURI(context);
   const page = await getPageByURI(pageURI);
   //console.log({ page });
+  let defaultPage = false;
   let guests = null;
   let places = null;
   let partner = null;
@@ -105,7 +109,6 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
 
     case "accoglienza":
       places = await getPlaces(page?.accoglienza?.tipologia);
-
       break;
 
     case "partner":
@@ -121,7 +124,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       break;
 
     default:
-      //caso default;
+      defaultPage = true;
       break;
   }
 
@@ -133,6 +136,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       partner,
       events,
       news,
+      defaultPage,
     },
     revalidate: 60,
   };

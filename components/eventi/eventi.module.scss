@@ -1,3 +1,33 @@
+.pageContentContainer {
+  background-color: #efefef;
+  display: flex;
+}
+
+.pageContent {
+  margin: 50px 0;
+  @apply w-8/12 mx-auto;
+  background-color: transparent;
+  font-family: "AbsaraSans-Thin";
+  font-size: 1.0875rem;
+
+  h2 {
+    width: 100%;
+    font-family: "AbsaraSans";
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: block;
+  }
+}
+
+.contentContainer {
+  background-color: transparent;
+  margin: 50px 0;
+  @apply w-10/12 mx-auto;
+}
+
 .whereContainer {
   @apply w-5/12;
   border-right: 1px dashed var(--main-text-color);
@@ -49,8 +79,10 @@
 
 .theme {
   font-size: 1.8rem;
+  line-height: 1;
   margin-bottom: 0;
   text-transform: uppercase;
   font-family: "AbsaraSans";
   color: var(--main-bg-color);
+  text-align: right;
 }
