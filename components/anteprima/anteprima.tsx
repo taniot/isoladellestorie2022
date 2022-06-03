@@ -37,13 +37,15 @@ const Anteprima = () => {
                   key={ospite.title}
                   className={cls(styles.hero_name, styles.color2)}
                 >
-                  <a href={`/ospiti/${ospite.slug}/`}>
-                    <span className={styles.lowLight}>{ospite.nome}</span>{" "}
-                    <span className={styles.highLight}>{ospite.cognome}</span>
-                    {index + 1 !== anteprima.length && (
-                      <span className={styles.trattino}>,</span>
-                    )}{" "}
-                  </a>
+                  <Link href={`/ospiti/${ospite.slug}/`}>
+                    <a>
+                      <span className={styles.lowLight}>{ospite.nome}</span>{" "}
+                      <span className={styles.highLight}>{ospite.cognome}</span>
+                      {index + 1 !== anteprima.length && (
+                        <span className={styles.trattino}>,</span>
+                      )}{" "}
+                    </a>
+                  </Link>
                 </li>
               );
             }

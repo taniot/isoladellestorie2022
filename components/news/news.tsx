@@ -2,6 +2,7 @@ import styles from "./news.module.scss";
 import Link from "next/link";
 import parse from "html-react-parser";
 import Image from "next/image";
+import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
 Image;
 const News = ({ data }: { data: any }) => {
   if (!data) return null;
@@ -24,6 +25,10 @@ const News = ({ data }: { data: any }) => {
         <div className={styles.text}>
           <h2>{data.title}</h2>
           <div className={styles.excerpt}>{parse(data.excerpt)}</div>
+          <div className={styles.readMore}>
+            <span>Leggi di più</span>
+            <ArrowNarrowRightIcon className="w-5 h-5 ml-2" />
+          </div>
         </div>
       </div>
     </div>
