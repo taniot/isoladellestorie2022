@@ -37,7 +37,7 @@ const Anteprima = () => {
                   key={ospite.title}
                   className={cls(styles.hero_name, styles.color2)}
                 >
-                  <a href="#">
+                  <a href={`/ospiti/${ospite.slug}/`}>
                     <span className={styles.lowLight}>{ospite.nome}</span>{" "}
                     <span className={styles.highLight}>{ospite.cognome}</span>
                     {index + 1 !== anteprima.length && (
@@ -50,7 +50,7 @@ const Anteprima = () => {
           })}
         </ul>
       ) : (
-        <div>nessun ospite</div>
+        <div></div>
       )}
     </div>
   );
