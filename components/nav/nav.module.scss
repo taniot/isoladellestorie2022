@@ -40,18 +40,33 @@
 
   flex-direction: column;
   .menu {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     h2 {
       color: white;
       font-family: "AbsaraSans";
       font-size: 1.4rem;
       text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
     li {
       text-align: center;
-      font-size: 1rem;
+      font-size: 1.2rem;
+      line-height: 1.65;
       font-family: "AbsaraSans-Thin";
+      text-transform: uppercase;
+      margin-bottom: 10px;
+
+      a {
+        border-bottom: 1px solid var(--secondary-bg-color);
+        display: inline-block;
+      }
+
+      a:hover {
+        color: white;
+        transition: 2ms;
+      }
     }
 
     &.visitatori {
@@ -60,11 +75,11 @@
     &.main {
       order: 1;
       h2 {
-        font-size: 1.6rem;
+        font-size: 2rem;
       }
 
       li {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
       }
     }
   }
