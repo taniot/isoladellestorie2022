@@ -31,7 +31,8 @@ body {
   line-height: 1.5;
   //background-color: whitesmoke;
   &.menu-open {
-    overflow-y: hidden;
+    overflow: hidden;
+    position: fixed;
   }
 }
 
