@@ -1,19 +1,27 @@
 import styles from "./image.module.scss";
 import Image from "next/image";
+import { FC } from "react";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-const GuestImage = ({
-  title,
-  image,
-  width = 200,
-  height = 200,
-  borderColor = "#fff",
-}: {
+interface GuestImg {
   title: string;
   image?: string;
   width?: number;
   height?: number;
   borderColor?: string;
-}) => {
+}
+
+const GuestImage: FC<GuestImg> = (props) => {
+  const isMobile = useMediaQuery("(max-width: 639px)");
+
+  const {
+    title,
+    image,
+    width = isMobile ? 150 : 200,
+    height = isMobile ? 150 : 200,
+    borderColor = "#fff",
+  } = props;
+
   return (
     <div className={styles.borderContainer} style={{ borderColor }}>
       <div className={styles.image_container} style={{ width, height }}>
