@@ -29,11 +29,9 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  //background-color: whitesmoke;
   &.menu-open {
     height: 100vh;
     overflow-y: hidden;
-    padding-right: 15px; /* Avoid width reflow */
     position: fixed;
   }
 }

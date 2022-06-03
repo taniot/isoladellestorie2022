@@ -24,7 +24,7 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
@@ -35,7 +35,12 @@
 }
 
 .menuContainer {
+  @apply w-10/12 mx-auto;
+  display: flex;
+
+  flex-direction: column;
   .menu {
+    margin-bottom: 2rem;
     h2 {
       color: white;
       font-family: "AbsaraSans";
@@ -45,15 +50,25 @@
 
     li {
       text-align: center;
+      font-size: 1.1rem;
+    }
+
+    &.visitatori {
+      order: 2;
+    }
+    &.main {
+      order: 1;
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      li {
+        font-size: 1.3rem;
+      }
     }
   }
 
-  .visitatori {
-  }
-
-  .main {
-  }
-
   .chisiamo {
+    order: 3;
   }
 }
