@@ -2,27 +2,44 @@
 .sectionContainer {
   //default contentContainer
   .contentContainer {
-    @apply w-10/12 mx-auto my-10;
+    @apply w-10/12 mx-auto;
+    margin: 50px auto;
     font-family: "AbsaraSans-Thin";
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1.275rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
   }
 }
 
 @screen md {
   .sectionContainer {
     //default contentContainer
-
     .contentContainer {
       .pageContentContainer {
-        @apply w-8/12 mx-auto mt-20 mb-10;
+        @apply w-8/12 mx-auto mb-10;
 
         h2 {
-          font-size: 3rem;
-          text-align: center;
+          font-size: 2rem;
+
           color: var(--main-text-color);
           line-height: 3.8rem;
           margin-bottom: 0;
+        }
+
+        p {
+          font-family: "AbsaraSans-Thin";
+          font-size: 1.275rem;
+          line-height: 1.75;
+          margin-bottom: 1rem;
+
+          b,
+          strong {
+            font-family: "AbsaraSans";
+          }
+
+          i {
+            font-family: "AbsaraSans-Thin-Italic";
+          }
         }
       }
     }

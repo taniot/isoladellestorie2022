@@ -4,8 +4,7 @@ import GuestImage from "../guests/image";
 import cls from "classnames";
 import Back from "../back/back";
 import { v4 as uuidv4 } from "uuid";
-import dateFormat, { masks } from "dateformat";
-
+import { compareAsc, format } from "date-fns";
 const Guest = ({ guest }: { guest: any }) => {
   return (
     <section className={styles.guest}>
@@ -30,7 +29,7 @@ const Guest = ({ guest }: { guest: any }) => {
             </>
           ) : (
             <>
-              <h2>{guest.title}</h2>
+              <h2 className={styles.nomeLungo}>{guest.title}</h2>
               <h3>{guest.jobTitleIt}</h3>
             </>
           )}
@@ -59,24 +58,6 @@ const Guest = ({ guest }: { guest: any }) => {
         <div className={styles.guestBody}>
           <div className={styles.text}>
             {parse(guest.descrizioneIt ? guest.descrizioneIt : "")}
-            <div>
-              <h2>Eventi</h2>
-              {guest?.eventi?.map((evento: any) => (
-                <div key={uuidv4()}>
-                  <p className={styles.dataEvento}>
-                    {dateFormat(
-                      Date.parse(evento?.dettaglioEvento?.dataEvento),
-                      "dd/mm/yyyy"
-                    )}{" "}
-                    ore {evento?.dettaglioEvento?.oraInizio}
-                    {evento?.tipologieEventi?.nodes[0]?.name} - {evento?.title}
-                  </p>
-                  <p className={styles.dataEvento}>
-                    {evento?.luoghiEventi?.nodes[0]?.name}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
           <Back link="/ospiti/" text="Torna agli Ospiti" />
         </div>
