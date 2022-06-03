@@ -3,7 +3,7 @@
   @apply z-20;
   opacity: 0;
   visibility: hidden;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   width: 100vw;
   background-color: var(--main-bg-color);
@@ -19,117 +19,16 @@
 }
 
 .navCointainer {
+  background-color: red;
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 }
 
-.logoContainer {
+.logoContainer,
+.langMenu {
   display: none;
-}
-
-@screen xl {
-  .navCointainer {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .navHeader {
-    position: absolute;
-    top: 40px;
-    //background-color: red;
-    display: flex;
-    @apply w-full mx-auto;
-    //background-color: red;
-    justify-content: center;
-    align-items: center;
-
-    .langMenu {
-      position: absolute;
-      left: 50px;
-      color: white;
-      font-family: "AbsaraSans";
-    }
-
-    .logoContainer {
-      width: 6rem;
-      height: 3rem;
-
-      .logo {
-        @apply antialiased opacity-100 h-auto;
-      }
-    }
-  }
-
-  .menuContainer {
-    display: flex;
-    flex-direction: row;
-    @apply w-10/12 mx-auto;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    border-top: 3px solid var(--secondary-bg-color);
-    border-bottom: 3px solid var(--secondary-bg-color);
-    padding: 50px 0;
-  }
-
-  .menu {
-    @apply w-3/12;
-    &.visitatori {
-      order: 3;
-      display: block;
-    }
-
-    &.main {
-      order: 2;
-      display: block;
-      h2 {
-        display: block;
-      }
-    }
-
-    &.chisiamo {
-      order: 1;
-      display: block;
-    }
-
-    h2 {
-      font-family: "AbsaraSans";
-      font-size: 2.1rem;
-      text-align: center;
-      color: white;
-      border-bottom: 0px solid var(--secondary-bg-color);
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-
-    ul {
-      li {
-        margin-bottom: 10px;
-        font-family: "AbsaraSans-Thin";
-        text-align: center;
-        color: black;
-        text-transform: uppercase;
-
-        a {
-          font-size: 1rem;
-          padding-bottom: 5px;
-          border-bottom: 1px solid var(--secondary-bg-color);
-          display: inline-block;
-        }
-      }
-    }
-
-    &.main li {
-      a {
-        font-size: 2.1rem;
-      }
-    }
-  }
 }
