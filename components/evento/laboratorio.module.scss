@@ -1,6 +1,6 @@
 .evento {
   @apply w-full;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 
   &:last-child {
     margin-bottom: 0;
@@ -13,13 +13,6 @@
   line-height: 1.2;
   margin-bottom: 0.75rem;
   font-style: italic;
-}
-
-.info {
-  border-top: 1px dashed #efefef;
-  border-bottom: 1px dashed #efefef;
-  padding: 5px;
-  margin-top: 5px;
 }
 
 .where {
@@ -72,4 +65,5 @@
   padding: 5px 0 0px;
   font-family: "AbsaraSans";
   color: var(--main-text-color);
+  margin-bottom: 5px;
 }

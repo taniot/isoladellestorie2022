@@ -19,11 +19,21 @@
         @apply w-8/12 mx-auto mb-10;
 
         h2 {
-          font-size: 2rem;
-
+          font-size: 2.2rem;
           color: var(--main-text-color);
           line-height: 3.8rem;
-          margin-bottom: 0;
+          margin-bottom: 1rem;
+          border-bottom: 1px dashed var(--main-bg-color);
+          font-family: "AbsaraSans";
+        }
+
+        h3 {
+          font-size: 1.8rem;
+          color: var(--main-text-color);
+          line-height: 3.8rem;
+          margin-bottom: 1rem;
+          border-bottom: 1px dashed var(--main-bg-color);
+          font-family: "AbsaraSans";
         }
 
         p {
@@ -31,15 +41,19 @@
           font-size: 1.275rem;
           line-height: 1.75;
           margin-bottom: 1rem;
+        }
 
-          b,
-          strong {
-            font-family: "AbsaraSans";
-          }
+        ul {
+          margin-bottom: 1rem;
+        }
 
-          i {
-            font-family: "AbsaraSans-Thin-Italic";
-          }
+        b,
+        strong {
+          font-family: "AbsaraSans";
+        }
+
+        i {
+          font-family: "AbsaraSans-Thin-Italic";
         }
       }
     }

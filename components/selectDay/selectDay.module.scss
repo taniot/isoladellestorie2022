@@ -29,14 +29,14 @@
         align-items: center;
         margin-right: 10px;
         font-family: "MontSerrat";
-        letter-spacing: 0.1rem;
+
         background-color: var(--secondary-bg-color);
         color: var(--main-text-color);
       }
 
       .active {
-        background-color: var(--secondary-bg-color);
-        color: var(--main-text-color);
+        background-color: var(--green-color);
+        color: white;
       }
     }
   }

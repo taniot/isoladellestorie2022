@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 const SelectDay = ({ page }: { page: any }) => {
   const [daysEventi, setDaysEventi] = useState([]);
+  console.log({ page });
 
   useEffect(() => {
     const sortedChildren = (children: any) => {
@@ -25,7 +26,12 @@ const SelectDay = ({ page }: { page: any }) => {
             <li key={index}>
               <Link href={day.uri}>
                 <a>
-                  <span className={classNames(styles.dayNumber)}>
+                  <span
+                    className={classNames(
+                      styles.dayNumber,
+                      day.dateEventi === page.eventi.data && styles.active
+                    )}
+                  >
                     {date.getDate() >= 10
                       ? date.getDate()
                       : `0` + date.getDate()}
