@@ -4,7 +4,7 @@ import GuestImage from "../guests/image";
 import cls from "classnames";
 import Back from "../back/back";
 import { v4 as uuidv4 } from "uuid";
-import dateFormat from "dateformat";
+import dateFormat, { masks } from "dateformat";
 
 const Guest = ({ guest }: { guest: any }) => {
   return (
@@ -36,6 +36,11 @@ const Guest = ({ guest }: { guest: any }) => {
           )}
           <div className={styles.giorniFestival}>
             <ul>
+              <li>
+                <span className={cls(styles.dayNumber, styles.active)}>
+                  22/06
+                </span>
+              </li>
               <li>
                 <span className={cls(styles.dayNumber, styles.active)}>
                   01/07
