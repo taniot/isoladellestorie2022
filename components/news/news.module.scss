@@ -57,6 +57,17 @@
           font-size: 1.2rem;
           line-height: 1.6;
         }
+
+        .readMore {
+          display: flex;
+          align-items: center;
+          margin-top: 1rem;
+          span {
+            font-family: "AbsaraSans";
+            font-size: 0.875rem;
+            text-transform: uppercase;
+          }
+        }
       }
     }
   }

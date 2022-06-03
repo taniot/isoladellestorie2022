@@ -36,17 +36,15 @@ const Guest = ({ guest }: { guest: any }) => {
           <div className={styles.giorniFestival}>
             <ul>
               <li>
-                <span className={cls(styles.dayNumber, styles.active)}>
-                  22/06
-                </span>
+                <span className={cls(styles.dayNumber)}>22/06</span>
+              </li>
+              <li>
+                <span className={cls(styles.dayNumber)}>01/07</span>
               </li>
               <li>
                 <span className={cls(styles.dayNumber, styles.active)}>
-                  01/07
+                  02/07
                 </span>
-              </li>
-              <li>
-                <span className={styles.dayNumber}>02/07</span>
               </li>
               <li>
                 <span className={styles.dayNumber}>03/07</span>
