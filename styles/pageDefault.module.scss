@@ -2,12 +2,54 @@
 .sectionContainer {
   //default contentContainer
   .contentContainer {
-    @apply w-10/12 mx-auto;
-    margin: 50px auto;
+    @apply w-11/12 mx-auto;
+    margin: 25px auto;
     font-family: "AbsaraSans-Thin";
-    font-size: 1.275rem;
+    font-size: 1rem;
     line-height: 1.75;
     margin-bottom: 1rem;
+    .pageContentContainer {
+      @apply w-11/12 mx-auto mb-10;
+
+      h2 {
+        font-size: 1.4rem;
+        color: var(--main-text-color);
+        line-height: 1.8rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px dashed var(--main-bg-color);
+        font-family: "AbsaraSans";
+      }
+
+      h3 {
+        font-size: 1.3rem;
+        color: var(--main-text-color);
+        line-height: 1.6rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px dashed var(--main-bg-color);
+        font-family: "AbsaraSans";
+        padding-bottom: 10px;
+      }
+
+      p {
+        font-family: "AbsaraSans-Thin";
+        font-size: 1rem;
+        line-height: 1.75;
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        margin-bottom: 1rem;
+      }
+
+      b,
+      strong {
+        font-family: "AbsaraSans";
+      }
+
+      i {
+        font-family: "AbsaraSans-Thin-Italic";
+      }
+    }
   }
 }
 
@@ -15,6 +57,12 @@
   .sectionContainer {
     //default contentContainer
     .contentContainer {
+      @apply w-10/12 mx-auto;
+      margin: 50px auto;
+      font-family: "AbsaraSans-Thin";
+      font-size: 1.275rem;
+      line-height: 1.75;
+      margin-bottom: 1rem;
       .pageContentContainer {
         @apply w-8/12 mx-auto mb-10;
 
@@ -34,6 +82,7 @@
           margin-bottom: 1rem;
           border-bottom: 1px dashed var(--main-bg-color);
           font-family: "AbsaraSans";
+          padding-bottom: unset;
         }
 
         p {
