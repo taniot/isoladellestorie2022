@@ -129,6 +129,7 @@
 
     .menu {
       @apply w-3/12;
+      margin-bottom: unset;
       &.visitatori {
         order: 3;
         display: block;
@@ -151,15 +152,20 @@
         font-size: 1.6rem;
       }
 
-      ul {
-        li {
-          font-family: "AbsaraSans-Thin";
+      li {
+        font-family: "AbsaraSans-Thin";
+        margin-bottom: 0.6rem;
+        &::after {
+          content: "";
+          display: block;
+          margin: 0.2rem auto 0 auto;
+          width: 50px;
+          border-bottom: 1px solid var(--secondary-bg-color);
+        }
 
-          a {
-            font-size: 1rem;
-            padding-bottom: 5px;
-            display: inline-block;
-          }
+        a {
+          font-size: 1rem;
+          display: inline-block;
         }
       }
 
@@ -220,7 +226,7 @@
           font-family: "AbsaraSans-Thin";
 
           a {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             padding-bottom: 5px;
             display: inline-block;
           }
