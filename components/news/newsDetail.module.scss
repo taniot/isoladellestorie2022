@@ -36,8 +36,11 @@
           font-family: "AbsaraSans";
           text-transform: uppercase;
           align-items: center;
+          justify-content: center;
+
           span {
             margin-right: 10px;
+            font-size: 0.875rem;
           }
         }
       }
