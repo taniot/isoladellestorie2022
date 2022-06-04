@@ -1,12 +1,12 @@
+//default
 .nav {
+  @apply z-20;
   opacity: 0;
   visibility: hidden;
-
   position: fixed;
   z-index: 1;
-  width: 100%;
-  height: 100%;
-  background-color: #002f56;
+  width: 100vw;
+  background-color: var(--main-bg-color);
   left: 0;
   top: 0;
   transition: all 0.3s ease-in-out;
@@ -17,12 +17,227 @@
   visibility: visible;
 }
 
-.menu {
-  @apply mx-auto w-11/12 md:w-9/12;
+.navCointainer {
+  @apply z-20;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+}
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: right;
+.navHeader {
+  position: relative;
+  display: flex;
+  @apply w-full mx-auto;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0 0px 0;
+
+  .logoContainer {
+    display: unset;
+    width: 1rem;
+    height: 4rem;
+
+    .logo {
+      @apply antialiased opacity-100 h-auto;
+    }
+  }
+}
+
+.menuContainer {
+  @apply w-8/12 mx-auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 60vh;
+
+  .left {
+    position: absolute;
+    left: 12px;
+    color: white;
+  }
+
+  .right {
+    position: absolute;
+    right: 12px;
+    color: white;
+  }
+
+  .menu {
+    margin-bottom: 1rem;
+    h2 {
+      color: white;
+      font-family: "AbsaraSans";
+      font-size: 1.7rem;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    li {
+      text-align: center;
+      font-size: 1.4rem;
+      line-height: 1.3;
+      font-family: "AbsaraSans";
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      &::after {
+        content: "";
+        display: block;
+        margin: 0.5rem auto 0 auto;
+        width: 50px;
+        border-bottom: 1px solid var(--secondary-bg-color);
+      }
+
+      a,
+      a:visited,
+      a:focus {
+        display: inline-block;
+        color: var(--main-text-color);
+      }
+
+      a:hover {
+        color: white;
+        transition: 2ms;
+      }
+    }
+  }
+}
+
+@screen lg {
+  .navCointainer {
+    justify-content: flex-start;
+  }
+
+  .navHeader {
+    margin: 50px 0 50px 0;
+  }
+
+  .menuContainer {
+    flex-direction: row;
+    @apply w-10/12 mx-auto;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    border-top: 3px solid var(--secondary-bg-color);
+    border-bottom: 3px solid var(--secondary-bg-color);
+    padding: 50px 0;
+    height: unset;
+
+    .menu {
+      @apply w-3/12;
+      margin-bottom: unset;
+      &.visitatori {
+        order: 3;
+        display: block;
+      }
+
+      &.main {
+        order: 2;
+        display: block;
+        h2 {
+          display: block;
+        }
+      }
+
+      &.chisiamo {
+        order: 1;
+        display: block;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      li {
+        font-family: "AbsaraSans-Thin";
+        margin-bottom: 0.6rem;
+        &::after {
+          content: "";
+          display: block;
+          margin: 0.2rem auto 0 auto;
+          width: 50px;
+          border-bottom: 1px solid var(--secondary-bg-color);
+        }
+
+        a {
+          font-size: 1rem;
+          display: inline-block;
+        }
+      }
+
+      &.main li {
+        a {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+@screen xl {
+  .navCointainer {
+    justify-content: flex-start;
+  }
+
+  .navHeader {
+    margin: 50px 0 50px 0;
+  }
+
+  .menuContainer {
+    flex-direction: row;
+    @apply w-10/12 mx-auto;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    border-top: 3px solid var(--secondary-bg-color);
+    border-bottom: 3px solid var(--secondary-bg-color);
+    padding: 50px 0;
+    height: unset;
+
+    .menu {
+      @apply w-3/12;
+      &.visitatori {
+        order: 3;
+        display: block;
+      }
+
+      &.main {
+        order: 2;
+        display: block;
+        h2 {
+          display: block;
+        }
+      }
+
+      &.chisiamo {
+        order: 1;
+        display: block;
+      }
+
+      h2 {
+        font-size: 2.1rem;
+      }
+
+      ul {
+        li {
+          font-family: "AbsaraSans-Thin";
+
+          a {
+            font-size: 1.1rem;
+            padding-bottom: 5px;
+            display: inline-block;
+          }
+        }
+      }
+
+      &.main li {
+        a {
+          font-size: 2.1rem;
+        }
+      }
+    }
+  }
 }

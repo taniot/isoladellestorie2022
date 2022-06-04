@@ -1,50 +1,102 @@
-.contentContainer {
-  @apply w-10/12 md:w-7/12 mx-auto;
-  .pageContentContainer {
-    padding: 20px;
-
-    .pageContent {
-      font-family: "font77190";
-      font-weight: normal;
-      font-size: 1.4rem;
-      line-height: 2.4rem;
-      p {
-        margin-bottom: 2rem;
-      }
-    }
+.placesSection {
+  @apply w-11/12 mx-auto my-10;
+  @screen md {
+    @apply w-9/12 my-20;
   }
 }
 
-.grid_list {
+.whereContainer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-  .grid_item {
-    position: relative;
-    height: auto;
-    width: 33.333%;
-    padding: 20px;
+.placesContainer {
+  @screen md {
+    @apply flex flex-wrap;
+    margin-top: 10px;
+  }
+}
 
-    .image_container {
-      img {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        transition: all 5s ease-in-out;
-        border: 2px dashed #222 !important;
-        padding: 5px !important;
-      }
-    }
+.where {
+  font-size: 1.8rem;
+  line-height: 1.25;
+  margin-bottom: 0;
+  font-family: "AbsaraSans";
+  text-align: center;
 
-    .grid_item_content {
-      margin-top: 20px;
-      h2 {
-        font-family: "font77190";
-        font-size: 1rem;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
+  &:after {
+    content: "";
+    border-bottom: 1px dashed var(--main-text-color);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    display: block;
+
+    width: 200px;
+  }
+}
+
+.theme {
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-family: "MontSerrat";
+  text-align: right;
+  background-color: var(--new-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.place {
+  @screen md {
+    @apply w-4/12 mb-5;
+  }
+}
+.placeBox {
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px;
+  height: 100%;
+  &:nth-last-col {
+    margin-right: 0;
+  }
+  border: 1px solid #ccc;
+}
+
+.title {
+  font-family: "AbsaraSans";
+  font-size: 1.1rem;
+}
+
+.icons {
+  margin-top: 15px;
+}
+
+.icon {
+  background-color: var(--secondary-bg-color);
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--main-text-color);
+  margin-right: 5px;
+}
+
+.description {
+  font-family: "MontSerrat";
+  font-size: 0.875rem;
+  line-height: 1.75;
+
+  strong,
+  b {
+    font-family: "AbsaraSans";
+  }
+
+  a {
+    border-bottom: 1px dashed var(--main-bg-color);
+    &:hover {
+      color: var(--main-bg-color);
     }
   }
 }

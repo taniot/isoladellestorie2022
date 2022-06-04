@@ -1,0 +1,57 @@
+.coverContainer {
+  background-color: red;
+  @apply flex flex-col h-screen;
+
+  .videoContainer {
+    @apply relative w-full h-full;
+
+    .video {
+      @apply w-full h-full object-cover;
+    }
+
+    .videoLayer {
+      @apply absolute w-full h-full;
+      background-color: var(--main-bg-color);
+      opacity: 0.4;
+      z-index: 2;
+    }
+  }
+
+  .claimContainer {
+    @apply absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0;
+    .claim {
+      z-index: 3;
+      @apply w-8/12 mx-auto;
+      background-color: var(--main-bg-color);
+      transition: all 1s ease-in-out;
+      border: 0px solid var(--main-text-color) !important;
+      height: 70vh;
+      background-image: url("/images/isola-delle-storie-2022.png");
+      background-position: 0 bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: relative;
+      .slogan {
+        position: absolute;
+        left: 450px;
+        top: 210px;
+        .title {
+          font-size: 7.5rem;
+          font-family: "AbsaraSans-Thin";
+          line-height: 1;
+          letter-spacing: 0.1rem;
+          color: var(--main-title-color);
+          margin-bottom: 1.4rem;
+          position: relative;
+        }
+        .subTitle {
+          font-size: 2.1rem;
+          font-family: "AbsaraSans-Light-Italic";
+          font-style: italic;
+          letter-spacing: -0.019rem;
+          color: var(--main-text-color);
+        }
+      }
+    }
+  }
+}

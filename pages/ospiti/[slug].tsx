@@ -1,21 +1,42 @@
-import styles from "../../styles/pageDefault.module.scss";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { getGuests, getGuestBySlug } from "../../lib/wp/guests";
 
-const Ospite = () => {
-  return (
-    <div className={styles.pageContainer}>
-      <div className={styles.pageHeaderContainer}>
-        <div className={styles.pageHeader}>
-          <h1>Nome Ospite</h1>
-        </div>
-      </div>
+import Guest from "../../components/guest/guest";
 
-      <section className={styles.sectionContainer}>
-        <div className={styles.contentContainer}>
-          <div className={styles.pageContentContainer}></div>
-        </div>
-      </section>
-    </div>
-  );
+const Ospite = ({ guest }: { guest: any }) => {
+  return <Guest guest={guest} />;
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const guests = await getGuests();
+
+  const paths = guests.map((guest: any) => {
+    return {
+      params: {
+        slug: guest.slug,
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: "blocking",
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const slug = context?.params?.slug;
+
+  let guest = null;
+
+  if (typeof slug === "string") guest = await getGuestBySlug(slug);
+
+  return {
+    props: {
+      guest,
+    },
+    revalidate: 10,
+  };
 };
 
 export default Ospite;

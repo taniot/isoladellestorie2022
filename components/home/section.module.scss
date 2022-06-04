@@ -1,0 +1,51 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-family: "AbsaraSans";
+  border-bottom-color: var(--main-bg-color);
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  display: inline-block;
+  font-size: 1.275rem;
+  line-height: 1;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  color: var(--main-text-color);
+  text-transform: uppercase;
+
+  @screen md {
+    border-bottom-width: 3px;
+    font-size: 28px;
+    line-height: 28px;
+    padding-bottom: 20px;
+  }
+}
+
+.button {
+  background-color: var(--main-bg-color);
+  padding: 7px 10px;
+  font-family: "AbsaraSans";
+  font-size: 0.875rem;
+  margin: 30px auto 0;
+  color: white;
+  text-transform: uppercase;
+  display: block;
+}
+
+@screen sm {
+  .button {
+    background-color: var(--main-bg-color);
+    padding: 15px 40px;
+    font-family: "AbsaraSans";
+    font-size: 1.4rem;
+    margin: 50px auto 0;
+    color: white;
+    text-transform: uppercase;
+    display: block;
+  }
+}

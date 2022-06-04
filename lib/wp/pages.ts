@@ -22,11 +22,36 @@ const qGetPageByURI = gql`
       id
       title
       content
+      parent {
+        node {
+          ... on Page {
+            title
+            children {
+              nodes {
+                id
+                uri
+                ... on Page {
+                  dettagliPagina {
+                    template
+                    dateEventi
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
       dettagliPagina {
         template
+        subtitleIt
+        subtitleEn
         tipologiaAccoglienza {
           slug
         }
+        categoriaEventi {
+          slug
+        }
+        dateEventi
       }
     }
   }
@@ -37,9 +62,11 @@ const qGetPageByURI = gql`
 */
 export const getPages = async (locale?: string) => {
   const query = qGetPages;
+  if (!client) return null;
 
   try {
     const data = await client.request(query);
+
     return data?.pages?.nodes;
   } catch (error) {
     console.log({ error });
@@ -55,7 +82,46 @@ export const getPageByURI = async (uri: string) => {
 
   try {
     const data = await client.request(query, variables);
-    return data?.page;
+    //return data?.page;
+
+    let setChildren = [];
+
+    if (data?.page?.parent?.node?.children) {
+      const pageChildren = data?.page?.parent?.node?.children.nodes;
+
+      setChildren = pageChildren.map((child: any) => {
+        return {
+          id: child?.id,
+          uri: child?.uri,
+          template: child?.dettagliPagina?.template || null,
+          dateEventi: child?.dettagliPagina?.dateEventi || null,
+        };
+      });
+    }
+    //console.log(data.page.dettagliPagina);
+    return {
+      id: data?.page?.id || null,
+      title: data?.page?.title || null,
+      subtitleIt: data?.page?.dettagliPagina?.subtitleIt || null,
+      subtitleEn:
+        data?.page?.dettagliPagina?.subtitleEn ||
+        data?.page?.dettagliPagina?.subtitleIt ||
+        null,
+      content: data?.page?.content || null,
+      template: data?.page?.dettagliPagina?.template || null,
+      parent: {
+        title: data?.page?.parent?.node?.title || null,
+        children: setChildren,
+      },
+      accoglienza: {
+        tipologia:
+          data?.page?.dettagliPagina?.tipologiaAccoglienza?.slug || null,
+      },
+      eventi: {
+        categoria: data?.page?.dettagliPagina?.categoriaEventi?.slug || null,
+        data: data?.page?.dettagliPagina?.dateEventi || null,
+      },
+    };
   } catch (error) {
     console.log({ error });
     return null;

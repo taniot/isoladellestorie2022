@@ -1,45 +1,57 @@
 import { GetStaticPaths, GetStaticProps, PreviewData } from "next";
-import { getGuests, getGuestsFake } from "../lib/wp/guests";
-import { getPlacesFake } from "../lib/wp/places";
+import { getGuests } from "../lib/wp/guests";
 import { getPageByURI, getPages } from "../lib/wp/pages";
 import Guests from "../components/guests/guests";
 import Places from "../components/places/places";
+import Partner from "../components/partner/partner";
 import styles from "../styles/pageDefault.module.scss";
-import Header from "../components/header/header";
+import { getSponsors } from "../lib/wp/sponsor";
+import Eventi from "../components/eventi/eventi";
+
+import PageHeader from "../components/pageHeader/pageHeader";
+import { getPlaces } from "../lib/wp/places";
+import { getPosts } from "../lib/wp/news";
+import NewsList from "../components/newsList/newsList";
 
 const PageDefault = ({
   page,
   guests,
   places,
+  partner,
+  events,
+  news,
+  defaultPage,
 }: {
   page: any;
   guests: any;
   places: any;
+  partner: any;
+  events: any;
+  news: any;
+  defaultPage: boolean;
 }) => {
-  if (!page) return <div>No page</div>;
-  //console.log({ guests });
   return (
     <>
       <div className={styles.pageContainer}>
-        <section className={styles.main}>
-          <div className={styles.pageHeaderContainer}>
-            <div className={styles.pageHeader}>
-              <h1>{page.title}</h1>
+        <PageHeader page={page} />
+        {defaultPage && (
+          <section className={styles.sectionContainer}>
+            <div className={styles.contentContainer}>
+              <div className={styles.pageContentContainer}>
+                <div
+                  className={styles.pageContent}
+                  dangerouslySetInnerHTML={{ __html: page.content }}
+                />
+              </div>
             </div>
-          </div>
-        </section>
-        <section className={styles.sectionContainer}>
-          <div className={styles.contentContainer}>
-            <div className={styles.pageContentContainer}>
-              <div
-                className={styles.pageContent}
-                dangerouslySetInnerHTML={{ __html: page.content }}
-              />
-            </div>
-          </div>
-          {guests && <Guests data={guests} />}
-          {places && <Places data={places} />}
-        </section>
+          </section>
+        )}
+
+        {guests && <Guests data={guests} page={page} />}
+        {places && <Places data={places} page={page} />}
+        {partner && <Partner data={partner} page={page} />}
+        {events && <Eventi data={page.eventi} page={page} />}
+        {news && <NewsList data={news} page={page} />}
       </div>
     </>
   );
@@ -50,16 +62,17 @@ export default PageDefault;
 export const getStaticPaths: GetStaticPaths = async () => {
   const pages = await getPages();
 
-  const paths = pages.map((page: any) => {
-    return {
-      params: {
-        uri: page.uri.split("/").filter((element: any) => {
-          return element !== "";
-        }),
-      },
-      locale: page.language.slug,
-    };
-  });
+  const paths =
+    pages?.map((page: any) => {
+      return {
+        params: {
+          uri: page.uri.split("/").filter((element: any) => {
+            return element !== "";
+          }),
+        },
+        locale: page.language.slug,
+      };
+    }) || [];
 
   return {
     paths,
@@ -67,36 +80,51 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context: any) => {
+export const getStaticProps: GetStaticProps = async (context: any) => {
   if (!context) return { props: {} };
   const pageURI = createURI(context);
   const page = await getPageByURI(pageURI);
+  //console.log({ page });
+  let defaultPage = false;
   let guests = null;
   let places = null;
+  let partner = null;
+  let events = null;
+  let news = null;
 
-  if (!page)
+  if (!page?.id)
     return {
       notFound: true,
     };
 
-  console.log({ page });
-
-  switch (page.dettagliPagina.template) {
+  switch (page.template) {
     case "nopage":
       return {
         notFound: true,
       };
 
     case "ospiti":
-      guests = await getGuestsFake(100);
+      guests = await getGuests();
       break;
 
     case "accoglienza":
-      places = await getPlacesFake(100);
+      places = await getPlaces(page?.accoglienza?.tipologia);
+      break;
+
+    case "partner":
+      partner = await getSponsors();
+      break;
+
+    case "news":
+      news = await getPosts(10);
+      break;
+
+    case "eventi":
+      events = true;
       break;
 
     default:
-      //caso default;
+      defaultPage = true;
       break;
   }
 
@@ -105,7 +133,12 @@ export const getStaticProps = async (context: any) => {
       page,
       guests,
       places,
+      partner,
+      events,
+      news,
+      defaultPage,
     },
+    revalidate: 60,
   };
 };
 

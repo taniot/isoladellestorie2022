@@ -1,0 +1,69 @@
+.evento {
+  @apply w-full;
+  margin-bottom: 2.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.title {
+  font-family: "AbsaraSans";
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+.where {
+  font-family: "AbsaraSans";
+  text-transform: uppercase;
+  color: #78b960;
+}
+
+.etaLabel {
+  background-color: var(--secondary-bg-color);
+  padding: 3px 8px;
+  font-family: "MontSerrat";
+  color: var(--main-text-color);
+  font-size: 0.785rem;
+  border-radius: 5px;
+
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.maxIscrittiLabel {
+  background-color: var(--secondary-bg-color);
+  padding: 3px 8px;
+  font-family: "MontSerrat";
+  color: var(--main-text-color);
+  font-size: 0.8rem;
+  border-radius: 5px;
+
+  display: inline-block;
+}
+
+.description {
+  padding: 5px 0 0 0;
+  font-family: "AbsaraSans-Thin";
+  font-size: 1.1rem;
+  strong,
+  b {
+    font-family: "AbsaraSans";
+  }
+
+  a {
+    border-bottom: 1px dashed var(--main-bg-color);
+    &:hover {
+      color: var(--main-bg-color);
+    }
+  }
+}
+
+.finanziamento {
+  padding: 5px 0 0px;
+  font-family: "AbsaraSans";
+  color: var(--main-text-color);
+  margin-bottom: 5px;
+}

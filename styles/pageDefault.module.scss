@@ -1,62 +1,109 @@
-.main {
-  min-height: 80vh;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+//section
+.sectionContainer {
+  //default contentContainer
+  .contentContainer {
+    @apply w-11/12 mx-auto;
+    margin: 25px auto;
+    font-family: "AbsaraSans-Thin";
+    font-size: 1.275rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+    .pageContentContainer {
+      @apply w-11/12 mx-auto mb-10;
 
-.pageHeaderContainer {
-  @apply w-7/12 mx-auto;
-  .pageHeader {
-    text-align: center;
-    justify-content: center;
-    h1 {
-      font-size: 10rem;
-      font-family: "AbsaraSans-Thin";
-      line-height: 1;
+      h2 {
+        font-size: 1.4rem;
+        color: var(--main-text-color);
+        line-height: 1.8rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px dashed var(--main-bg-color);
+        font-family: "AbsaraSans";
+      }
 
-      letter-spacing: -0.3rem;
-      color: var(--main-title-color);
+      h3 {
+        font-size: 1.3rem;
+        color: var(--main-text-color);
+        line-height: 1.6rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px dashed var(--main-bg-color);
+        font-family: "AbsaraSans";
+        padding-bottom: 10px;
+      }
+
+      p {
+        font-family: "AbsaraSans-Thin";
+        font-size: 1.275rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        margin-bottom: 1rem;
+      }
+
+      b,
+      strong {
+        font-family: "AbsaraSans";
+      }
+
+      i {
+        font-family: "AbsaraSans-Thin-Italic";
+      }
     }
   }
 }
 
-.featuredContent {
-  position: relative;
-  background-color: #efefef;
+@screen md {
+  .sectionContainer {
+    //default contentContainer
+    .contentContainer {
+      @apply w-10/12 mx-auto;
+      margin: 50px auto;
+      font-family: "AbsaraSans-Thin";
+      font-size: 1.275rem;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+      .pageContentContainer {
+        @apply w-8/12 mx-auto mb-10;
 
-  &::before {
-    background-color: #efefef;
-    mask-image: url("/images/divider-top.svg");
-    mask-repeat: no-repeat;
-    mask-size: contain;
-    mask-position: 100% 100%;
-    left: 0;
-    top: -300px;
-    content: "";
-    height: 100%;
-    max-height: 400px;
-    position: absolute;
-    width: 100%;
-  }
-}
+        h2 {
+          font-size: 2.2rem;
+          color: var(--main-text-color);
+          line-height: 3.8rem;
+          margin-bottom: 1rem;
+          border-bottom: 1px dashed var(--main-bg-color);
+          font-family: "AbsaraSans";
+        }
 
-.sectionContainer {
-  background-color: whitesmoke;
-}
+        h3 {
+          font-size: 1.8rem;
+          color: var(--main-text-color);
+          line-height: 3.8rem;
+          margin-bottom: 1rem;
+          border-bottom: 1px dashed var(--main-bg-color);
+          font-family: "AbsaraSans";
+          padding-bottom: unset;
+        }
 
-.contentContainer {
-  @apply w-7/12 mx-auto py-20;
-  .pageContentContainer {
-    .pageContent {
-      font-family: "font77190";
-      font-weight: normal;
-      font-size: 1.4rem;
-      line-height: 2.4rem;
-      p {
-        margin-bottom: 2rem;
+        p {
+          font-family: "AbsaraSans-Thin";
+          font-size: 1.275rem;
+          line-height: 1.75;
+          margin-bottom: 1rem;
+        }
+
+        ul {
+          margin-bottom: 1rem;
+        }
+
+        b,
+        strong {
+          font-family: "AbsaraSans";
+        }
+
+        i {
+          font-family: "AbsaraSans-Thin-Italic";
+        }
       }
     }
   }

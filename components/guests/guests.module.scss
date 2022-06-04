@@ -1,69 +1,82 @@
 .contentContainer {
-  @apply w-10/12 md:w-9/12 mx-auto;
+  background-color: transparent;
+  margin: 25px 0;
   .pageContentContainer {
-    padding: 20px;
-
-    .pageContent {
-      font-family: "font77190";
-      font-weight: normal;
-      font-size: 1.4rem;
-      line-height: 2.4rem;
-      p {
-        margin-bottom: 2rem;
-      }
-    }
-  }
-}
-
-.grid_list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  .grid_item {
-    position: relative;
-    height: auto;
-    width: 33.333%;
-    padding: 20px;
-
-    .image_container {
-      img {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        transition: all 5s ease-in-out;
-        border: 1px dashed #222 !important;
-        padding: 5px !important;
-      }
-    }
-
-    .grid_item_content {
+    .grid_list {
+      @apply w-9/12 mx-auto;
       display: flex;
-      align-items: center;
       justify-content: center;
-      margin-top: 20px;
-      h2 {
-        font-family: "font77190";
-        font-size: 1rem;
-        font-weight: 700;
-        text-transform: uppercase;
+      align-items: center;
+      flex-direction: column;
+      .grid_item {
+        margin-bottom: 2rem;
+        .grid_item_link {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .grid_item_title {
+            font-family: "AbsaraSans";
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            line-height: 1.3;
+          }
+
+          .grid_item_description {
+            font-family: "AbsaraSans";
+            font-size: 1.2rem;
+            color: var(--main-bg-color);
+            text-align: center;
+          }
+        }
       }
     }
   }
 }
 
-// 40% 30% 70% / 60% 30% 70% 40%;
+@screen md {
+  .contentContainer {
+    background-color: transparent;
+    margin: 50px 0;
+    .pageContentContainer {
+      .grid_list {
+        @apply w-9/12 mx-auto;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: unset;
+        flex-direction: row;
+        gap: 3rem;
+        .grid_item {
+          margin-bottom: 2rem;
+          width: 220px;
 
-@keyframes morph {
-  0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
+          .grid_item_link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-wrap: wrap;
 
-  50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-  }
+            .grid_item_title {
+              font-family: "AbsaraSans";
+              font-size: 1.4rem;
+              margin-top: 1.5rem;
+              margin-bottom: 0.3rem;
+              max-width: 240px;
+              text-align: center;
+              line-height: 1.3;
+            }
 
-  100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            .grid_item_description {
+              font-family: "AbsaraSans";
+              font-size: 1.2rem;
+              color: var(--main-bg-color);
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
   }
 }

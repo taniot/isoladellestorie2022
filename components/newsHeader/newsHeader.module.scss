@@ -1,0 +1,88 @@
+//header
+.pageHeaderContainer {
+  background-color: var(--main-bg-color);
+  .pageHeader {
+    @apply w-10/12 mx-auto relative;
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    h1 {
+      font-size: 3rem;
+      font-family: "AbsaraSans-Thin";
+      line-height: 1.2;
+      color: var(--main-title-color);
+      margin-bottom: 2rem;
+      text-align: center;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .titleContainer {
+      position: relative;
+    }
+  }
+}
+
+@screen md {
+  .pageHeaderContainer {
+    background-color: var(--main-bg-color);
+    .pageHeader {
+      @apply w-10/12 mx-auto;
+
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+
+      h1 {
+        font-size: 7rem;
+        font-family: "AbsaraSans-Thin";
+        line-height: 1;
+        letter-spacing: -0.3rem;
+        color: var(--main-title-color);
+      }
+    }
+  }
+}
+
+@screen lg {
+  .pageHeaderContainer {
+    background-color: var(--main-bg-color);
+    position: relative;
+    padding: 50px 0;
+    .pageHeader {
+      @apply w-10/12 mx-auto;
+      min-height: 200px;
+      text-align: center;
+      justify-content: flex-start;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      h1 {
+        font-size: 4rem;
+        font-family: "AbsaraSans-Thin";
+        line-height: 1;
+        position: relative;
+        letter-spacing: unset;
+        color: var(--main-title-color);
+        &::after {
+          content: "";
+          display: block;
+          margin: 1rem auto 0 auto;
+          width: 10%;
+          border-top: 2px solid var(--main-text-color);
+        }
+      }
+
+      h2 {
+        font-size: 1.785rem;
+        font-family: "AbsaraSans-TF-Light";
+        text-transform: uppercase;
+      }
+    }
+  }
+}

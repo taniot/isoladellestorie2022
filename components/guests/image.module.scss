@@ -1,0 +1,35 @@
+.borderContainer {
+  display: flex;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  border-width: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+}
+
+.image_container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+
+  img {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  .noImage {
+    width: inherit;
+    height: inherit;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fefefe;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
