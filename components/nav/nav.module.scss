@@ -25,7 +25,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 25px 0;
   overflow: scroll;
 }
 
@@ -44,11 +43,13 @@
   .left {
     position: absolute;
     left: 20px;
+    color: white;
   }
 
   .right {
     position: absolute;
     right: 20px;
+    color: white;
   }
 
   .menu {
@@ -56,7 +57,7 @@
     h2 {
       color: white;
       font-family: "AbsaraSans";
-      font-size: 1.4rem;
+      font-size: 2rem;
       text-align: center;
       text-transform: uppercase;
       margin-bottom: 20px;
@@ -64,7 +65,7 @@
 
     li {
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       line-height: 1.65;
       font-family: "AbsaraSans-Thin";
       text-transform: uppercase;

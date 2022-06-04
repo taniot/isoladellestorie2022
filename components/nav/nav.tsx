@@ -91,22 +91,7 @@ const Nav = () => {
       className={cls(styles.nav, state?.isMainMenuOpen ? styles.visible : "")}
     >
       <div className={styles.navCointainer}>
-        <div className={styles.navHeader}>
-          <div className={styles.langMenu}>ENGLISH VERSION</div>
-          <div className={styles.logoContainer}>
-            <Link href="/">
-              <a onClick={closeMenu}>
-                <Image
-                  src="/images/l-isola-delle-storie.svg"
-                  layout="fill"
-                  alt="L’Isola delle Storie 2022"
-                  className={styles.logo}
-                  priority
-                />
-              </a>
-            </Link>
-          </div>
-        </div>
+        <div>aaa</div>
         <div className={styles.menuContainer}>
           <div className={cls(styles.menu, styles.visitatori)}>
             <h2>{currentMenu.title}</h2>
@@ -129,6 +114,7 @@ const Nav = () => {
             <IoIosArrowDropright className="w-10 h-10" />
           </a>
         </div>
+        <div>bbb</div>
       </div>
     </Div100vh>
   );
