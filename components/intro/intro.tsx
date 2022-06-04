@@ -1,6 +1,8 @@
 import styles from "./intro.module.scss";
 import Image from "next/image";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { toBase64 } from "../../utils/toBase64";
+import { shimmer } from "../../utils/shimmer";
 const Intro = () => {
   const isMobile = useMediaQuery("(max-width: 639px)");
   const isTablet = useMediaQuery("(min-width: 640px) and (max-width: 1023px)");
@@ -22,6 +24,10 @@ const Intro = () => {
                 src="/images/intro-mobile-top.svg"
                 alt="Isola delle Storie 2022"
                 priority
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(800, 600)
+                )}`}
               />
             </div>
           </div>
@@ -33,6 +39,10 @@ const Intro = () => {
               objectFit="contain"
               objectPosition="center bottom"
               priority
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                shimmer(800, 600)
+              )}`}
             />
           </div>
         </div>
@@ -48,6 +58,10 @@ const Intro = () => {
             objectFit="contain"
             objectPosition="center bottom"
             priority
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(
+              shimmer(800, 600)
+            )}`}
           />
         </div>
       )}
@@ -60,6 +74,10 @@ const Intro = () => {
             alt="Isola delle Storie 2022"
             objectFit="contain"
             objectPosition="center bottom"
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(
+              shimmer(800, 600)
+            )}`}
           />
         </div>
       )}
