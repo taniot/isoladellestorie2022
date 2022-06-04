@@ -114,6 +114,20 @@ export const getEvents = async (tipologia?: string) => {
     const data = await client.request(query);
 
     result = data.eventi.nodes.map((evento: any) => {
+      const dataInizio = evento?.dettaglioEvento?.oraInizio
+        ? evento?.dettaglioEvento?.dataEvento +
+          "T" +
+          evento?.dettaglioEvento?.oraInizio +
+          ":00"
+        : evento?.dettaglioEvento?.dataEvento;
+
+      const dataFine = evento?.dettaglioEvento?.oraFine
+        ? evento?.dettaglioEvento?.dataEvento +
+          "T" +
+          evento?.dettaglioEvento?.oraFine +
+          ":00"
+        : evento?.dettaglioEvento?.dataEvento;
+
       return {
         id: evento?.id,
         title: evento?.title,
@@ -148,6 +162,8 @@ export const getEvents = async (tipologia?: string) => {
             " " +
             evento?.dettaglioEvento?.oraFine
         ),
+        dataOrdA: Date.parse(dataInizio),
+        dataOrdB: Date.parse(dataFine),
         categoria: evento?.categorieEventi?.nodes[0]?.slug || null,
         tipologia: evento?.tipologieEventi?.nodes[0]?.slug || null,
         luogo: evento?.luoghiEventi?.nodes[0]?.slug || null,
@@ -166,7 +182,7 @@ export const getEvents = async (tipologia?: string) => {
     });
 
     result.sort(
-      (a: any, b: any) => a.dataOrd - b.dataOrd || a.dataOrdFine - b.dataOrdFine
+      (a: any, b: any) => a.dataOrdA - b.dataOrdA || a.dataOrdB - b.dataOrdB
     );
     return result;
   } catch (error) {
