@@ -6,6 +6,9 @@ import AppContext from "../store/AppContext";
 import languageObject from "../languagesObject";
 import { getGuests } from "../lib/wp/guests";
 import { getEvents } from "../lib/wp/events";
+import TagManager from "react-gtm-module";
+
+const GOOGLE_TAG_MANAGER_ID: string = process.env.NEXT_PUBLIC_GTM_ID!;
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const [currentLanguage, setCurrentLanguage] =
@@ -14,6 +17,10 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [guests, setGuests] = useState<any[]>([]);
   const [events, setEvents] = useState<any[]>([]);
+
+  useEffect(() => {
+    TagManager.initialize({ gtmId: GOOGLE_TAG_MANAGER_ID });
+  }, []);
 
   useEffect(() => {
     if ((router.isReady && router.locale === "en") || router.locale === "it") {
