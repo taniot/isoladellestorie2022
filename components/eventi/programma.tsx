@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { setLuogoTipologiaGroups } from "../../lib/wp/events";
 import Evento from "../evento/evento";
 import styles from "./eventi.module.scss";
+import { v4 as uuidv4 } from "uuid";
 
 type EventiGroups = {
   luogo: string;
@@ -29,10 +30,7 @@ const ProgrammaList = ({ eventi }: { eventi: any }) => {
               evento.tipologia === group.tipologia
           );
           return (
-            <div
-              key={group.luogo + index}
-              className="flex justify-between mb-20"
-            >
+            <div key={uuidv4()} className={styles.eventContainer}>
               <div className={styles.whereContainer}>
                 <p className={styles.where}>{group.luogoName.toUpperCase()}</p>
                 <p className={styles.theme}>{group.tipologiaName}</p>

@@ -7,10 +7,17 @@
 
 .title {
   font-family: "AbsaraSans";
-  font-size: 1.6rem;
+  font-size: 1.35rem;
   line-height: 1.2;
   margin-bottom: 0.5rem;
   font-style: italic;
+  @screen md {
+    font-family: "AbsaraSans";
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
 }
 
 .time {

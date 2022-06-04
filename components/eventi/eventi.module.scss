@@ -23,24 +23,46 @@
 }
 
 .contentContainer {
-  background-color: transparent;
-  margin: 50px 0;
-  @apply w-10/12 mx-auto;
+  margin: 35px 0;
+
+  @screen md {
+    background-color: transparent;
+    margin: 50px 0;
+  }
+}
+
+.eventContainer {
+  margin-bottom: 2rem;
+  @screen md {
+    margin-bottom: unset;
+    @apply flex justify-between mb-20;
+  }
 }
 
 .whereContainer {
-  @apply w-5/12;
-  border-right: 1px dashed var(--main-text-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  padding-right: 50px;
+  border-bottom: 1px dashed var(--main-text-color);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  @screen md {
+    padding-bottom: unset;
+    margin-bottom: unset;
+    border-bottom: unset;
+
+    @apply w-5/12;
+    border-right: 1px dashed var(--main-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 50px;
+  }
 }
 
 .progContainer {
-  @apply w-7/12;
-  padding-left: 50px;
+  @screen md {
+    @apply w-7/12;
+    padding-left: 50px;
+  }
 }
 
 .timeContainer {
@@ -59,11 +81,14 @@
 }
 
 .where {
-  font-size: 1.8rem;
-  line-height: 1.25;
-  margin-bottom: 0;
   font-family: "AbsaraSans";
-  text-align: right;
+  font-size: 1.4rem;
+  line-height: 1.25;
+  @screen md {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    text-align: right;
+  }
 }
 
 .mainTime {
@@ -78,11 +103,15 @@
 }
 
 .theme {
-  font-size: 1.8rem;
-  line-height: 1;
-  margin-bottom: 0;
-  text-transform: uppercase;
   font-family: "AbsaraSans";
+  font-size: 1.4rem;
+  line-height: 1.25;
+  text-transform: uppercase;
   color: var(--main-bg-color);
-  text-align: right;
+  @screen md {
+    font-size: 1.8rem;
+    line-height: 1;
+    margin-bottom: 0;
+    text-align: right;
+  }
 }
