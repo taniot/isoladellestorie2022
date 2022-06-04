@@ -1,26 +1,25 @@
 .container {
-  @apply w-9/12 mx-auto;
+  @apply w-11/12 mx-auto;
   .newsContainer {
     @apply w-full  mb-20;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    .image {
-      @apply w-4/12;
-    }
+
     .text {
-      @apply w-8/12 pl-10;
+      @apply pt-10;
       h2 {
         font-family: "AbsaraSans-Thin";
-        font-size: 2rem;
+        font-size: 2.2rem;
         line-height: 1.2;
         margin-bottom: 10px;
       }
 
       .excerpt {
         font-family: "AbsaraSans-Thin";
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: 1.275rem;
+        line-height: 1.65;
       }
 
       .readMore {
@@ -31,6 +30,47 @@
           font-family: "AbsaraSans";
           font-size: 0.875rem;
           text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+@screen md {
+  .container {
+    @apply w-9/12 mx-auto;
+    .newsContainer {
+      @apply w-full  mb-20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .image {
+        @apply w-4/12;
+      }
+      .text {
+        @apply w-8/12 pl-10;
+        h2 {
+          font-family: "AbsaraSans-Thin";
+          font-size: 2rem;
+          line-height: 1.2;
+          margin-bottom: 10px;
+        }
+
+        .excerpt {
+          font-family: "AbsaraSans-Thin";
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+
+        .readMore {
+          display: flex;
+          align-items: center;
+          margin-top: 1rem;
+          span {
+            font-family: "AbsaraSans";
+            font-size: 0.875rem;
+            text-transform: uppercase;
+          }
         }
       }
     }
