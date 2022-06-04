@@ -56,7 +56,7 @@ const Guest = ({ guest }: { guest: any }) => {
                 <span
                   className={cls(
                     styles.dayNumber,
-                    days.includes("2022-06-22") && styles.active
+                    days?.includes("2022-06-22") && styles.active
                   )}
                 >
                   22/06
@@ -66,7 +66,7 @@ const Guest = ({ guest }: { guest: any }) => {
                 <span
                   className={cls(
                     styles.dayNumber,
-                    days.includes("2022-07-01") && styles.active
+                    days?.includes("2022-07-01") && styles.active
                   )}
                 >
                   01/07
@@ -76,7 +76,7 @@ const Guest = ({ guest }: { guest: any }) => {
                 <span
                   className={cls(
                     styles.dayNumber,
-                    days.includes("2022-07-02") && styles.active
+                    days?.includes("2022-07-02") && styles.active
                   )}
                 >
                   02/07
@@ -86,7 +86,7 @@ const Guest = ({ guest }: { guest: any }) => {
                 <span
                   className={cls(
                     styles.dayNumber,
-                    days.includes("2022-07-03") && styles.active
+                    days?.includes("2022-07-03") && styles.active
                   )}
                 >
                   03/07
