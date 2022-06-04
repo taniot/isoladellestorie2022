@@ -21,7 +21,7 @@ const Guests = (info: any) => {
                 tagLine: string;
               }) => (
                 <div key={uuidv4()} className={styles.grid_item}>
-                  <Link href={`/ospiti/${data.slug}/`}>
+                  <Link href={`/ospiti/${data.slug}/`} scroll={true}>
                     <a className={styles.grid_item_link}>
                       <GuestImage
                         title={data.title}

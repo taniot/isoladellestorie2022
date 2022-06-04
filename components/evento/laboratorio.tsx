@@ -10,7 +10,9 @@ const Laboratorio = ({ evento }: { evento: any }) => {
         evento.eventoPrincipale ? styles.main : ""
       )}
     >
-      <h4 className={styles.title}>{evento.title}</h4>
+      {!evento.nascondiTitolo && (
+        <h4 className={styles.title}>{evento.title}</h4>
+      )}
       <p className={styles.where}>{evento.luogoName}</p>
       <div className={styles.description}>
         {parse(evento.descrizioneIt ? evento.descrizioneIt : "")}
