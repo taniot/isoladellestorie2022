@@ -41,19 +41,19 @@ const menus = [
     menu: [
       {
         name: "Dove dormire",
-        url: "/ospiti/",
+        url: "/info-visitatori/dove-dormire/",
       },
       {
         name: "Dove mangiare",
-        url: "/ospiti/",
+        url: "/info-visitatori/dove-mangiare/",
       },
       {
         name: "Sostieni l’Isola",
-        url: "/ospiti/",
+        url: "/info-visitatori/sostieni-lisola/",
       },
       {
         name: "Contatti",
-        url: "/news/",
+        url: "/info-visitatori/contatti/",
       },
     ],
   },
