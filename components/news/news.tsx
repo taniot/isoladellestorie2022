@@ -23,8 +23,16 @@ const News = ({ data }: { data: any }) => {
           </div>
         </div>
         <div className={styles.text}>
-          <h2>{data.title}</h2>
-          <div className={styles.excerpt}>{parse(data.excerpt)}</div>
+          <h2>
+            <Link href={`/news/${data.slug}/`}>
+              <a>{data.title}</a>
+            </Link>
+          </h2>
+          <div className={styles.excerpt}>
+            <Link href={`/news/${data.slug}/`}>
+              <a>{parse(data.excerpt)}</a>
+            </Link>
+          </div>
           <div>
             <Link href={`/news/${data.slug}/`}>
               <a className={styles.readMore}>

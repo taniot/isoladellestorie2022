@@ -14,7 +14,7 @@
 
 .placesContainer {
   @screen md {
-    @apply flex-wrap;
+    @apply flex flex-wrap;
     margin-top: 10px;
   }
 }

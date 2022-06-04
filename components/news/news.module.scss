@@ -3,7 +3,7 @@
 }
 
 .container {
-  @apply w-10/12 mx-auto;
+  @apply w-10/12 mx-auto mt-5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,21 +29,12 @@
 
       .readMore {
         display: none;
-
-        align-items: center;
-        margin-top: 1rem;
-        justify-content: center;
-        span {
-          font-family: "AbsaraSans";
-          font-size: 0.675rem;
-          text-transform: uppercase;
-        }
       }
     }
   }
 }
 
-@screen md {
+@screen lg {
   .container {
     @apply w-9/12 mx-auto;
     .newsContainer {
