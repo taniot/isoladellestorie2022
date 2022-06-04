@@ -54,6 +54,23 @@ const menus = [
       },
     ],
   },
+  {
+    title: "Chi siamo",
+    menu: [
+      {
+        name: "L’ASSOCIAZIONE L’ISOLA DELLE STORIE",
+        url: "/chi-siamo/lassociazione-lisola-delle-storie/",
+      },
+      {
+        name: "Il Festival",
+        url: "/chi-siamo/il-festival/",
+      },
+      {
+        name: "Il Luogo",
+        url: "/chi-siamo/il-luogo/",
+      },
+    ],
+  },
 ];
 
 const Nav = () => {
@@ -92,7 +109,6 @@ const Nav = () => {
     >
       <div className={styles.navCointainer}>
         <div className={styles.navHeader}>
-          <div className={styles.langMenu}>ENGLISH VERSION</div>
           <div className={styles.logoContainer}>
             <Link href="/">
               <a onClick={closeMenu}>
@@ -123,13 +139,13 @@ const Nav = () => {
             </ul>
           </div>
           <a onClick={changeLeft} className={styles.left}>
-            <IoIosArrowDropleft className="w-10 h-10" />
+            <IoIosArrowDropleft className="w-7 h-7" />
           </a>
           <a onClick={changeRight} className={styles.right}>
-            <IoIosArrowDropright className="w-10 h-10" />
+            <IoIosArrowDropright className="w-7 h-7" />
           </a>
         </div>
-        <footer>aaaa</footer>
+        <footer>English Version</footer>
       </div>
     </Div100vh>
   );
