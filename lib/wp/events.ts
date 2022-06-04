@@ -165,9 +165,7 @@ export const getEvents = async (tipologia?: string) => {
       };
     });
 
-    result.sort(
-      (a: any, b: any) => a.dataOrd - b.dataOrd || a.dataOrdFine - b.dataOrdFine
-    );
+    result.sort((a: any, b: any) => a.dataOrd - b.dataOrd);
     return result;
   } catch (error) {
     console.log({ error });
