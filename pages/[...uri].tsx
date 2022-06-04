@@ -84,7 +84,6 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   if (!context) return { props: {} };
   const pageURI = createURI(context);
   const page = await getPageByURI(pageURI);
-  //console.log({ page });
   let defaultPage = false;
   let guests = null;
   let places = null;
