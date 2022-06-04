@@ -1,10 +1,18 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getGuests, getGuestBySlug } from "../../lib/wp/guests";
+import Head from "next/head";
 
 import Guest from "../../components/guest/guest";
 
 const Ospite = ({ guest }: { guest: any }) => {
-  return <Guest guest={guest} />;
+  return (
+    <>
+      <Head>
+        <title>{`${guest.title} - L'Isola delle Storie - 1-2-3 Luglio 2022 - Gavoi`}</title>
+      </Head>
+      <Guest guest={guest} />
+    </>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
