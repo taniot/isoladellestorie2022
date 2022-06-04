@@ -14,6 +14,8 @@
     border-top: 0;
     width: 200px;
     height: 40px;
+    min-width: 200px;
+    min-height: 40px;
   }
 
   .menuContainer {
@@ -43,6 +45,8 @@
       border-top: 0;
       width: 60px;
       height: 160px;
+      min-width: 60px;
+      min-height: 160px;
     }
 
     .menuContainer {
@@ -50,7 +54,7 @@
       display: flex; //flex
       align-items: center;
       a {
-        font-family: "font77190";
+        font-family: "AbsaraSans";
         font-size: 0.8rem;
         text-transform: uppercase;
         margin: 3px 0 0 0;
@@ -77,6 +81,8 @@
       border-top: 0;
       width: 80px;
       height: 180px;
+      min-width: 80px;
+      min-height: 180px;
     }
 
     .menuContainer {
@@ -85,7 +91,7 @@
       display: flex; //flex
       align-items: center;
       a {
-        font-family: "font77190";
+        font-family: "AbsaraSans";
         font-size: 0.8rem;
         text-transform: uppercase;
         margin: 3px 0 0 0;

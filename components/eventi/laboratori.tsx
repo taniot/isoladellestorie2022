@@ -15,7 +15,7 @@ const LaboratoriList = ({ eventi }: { eventi: any }) => {
   }, [eventi]);
 
   return (
-    <div className="w-full mx-auto">
+    <div className="w-10/12 mx-auto">
       {eventiGroups?.map((group, index) => {
         let result = eventi?.filter(
           (evento: any) =>
@@ -23,7 +23,7 @@ const LaboratoriList = ({ eventi }: { eventi: any }) => {
             evento.oraFine === group.oraFine
         );
         return (
-          <div key={uuidv4()} className="flex justify-between mb-20">
+          <div key={uuidv4()} className={styles.eventContainer}>
             <div className={styles.timeContainer}>
               <p className={styles.mainTime}>
                 {group.oraInizio}
