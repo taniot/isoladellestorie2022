@@ -7,8 +7,10 @@ import Div100vh from "react-div-100vh";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 const menus = [
   {
+    class: "main",
     title: "Edizione XVII",
     menu: [
       {
@@ -17,11 +19,11 @@ const menus = [
       },
       {
         name: "Programma",
-        url: "/ospiti/",
+        url: "/programma/mercoledi-22-giugno-2022/",
       },
       {
         name: "Laboratori",
-        url: "/ospiti/",
+        url: "/laboratori/sabato-2-luglio-2022/",
       },
       {
         name: "News & Stampa",
@@ -34,6 +36,7 @@ const menus = [
     ],
   },
   {
+    class: "visitatori",
     title: "Info Visitatori",
     menu: [
       {
@@ -55,6 +58,7 @@ const menus = [
     ],
   },
   {
+    class: "chisiamo",
     title: "Chi siamo",
     menu: [
       {
@@ -76,7 +80,7 @@ const menus = [
 const Nav = () => {
   const context = useContext(AppContext);
   const { state, setIsMainMenuOpen } = context;
-
+  const isMobile = useMediaQuery("(max-width: 1023px)");
   const closeMenu = (e: { preventDefault: () => void }) => {
     if (setIsMainMenuOpen) setIsMainMenuOpen(false);
   };
@@ -123,29 +127,121 @@ const Nav = () => {
             </Link>
           </div>
         </div>
-        <div className={styles.menuContainer}>
-          <div className={cls(styles.menu, styles.visitatori)}>
-            <h2>{currentMenu.title}</h2>
-            <ul>
-              {currentMenu.menu?.map((menu) => {
-                return (
-                  <li key={uuidv4()}>
-                    <Link href={menu.url}>
-                      <a onClick={closeMenu}>{menu.name}</a>
+        {isMobile && (
+          <>
+            <div className={styles.menuContainer}>
+              <div className={cls(styles.menu, styles.visitatori)}>
+                <h2>{currentMenu.title}</h2>
+                <ul>
+                  {currentMenu.menu?.map((menu) => {
+                    return (
+                      <li key={uuidv4()}>
+                        <Link href={menu.url}>
+                          <a onClick={closeMenu}>{menu.name}</a>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <a onClick={changeLeft} className={styles.left}>
+                <IoIosArrowDropleft className="w-7 h-7" />
+              </a>
+              <a onClick={changeRight} className={styles.right}>
+                <IoIosArrowDropright className="w-7 h-7" />
+              </a>
+            </div>
+          </>
+        )}
+        {!isMobile && (
+          <>
+            {" "}
+            <div className={styles.menuContainer}>
+              <div className={cls(styles.menu, styles.visitatori)}>
+                <h2>Info Visitatori</h2>
+                <ul>
+                  <li>
+                    <Link href="/info-visitatori/dove-dormire/">
+                      <a onClick={closeMenu}>Dove Dormire</a>
                     </Link>
                   </li>
-                );
-              })}
-            </ul>
-          </div>
-          <a onClick={changeLeft} className={styles.left}>
-            <IoIosArrowDropleft className="w-7 h-7" />
-          </a>
-          <a onClick={changeRight} className={styles.right}>
-            <IoIosArrowDropright className="w-7 h-7" />
-          </a>
-        </div>
-        <footer>English Version</footer>
+                  <li>
+                    <Link href="/info-visitatori/dove-mangiare/">
+                      <a onClick={closeMenu}>Dove Mangiare</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/info-visitatori/sostieni-lisola/">
+                      <a onClick={closeMenu}>Sostieni L’Isola</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/info-visitatori/contatti/">
+                      <a onClick={closeMenu}>Contatti</a>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className={cls(styles.menu, styles.main)}>
+                <h2>Edizione XVII</h2>
+                <ul>
+                  <li>
+                    <Link href="/ospiti/">
+                      <a onClick={closeMenu}>Ospiti</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/programma/mercoledi-22-giugno-2022/">
+                      <a onClick={closeMenu}>Programma</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/laboratori/sabato-2-luglio-2022/">
+                      <a onClick={closeMenu}>Laboratori</a>
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/news/">
+                      <a onClick={closeMenu}>News & Stampa</a>
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/sponsor/">
+                      <a onClick={closeMenu}>Sponsor</a>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className={cls(styles.menu, styles.chisiamo)}>
+                <h2>Chi Siamo</h2>
+                <ul>
+                  <li>
+                    <Link href="/chi-siamo/lassociazione-lisola-delle-storie/">
+                      <a onClick={closeMenu}>
+                        L’Associazione L’Isola delle Storie
+                      </a>
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/chi-siamo/il-festival/">
+                      <a onClick={closeMenu}>Il Festival</a>
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/chi-siamo/il-luogo/">
+                      <a onClick={closeMenu}>Il Luogo</a>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </Div100vh>
   );
