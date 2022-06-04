@@ -41,6 +41,13 @@
         margin-bottom: 1rem;
       }
 
+      a {
+        border-bottom: 1px dashed var(--main-bg-color);
+        &:hover {
+          color: var(--main-bg-color);
+        }
+      }
+
       b,
       strong {
         font-family: "AbsaraSans";

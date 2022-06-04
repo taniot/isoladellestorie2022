@@ -87,14 +87,19 @@ const Footer = () => {
           </a>
         </div>
         <div className={styles.taniotContainer}>
-          <a
-            href="https://taniot.net/?ref=isoladellestorie"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="items-center text-logo text-sm"
-          >
-            handmade with <GoHeart className={styles.loveIcon} /> by taniot
-          </a>
+          <div className={styles.team}>
+            Grafica di Sabina Era su illustrazione di Toni Demuro
+          </div>
+          <div className={styles.poweredBy}>
+            <a
+              href="https://taniot.net/?ref=isoladellestorie"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="items-center text-logo text-sm"
+            >
+              handmade with <GoHeart className={styles.loveIcon} /> by taniot
+            </a>
+          </div>
         </div>
       </div>
       <Script

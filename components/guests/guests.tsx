@@ -21,20 +21,21 @@ const Guests = (info: any) => {
                 tagLine: string;
               }) => (
                 <div key={uuidv4()} className={styles.grid_item}>
-                  <Link href={`/ospiti/${data.slug}/`} scroll={true}>
-                    <a className={styles.grid_item_link}>
-                      <GuestImage
-                        title={data.title}
-                        image={data.image}
-                        borderColor="#e6cd00"
-                      />
+                  <a
+                    href={`/ospiti/${data.slug}/`}
+                    className={styles.grid_item_link}
+                  >
+                    <GuestImage
+                      title={data.title}
+                      image={data.image}
+                      borderColor="#e6cd00"
+                    />
 
-                      <h2 className={styles.grid_item_title}>{data.title}</h2>
-                      <p className={styles.grid_item_description}>
-                        {data.tagLine}
-                      </p>
-                    </a>
-                  </Link>
+                    <h2 className={styles.grid_item_title}>{data.title}</h2>
+                    <p className={styles.grid_item_description}>
+                      {data.tagLine}
+                    </p>
+                  </a>
                 </div>
               )
             )}

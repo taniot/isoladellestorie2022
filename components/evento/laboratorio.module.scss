@@ -28,9 +28,9 @@
   color: var(--main-text-color);
   font-size: 0.785rem;
   border-radius: 5px;
-
   display: inline-block;
   margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 .maxIscrittiLabel {
@@ -40,8 +40,24 @@
   color: var(--main-text-color);
   font-size: 0.8rem;
   border-radius: 5px;
-
+  margin-right: 5px;
   display: inline-block;
+  margin-bottom: 5px;
+}
+
+.prenotaOnline {
+  background-color: #78b960;
+  padding: 3px 8px;
+  font-family: "MontSerrat";
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 5px;
+
+  &:hover {
+    background-color: var(--main-bg-color);
+  }
 }
 
 .description {
