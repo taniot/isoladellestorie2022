@@ -22,15 +22,37 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   overflow: scroll;
 }
 
-.logoContainer,
-.langMenu {
-  display: none;
+.navHeader {
+  position: relative;
+  display: flex;
+  @apply w-full mx-auto;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0 20px 0;
+
+  .langMenu {
+    display: none;
+    position: absolute;
+    left: 50px;
+    color: white;
+    font-family: "AbsaraSans";
+  }
+
+  .logoContainer {
+    display: unset;
+    width: 8rem;
+    height: 5rem;
+
+    .logo {
+      @apply antialiased opacity-100 h-auto;
+    }
+  }
 }
 
 .menuContainer {
@@ -39,6 +61,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 60vh;
 
   .left {
     position: absolute;
@@ -67,7 +90,7 @@
       text-align: center;
       font-size: 1.4rem;
       line-height: 1.65;
-      font-family: "AbsaraSans-Thin";
+      font-family: "AbsaraSans";
       text-transform: uppercase;
       margin-bottom: 10px;
 
