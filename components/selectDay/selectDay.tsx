@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 const SelectDay = ({ page }: { page: any }) => {
   const [daysEventi, setDaysEventi] = useState([]);
-  console.log({ page });
 
   useEffect(() => {
     const sortedChildren = (children: any) => {

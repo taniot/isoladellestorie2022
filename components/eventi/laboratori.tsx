@@ -8,9 +8,7 @@ const LaboratoriList = ({ eventi }: { eventi: any }) => {
   const [eventiGroups, setEventiGroups] = useState<any[]>([]);
 
   useEffect(() => {
-    console.log({ eventi });
     const groups = setOreGroups(eventi);
-    console.log({ groups });
     setEventiGroups(groups);
   }, [eventi]);
 
