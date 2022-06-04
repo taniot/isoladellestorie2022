@@ -4,7 +4,7 @@ import styles from "./back.module.scss";
 
 const Back = ({ link, text }: { link: string; text: string }) => (
   <>
-    <Link href={link} scroll={false}>
+    <Link href={link}>
       <a className={styles.back}>
         <span>
           <CgArrowLeft />
