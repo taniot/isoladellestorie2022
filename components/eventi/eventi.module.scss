@@ -1,0 +1,117 @@
+.pageContentContainer {
+  background-color: #efefef;
+  display: flex;
+}
+
+.pageContent {
+  margin: 50px 0;
+  @apply w-8/12 mx-auto;
+  background-color: transparent;
+  font-family: "AbsaraSans-Thin";
+  font-size: 1.0875rem;
+
+  h2 {
+    width: 100%;
+    font-family: "AbsaraSans";
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: block;
+  }
+}
+
+.contentContainer {
+  margin: 35px 0;
+
+  @screen md {
+    background-color: transparent;
+    margin: 50px 0;
+  }
+}
+
+.eventContainer {
+  margin-bottom: 2rem;
+  @screen md {
+    margin-bottom: unset;
+    @apply flex justify-between mb-20;
+  }
+}
+
+.whereContainer {
+  border-bottom: 1px dashed var(--main-text-color);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  @screen md {
+    padding-bottom: unset;
+    margin-bottom: unset;
+    border-bottom: unset;
+
+    @apply w-5/12;
+    border-right: 1px dashed var(--main-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 50px;
+  }
+}
+
+.progContainer {
+  @screen md {
+    @apply w-7/12;
+    padding-left: 50px;
+  }
+}
+
+.timeContainer {
+  @apply w-4/12;
+  border-right: 1px dashed var(--main-text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding-right: 50px;
+}
+
+.labContainer {
+  @apply w-8/12;
+  padding-left: 50px;
+}
+
+.where {
+  font-family: "AbsaraSans";
+  font-size: 1.4rem;
+  line-height: 1.25;
+  @screen md {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    text-align: right;
+  }
+}
+
+.mainTime {
+  font-size: 1.4rem;
+  line-height: 1.25;
+  margin-bottom: 0;
+  font-family: "MontSerrat";
+  text-align: right;
+  background-color: var(--new-color);
+  padding: 5px 13px;
+  color: white;
+}
+
+.theme {
+  font-family: "AbsaraSans";
+  font-size: 1.4rem;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: var(--main-bg-color);
+  @screen md {
+    font-size: 1.8rem;
+    line-height: 1;
+    margin-bottom: 0;
+    text-align: right;
+  }
+}
