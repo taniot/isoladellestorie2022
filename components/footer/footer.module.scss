@@ -80,21 +80,30 @@
     }
 
     .taniotContainer {
-      @apply flex items-center justify-center mt-20 pb-2;
+      @apply flex flex-col mt-20 pb-2;
       order: 4;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      background-color: var(--secondary-bg-color);
-      padding: 5px 15px;
-      a {
+      .team {
         font-family: "MontSerrat";
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+      .poweredBy {
+        @apply flex items-center justify-center;
+        justify-content: center;
+        align-items: center;
         display: flex;
+        background-color: var(--secondary-bg-color);
+        padding: 5px 15px;
+        a {
+          font-family: "MontSerrat";
+          font-size: 0.8rem;
+          display: flex;
 
-        .loveIcon {
-          @apply w-5 h-5 inline-flex fill-current mx-1 mr-1 ml-1;
-          color: #008083;
+          .loveIcon {
+            @apply w-5 h-5 inline-flex fill-current mx-1 mr-1 ml-1;
+            color: #008083;
+          }
         }
       }
     }
