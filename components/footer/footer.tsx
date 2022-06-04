@@ -1,6 +1,7 @@
 import styles from "./footer.module.scss";
 import Image from "next/image";
 import { GrFacebookOption, GrInstagram, GrTwitter } from "react-icons/gr";
+import { GoHeart } from "react-icons/go";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Script from "next/script";
 import Link from "next/link";
@@ -83,6 +84,16 @@ const Footer = () => {
             rel="noreferrer"
           >
             <GrTwitter className={styles.icon} />
+          </a>
+        </div>
+        <div className={styles.taniotContainer}>
+          <a
+            href="https://taniot.net/?ref=isoladellestorie"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="items-center text-logo text-sm"
+          >
+            handmade with <GoHeart className={styles.loveIcon} /> by taniot
           </a>
         </div>
       </div>

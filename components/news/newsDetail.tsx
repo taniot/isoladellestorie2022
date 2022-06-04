@@ -39,7 +39,7 @@ const NewsDetail = ({ data }: { data: any }) => {
               {data.dettagliArticoli?.comunicatoStampa?.guid && (
                 <div className={styles.download}>
                   <Link href={data.dettagliArticoli?.comunicatoStampa?.guid}>
-                    <a download target="_blank">
+                    <a target="_blank" rel="noopener noreferrer">
                       <span>Scarica il Comunicato Stampa</span>
                       <BsCloudDownload className="w-5 h-5" />
                     </a>

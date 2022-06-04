@@ -1,7 +1,5 @@
 .container {
-  @apply w-9/12 mx-auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  @apply w-10/12 mx-auto;
   .newsContainer {
     @apply w-full  mb-20;
     display: flex;
@@ -10,7 +8,7 @@
     align-items: center;
 
     .text {
-      @apply w-full pl-10;
+      @apply pt-10;
       h2 {
         font-family: "AbsaraSans-Thin";
         font-size: 2rem;
@@ -18,31 +16,11 @@
         margin-bottom: 10px;
       }
 
-      .intro {
-        display: flex;
-        margin-bottom: 2.5rem;
-        align-items: center;
-      }
-
       .excerpt {
-        @apply w-7/12;
         font-family: "AbsaraSans-Thin";
-        font-size: 1.475rem;
-        line-height: 1.575;
-        padding-left: 2rem;
-      }
-
-      .image {
-        @apply w-5/12;
-      }
-
-      .content {
-        font-family: "AbsaraSans-Thin";
-        font-size: 1.19rem;
-        line-height: 1.6;
-        p {
-          margin-bottom: 1rem;
-        }
+        font-size: 1.275rem;
+        line-height: 1.65;
+        padding-top: 1rem;
       }
 
       .download {
@@ -53,13 +31,87 @@
         a {
           display: flex;
           background-color: var(--main-bg-color);
-          padding: 15px 30px;
+          padding: 10px 20px;
           color: white;
           font-family: "AbsaraSans";
           text-transform: uppercase;
           align-items: center;
+          justify-content: center;
+
           span {
             margin-right: 10px;
+            font-size: 0.875rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@screen lg {
+  .container {
+    @apply w-9/12 mx-auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    .newsContainer {
+      @apply w-full  mb-20;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .text {
+        @apply w-full pl-10;
+        h2 {
+          font-family: "AbsaraSans-Thin";
+          font-size: 2rem;
+          line-height: 1.2;
+          margin-bottom: 10px;
+        }
+
+        .intro {
+          display: flex;
+          margin-bottom: 2.5rem;
+          align-items: center;
+        }
+
+        .excerpt {
+          @apply w-7/12;
+          font-family: "AbsaraSans-Thin";
+          font-size: 1.475rem;
+          line-height: 1.575;
+          padding-left: 2rem;
+        }
+
+        .image {
+          @apply w-5/12;
+        }
+
+        .content {
+          font-family: "AbsaraSans-Thin";
+          font-size: 1.19rem;
+          line-height: 1.6;
+          p {
+            margin-bottom: 1rem;
+          }
+        }
+
+        .download {
+          display: flex;
+          align-items: center;
+          margin-top: 3rem;
+          justify-content: center;
+          a {
+            display: flex;
+            background-color: var(--main-bg-color);
+            padding: 15px 30px;
+            color: white;
+            font-family: "AbsaraSans";
+            text-transform: uppercase;
+            align-items: center;
+            span {
+              margin-right: 10px;
+            }
           }
         }
       }
