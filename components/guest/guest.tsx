@@ -4,9 +4,25 @@ import GuestImage from "../guests/image";
 import cls from "classnames";
 import Back from "../back/back";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useEffect, useState } from "react";
 
 const Guest = ({ guest }: { guest: any }) => {
   const isMobile = useMediaQuery("(max-width: 639px)");
+
+  const [days, setDays] = useState<any[]>([]);
+
+  useEffect(() => {
+    const doMagic = (guest: any) => {
+      const result = guest.eventi.map((evento: any) => {
+        return evento.dettaglioEvento.dataEvento;
+      });
+
+      return result;
+    };
+
+    setDays(doMagic(guest));
+  }, [guest]);
+
   return (
     <section className={styles.guest}>
       <div className={styles.guestContentContainer}>
@@ -37,18 +53,44 @@ const Guest = ({ guest }: { guest: any }) => {
           <div className={styles.giorniFestival}>
             <ul>
               <li>
-                <span className={cls(styles.dayNumber)}>22/06</span>
+                <span
+                  className={cls(
+                    styles.dayNumber,
+                    days.includes("2022-06-22") && styles.active
+                  )}
+                >
+                  22/06
+                </span>
               </li>
               <li>
-                <span className={cls(styles.dayNumber)}>01/07</span>
+                <span
+                  className={cls(
+                    styles.dayNumber,
+                    days.includes("2022-07-01") && styles.active
+                  )}
+                >
+                  01/07
+                </span>
               </li>
               <li>
-                <span className={cls(styles.dayNumber, styles.active)}>
+                <span
+                  className={cls(
+                    styles.dayNumber,
+                    days.includes("2022-07-02") && styles.active
+                  )}
+                >
                   02/07
                 </span>
               </li>
               <li>
-                <span className={styles.dayNumber}>03/07</span>
+                <span
+                  className={cls(
+                    styles.dayNumber,
+                    days.includes("2022-07-03") && styles.active
+                  )}
+                >
+                  03/07
+                </span>
               </li>
             </ul>
             <h4>I giorni del festival</h4>

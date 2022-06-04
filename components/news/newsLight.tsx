@@ -29,10 +29,12 @@ const NewsLight = ({ data }: { data: any }) => {
             </a>
           </Link>
           <div className={styles.excerpt}>{parse(data.excerpt)}</div>
-          <div className={styles.readMore}>
-            <span>Leggi di più</span>
-            <ArrowNarrowRightIcon className="w-5 h-5 ml-2" />
-          </div>
+          <Link href={`/news/${data.slug}/`}>
+            <a className={styles.readMore}>
+              <span>Leggi di più</span>
+              <ArrowNarrowRightIcon className="w-5 h-5 ml-2" />
+            </a>
+          </Link>
         </div>
       </div>
     </div>
