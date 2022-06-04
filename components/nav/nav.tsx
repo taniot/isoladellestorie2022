@@ -40,6 +40,10 @@ const menus = [
     title: "Info Visitatori",
     menu: [
       {
+        name: "Come fare",
+        url: "/info-visitatori/come-fare/",
+      },
+      {
         name: "Dove dormire",
         url: "/info-visitatori/dove-dormire/",
       },
@@ -160,6 +164,11 @@ const Nav = () => {
               <div className={cls(styles.menu, styles.visitatori)}>
                 <h2>Info Visitatori</h2>
                 <ul>
+                  <li>
+                    <Link href="/info-visitatori/come-fare/">
+                      <a onClick={closeMenu}>Come fare</a>
+                    </Link>
+                  </li>
                   <li>
                     <Link href="/info-visitatori/dove-dormire/">
                       <a onClick={closeMenu}>Dove Dormire</a>

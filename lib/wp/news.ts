@@ -20,6 +20,7 @@ const qGetPosts = gql`
         featuredImage {
           node {
             guid
+            caption
           }
         }
         dettagliArticoli {
@@ -43,6 +44,7 @@ const qGestPostBySlug = gql`
       featuredImage {
         node {
           guid
+          caption
         }
       }
       dettagliArticoli {

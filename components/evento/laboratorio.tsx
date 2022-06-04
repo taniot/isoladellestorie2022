@@ -1,6 +1,7 @@
 import styles from "./laboratorio.module.scss";
 import classNames from "classnames";
 import parse from "html-react-parser";
+import Link from "next/link";
 
 const Laboratorio = ({ evento }: { evento: any }) => {
   return (
@@ -29,6 +30,13 @@ const Laboratorio = ({ evento }: { evento: any }) => {
         <div className={styles.info}>
           <span className={styles.etaLabel}>{evento.etaRichiesta}</span>
           <span className={styles.maxIscrittiLabel}>{evento.maxIscritti}</span>
+          {evento.prenotazioneOnline && (
+            <Link href="/info-visitatori/come-fare/">
+              <a>
+                <span className={styles.prenotaOnline}>Prenota online</span>
+              </a>
+            </Link>
+          )}
         </div>
       )}
     </div>

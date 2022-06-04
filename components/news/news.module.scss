@@ -11,6 +11,14 @@
   .newsContainer {
     @apply w-full;
 
+    .image {
+      .caption {
+        padding: 5px 10px;
+        font-size: 0.875rem;
+        font-family: "AbsaraSans-Thin";
+      }
+    }
+
     .text {
       h2 {
         font-family: "AbsaraSans-Thin";
@@ -22,7 +30,7 @@
 
       .excerpt {
         font-family: "AbsaraSans-Thin";
-        font-size: 1.275rem;
+        font-size: 1rem;
         line-height: 1.65;
         margin-bottom: 0.5rem;
       }

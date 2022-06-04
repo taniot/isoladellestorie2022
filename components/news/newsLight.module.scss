@@ -1,14 +1,23 @@
 .container {
   @apply w-10/12 mx-auto;
   .newsContainer {
-    @apply w-full  mb-20;
+    @apply w-full mb-10;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 
+    .image {
+      .caption {
+        background-color: #efefef;
+        padding: 5px 10px;
+        font-size: 0.875rem;
+        font-family: "AbsaraSans-Thin";
+      }
+    }
+
     .text {
-      @apply pt-10;
+      @apply pt-5;
       h2 {
         font-family: "AbsaraSans-Thin";
         font-size: 2rem;

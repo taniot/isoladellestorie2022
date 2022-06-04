@@ -21,6 +21,11 @@ const NewsLight = ({ data }: { data: any }) => {
               />
             )}
           </div>
+          {data?.featuredImage?.node?.caption && (
+            <div className={styles.caption}>
+              {parse(data?.featuredImage?.node?.caption || "")}
+            </div>
+          )}
         </div>
         <div className={styles.text}>
           <Link href={`/news/${data.slug}/`}>
@@ -28,7 +33,10 @@ const NewsLight = ({ data }: { data: any }) => {
               <h2>{data.title}</h2>
             </a>
           </Link>
-          <div className={styles.excerpt}>{parse(data.excerpt)}</div>
+          {data?.excerpt && (
+            <div className={styles.excerpt}>{parse(data?.excerpt || "")}</div>
+          )}
+
           <Link href={`/news/${data.slug}/`}>
             <a className={styles.readMore}>
               <span>Leggi di più</span>

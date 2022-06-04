@@ -29,6 +29,11 @@ const NewsDetail = ({ data }: { data: any }) => {
                       />
                     )}
                   </div>
+                  {data?.featuredImage?.node?.caption && (
+                    <div className={styles.caption}>
+                      {parse(data?.featuredImage?.node?.caption || "")}
+                    </div>
+                  )}
                 </div>
                 <div className={styles.excerpt}>{parse(data.excerpt)}</div>
               </div>
