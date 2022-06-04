@@ -11,6 +11,15 @@
   .newsContainer {
     @apply w-full;
 
+    .image {
+      .caption {
+        background-color: #efefef;
+        padding: 5px 10px;
+        font-size: 0.875rem;
+        font-family: "AbsaraSans-Thin";
+      }
+    }
+
     .text {
       h2 {
         font-family: "AbsaraSans-Thin";
