@@ -1,3 +1,10 @@
+.placesSection {
+  @apply w-11/12 mx-auto my-10;
+  @screen md {
+    @apply w-9/12 my-20;
+  }
+}
+
 .whereContainer {
   display: flex;
   justify-content: center;
@@ -6,8 +13,10 @@
 }
 
 .placesContainer {
-  @apply flex flex-wrap;
-  margin-top: 10px;
+  @screen md {
+    @apply flex-wrap;
+    margin-top: 10px;
+  }
 }
 
 .where {
@@ -41,7 +50,9 @@
 }
 
 .place {
-  @apply w-4/12 mb-5;
+  @screen md {
+    @apply w-4/12 mb-5;
+  }
 }
 .placeBox {
   padding: 20px;

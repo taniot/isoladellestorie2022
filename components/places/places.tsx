@@ -19,7 +19,7 @@ const Places = (info: any) => {
   }, [data]);
 
   return (
-    <div className="w-9/12 mx-auto my-20">
+    <div className={styles.placesSection}>
       {placesGroups.map((group: any) => {
         let places = data
           .filter((place: any) => place.city.slug === group.slug)

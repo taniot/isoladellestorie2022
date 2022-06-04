@@ -8,6 +8,9 @@ const Intro = () => {
 
   return (
     <>
+      <h1 className="hidden">L’Isola delle Storie</h1>
+      <h2 className="hidden">Festival Letterario della Sardegna</h2>
+      <h3 className="hidden">01.07 - 03.07.2022</h3>
       {isMobile && (
         <div className={styles.banner}>
           <div className={styles.device}>mobile</div>
