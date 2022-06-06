@@ -5,8 +5,13 @@ import { GoHeart } from "react-icons/go";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Script from "next/script";
 import Link from "next/link";
+import { getTranslation } from "../../lib/wp/translations";
+import AppContext from "../../store/AppContext";
+import { useContext } from "react";
 
 const Footer = () => {
+  const context = useContext(AppContext);
+  const { state } = context;
   const isMobile = useMediaQuery("(max-width: 767px)");
 
   return (
@@ -55,7 +60,13 @@ const Footer = () => {
             </a>{" "}
             -{" "}
             <Link href="/info-visitatori/contatti/">
-              <a>Contatti</a>
+              <a>
+                {getTranslation(
+                  state?.translations,
+                  "menu_contatti",
+                  state?.language
+                )}
+              </a>
             </Link>
           </p>
         </div>
@@ -88,7 +99,11 @@ const Footer = () => {
         </div>
         <div className={styles.taniotContainer}>
           <div className={styles.team}>
-            Grafica di Sabina Era su illustrazione di Toni Demuro
+            {getTranslation(
+              state?.translations,
+              "nomi_collaboratori",
+              state?.language
+            )}
           </div>
           <div className={styles.poweredBy}>
             <a

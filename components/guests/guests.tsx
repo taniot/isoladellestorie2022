@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./guests.module.scss";
 import Link from "next/link";
 import GuestImage from "./image";
-
+import { getGuestFieldByLang } from "../../lib/wp/guests";
+import AppContext from "../../store/AppContext";
+import { getTranslation } from "../../lib/wp/translations";
 const Guests = (info: any) => {
+  const context = useContext(AppContext);
+  const { state } = context;
   const { data, page } = info;
   const [posts, setPosts] = useState(data);
 
@@ -18,10 +22,18 @@ const Guests = (info: any) => {
                 title: string;
                 image: string;
                 slug: string;
-                tagLine: string;
+                jobTitleIt: string;
+                jobTitleEn: string;
               }) => (
                 <div key={uuidv4()} className={styles.grid_item}>
-                  <Link href={`/ospiti/${data.slug}/`}>
+                  <Link
+                    href={`${getTranslation(
+                      state?.translations,
+                      "menu_ospiti",
+                      state?.language,
+                      "link"
+                    )}${data.slug}/`}
+                  >
                     <a className={styles.grid_item_link}>
                       <GuestImage
                         title={data.title}
@@ -31,7 +43,7 @@ const Guests = (info: any) => {
 
                       <h2 className={styles.grid_item_title}>{data.title}</h2>
                       <p className={styles.grid_item_description}>
-                        {data.tagLine}
+                        {getGuestFieldByLang(data, "jobTitle", state?.language)}
                       </p>
                     </a>
                   </Link>

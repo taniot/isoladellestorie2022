@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { GetStaticProps } from "next";
 import Anteprima from "../components/anteprima/anteprima";
 import Intro from "../components/intro/intro";
 import News from "../components/news/news";
@@ -6,21 +6,40 @@ import { getPosts } from "../lib/wp/news";
 import HomePartner from "../components/home/partner";
 import { getSponsors } from "../lib/wp/sponsor";
 import HomeSection from "../components/home/section";
+import { useContext } from "react";
+import AppContext from "../store/AppContext";
+import { getTranslation } from "../lib/wp/translations";
+
 const Home = ({ news, sponsors }: { news: {}; sponsors: {} }) => {
+  const context = useContext(AppContext);
+  const { state } = context;
+
   const ospitiSection = {
-    title: "Scopri tutti gli ospiti",
+    title: getTranslation(
+      state?.translations,
+      "bottone_ospiti_home",
+      state?.language
+    ),
     url: "/ospiti/",
     target: "",
   };
 
   const newsSection = {
-    title: "Leggi tutte le news",
+    title: getTranslation(
+      state?.translations,
+      "bottone_news_home",
+      state?.language
+    ),
     url: "/news/",
     target: "",
   };
 
   const sponsorSection = {
-    title: "Tutti gli sponsor",
+    title: getTranslation(
+      state?.translations,
+      "bottone_sponsor_home",
+      state?.language
+    ),
     url: "/sponsor/",
     target: "",
   };
@@ -29,17 +48,35 @@ const Home = ({ news, sponsors }: { news: {}; sponsors: {} }) => {
     <>
       <Intro />
 
-      <HomeSection title="A L’Isola delle Storie XVII" linkTo={ospitiSection}>
+      <HomeSection
+        title={getTranslation(
+          state?.translations,
+          "titolo_ospiti_home",
+          state?.language
+        )}
+        linkTo={ospitiSection}
+      >
         <Anteprima />
       </HomeSection>
       <HomeSection
         bgColor="#f1e596"
-        title="Succede a L’Isola XVII"
+        title={getTranslation(
+          state?.translations,
+          "titolo_news_home",
+          state?.language
+        )}
         linkTo={newsSection}
       >
         <News data={news} />
       </HomeSection>
-      <HomeSection title="Sostenuto da" linkTo={sponsorSection}>
+      <HomeSection
+        title={getTranslation(
+          state?.translations,
+          "titolo_sponsor_home",
+          state?.language
+        )}
+        linkTo={sponsorSection}
+      >
         <HomePartner data={sponsors} />
       </HomeSection>
     </>

@@ -1,9 +1,13 @@
 import styles from "./selectDay.module.scss";
 import classNames from "classnames";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { getTranslation } from "../../lib/wp/translations";
+import AppContext from "../../store/AppContext";
 
 const SelectDay = ({ page }: { page: any }) => {
+  const context = useContext(AppContext);
+  const { state } = context;
   const [daysEventi, setDaysEventi] = useState([]);
 
   useEffect(() => {
@@ -45,7 +49,13 @@ const SelectDay = ({ page }: { page: any }) => {
           );
         })}
       </ul>
-      <h4>I giorni del festival</h4>
+      <h4>
+        {getTranslation(
+          state?.translations,
+          "giorni_festival",
+          state?.language
+        )}
+      </h4>
     </div>
   );
 };

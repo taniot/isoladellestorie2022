@@ -1,21 +1,41 @@
 import styles from "../../styles/pageDefault.module.scss";
 import HomePartner from "../home/partner";
 import HomeSection from "../home/section";
-
+import { getTranslation } from "../../lib/wp/translations";
+import AppContext from "../../store/AppContext";
+import { useContext } from "react";
 const Partner = (info: any) => {
+  const context = useContext(AppContext);
+  const { state } = context;
   const { data, page } = info;
   return (
     <>
       <div className={styles.contentContainer}>
         <div className={styles.pageContentContainer}>
-          <HomeSection title="Sostenuto da" showButton={false} paddingY={50}>
+          <HomeSection
+            title={getTranslation(
+              state?.translations,
+              "sponsor_sostenuto_da",
+              state?.language
+            )}
+            showButton={false}
+            paddingY={50}
+          >
             <HomePartner
               data={data.filter(
                 (partner: { type: string }) => partner.type === "sostenuto-da"
               )}
             />
           </HomeSection>
-          <HomeSection title="Collaborazioni" showButton={false} paddingY={50}>
+          <HomeSection
+            title={getTranslation(
+              state?.translations,
+              "sponsor_collaborazione_contributo",
+              state?.language
+            )}
+            showButton={false}
+            paddingY={50}
+          >
             <HomePartner
               data={data.filter(
                 (partner: { type: string }) => partner.type === "collaborazioni"
@@ -23,7 +43,11 @@ const Partner = (info: any) => {
             />
           </HomeSection>
           <HomeSection
-            title="Con il Patrocino di"
+            title={getTranslation(
+              state?.translations,
+              "sponsor_patrocinio",
+              state?.language
+            )}
             showButton={false}
             paddingY={50}
           >
@@ -34,7 +58,11 @@ const Partner = (info: any) => {
             />
           </HomeSection>
           <HomeSection
-            title="In collaborazione con"
+            title={getTranslation(
+              state?.translations,
+              "sponsor_collaborazione",
+              state?.language
+            )}
             showButton={false}
             paddingY={50}
           >
@@ -45,7 +73,15 @@ const Partner = (info: any) => {
               )}
             />
           </HomeSection>
-          <HomeSection title="Sponsor Tecnici" showButton={false} paddingY={50}>
+          <HomeSection
+            title={getTranslation(
+              state?.translations,
+              "sponsor_tecnici",
+              state?.language
+            )}
+            showButton={false}
+            paddingY={50}
+          >
             <HomePartner
               data={data.filter(
                 (partner: { type: string }) =>
@@ -54,7 +90,11 @@ const Partner = (info: any) => {
             />
           </HomeSection>
           <HomeSection
-            title="Media Technical Partner"
+            title={getTranslation(
+              state?.translations,
+              "sponsor_media",
+              state?.language
+            )}
             showButton={false}
             paddingY={50}
           >

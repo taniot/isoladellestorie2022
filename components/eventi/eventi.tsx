@@ -8,7 +8,7 @@ import parse from "html-react-parser";
 const Eventi = (info: any) => {
   const { data, page } = info;
   const context = useContext(AppContext);
-  const { state, setLoading } = context;
+  const { state } = context;
 
   const [eventi, setEventi] = useState<any[] | undefined>([]);
 
@@ -31,7 +31,7 @@ const Eventi = (info: any) => {
     }
 
     setEventi(result);
-  }, [data.data, data.categoria, info, setLoading, state?.events]);
+  }, [data.data, data.categoria, info, state?.events]);
 
   return (
     <section className={styles.eventi}>
