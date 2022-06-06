@@ -8,6 +8,7 @@ import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { getTranslation } from "../../lib/wp/translations";
 const menus = [
   {
     class: "main",
@@ -162,88 +163,273 @@ const Nav = () => {
             {" "}
             <div className={styles.menuContainer}>
               <div className={cls(styles.menu, styles.visitatori)}>
-                <h2>Info Visitatori</h2>
+                <h2>
+                  {getTranslation(
+                    state?.translations,
+                    "menu_info_visitatori",
+                    state?.language
+                  )}
+                </h2>
                 <ul>
                   <li>
-                    <Link href="/info-visitatori/come-fare/">
-                      <a onClick={closeMenu}>Come fare</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_come_fare",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_come_fare",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/info-visitatori/dove-dormire/">
-                      <a onClick={closeMenu}>Dove Dormire</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_dove_dormire",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_dove_dormire",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/info-visitatori/dove-mangiare/">
-                      <a onClick={closeMenu}>Dove Mangiare</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_dove_mangiare",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_dove_mangiare",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/info-visitatori/sostieni-lisola/">
-                      <a onClick={closeMenu}>Sostieni L’Isola</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_sostieni_lisola",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_sostieni_lisola",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/info-visitatori/contatti/">
-                      <a onClick={closeMenu}>Contatti</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_contatti",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_contatti",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
                 </ul>
               </div>
               <div className={cls(styles.menu, styles.main)}>
-                <h2>Edizione XVII</h2>
+                <h2>
+                  {getTranslation(
+                    state?.translations,
+                    "menu_edizione",
+                    state?.language
+                  )}
+                </h2>
                 <ul>
                   <li>
-                    <Link href="/ospiti/">
-                      <a onClick={closeMenu}>Ospiti</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_ospiti",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_ospiti",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/programma/mercoledi-22-giugno-2022/">
-                      <a onClick={closeMenu}>Programma</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_programma",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_programma",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/laboratori/sabato-2-luglio-2022/">
-                      <a onClick={closeMenu}>Laboratori</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_laboratori",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_laboratori",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
 
                   <li>
-                    <Link href="/news/">
-                      <a onClick={closeMenu}>News & Stampa</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_news",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_news",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
 
                   <li>
-                    <Link href="/sponsor/">
-                      <a onClick={closeMenu}>Sponsor</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_sponsor",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_sponsor",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
                 </ul>
               </div>
 
               <div className={cls(styles.menu, styles.chisiamo)}>
-                <h2>Chi Siamo</h2>
+                <h2>
+                  {getTranslation(
+                    state?.translations,
+                    "menu_chi_siamo",
+                    state?.language
+                  )}
+                </h2>
                 <ul>
                   <li>
-                    <Link href="/chi-siamo/lassociazione-lisola-delle-storie/">
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_associazione",
+                        state?.language,
+                        "link"
+                      )}
+                    >
                       <a onClick={closeMenu}>
-                        L’Associazione L’Isola delle Storie
+                        {getTranslation(
+                          state?.translations,
+                          "menu_associazione",
+                          state?.language
+                        )}
                       </a>
                     </Link>
                   </li>
 
                   <li>
-                    <Link href="/chi-siamo/il-festival/">
-                      <a onClick={closeMenu}>Il Festival</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_festival",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_festival",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
 
                   <li>
-                    <Link href="/chi-siamo/il-luogo/">
-                      <a onClick={closeMenu}>Il Luogo</a>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_luogo",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_luogo",
+                          state?.language
+                        )}
+                      </a>
                     </Link>
                   </li>
                 </ul>

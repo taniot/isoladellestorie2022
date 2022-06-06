@@ -136,6 +136,7 @@ export const getGuests = async () => {
         dettagliOspite: {
           ordinamento: string;
           jobTitleIt: string;
+          jobTitleEn: string;
           nome: string;
           cognome: string;
         };
@@ -147,30 +148,13 @@ export const getGuests = async () => {
           ordinamento: item.dettagliOspite.ordinamento,
           image: item?.featuredImage?.node?.guid || null,
           tagLine: item?.dettagliOspite?.jobTitleIt || null,
+          jobTitleIt: item?.dettagliOspite?.jobTitleIt || null,
+          jobTitleEn: item?.dettagliOspite?.jobTitleEn || null,
           nome: item?.dettagliOspite?.nome || null,
           cognome: item?.dettagliOspite?.cognome || null,
         };
       }
     );
-
-    //faker
-
-    // for (let index = 0; index < 10; index++) {
-    //   const name = faker.name.firstName();
-    //   const lastname = faker.name.lastName();
-    //   const title = name + " " + lastname;
-    //   const ordinamento = lastname;
-    //   const slug = slugify(title, { lower: true, strict: true });
-    //   const tagLine = faker.name.jobTitle();
-
-    //   result.push({
-    //     title,
-    //     ordinamento,
-    //     slug,
-    //     image: faker.image.people(500, 500, true),
-    //     tagLine,
-    //   });
-    // }
 
     // sort by name
     result.sort(function (
@@ -214,4 +198,29 @@ export const getGuestsFake = async (count: number) => {
   }
 
   return data;
+};
+
+export const getGuestFieldByLang = (
+  guest: any,
+  field: string,
+  language: string | undefined
+) => {
+  if (!language) return null;
+  switch (field) {
+    case "jobTitle":
+      return language === "it"
+        ? guest.jobTitleIt
+        : guest.jobTitleEn
+        ? guest.jobTitleEn
+        : guest.jobTitleIt;
+    case "description":
+      return language === "it"
+        ? guest.descrizioneIt
+        : guest.descrizioneEn
+        ? guest.descrizioneEn
+        : guest.descrizioneIt || null;
+
+    default:
+      return;
+  }
 };
