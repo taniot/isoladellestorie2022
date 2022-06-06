@@ -4,9 +4,13 @@ import GuestImage from "../guests/image";
 import cls from "classnames";
 import Back from "../back/back";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { useEffect, useState } from "react";
-
+import { useEffect, useState, useContext } from "react";
+import { getGuestFieldByLang } from "../../lib/wp/guests";
+import AppContext from "../../store/AppContext";
+import { getTranslation } from "../../lib/wp/translations";
 const Guest = ({ guest }: { guest: any }) => {
+  const context = useContext(AppContext);
+  const { state } = context;
   const isMobile = useMediaQuery("(max-width: 639px)");
 
   const [days, setDays] = useState<any[]>([]);
@@ -42,12 +46,12 @@ const Guest = ({ guest }: { guest: any }) => {
                 <span className={styles.nome}>{guest.nome}</span>{" "}
                 <span className={styles.cognome}>{guest.cognome}</span>
               </h2>
-              <h3>{guest.jobTitleIt}</h3>
+              <h3>{getGuestFieldByLang(guest, "jobTitle", state?.language)}</h3>
             </>
           ) : (
             <>
               <h2 className={styles.nomeLungo}>{guest.title}</h2>
-              <h3>{guest.jobTitleIt}</h3>
+              <h3>{getGuestFieldByLang(guest, "jobTitle", state?.language)}</h3>
             </>
           )}
           <div className={styles.giorniFestival}>
@@ -93,14 +97,36 @@ const Guest = ({ guest }: { guest: any }) => {
                 </span>
               </li>
             </ul>
-            <h4>I giorni del festival</h4>
+            <h4>
+              {getTranslation(
+                state?.translations,
+                "giorni_festival",
+                state?.language
+              )}
+            </h4>
           </div>
         </div>
         <div className={styles.guestBody}>
           <div className={styles.text}>
-            {parse(guest.descrizioneIt ? guest.descrizioneIt : "")}
+            {parse(
+              getGuestFieldByLang(guest, "description", state?.language)
+                ? getGuestFieldByLang(guest, "description", state?.language)
+                : ""
+            )}
           </div>
-          <Back link="/ospiti/" text="Torna agli Ospiti" />
+          <Back
+            link={getTranslation(
+              state?.translations,
+              "bottone_back_ospiti",
+              state?.language,
+              "link"
+            )}
+            text={getTranslation(
+              state?.translations,
+              "bottone_back_ospiti",
+              state?.language
+            )}
+          />
         </div>
       </div>
     </section>

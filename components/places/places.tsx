@@ -1,14 +1,17 @@
-import { MailIcon, PhoneIcon, PhoneOutgoingIcon } from "@heroicons/react/solid";
+import { MailIcon } from "@heroicons/react/solid";
 import { useEffect, useState } from "react";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { BiWorld } from "react-icons/bi";
 import { v4 as uuidv4 } from "uuid";
 import { setLuogoGroups } from "../../lib/wp/places";
-
 import styles from "./places.module.scss";
-import Link from "next/link";
+import { getTranslation } from "../../lib/wp/translations";
+import AppContext from "../../store/AppContext";
+import { useContext } from "react";
 
 const Places = (info: any) => {
+  const context = useContext(AppContext);
+  const { state } = context;
   const { data, page } = info;
   const [placesGroups, setPlacesGroups] = useState<any[]>([]);
   useEffect(() => {
@@ -30,7 +33,14 @@ const Places = (info: any) => {
             <div className={styles.whereContainer}>
               <p className={styles.where}>{group.luogo.toUpperCase()}</p>
               {group.distanza && (
-                <p className={styles.theme}>{group.distanza} km da Gavoi</p>
+                <p className={styles.theme}>
+                  {group.distanza}{" "}
+                  {getTranslation(
+                    state?.translations,
+                    "km_da_gavoi",
+                    state?.language
+                  )}
+                </p>
               )}
             </div>
 

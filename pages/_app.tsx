@@ -7,6 +7,7 @@ import languageObject from "../languagesObject";
 import { getGuests } from "../lib/wp/guests";
 import { getEvents } from "../lib/wp/events";
 import TagManager from "react-gtm-module";
+import { getTranslations } from "../lib/wp/translations";
 
 const GOOGLE_TAG_MANAGER_ID: string = process.env.NEXT_PUBLIC_GTM_ID!;
 
@@ -14,9 +15,9 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const [currentLanguage, setCurrentLanguage] =
     useState<keyof typeof languageObject>("en");
   const [isMainMenuOpen, setIsMainMenuOpen] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(true);
   const [guests, setGuests] = useState<any[]>([]);
   const [events, setEvents] = useState<any[]>([]);
+  const [translations, setTranslations] = useState<any[]>([]);
 
   useEffect(() => {
     TagManager.initialize({ gtmId: GOOGLE_TAG_MANAGER_ID });
@@ -49,7 +50,13 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       .then((data) => setEvents(data))
       .catch((error) => console.log(error));
 
-    setLoading(true);
+    const populateTranslations = async () => {
+      return await getTranslations();
+    };
+
+    populateTranslations()
+      .then((data) => setTranslations(data))
+      .catch((error) => console.log(error));
   }, []);
 
   return (
@@ -59,11 +66,10 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
           contents: languageObject[currentLanguage],
           language: currentLanguage,
           isMainMenuOpen,
-          loading,
           guests,
           events,
+          translations,
         },
-        setLoading,
         setIsMainMenuOpen,
         setCurrentLanguage,
       }}
