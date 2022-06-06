@@ -5,7 +5,12 @@ import Head from "next/head";
 const PageHeader = ({ page }: { page: any }) => (
   <>
     <Head>
-      <title>{`${page?.title} - L'Isola delle Storie - 1-2-3 Luglio 2022 - Gavoi`}</title>
+      <title>
+        {page?.parent?.title
+          ? `${page?.parent?.title} - ${page?.title}`
+          : page?.title}{" "}
+        - L`Isola delle Storie - 1-2-3 Luglio 2022 - Gavoi
+      </title>
     </Head>
 
     <div className={styles.pageHeaderContainer}>
