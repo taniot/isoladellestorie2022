@@ -1,4 +1,5 @@
 import { gql } from "graphql-request";
+import { EventType, EventTypeGroups } from "../../store/types";
 import { client } from "../client";
 
 //queries
@@ -38,12 +39,18 @@ const qGetEvents = gql`
           nodes {
             name
             slug
+            dettagliTipologieEvento {
+              nomeTipologiaEn
+            }
           }
         }
         luoghiEventi {
           nodes {
             name
             slug
+            dettagliLuoghiEvento {
+              nomeLuogoEn
+            }
           }
         }
       }
@@ -51,7 +58,7 @@ const qGetEvents = gql`
   }
 `;
 
-export const setLuogoTipologiaGroups = (eventi: any) => {
+export const setLuogoTipologiaGroups = (eventi: EventType[]) => {
   let currentLuogo = null;
   let currentTipologia = null;
   let groups = [];
@@ -66,12 +73,18 @@ export const setLuogoTipologiaGroups = (eventi: any) => {
       groups.push({
         luogo: evento.luogo,
         tipologia: evento.tipologia,
-        luogoName: evento.luogoName,
+        luogoName: evento.luogoName || null,
+        luogoNameEn: evento.luogoNameEn || null,
         tipologiaName:
           evento.tipologia === "segnaposto-a" ||
           evento.tipologia === "segnaposto-b"
             ? null
             : evento.tipologiaName,
+        tipologiaNameEn:
+          evento.tipologia === "segnaposto-a" ||
+          evento.tipologia === "segnaposto-b"
+            ? null
+            : evento.tipologiaNameEn,
       });
       currentLuogo = evento.luogo;
       currentTipologia = evento.tipologia;
@@ -141,10 +154,11 @@ export const getEvents = async (tipologia?: string) => {
         oraInizio: evento?.dettaglioEvento?.oraInizio || null,
         oraFine: evento?.dettaglioEvento?.oraFine || null,
         descrizioneIt:
-          changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt) || null,
+          changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, "it") ||
+          null,
         descrizioneEn:
-          evento?.dettaglioEvento?.descrizioneEventoEn ||
-          evento?.dettaglioEvento?.descrizioneEventoIt ||
+          changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoEn, "en") ||
+          changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, "it") ||
           null,
         infoIt: evento?.dettaglioEvento?.infoEventoIt,
         infoEn:
@@ -173,7 +187,16 @@ export const getEvents = async (tipologia?: string) => {
         luogo: evento?.luoghiEventi?.nodes[0]?.slug || null,
         categoriaName: evento?.categorieEventi?.nodes[0]?.name || null,
         tipologiaName: evento?.tipologieEventi?.nodes[0]?.name || null,
+        tipologiaNameEn:
+          evento?.tipologieEventi?.nodes[0]?.dettagliTipologieEvento
+            ?.nomeTipologiaEn ||
+          evento?.tipologieEventi?.nodes[0]?.name ||
+          null,
         luogoName: evento?.luoghiEventi?.nodes[0]?.name || null,
+        luogoNameEn:
+          evento?.luoghiEventi?.nodes[0]?.dettagliLuoghiEvento?.nomeLuogoEn ||
+          evento?.luoghiEventi?.nodes[0]?.name ||
+          null,
         eventoPrincipale: evento?.dettaglioEvento?.eventoPrincipale || false,
         nascondiOraInizio: evento?.dettaglioEvento?.nascondiOraInizio || false,
         nascondiTitolo: evento?.dettaglioEvento?.nascondiTitolo || false,
@@ -195,9 +218,66 @@ export const getEvents = async (tipologia?: string) => {
   }
 };
 
-const changeLinkGuest = (text: string) => {
-  return text.replaceAll(
-    "https://cms2022.isoladellestorie.it/guests/",
-    "/ospiti/"
-  );
+const changeLinkGuest = (text: string, language: string = "it") => {
+  if (!text) return "";
+  if (language === "it")
+    return text.replaceAll(
+      "https://cms2022.isoladellestorie.it/guests/",
+      "/ospiti/"
+    );
+
+  if (language === "en")
+    return text.replaceAll(
+      "https://cms2022.isoladellestorie.it/guests/",
+      "/en/guests/"
+    );
+};
+
+export const getGroupsFieldByLang = (
+  group: EventTypeGroups,
+  field: string,
+  language: string | undefined
+): string => {
+  switch (field) {
+    case "luogo":
+      return language === "it"
+        ? group.luogoName || ""
+        : group.luogoNameEn
+        ? group.luogoNameEn
+        : group.luogoName || "";
+    case "tipologia":
+      return language === "it"
+        ? group.tipologiaName || ""
+        : group.tipologiaNameEn
+        ? group.tipologiaNameEn
+        : group.tipologia || "";
+    default:
+      return "";
+  }
+};
+
+export const getEventFieldByLang = (
+  event: EventType,
+  field: string,
+  language: string | undefined
+): string => {
+  if (!language) language = "it";
+  switch (field) {
+    case "title":
+      return language === "it"
+        ? event.title || ""
+        : event.titleEn
+        ? event.titleEn
+        : event.title || "";
+
+    case "description":
+      return language === "it"
+        ? event.descrizioneIt || ""
+        : event.descrizioneEn
+        ? event.descrizioneEn
+        : event.descrizioneIt || "";
+
+    default:
+      return "";
+  }
 };

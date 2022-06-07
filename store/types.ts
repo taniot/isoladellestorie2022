@@ -77,7 +77,47 @@ export interface Guest {
   eventi: any[];
 }
 
-export interface Event {}
+export interface EventType {
+  id: string;
+  title: string;
+  titleEn: string;
+  data: string;
+  oraInizio: string;
+  oraFine: string;
+  descrizioneIt: string;
+  descrizioneEn: string;
+  infoIt: string;
+  infoEn: string;
+  finanziamentoIt: string;
+  finanziamentoEn: string;
+  dataOrd: Date;
+  dataOrdFine: Date;
+  dataOrdA: Date;
+  dataOrdB: Date;
+  categoria: string;
+  tipologia: string;
+  luogo: string;
+  categoriaName: string;
+  tipologiaName: string;
+  tipologiaNameEn: string;
+  luogoName: string;
+  luogoNameEn: string;
+  eventoPrincipale: boolean;
+  nascondiOraInizio: boolean;
+  nascondiTitolo: boolean;
+  etaRichiesta: string;
+  maxIscritti: string;
+  prenotazioneOnline: boolean;
+}
+
+export type EventTypeGroups = {
+  luogo: string;
+  tipologia: string;
+  luogoName: string | null;
+  luogoNameEn: string | null;
+  tipologiaName: string | null;
+  tipologiaNameEn: string | null;
+};
 
 export interface Partner {}
 

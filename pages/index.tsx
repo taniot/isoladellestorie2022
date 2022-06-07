@@ -35,7 +35,12 @@ const Home = ({
       "bottone_ospiti_home",
       state?.language
     ),
-    url: "/ospiti/",
+    url: getTranslation(
+      state?.translations,
+      "bottone_ospiti_home",
+      state?.language,
+      "link"
+    ),
     target: "",
   };
 
@@ -45,7 +50,12 @@ const Home = ({
       "bottone_news_home",
       state?.language
     ),
-    url: "/news/",
+    url: getTranslation(
+      state?.translations,
+      "bottone_news_home",
+      state?.language,
+      "link"
+    ),
     target: "",
   };
 
@@ -55,7 +65,12 @@ const Home = ({
       "bottone_sponsor_home",
       state?.language
     ),
-    url: "/sponsor/",
+    url: getTranslation(
+      state?.translations,
+      "bottone_sponsor_home",
+      state?.language,
+      "link"
+    ),
     target: "",
   };
 

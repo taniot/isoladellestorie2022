@@ -3,8 +3,9 @@ import Evento from "../evento/evento";
 import { setOreGroups } from "../../lib/wp/events";
 import styles from "./eventi.module.scss";
 import { v4 as uuidv4 } from "uuid";
+import { EventType } from "../../store/types";
 
-const LaboratoriList = ({ eventi }: { eventi: any }) => {
+const LaboratoriList = ({ eventi }: { eventi: EventType[] }) => {
   const [eventiGroups, setEventiGroups] = useState<any[]>([]);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const LaboratoriList = ({ eventi }: { eventi: any }) => {
     <div className="w-10/12 mx-auto">
       {eventiGroups?.map((group, index) => {
         let result = eventi?.filter(
-          (evento: any) =>
+          (evento: EventType) =>
             evento.oraInizio === group.oraInizio &&
             evento.oraFine === group.oraFine
         );
@@ -29,7 +30,7 @@ const LaboratoriList = ({ eventi }: { eventi: any }) => {
               </p>
             </div>
             <div className={styles.labContainer}>
-              {result?.map((evento: any) => (
+              {result?.map((evento: EventType) => (
                 <Evento key={evento.id} evento={evento} />
               ))}
             </div>
