@@ -62,7 +62,7 @@ const qGestPostBySlug = gql`
 */
 export const getPosts = async (count: number = 1, locale: string = "IT") => {
   const query = qGetPosts;
-  if (!client) return null;
+  if (!client) return [];
 
   const variables = {
     locale,

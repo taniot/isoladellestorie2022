@@ -9,7 +9,7 @@ const NewsPage = ({ post }: { post: any }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPosts(10);
 
-  const paths = posts.map((post: any) => {
+  const paths = posts?.map((post: any) => {
     return {
       params: {
         slug: post.slug,

@@ -23,7 +23,7 @@ const Places = (info: any) => {
 
   return (
     <div className={styles.placesSection}>
-      {placesGroups.map((group: any) => {
+      {placesGroups?.map((group: any) => {
         let places = data
           .filter((place: any) => place.city.slug === group.slug)
           .sort((a: any, b: any) => a.title.localeCompare(b.title));
@@ -45,7 +45,7 @@ const Places = (info: any) => {
             </div>
 
             <div className={styles.placesContainer}>
-              {places.map((place: any) => {
+              {places?.map((place: any) => {
                 return (
                   <div key={uuidv4()} className={styles.place}>
                     <div className={styles.placeBox}>

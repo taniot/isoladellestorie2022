@@ -56,14 +56,14 @@ export const setLuogoGroups = (places: any) => {
 
 export const getPlaces = async (tipologia?: string) => {
   const query = qGetPlaces;
-  if (!client) return null;
+  if (!client) return [];
 
-  let result = null;
+  let result = [];
 
   try {
     const data = await client.request(query);
 
-    result = data.luoghi.nodes.map((luogo: any) => {
+    result = data?.luoghi?.nodes?.map((luogo: any) => {
       return {
         id: luogo?.id,
         title: luogo?.title,

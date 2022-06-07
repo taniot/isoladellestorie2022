@@ -18,7 +18,7 @@ const Guest = ({ guest }: { guest: Guest }) => {
 
   useEffect(() => {
     const doMagic = (guest: Guest) => {
-      const result = guest.eventi.map((evento: any) => {
+      const result = guest?.eventi?.map((evento: any) => {
         return evento.dettaglioEvento.dataEvento;
       });
 

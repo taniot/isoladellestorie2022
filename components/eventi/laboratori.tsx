@@ -29,7 +29,7 @@ const LaboratoriList = ({ eventi }: { eventi: any }) => {
               </p>
             </div>
             <div className={styles.labContainer}>
-              {result.map((evento: any) => (
+              {result?.map((evento: any) => (
                 <Evento key={evento.id} evento={evento} />
               ))}
             </div>

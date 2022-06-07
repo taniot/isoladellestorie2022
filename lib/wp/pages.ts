@@ -89,7 +89,7 @@ export const getPageByURI = async (uri: string) => {
     if (data?.page?.parent?.node?.children) {
       const pageChildren = data?.page?.parent?.node?.children.nodes;
 
-      setChildren = pageChildren.map((child: wpPage) => {
+      setChildren = pageChildren?.map((child: wpPage) => {
         return {
           id: child?.id,
           uri: child?.uri,

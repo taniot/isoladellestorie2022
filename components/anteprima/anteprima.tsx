@@ -30,7 +30,7 @@ const Anteprima = ({ data }: { data: any }) => {
     <div className={styles.container}>
       {anteprima.length > 0 ? (
         <ul className={styles.hero_list}>
-          {anteprima.map((ospite, index) => {
+          {anteprima?.map((ospite, index) => {
             if (ospite.nome && ospite.cognome) {
               return (
                 <li

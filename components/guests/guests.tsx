@@ -18,7 +18,7 @@ const Guests = (info: any) => {
       <div className={styles.contentContainer}>
         <div className={styles.pageContentContainer}>
           <div className={styles.grid_list}>
-            {posts.map((data: Guest) => (
+            {posts?.map((data: Guest) => (
               <div key={uuidv4()} className={styles.grid_item}>
                 <Link
                   href={`${getTranslation(

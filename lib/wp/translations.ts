@@ -26,14 +26,14 @@ const qGetTranslations = gql`
 
 export const getTranslations = async () => {
   const query = qGetTranslations;
-  if (!client) return null;
+  if (!client) return [];
 
-  let result = null;
+  let result = [];
 
   try {
     const data = await client.request(query);
 
-    result = data.traduzioni.nodes.map((traduzione: any) => {
+    result = data?.traduzioni?.nodes?.map((traduzione: any) => {
       return {
         id: traduzione?.id,
         title: traduzione?.title,

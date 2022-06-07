@@ -106,14 +106,14 @@ export const setOreGroups = (eventi: any) => {
 */
 export const getEvents = async (tipologia?: string) => {
   const query = qGetEvents;
-  if (!client) return null;
+  if (!client) return [];
 
-  let result = null;
+  let result = [];
 
   try {
     const data = await client.request(query);
 
-    result = data.eventi.nodes.map((evento: any) => {
+    result = data?.eventi?.nodes.map((evento: any) => {
       const dataInizio = evento?.dettaglioEvento?.oraInizio
         ? evento?.dettaglioEvento?.dataEvento +
           "T" +

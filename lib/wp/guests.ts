@@ -120,7 +120,7 @@ export const getGuestBySlug = async (slug: string) => {
 export const getGuests = async () => {
   const query = qGetGuests;
 
-  if (!client) return null;
+  if (!client) return [];
 
   try {
     const data = await client.request(query);

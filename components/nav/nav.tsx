@@ -138,7 +138,7 @@ const Nav = () => {
               <div className={cls(styles.menu, styles.visitatori)}>
                 <h2>{currentMenu.title}</h2>
                 <ul>
-                  {currentMenu.menu?.map((menu) => {
+                  {currentMenu?.menu?.map((menu) => {
                     return (
                       <li key={uuidv4()}>
                         <Link href={menu.url}>

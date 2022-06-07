@@ -17,7 +17,7 @@ const Ospite = ({ guest }: { guest: any }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const guests = await getGuests();
 
-  const paths = guests.map((guest: any) => {
+  const paths = guests?.map((guest: any) => {
     return {
       params: {
         slug: guest.slug,
