@@ -56,6 +56,8 @@ export const setLuogoTipologiaGroups = (eventi: any) => {
   let currentTipologia = null;
   let groups = [];
 
+  if (!eventi) return [];
+
   for (const evento of eventi) {
     if (
       evento.luogo !== currentLuogo ||
@@ -83,6 +85,8 @@ export const setOreGroups = (eventi: any) => {
   let currentOraInizio = null;
   let currentOraFine = null;
   let groups = [];
+
+  if (!eventi) return [];
 
   for (const evento of eventi) {
     if (

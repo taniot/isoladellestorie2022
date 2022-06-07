@@ -40,6 +40,8 @@ export const setLuogoGroups = (places: any) => {
   let currentLuogo = null;
   let groups = [];
 
+  if (!places) return [];
+
   for (const place of places) {
     if (place.city.slug !== currentLuogo) {
       groups.push({
