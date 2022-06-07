@@ -115,7 +115,7 @@ export const getStaticProps: GetStaticProps = async () => {
       sponsors,
       translations,
     },
-    revalidate: 60,
+    revalidate: 3600,
   };
 };
 

@@ -157,6 +157,6 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       defaultPage,
       translations,
     },
-    revalidate: 60,
+    //revalidate: 3600,
   };
 };

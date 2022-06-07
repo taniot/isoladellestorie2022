@@ -111,6 +111,7 @@ export const getGuestBySlug = async (slug: string) => {
     };
   } catch (error) {
     console.log({ error });
+    return null;
   }
 };
 

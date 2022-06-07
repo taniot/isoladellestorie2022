@@ -1,8 +1,23 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import NewsDetail from "../../components/news/newsDetail";
 import { getPostBySlug, getPosts } from "../../lib/wp/news";
+import { getTranslations } from "../../lib/wp/translations";
+import { Translation } from "../../store/types";
+import { useContext, useEffect } from "react";
+import AppContext from "../../store/AppContext";
+const NewsPage = ({
+  post,
+  translations,
+}: {
+  post: any;
+  translations: Translation[];
+}) => {
+  const context = useContext(AppContext);
+  const { setTranslations } = context;
 
-const NewsPage = ({ post }: { post: any }) => {
+  useEffect(() => {
+    if (setTranslations) setTranslations(translations);
+  }, [setTranslations, translations]);
   return <NewsDetail data={post} />;
 };
 
@@ -27,12 +42,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context?.params?.slug;
 
   let post = null;
+  let translations = await getTranslations();
 
   if (typeof slug === "string") post = await getPostBySlug(slug);
 
   return {
     props: {
       post,
+      translations,
     },
   };
 };
