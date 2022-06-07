@@ -8,7 +8,7 @@ const NewsList = (info: any) => {
     <div className={styles.container}>
       {!data && <div>No news found</div>}
 
-      {data.map((news: any) => {
+      {data?.map((news: any) => {
         return <NewsLight key={uuidv4()} data={news} />;
       })}
     </div>

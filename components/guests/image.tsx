@@ -5,7 +5,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 interface GuestImg {
   title: string;
-  image?: string;
+  image?: string | null;
   width?: number;
   height?: number;
   borderColor?: string;
@@ -31,8 +31,8 @@ const GuestImage: FC<GuestImg> = (props) => {
             alt={title}
             priority={true}
             layout="fill"
-            objectFit="cover"
-            objectPosition="top"
+            objectFit="contain"
+            objectPosition="center"
           />
         ) : (
           <div className={styles.noImage}>
@@ -40,8 +40,8 @@ const GuestImage: FC<GuestImg> = (props) => {
               src="/images/l-isola-delle-storie-favicon-light.svg"
               alt={title}
               priority={true}
-              width="150px"
-              height="150px"
+              width="100px"
+              height="100px"
             />
           </div>
         )}

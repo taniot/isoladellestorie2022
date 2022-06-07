@@ -3,8 +3,13 @@ import Link from "next/link";
 import parse from "html-react-parser";
 import Image from "next/image";
 import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
+import { getTranslation } from "../../lib/wp/translations";
+import { useContext } from "react";
+import AppContext from "../../store/AppContext";
 
 const NewsLight = ({ data }: { data: any }) => {
+  const context = useContext(AppContext);
+  const { state } = context;
   if (!data) return null;
 
   return (
@@ -39,7 +44,13 @@ const NewsLight = ({ data }: { data: any }) => {
 
           <Link href={`/news/${data.slug}/`}>
             <a className={styles.readMore}>
-              <span>Leggi di più</span>
+              <span>
+                {getTranslation(
+                  state?.translations,
+                  "read_more",
+                  state?.language
+                )}
+              </span>
               <ArrowNarrowRightIcon className="w-5 h-5 ml-2" />
             </a>
           </Link>

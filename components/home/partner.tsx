@@ -7,7 +7,7 @@ const HomePartner = ({ data }: { data: any }) => {
   return (
     <div className={styles.container}>
       <div className={styles.sponsor_list}>
-        {data.map((sponsor: any) => (
+        {data?.map((sponsor: any) => (
           <div key={sponsor.title} className={styles.sponsorContainer}>
             {sponsor.image ? (
               <a

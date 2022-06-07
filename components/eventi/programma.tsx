@@ -36,7 +36,7 @@ const ProgrammaList = ({ eventi }: { eventi: any }) => {
                 <p className={styles.theme}>{group.tipologiaName}</p>
               </div>
               <div className={styles.progContainer}>
-                {result.map((evento: any) => (
+                {result?.map((evento: any) => (
                   <Evento key={evento.id} evento={evento} />
                 ))}
               </div>
