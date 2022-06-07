@@ -10,7 +10,7 @@ import { Guest } from "../../store/types";
 const Guests = (info: any) => {
   const context = useContext(AppContext);
   const { state } = context;
-  const { data, page } = info;
+  const { data } = info;
   const [posts, setPosts] = useState(data);
 
   return (

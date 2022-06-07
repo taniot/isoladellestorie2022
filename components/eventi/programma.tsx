@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
-import { setLuogoTipologiaGroups } from "../../lib/wp/events";
+import { useEffect, useState, useContext } from "react";
+import {
+  getEventFieldByLang,
+  getGroupsFieldByLang,
+  setLuogoTipologiaGroups,
+} from "../../lib/wp/events";
 import Evento from "../evento/evento";
 import styles from "./eventi.module.scss";
 import { v4 as uuidv4 } from "uuid";
+import { EventType, EventTypeGroups } from "../../store/types";
+import AppContext from "../../store/AppContext";
 
-type EventiGroups = {
-  luogo: string;
-  tipologia: string;
-  luogoName: string;
-  tipologiaName: string;
-};
+const ProgrammaList = ({ eventi }: { eventi: EventType[] }) => {
+  const context = useContext(AppContext);
+  const { state } = context;
 
-const ProgrammaList = ({ eventi }: { eventi: any }) => {
-  const [eventiGroups, setEventiGroups] = useState<EventiGroups[]>([]);
+  const [eventiGroups, setEventiGroups] = useState<EventTypeGroups[]>([]);
 
   useEffect(() => {
     const groups = setLuogoTipologiaGroups(eventi);
@@ -25,18 +27,31 @@ const ProgrammaList = ({ eventi }: { eventi: any }) => {
       <div className="w-10/12 mx-auto">
         {eventiGroups?.map((group, index) => {
           let result = eventi.filter(
-            (evento: any) =>
+            (evento: EventType) =>
               evento.luogo === group.luogo &&
               evento.tipologia === group.tipologia
           );
           return (
             <div key={uuidv4()} className={styles.eventContainer}>
               <div className={styles.whereContainer}>
-                <p className={styles.where}>{group.luogoName.toUpperCase()}</p>
-                <p className={styles.theme}>{group.tipologiaName}</p>
+                <p className={styles.where}>
+                  {getGroupsFieldByLang(
+                    group,
+                    "luogo",
+                    state?.language
+                  ).toUpperCase()}
+                </p>
+                <p className={styles.theme}>
+                  {" "}
+                  {getGroupsFieldByLang(
+                    group,
+                    "tipologia",
+                    state?.language
+                  ).toUpperCase()}
+                </p>
               </div>
               <div className={styles.progContainer}>
-                {result?.map((evento: any) => (
+                {result?.map((evento: EventType) => (
                   <Evento key={evento.id} evento={evento} />
                 ))}
               </div>
