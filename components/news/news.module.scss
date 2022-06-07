@@ -52,14 +52,24 @@
       align-items: center;
       .image {
         @apply w-5/12;
+        .caption {
+          padding: 5px 10px;
+          font-size: 0.875rem;
+          font-family: "AbsaraSans-Thin";
+          background-color: #999;
+          color: white;
+        }
       }
+
       .text {
         @apply w-7/12 pl-10;
+
         h2 {
           font-family: "AbsaraSans-Thin";
           font-size: 3rem;
           line-height: 1.2;
           margin-bottom: 20px;
+          margin-top: unset;
         }
 
         .excerpt {

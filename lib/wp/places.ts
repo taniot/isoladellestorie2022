@@ -40,6 +40,8 @@ export const setLuogoGroups = (places: any) => {
   let currentLuogo = null;
   let groups = [];
 
+  if (!places) return [];
+
   for (const place of places) {
     if (place.city.slug !== currentLuogo) {
       groups.push({
@@ -56,14 +58,14 @@ export const setLuogoGroups = (places: any) => {
 
 export const getPlaces = async (tipologia?: string) => {
   const query = qGetPlaces;
-  if (!client) return null;
+  if (!client) return [];
 
-  let result = null;
+  let result = [];
 
   try {
     const data = await client.request(query);
 
-    result = data.luoghi.nodes.map((luogo: any) => {
+    result = data?.luoghi?.nodes?.map((luogo: any) => {
       return {
         id: luogo?.id,
         title: luogo?.title,
@@ -95,6 +97,6 @@ export const getPlaces = async (tipologia?: string) => {
 
     return result;
   } catch (error) {
-    return null;
+    return [];
   }
 };

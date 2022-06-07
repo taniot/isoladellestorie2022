@@ -6,6 +6,7 @@ import GuestImage from "./image";
 import { getGuestFieldByLang } from "../../lib/wp/guests";
 import AppContext from "../../store/AppContext";
 import { getTranslation } from "../../lib/wp/translations";
+import { Guest } from "../../store/types";
 const Guests = (info: any) => {
   const context = useContext(AppContext);
   const { state } = context;
@@ -17,39 +18,31 @@ const Guests = (info: any) => {
       <div className={styles.contentContainer}>
         <div className={styles.pageContentContainer}>
           <div className={styles.grid_list}>
-            {posts.map(
-              (data: {
-                title: string;
-                image: string;
-                slug: string;
-                jobTitleIt: string;
-                jobTitleEn: string;
-              }) => (
-                <div key={uuidv4()} className={styles.grid_item}>
-                  <Link
-                    href={`${getTranslation(
-                      state?.translations,
-                      "menu_ospiti",
-                      state?.language,
-                      "link"
-                    )}${data.slug}/`}
-                  >
-                    <a className={styles.grid_item_link}>
-                      <GuestImage
-                        title={data.title}
-                        image={data.image}
-                        borderColor="#e6cd00"
-                      />
+            {posts?.map((data: Guest) => (
+              <div key={uuidv4()} className={styles.grid_item}>
+                <Link
+                  href={`${getTranslation(
+                    state?.translations,
+                    "menu_ospiti",
+                    state?.language,
+                    "link"
+                  )}${data.slug}/`}
+                >
+                  <a className={styles.grid_item_link}>
+                    <GuestImage
+                      title={data.title}
+                      image={data.image}
+                      borderColor="#e6cd00"
+                    />
 
-                      <h2 className={styles.grid_item_title}>{data.title}</h2>
-                      <p className={styles.grid_item_description}>
-                        {getGuestFieldByLang(data, "jobTitle", state?.language)}
-                      </p>
-                    </a>
-                  </Link>
-                </div>
-              )
-            )}
+                    <h2 className={styles.grid_item_title}>{data.title}</h2>
+                    <p className={styles.grid_item_description}>
+                      {getGuestFieldByLang(data, "jobTitle", state?.language)}
+                    </p>
+                  </a>
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </div>

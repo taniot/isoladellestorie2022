@@ -26,14 +26,14 @@ const qGetTranslations = gql`
 
 export const getTranslations = async () => {
   const query = qGetTranslations;
-  if (!client) return null;
+  if (!client) return [];
 
-  let result = null;
+  let result = [];
 
   try {
     const data = await client.request(query);
 
-    result = data.traduzioni.nodes.map((traduzione: any) => {
+    result = data?.traduzioni?.nodes?.map((traduzione: any) => {
       return {
         id: traduzione?.id,
         title: traduzione?.title,
@@ -47,7 +47,7 @@ export const getTranslations = async () => {
 
     return result;
   } catch (error) {
-    return null;
+    return [];
   }
 };
 
@@ -67,13 +67,14 @@ export const getTranslation = (
       .find((tr: any) => tr.slug === slug) ||
     null;
 
-  return what === "title"
-    ? result?.title
-    : result?.link?.url
-    ? replaceText(
-        result?.link?.url,
-        "https://cms2022.isoladellestorie.it/",
-        "/"
-      )
-    : "#";
+  if (what === "title") return result?.title;
+  if (what === "link") {
+    return result?.link?.url
+      ? replaceText(
+          result?.link?.url,
+          "https://cms2022.isoladellestorie.it/",
+          "/"
+        )
+      : "#";
+  }
 };

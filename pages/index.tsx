@@ -1,18 +1,33 @@
 import type { GetStaticProps } from "next";
+import { useContext, useEffect } from "react";
 import Anteprima from "../components/anteprima/anteprima";
+import HomePartner from "../components/home/partner";
+import HomeSection from "../components/home/section";
 import Intro from "../components/intro/intro";
 import News from "../components/news/news";
+import { getGuests } from "../lib/wp/guests";
 import { getPosts } from "../lib/wp/news";
-import HomePartner from "../components/home/partner";
 import { getSponsors } from "../lib/wp/sponsor";
-import HomeSection from "../components/home/section";
-import { useContext } from "react";
+import { getTranslation, getTranslations } from "../lib/wp/translations";
 import AppContext from "../store/AppContext";
-import { getTranslation } from "../lib/wp/translations";
+import { Guest, Translation } from "../store/types";
 
-const Home = ({ news, sponsors }: { news: {}; sponsors: {} }) => {
+const Home = ({
+  guests,
+  news,
+  sponsors,
+  translations,
+}: {
+  guests: Guest[];
+  news: {};
+  sponsors: {};
+  translations: Translation[];
+}) => {
   const context = useContext(AppContext);
-  const { state } = context;
+  const { state, setTranslations } = context;
+  useEffect(() => {
+    if (setTranslations) setTranslations(translations);
+  }, [translations, setTranslations]);
 
   const ospitiSection = {
     title: getTranslation(
@@ -56,7 +71,7 @@ const Home = ({ news, sponsors }: { news: {}; sponsors: {} }) => {
         )}
         linkTo={ospitiSection}
       >
-        <Anteprima />
+        <Anteprima data={guests} />
       </HomeSection>
       <HomeSection
         bgColor="#f1e596"
@@ -83,10 +98,11 @@ const Home = ({ news, sponsors }: { news: {}; sponsors: {} }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  let guests = null;
+export const getStaticProps: GetStaticProps = async () => {
+  let guests = await getGuests();
   let news = await getPosts(1, "IT");
   let sponsors = await getSponsors("sostenuto-da");
+  let translations = await getTranslations();
 
   if (Array.isArray(news)) {
     news = news[0];
@@ -97,7 +113,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
       guests,
       news,
       sponsors,
+      translations,
     },
+    //revalidate: 3600,
   };
 };
 

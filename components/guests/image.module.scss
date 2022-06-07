@@ -25,11 +25,11 @@
   .noImage {
     width: inherit;
     height: inherit;
-    max-width: 400px;
+    max-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fefefe;
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    background-color: white;
+    border-radius: 100%;
   }
 }

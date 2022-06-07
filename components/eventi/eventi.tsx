@@ -42,8 +42,12 @@ const Eventi = (info: any) => {
       )}
 
       <div className={styles.contentContainer}>
-        {data.categoria === "programma" && <ProgrammaList eventi={eventi} />}
-        {data.categoria === "laboratori" && <LaboratoriList eventi={eventi} />}
+        {eventi && data.categoria === "programma" && (
+          <ProgrammaList eventi={eventi} />
+        )}
+        {eventi && data.categoria === "laboratori" && (
+          <LaboratoriList eventi={eventi} />
+        )}
       </div>
     </section>
   );

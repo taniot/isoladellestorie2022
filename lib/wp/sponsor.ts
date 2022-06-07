@@ -37,14 +37,14 @@ const qGetSponsors = gql`
 */
 export const getSponsors = async (tipologia?: string) => {
   const query = qGetSponsors;
-  if (!client) return null;
+  if (!client) return [];
 
-  let result = null;
+  let result = [];
 
   try {
     const data = await client.request(query);
 
-    result = data.sponsors.nodes.map((sponsor: any) => {
+    result = data?.sponsors?.nodes?.map((sponsor: any) => {
       return {
         title: sponsor?.title,
         order: sponsor?.menuOrder,
@@ -63,6 +63,6 @@ export const getSponsors = async (tipologia?: string) => {
     return result;
   } catch (error) {
     console.log({ error });
-    return null;
+    return [];
   }
 };

@@ -56,6 +56,8 @@ export const setLuogoTipologiaGroups = (eventi: any) => {
   let currentTipologia = null;
   let groups = [];
 
+  if (!eventi) return [];
+
   for (const evento of eventi) {
     if (
       evento.luogo !== currentLuogo ||
@@ -84,6 +86,8 @@ export const setOreGroups = (eventi: any) => {
   let currentOraFine = null;
   let groups = [];
 
+  if (!eventi) return [];
+
   for (const evento of eventi) {
     if (
       evento.oraInizio !== currentOraInizio ||
@@ -106,14 +110,14 @@ export const setOreGroups = (eventi: any) => {
 */
 export const getEvents = async (tipologia?: string) => {
   const query = qGetEvents;
-  if (!client) return null;
+  if (!client) return [];
 
-  let result = null;
+  let result = [];
 
   try {
     const data = await client.request(query);
 
-    result = data.eventi.nodes.map((evento: any) => {
+    result = data?.eventi?.nodes.map((evento: any) => {
       const dataInizio = evento?.dettaglioEvento?.oraInizio
         ? evento?.dettaglioEvento?.dataEvento +
           "T" +
@@ -187,7 +191,7 @@ export const getEvents = async (tipologia?: string) => {
     return result;
   } catch (error) {
     console.log({ error });
-    return null;
+    return [];
   }
 };
 

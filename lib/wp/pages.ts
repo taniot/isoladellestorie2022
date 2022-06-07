@@ -1,4 +1,5 @@
 import { gql } from "graphql-request";
+import { PageChildren, wpPage } from "../../store/types";
 import { client } from "../client";
 
 //queries
@@ -70,7 +71,7 @@ export const getPages = async (locale?: string) => {
     return data?.pages?.nodes;
   } catch (error) {
     console.log({ error });
-    return null;
+    return [];
   }
 };
 
@@ -82,14 +83,13 @@ export const getPageByURI = async (uri: string) => {
 
   try {
     const data = await client.request(query, variables);
-    //return data?.page;
 
     let setChildren = [];
 
     if (data?.page?.parent?.node?.children) {
       const pageChildren = data?.page?.parent?.node?.children.nodes;
 
-      setChildren = pageChildren.map((child: any) => {
+      setChildren = pageChildren?.map((child: wpPage) => {
         return {
           id: child?.id,
           uri: child?.uri,

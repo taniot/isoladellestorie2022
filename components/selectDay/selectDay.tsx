@@ -23,7 +23,7 @@ const SelectDay = ({ page }: { page: any }) => {
   return (
     <div className={styles.giorniFestival}>
       <ul>
-        {daysEventi.map((day: any, index: number) => {
+        {daysEventi?.map((day: any, index: number) => {
           const date = new Date(day.dateEventi);
           return (
             <li key={index}>
