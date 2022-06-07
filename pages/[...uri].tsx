@@ -12,6 +12,7 @@ import { getPosts } from "../lib/wp/news";
 import { getPageByURI, getPages } from "../lib/wp/pages";
 import { getPlaces } from "../lib/wp/places";
 import { getSponsors } from "../lib/wp/sponsor";
+import { getTranslations } from "../lib/wp/translations";
 import AppContext from "../store/AppContext";
 import { Guest, Page, Translation, wpPage } from "../store/types";
 import styles from "../styles/pageDefault.module.scss";
@@ -25,6 +26,7 @@ const PageDefault = ({
   events,
   news,
   defaultPage,
+  translations,
 }: {
   page: Page;
   guests: Guest[];
@@ -36,11 +38,15 @@ const PageDefault = ({
   translations: Translation[];
 }) => {
   const context = useContext(AppContext);
-  const { setEvents } = context;
+  const { setEvents, setTranslations } = context;
 
   useEffect(() => {
     if (setEvents) setEvents(events);
   }, [events, setEvents]);
+
+  useEffect(() => {
+    if (setTranslations) setTranslations(translations);
+  }, [setTranslations, translations]);
 
   return (
     <>
@@ -96,6 +102,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   if (!context) return { props: {} };
   const pageURI = createURI(context);
   const page = await getPageByURI(pageURI);
+  const translations = await getTranslations();
   let defaultPage = false;
   let guests = null;
   let places = null;
@@ -148,6 +155,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       events,
       news,
       defaultPage,
+      translations,
     },
     revalidate: 60,
   };

@@ -63,6 +63,6 @@ export const getSponsors = async (tipologia?: string) => {
     return result;
   } catch (error) {
     console.log({ error });
-    return null;
+    return [];
   }
 };

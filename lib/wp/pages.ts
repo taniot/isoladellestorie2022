@@ -71,7 +71,7 @@ export const getPages = async (locale?: string) => {
     return data?.pages?.nodes;
   } catch (error) {
     console.log({ error });
-    return null;
+    return [];
   }
 };
 

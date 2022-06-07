@@ -95,6 +95,6 @@ export const getPlaces = async (tipologia?: string) => {
 
     return result;
   } catch (error) {
-    return null;
+    return [];
   }
 };

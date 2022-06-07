@@ -161,7 +161,7 @@ export const getGuests = async () => {
     return result;
   } catch (error) {
     console.log({ error });
-    return null;
+    return [];
   }
 };
 

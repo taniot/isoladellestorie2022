@@ -47,7 +47,7 @@ export const getTranslations = async () => {
 
     return result;
   } catch (error) {
-    return null;
+    return [];
   }
 };
 

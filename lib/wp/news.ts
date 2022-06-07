@@ -74,7 +74,7 @@ export const getPosts = async (count: number = 1, locale: string = "IT") => {
     return data?.posts?.nodes;
   } catch (error) {
     console.log({ error });
-    return null;
+    return [];
   }
 };
 
