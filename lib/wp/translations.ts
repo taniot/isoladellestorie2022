@@ -43,7 +43,7 @@ export const getTranslations = async () => {
       };
     });
 
-    console.log({ result });
+    //console.log({ result });
 
     return result;
   } catch (error) {
