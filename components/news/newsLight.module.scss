@@ -58,7 +58,7 @@
         @apply w-4/12;
       }
       .text {
-        @apply w-8/12 pl-10;
+        @apply w-8/12 pl-10 pt-0;
         h2 {
           font-family: "AbsaraSans-Thin";
           font-size: 2rem;
@@ -68,7 +68,7 @@
 
         .excerpt {
           font-family: "AbsaraSans-Thin";
-          font-size: 1rem;
+          font-size: 1.1rem;
           line-height: 1.6;
         }
 

@@ -8,7 +8,8 @@ import { useEffect, useState, useContext } from "react";
 import { getGuestFieldByLang } from "../../lib/wp/guests";
 import AppContext from "../../store/AppContext";
 import { getTranslation } from "../../lib/wp/translations";
-const Guest = ({ guest }: { guest: any }) => {
+import { Guest } from "../../store/types";
+const Guest = ({ guest }: { guest: Guest }) => {
   const context = useContext(AppContext);
   const { state } = context;
   const isMobile = useMediaQuery("(max-width: 639px)");
@@ -16,7 +17,7 @@ const Guest = ({ guest }: { guest: any }) => {
   const [days, setDays] = useState<any[]>([]);
 
   useEffect(() => {
-    const doMagic = (guest: any) => {
+    const doMagic = (guest: Guest) => {
       const result = guest.eventi.map((evento: any) => {
         return evento.dettaglioEvento.dataEvento;
       });

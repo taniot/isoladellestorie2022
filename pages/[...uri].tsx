@@ -1,17 +1,21 @@
-import { GetStaticPaths, GetStaticProps, PreviewData } from "next";
-import { getGuests } from "../lib/wp/guests";
-import { getPageByURI, getPages } from "../lib/wp/pages";
-import Guests from "../components/guests/guests";
-import Places from "../components/places/places";
-import Partner from "../components/partner/partner";
-import styles from "../styles/pageDefault.module.scss";
-import { getSponsors } from "../lib/wp/sponsor";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { useContext, useEffect } from "react";
 import Eventi from "../components/eventi/eventi";
-
-import PageHeader from "../components/pageHeader/pageHeader";
-import { getPlaces } from "../lib/wp/places";
-import { getPosts } from "../lib/wp/news";
+import Guests from "../components/guests/guests";
 import NewsList from "../components/newsList/newsList";
+import PageHeader from "../components/pageHeader/pageHeader";
+import Partner from "../components/partner/partner";
+import Places from "../components/places/places";
+import { getEvents } from "../lib/wp/events";
+import { getGuests } from "../lib/wp/guests";
+import { getPosts } from "../lib/wp/news";
+import { getPageByURI, getPages } from "../lib/wp/pages";
+import { getPlaces } from "../lib/wp/places";
+import { getSponsors } from "../lib/wp/sponsor";
+import AppContext from "../store/AppContext";
+import { Guest, Page, Translation, wpPage } from "../store/types";
+import styles from "../styles/pageDefault.module.scss";
+import { createURI } from "../utils/createUri";
 
 const PageDefault = ({
   page,
@@ -22,14 +26,22 @@ const PageDefault = ({
   news,
   defaultPage,
 }: {
-  page: any;
-  guests: any;
+  page: Page;
+  guests: Guest[];
   places: any;
   partner: any;
   events: any;
   news: any;
   defaultPage: boolean;
+  translations: Translation[];
 }) => {
+  const context = useContext(AppContext);
+  const { setEvents } = context;
+
+  useEffect(() => {
+    if (setEvents) setEvents(events);
+  }, [events, setEvents]);
+
   return (
     <>
       <div className={styles.pageContainer}>
@@ -63,10 +75,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const pages = await getPages();
 
   const paths =
-    pages?.map((page: any) => {
+    pages?.map((page: wpPage) => {
       return {
         params: {
-          uri: page.uri.split("/").filter((element: any) => {
+          uri: page.uri.split("/").filter((element: string) => {
             return element !== "";
           }),
         },
@@ -119,7 +131,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       break;
 
     case "eventi":
-      events = true;
+      events = await getEvents();
       break;
 
     default:
@@ -139,27 +151,4 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
     },
     revalidate: 60,
   };
-};
-
-const createURI = (context: {
-  params: any;
-  preview?: boolean | undefined;
-  previewData?: PreviewData;
-  locale: any;
-  locales?: string[] | undefined;
-  defaultLocale: any;
-}) => {
-  const {
-    params: { uri },
-    locale,
-    defaultLocale,
-  } = context;
-
-  let uriParts = [];
-  if (locale !== defaultLocale) uriParts.push(locale);
-  uriParts = [...uriParts, ...uri];
-
-  let pageURI = `/${uriParts.join("/")}/`;
-
-  return pageURI;
 };

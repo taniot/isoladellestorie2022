@@ -1,8 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getGuests, getGuestBySlug } from "../../lib/wp/guests";
 import Head from "next/head";
-
 import Guest from "../../components/guest/guest";
+import { getGuestBySlug, getGuests } from "../../lib/wp/guests";
 
 const Ospite = ({ guest }: { guest: any }) => {
   return (
@@ -43,7 +42,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       guest,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 };
 

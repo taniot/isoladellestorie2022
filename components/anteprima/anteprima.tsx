@@ -3,18 +3,18 @@ import cls from "classnames";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import AppContext from "../../store/AppContext";
+import { getTranslation } from "../../lib/wp/translations";
 
-const Anteprima = () => {
+const Anteprima = ({ data }: { data: any }) => {
   const context = useContext(AppContext);
   const { state } = context;
-
   const [anteprima, setAnteprima] = useState<any[]>([]);
 
   useEffect(() => {
     const randomGuests = () => {
-      if (state && state.guests?.length > 0) {
-        const shuffled = state.guests
-          .filter((ospite) => ospite.nome && ospite.cognome)
+      if (data && data.length > 0) {
+        const shuffled = data
+          .filter((ospite: any) => ospite.nome && ospite.cognome)
           .sort(() => 0.5 - Math.random());
 
         setAnteprima(shuffled.slice(0, 5));
@@ -24,7 +24,7 @@ const Anteprima = () => {
     //setInterval(randomGuests, 5000);
 
     randomGuests();
-  }, [state]);
+  }, [data]);
 
   return (
     <div className={styles.container}>
@@ -37,13 +37,22 @@ const Anteprima = () => {
                   key={ospite.title}
                   className={cls(styles.hero_name, styles.color2)}
                 >
-                  <Link href={`/ospiti/${ospite.slug}/`}>
+                  <Link
+                    href={`${getTranslation(
+                      state?.translations,
+                      "menu_ospiti",
+                      state?.language,
+                      "link"
+                    )}${ospite.slug}/`}
+                  >
                     <a>
                       <span className={styles.lowLight}>{ospite.nome}</span>{" "}
-                      <span className={styles.highLight}>{ospite.cognome}</span>
-                      {index + 1 !== anteprima.length && (
-                        <span className={styles.trattino}>,</span>
-                      )}{" "}
+                      <span className={styles.highLight}>
+                        {ospite.cognome}
+                        {index + 1 !== anteprima.length && (
+                          <span className={styles.trattino}>,</span>
+                        )}{" "}
+                      </span>
                     </a>
                   </Link>
                 </li>

@@ -67,13 +67,14 @@ export const getTranslation = (
       .find((tr: any) => tr.slug === slug) ||
     null;
 
-  return what === "title"
-    ? result?.title
-    : result?.link?.url
-    ? replaceText(
-        result?.link?.url,
-        "https://cms2022.isoladellestorie.it/",
-        "/"
-      )
-    : "#";
+  if (what === "title") return result?.title;
+  if (what === "link") {
+    return result?.link?.url
+      ? replaceText(
+          result?.link?.url,
+          "https://cms2022.isoladellestorie.it/",
+          "/"
+        )
+      : "#";
+  }
 };

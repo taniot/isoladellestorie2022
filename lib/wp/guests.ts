@@ -2,6 +2,7 @@ import { gql } from "graphql-request";
 import { client } from "../client";
 import { faker } from "@faker-js/faker";
 import slugify from "slugify";
+import { Guest, wpGuest } from "../../store/types";
 
 faker.locale = "it";
 
@@ -93,11 +94,8 @@ export const getGuestBySlug = async (slug: string) => {
     slug,
   };
 
-  if (!client) return null;
-
   try {
     const { ospite } = await client.request(query, variables);
-
     return {
       title: ospite?.title,
       nome: ospite.dettagliOspite.nome,
@@ -105,7 +103,6 @@ export const getGuestBySlug = async (slug: string) => {
       slug: ospite?.slug,
       ordinamento: ospite.dettagliOspite.ordinamento,
       image: ospite?.featuredImage?.node?.guid || null,
-      tagLine: ospite?.dettagliOspite?.jobTitleIt || null,
       jobTitleIt: ospite?.dettagliOspite?.jobTitleIt || null,
       jobTitleEn: ospite?.dettagliOspite?.jobTitleEn || null,
       descrizioneIt: ospite?.dettagliOspite?.descrizioneIt || null,
@@ -114,7 +111,6 @@ export const getGuestBySlug = async (slug: string) => {
     };
   } catch (error) {
     console.log({ error });
-    return null;
   }
 };
 
@@ -129,32 +125,21 @@ export const getGuests = async () => {
   try {
     const data = await client.request(query);
 
-    let result = data?.ospiti?.nodes.map(
-      (item: {
-        title: string;
-        slug: string;
-        dettagliOspite: {
-          ordinamento: string;
-          jobTitleIt: string;
-          jobTitleEn: string;
-          nome: string;
-          cognome: string;
-        };
-        featuredImage: { node: { guid: string } };
-      }) => {
-        return {
-          title: item?.title,
-          slug: item?.slug,
-          ordinamento: item.dettagliOspite.ordinamento,
-          image: item?.featuredImage?.node?.guid || null,
-          tagLine: item?.dettagliOspite?.jobTitleIt || null,
-          jobTitleIt: item?.dettagliOspite?.jobTitleIt || null,
-          jobTitleEn: item?.dettagliOspite?.jobTitleEn || null,
-          nome: item?.dettagliOspite?.nome || null,
-          cognome: item?.dettagliOspite?.cognome || null,
-        };
-      }
-    );
+    let result = data?.ospiti?.nodes.map((item: wpGuest): Guest => {
+      return {
+        title: item?.title,
+        slug: item?.slug,
+        ordinamento: item.dettagliOspite.ordinamento,
+        image: item?.featuredImage?.node?.guid || null,
+        jobTitleIt: item?.dettagliOspite?.jobTitleIt || null,
+        jobTitleEn: item?.dettagliOspite?.jobTitleEn || null,
+        nome: item?.dettagliOspite?.nome || null,
+        cognome: item?.dettagliOspite?.cognome || null,
+        descrizioneIt: item.dettagliOspite.descrizioneIt || null,
+        descrizioneEn: item.dettagliOspite.descrizioneEn || null,
+        eventi: [],
+      };
+    });
 
     // sort by name
     result.sort(function (
@@ -169,7 +154,6 @@ export const getGuests = async () => {
       if (nameA > nameB) {
         return 1;
       }
-
       // names must be equal
       return 0;
     });
@@ -181,46 +165,27 @@ export const getGuests = async () => {
   }
 };
 
-export const getGuestsFake = async (count: number) => {
-  const data = [];
-
-  for (let index = 0; index < count; index++) {
-    const title = faker.name.firstName() + " " + faker.name.lastName();
-    const slug = slugify(title, { lower: true, strict: true });
-    const tagLine = faker.name.jobTitle();
-
-    data.push({
-      title,
-      slug,
-      image: faker.image.people(500, 500, true),
-      tagLine,
-    });
-  }
-
-  return data;
-};
-
 export const getGuestFieldByLang = (
-  guest: any,
+  guest: Guest,
   field: string,
   language: string | undefined
-) => {
-  if (!language) return null;
+): string => {
+  if (!language) language = "it";
   switch (field) {
     case "jobTitle":
       return language === "it"
-        ? guest.jobTitleIt
+        ? guest.jobTitleIt || ""
         : guest.jobTitleEn
         ? guest.jobTitleEn
-        : guest.jobTitleIt;
+        : guest.jobTitleIt || "";
     case "description":
       return language === "it"
-        ? guest.descrizioneIt
+        ? guest.descrizioneIt || ""
         : guest.descrizioneEn
         ? guest.descrizioneEn
-        : guest.descrizioneIt || null;
+        : guest.descrizioneIt || "";
 
     default:
-      return;
+      return "";
   }
 };
