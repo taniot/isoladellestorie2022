@@ -5,6 +5,7 @@ import { getTranslations } from "../../lib/wp/translations";
 import { Translation } from "../../store/types";
 import { useContext, useEffect } from "react";
 import AppContext from "../../store/AppContext";
+import Head from "next/head";
 const NewsPage = ({
   post,
   translations,
@@ -18,7 +19,14 @@ const NewsPage = ({
   useEffect(() => {
     if (setTranslations) setTranslations(translations);
   }, [setTranslations, translations]);
-  return <NewsDetail data={post} />;
+  return (
+    <>
+      <Head>
+        <title>{`${post.title} - L’Isola delle Storie - dal 1 al 3 luglio 2022 a Gavoi`}</title>
+      </Head>
+      <NewsDetail data={post} />
+    </>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

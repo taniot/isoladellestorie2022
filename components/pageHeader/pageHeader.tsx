@@ -9,7 +9,7 @@ const PageHeader = ({ page }: { page: any }) => (
         {page?.parent?.title
           ? `${page?.parent?.title} - ${page?.title}`
           : page?.title}{" "}
-        - L`Isola delle Storie - 1-2-3 Luglio 2022 - Gavoi
+        - L’Isola delle Storie - dal 1 al 3 luglio 2022 a Gavoi
       </title>
     </Head>
 
