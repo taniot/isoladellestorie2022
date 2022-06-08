@@ -13,10 +13,10 @@ const Layout: FC<Props> = ({ children }) => {
   return (
     <div className={styles.layout}>
       <Head>
-        <title>{`L'Isola delle Storie - 1-2-3 Luglio 2022 - Gavoi`}</title>
+        <title>{`L'Isola delle Storie - dal 1 al 3 luglio 2022 a Gavoi`}</title>
         <meta
           name="description"
-          content={`L'Isola delle Storie: un'isola, un desiderio, mai sopito, di condividere una passione, quella per i libri e la letteratura nell'affascinante atmosfera di Gavoi.`}
+          content={`L'Isola delle Storie è il Festival Letterario della Sardegna: un'isola, un desiderio, mai sopito, di condividere una passione, quella per i libri e la letteratura nell'affascinante atmosfera di Gavoi.`}
         />
         <link rel="canonical" href="https://www.isoladellestorie.it" />
         <link rel="icon" href="/favicon-light.svg" />
