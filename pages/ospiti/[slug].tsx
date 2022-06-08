@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       guest,
       translations,
     },
-    //revalidate: 3600,
+    revalidate: 10800,
   };
 };
 
