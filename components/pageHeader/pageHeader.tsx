@@ -1,17 +1,15 @@
 import styles from "./pageHeader.module.scss";
 import SelectDay from "../selectDay/selectDay";
-import Head from "next/head";
-
+import Seo from "../seo/seo";
 const PageHeader = ({ page }: { page: any }) => (
   <>
-    <Head>
-      <title>
-        {page?.parent?.title
+    <Seo
+      title={
+        page?.parent?.title
           ? `${page?.parent?.title} - ${page?.title}`
-          : page?.title}{" "}
-        - L`Isola delle Storie - 1-2-3 Luglio 2022 - Gavoi
-      </title>
-    </Head>
+          : `${page?.title}`
+      }
+    />
 
     <div className={styles.pageHeaderContainer}>
       <div className={styles.pageHeader}>

@@ -5,6 +5,7 @@ import { getTranslations } from "../../lib/wp/translations";
 import { Translation } from "../../store/types";
 import { useContext, useEffect } from "react";
 import AppContext from "../../store/AppContext";
+import Seo from "../../components/seo/seo";
 const NewsPage = ({
   post,
   translations,
@@ -18,7 +19,12 @@ const NewsPage = ({
   useEffect(() => {
     if (setTranslations) setTranslations(translations);
   }, [setTranslations, translations]);
-  return <NewsDetail data={post} />;
+  return (
+    <>
+      <Seo title={post.title} />
+      <NewsDetail data={post} />
+    </>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

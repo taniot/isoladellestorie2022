@@ -1,11 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import Head from "next/head";
+
 import Guest from "../../components/guest/guest";
 import { getGuestBySlug, getGuests } from "../../lib/wp/guests";
 import { getTranslations } from "../../lib/wp/translations";
 import { useContext, useEffect } from "react";
 import AppContext from "../../store/AppContext";
 import { Guest as GuestType, Translation } from "../../store/types";
+import Seo from "../../components/seo/seo";
 
 const Ospite = ({
   guest,
@@ -22,9 +23,7 @@ const Ospite = ({
   }, [setTranslations, translations]);
   return (
     <>
-      <Head>
-        <title>{`${guest.title} - L'Isola delle Storie - 1-2-3 Luglio 2022 - Gavoi`}</title>
-      </Head>
+      <Seo title={guest.title} />
       <Guest guest={guest} />
     </>
   );
