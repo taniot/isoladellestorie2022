@@ -6,7 +6,6 @@ const Seo = ({ title }: { title?: string }) => {
   const resultTitle = title ? `${title} - ${defaultTitle}` : defaultTitle;
   const router = useRouter();
 
-  console.log({ router });
   let canonical = "https://www.isoladellestorie.it";
   if (router.locale === "it") {
     canonical += router.asPath;
