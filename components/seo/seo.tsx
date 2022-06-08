@@ -1,14 +1,25 @@
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 
 const Seo = ({ title }: { title?: string }) => {
   const defaultTitle = "L’Isola delle Storie - dal 1 al 3 luglio 2022 a Gavoi";
   const resultTitle = title ? `${title} - ${defaultTitle}` : defaultTitle;
+  const router = useRouter();
+
+  console.log({ router });
+  let canonical = "https://www.isoladellestorie.it";
+  if (router.locale === "it") {
+    canonical += router.asPath;
+  } else {
+    canonical += `/${router.locale}`;
+    canonical += router.asPath;
+  }
 
   return (
     <NextSeo
       title={resultTitle}
       description="L’Isola delle Storie è un’istituzione culturale che trasforma per tre giorni Gavoi in un unico spazio di scambio e di comunicazione senza confini."
-      canonical="https://www.isoladellestorie.it"
+      canonical={canonical}
       openGraph={{
         type: "website",
         url: "https://www.isoladellestorie.it",
