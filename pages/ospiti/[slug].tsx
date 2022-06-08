@@ -23,7 +23,7 @@ const Ospite = ({
   return (
     <>
       <Head>
-        <title>{`${guest.title} - L'Isola delle Storie - 1-2-3 Luglio 2022 - Gavoi`}</title>
+        <title>{`${guest.title} - L’Isola delle Storie - dal 1 al 3 luglio 2022 a Gavoi`}</title>
       </Head>
       <Guest guest={guest} />
     </>
