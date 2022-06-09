@@ -1,5 +1,5 @@
 import type { GetStaticProps } from "next";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Anteprima from "../components/anteprima/anteprima";
 import HomePartner from "../components/home/partner";
 import HomeSection from "../components/home/section";
@@ -11,6 +11,7 @@ import { getSponsors } from "../lib/wp/sponsor";
 import { getTranslation, getTranslations } from "../lib/wp/translations";
 import AppContext from "../store/AppContext";
 import { Guest, Translation } from "../store/types";
+import { useRouter } from "next/router";
 
 const Home = ({
   guests,
@@ -24,10 +25,26 @@ const Home = ({
   translations: Translation[];
 }) => {
   const context = useContext(AppContext);
+  const router = useRouter();
   const { state, setTranslations } = context;
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     if (setTranslations) setTranslations(translations);
   }, [translations, setTranslations]);
+
+  useEffect(() => {
+    const handleComplete = () => {
+      setIsLoading(false);
+    };
+
+    router.events.on("routeChangeComplete", handleComplete);
+    router.events.on("routeChangeError", handleComplete);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleComplete);
+      router.events.off("routeChangeError", handleComplete);
+    };
+  }, [router]);
 
   const ospitiSection = {
     title: getTranslation(
@@ -77,38 +94,41 @@ const Home = ({
   return (
     <>
       <Intro />
-
-      <HomeSection
-        title={getTranslation(
-          state?.translations,
-          "titolo_ospiti_home",
-          state?.language
-        )}
-        linkTo={ospitiSection}
-      >
-        <Anteprima data={guests} />
-      </HomeSection>
-      <HomeSection
-        bgColor="#f1e596"
-        title={getTranslation(
-          state?.translations,
-          "titolo_news_home",
-          state?.language
-        )}
-        linkTo={newsSection}
-      >
-        <News data={news} />
-      </HomeSection>
-      <HomeSection
-        title={getTranslation(
-          state?.translations,
-          "titolo_sponsor_home",
-          state?.language
-        )}
-        linkTo={sponsorSection}
-      >
-        <HomePartner data={sponsors} />
-      </HomeSection>
+      {!isLoading && (
+        <>
+          <HomeSection
+            title={getTranslation(
+              state?.translations,
+              "titolo_ospiti_home",
+              state?.language
+            )}
+            linkTo={ospitiSection}
+          >
+            <Anteprima data={guests} />
+          </HomeSection>
+          <HomeSection
+            bgColor="#f1e596"
+            title={getTranslation(
+              state?.translations,
+              "titolo_news_home",
+              state?.language
+            )}
+            linkTo={newsSection}
+          >
+            <News data={news} />
+          </HomeSection>
+          <HomeSection
+            title={getTranslation(
+              state?.translations,
+              "titolo_sponsor_home",
+              state?.language
+            )}
+            linkTo={sponsorSection}
+          >
+            <HomePartner data={sponsors} />
+          </HomeSection>
+        </>
+      )}
     </>
   );
 };
