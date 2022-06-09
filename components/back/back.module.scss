@@ -8,7 +8,9 @@
   color: var(--main-bg-color);
 
   .textBack {
-    font-family: "AbsaraSans";
+    font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
     font-size: 1.15rem;
     text-transform: uppercase;
   }
@@ -25,7 +27,9 @@
     color: var(--main-bg-color);
 
     .textBack {
-      font-family: "AbsaraSans";
+      font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+        Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+        sans-serif;
       font-size: 1.6rem;
       text-transform: uppercase;
     }

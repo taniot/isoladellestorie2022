@@ -7,12 +7,16 @@
   margin: 50px 0;
   @apply w-8/12 mx-auto;
   background-color: transparent;
-  font-family: "AbsaraSans-Thin";
+  font-family: "AbsaraSans-Thin", -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
   font-size: 1.0875rem;
 
   h2 {
     width: 100%;
-    font-family: "AbsaraSans";
+    font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
     font-size: 1.5rem;
     line-height: 1.2;
     text-align: center;
@@ -91,7 +95,8 @@
 }
 
 .where {
-  font-family: "AbsaraSans";
+  font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 1.4rem;
   line-height: 1.25;
   @screen md {
@@ -107,7 +112,8 @@
   font-size: 1.4rem;
   padding: 5px 13px;
   color: white;
-  font-family: "MontSerrat";
+  font-family: "MontSerrat", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.25;
   margin-bottom: 0;
   @screen md {
@@ -116,7 +122,8 @@
 }
 
 .theme {
-  font-family: "AbsaraSans";
+  font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 1.4rem;
   line-height: 1.25;
   text-transform: uppercase;
