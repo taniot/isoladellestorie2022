@@ -28,7 +28,7 @@ const Seo = ({ title }: { title?: string }) => {
         images: [
           {
             url: "https://www.isoladellestorie.it/images/copertina-lg.png",
-            alt: "L'Isola delle Storie - Festival Letterario della Sardegna",
+            alt: "L’Isola delle Storie - Festival Letterario della Sardegna",
             type: "image/png",
           },
         ],
