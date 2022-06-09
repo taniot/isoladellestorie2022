@@ -20,7 +20,7 @@
 
 @screen md {
   .container {
-    @apply w-10/12 mx-auto;
+    @apply w-11/12 mx-auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +29,7 @@
       @apply w-full mx-auto;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-evenly;
 
       .sponsorContainer {
         position: relative;
@@ -39,7 +39,9 @@
 
       .sponsor {
         &.noImage {
-          font-family: "AbsaraSans";
+          font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
           padding: 0 70px;
           text-align: center;
           font-size: 0.9rem;

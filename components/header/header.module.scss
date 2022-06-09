@@ -51,10 +51,14 @@
       width: 60px;
       height: 160px;
       min-width: 60px;
-      min-height: 180px;
+      min-height: 160px;
       display: flex;
       align-items: flex-start;
       justify-content: center;
+      .logo {
+        width: 160px;
+        height: 60px;
+      }
     }
 
     .menuContainer {
@@ -62,7 +66,9 @@
       display: flex; //flex
       align-items: center;
       a {
-        font-family: "AbsaraSans";
+        font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+          Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
         font-size: 0.8rem;
         text-transform: uppercase;
         margin: 3px 0 0 0;
@@ -91,6 +97,10 @@
       height: 180px;
       min-width: 80px;
       min-height: 180px;
+      .logo {
+        width: 180px;
+        height: 80px;
+      }
     }
 
     .menuContainer {
@@ -99,7 +109,9 @@
       display: flex; //flex
       align-items: center;
       a {
-        font-family: "AbsaraSans";
+        font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+          Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
         font-size: 0.8rem;
         text-transform: uppercase;
         margin: 3px 0 0 0;

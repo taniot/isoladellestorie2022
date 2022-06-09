@@ -38,20 +38,26 @@
       margin-bottom: 2rem;
 
       h2 {
-        font-family: "AbsaraSans";
+        font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+          Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
         font-size: 1rem;
         text-transform: uppercase;
         margin-bottom: 0.5rem;
       }
       p {
-        font-family: "MontSerrat";
+        font-family: "MontSerrat", -apple-system, BlinkMacSystemFont, Segoe UI,
+          Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
         font-weight: normal;
         font-size: 0.85rem;
         line-height: 1.6rem;
       }
 
       .legalData {
-        font-family: "MontSerrat";
+        font-family: "MontSerrat", -apple-system, BlinkMacSystemFont, Segoe UI,
+          Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
         font-size: 0.7rem;
         margin-top: 1rem;
       }
@@ -83,7 +89,9 @@
       @apply flex flex-col mt-14 pb-2;
       order: 4;
       .team {
-        font-family: "MontSerrat";
+        font-family: "MontSerrat", -apple-system, BlinkMacSystemFont, Segoe UI,
+          Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
         font-size: 0.7rem;
         line-height: 1;
         margin-bottom: 0.5rem;
@@ -96,7 +104,9 @@
         background-color: var(--secondary-bg-color);
         padding: 5px 15px;
         a {
-          font-family: "MontSerrat";
+          font-family: "MontSerrat", -apple-system, BlinkMacSystemFont, Segoe UI,
+            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
           font-size: 0.8rem;
           display: flex;
 
@@ -151,20 +161,26 @@
         margin-bottom: 2rem;
 
         h2 {
-          font-family: "AbsaraSans";
+          font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
           font-size: 1.3rem;
           text-transform: uppercase;
           margin-bottom: 0.5rem;
         }
         p {
-          font-family: "MontSerrat";
+          font-family: "MontSerrat", -apple-system, BlinkMacSystemFont, Segoe UI,
+            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
           font-weight: normal;
           font-size: 0.9rem;
           line-height: 1.6rem;
         }
 
         .legalData {
-          font-family: "MontSerrat";
+          font-family: "MontSerrat", -apple-system, BlinkMacSystemFont, Segoe UI,
+            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
           font-size: 0.7rem;
           margin-top: 1rem;
         }
@@ -196,7 +212,9 @@
         @apply flex flex-col mt-14 pb-2;
         order: 4;
         .team {
-          font-family: "MontSerrat";
+          font-family: "MontSerrat", -apple-system, BlinkMacSystemFont, Segoe UI,
+            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
           font-size: 0.8rem;
           line-height: 1;
           margin-bottom: 1rem;
@@ -209,7 +227,9 @@
           background-color: var(--secondary-bg-color);
           padding: 5px 15px;
           a {
-            font-family: "MontSerrat";
+            font-family: "MontSerrat", -apple-system, BlinkMacSystemFont,
+              Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+              Helvetica Neue, sans-serif;
             font-size: 0.8rem;
             display: flex;
 

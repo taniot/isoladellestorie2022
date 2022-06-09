@@ -8,7 +8,9 @@
     display: block;
     text-align: center;
     font-size: 2rem;
-    font-family: "AbsaraSans-Thin";
+    font-family: "AbsaraSans-Thin", -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
     letter-spacing: -0.1rem;
     line-height: 1.6;
     .hero_name {
@@ -29,7 +31,9 @@
       }
 
       .highLight {
-        font-family: "AbsaraSans";
+        font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+          Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
       }
       .trattino {
         font-size: 1.5rem;
@@ -57,7 +61,6 @@
 @screen md {
   .container {
     @apply w-10/12 mx-auto;
-
     .hero_list {
       font-size: 4.1rem;
       letter-spacing: -0.3rem;
@@ -74,10 +77,10 @@
 
 @screen lg {
   .container {
-    @apply w-9/12 mx-auto;
+    @apply w-10/12 mx-auto;
 
     .hero_list {
-      font-size: 4.9rem;
+      font-size: 5.9rem;
       letter-spacing: -0.3rem;
       line-height: 1.2;
 
@@ -92,12 +95,12 @@
 
 @screen xl {
   .container {
-    @apply w-9/12 mx-auto;
+    @apply w-10/12 mx-auto;
 
     .hero_list {
-      font-size: 6rem;
+      font-size: 6.6rem;
       letter-spacing: -0.3rem;
-      line-height: 1.2;
+      line-height: 1.1;
 
       .hero_name {
         .trattino {
@@ -113,7 +116,7 @@
     @apply w-8/12 mx-auto;
 
     .hero_list {
-      font-size: 5.6rem;
+      font-size: 7.2rem;
       letter-spacing: -0.3rem;
       line-height: 1.2;
 

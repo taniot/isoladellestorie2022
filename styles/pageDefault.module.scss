@@ -4,7 +4,9 @@
   .contentContainer {
     @apply w-11/12 mx-auto;
     margin: 25px auto;
-    font-family: "AbsaraSans-Thin";
+    font-family: "AbsaraSans-Thin", -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
     font-size: 1.275rem;
     line-height: 1.65;
     margin-bottom: 1rem;
@@ -17,7 +19,9 @@
         line-height: 1.8rem;
         margin-bottom: 1rem;
         border-bottom: 1px dashed var(--main-bg-color);
-        font-family: "AbsaraSans";
+        font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+          Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
       }
 
       h3 {
@@ -26,12 +30,16 @@
         line-height: 1.6rem;
         margin-bottom: 1rem;
         border-bottom: 1px dashed var(--main-bg-color);
-        font-family: "AbsaraSans";
+        font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+          Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
         padding-bottom: 10px;
       }
 
       p {
-        font-family: "AbsaraSans-Thin";
+        font-family: "AbsaraSans-Thin", -apple-system, BlinkMacSystemFont,
+          Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
         font-size: 1.275rem;
         line-height: 1.65;
         margin-bottom: 1rem;
@@ -50,11 +58,15 @@
 
       b,
       strong {
-        font-family: "AbsaraSans";
+        font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+          Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
       }
 
       i {
-        font-family: "AbsaraSans-Thin-Italic";
+        font-family: "AbsaraSans-Thin-Italic", -apple-system, BlinkMacSystemFont,
+          Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          Helvetica Neue, sans-serif;
       }
     }
   }
@@ -66,7 +78,9 @@
     .contentContainer {
       @apply w-10/12 mx-auto;
       margin: 50px auto;
-      font-family: "AbsaraSans-Thin";
+      font-family: "AbsaraSans-Thin", -apple-system, BlinkMacSystemFont,
+        Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+        Helvetica Neue, sans-serif;
       font-size: 1.275rem;
       line-height: 1.75;
       margin-bottom: 1rem;
@@ -79,7 +93,9 @@
           line-height: 3.8rem;
           margin-bottom: 1rem;
           border-bottom: 1px dashed var(--main-bg-color);
-          font-family: "AbsaraSans";
+          font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
         }
 
         h3 {
@@ -88,12 +104,16 @@
           line-height: 3.8rem;
           margin-bottom: 1rem;
           border-bottom: 1px dashed var(--main-bg-color);
-          font-family: "AbsaraSans";
+          font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
           padding-bottom: unset;
         }
 
         p {
-          font-family: "AbsaraSans-Thin";
+          font-family: "AbsaraSans-Thin", -apple-system, BlinkMacSystemFont,
+            Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
           font-size: 1.275rem;
           line-height: 1.75;
           margin-bottom: 1rem;
@@ -105,11 +125,15 @@
 
         b,
         strong {
-          font-family: "AbsaraSans";
+          font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
         }
 
         i {
-          font-family: "AbsaraSans-Thin-Italic";
+          font-family: "AbsaraSans-Thin-Italic", -apple-system,
+            BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+            Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
         }
       }
     }
