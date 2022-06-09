@@ -21,7 +21,7 @@ const Seo = ({ title }: { title?: string }) => {
       canonical={canonical}
       openGraph={{
         type: "website",
-        url: "https://www.isoladellestorie.it",
+        url: canonical,
         title: "L'Isola delle Storie - Festival Letterario della Sardegna",
         description:
           "L’Isola delle Storie è un’istituzione culturale che trasforma per tre giorni Gavoi in un unico spazio di scambio e di comunicazione senza confini.",
