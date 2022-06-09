@@ -16,7 +16,9 @@
           align-items: center;
 
           .grid_item_title {
-            font-family: "AbsaraSans";
+            font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont,
+              Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+              Helvetica Neue, sans-serif;
             font-size: 1.4rem;
             margin-top: 1.5rem;
             text-align: center;
@@ -24,7 +26,9 @@
           }
 
           .grid_item_description {
-            font-family: "AbsaraSans";
+            font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont,
+              Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+              Helvetica Neue, sans-serif;
             font-size: 1.2rem;
             color: var(--main-bg-color);
             text-align: center;
@@ -59,7 +63,9 @@
             flex-wrap: wrap;
 
             .grid_item_title {
-              font-family: "AbsaraSans";
+              font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont,
+                Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+                Droid Sans, Helvetica Neue, sans-serif;
               font-size: 1.4rem;
               margin-top: 1.5rem;
               margin-bottom: 0.3rem;
@@ -69,7 +75,9 @@
             }
 
             .grid_item_description {
-              font-family: "AbsaraSans";
+              font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont,
+                Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+                Droid Sans, Helvetica Neue, sans-serif;
               font-size: 1.2rem;
               color: var(--main-bg-color);
               text-align: center;

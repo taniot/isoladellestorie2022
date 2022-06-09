@@ -6,7 +6,8 @@
 }
 
 .title {
-  font-family: "AbsaraSans";
+  font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   border-bottom-color: var(--main-bg-color);
   border-bottom-style: solid;
   border-bottom-width: 2px;
@@ -33,7 +34,8 @@
 .button {
   background-color: var(--main-bg-color);
   padding: 7px 10px;
-  font-family: "AbsaraSans";
+  font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 0.875rem;
   margin: 30px auto 0;
   color: white;
@@ -45,7 +47,9 @@
   .button {
     background-color: var(--main-bg-color);
     padding: 15px 40px;
-    font-family: "AbsaraSans";
+    font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
     font-size: 1.4rem;
     margin: 50px auto 0;
     color: white;
