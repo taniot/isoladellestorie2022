@@ -31,7 +31,12 @@ const Programma = ({ evento }: { evento: any }) => {
         </h4>
       )}
 
-      <div className={styles.description}>
+      <div
+        className={classNames(
+          styles.description,
+          evento.nascondiTitolo && styles.noTitle
+        )}
+      >
         {parse(
           getEventFieldByLang(evento, "description", state?.language)
             ? getEventFieldByLang(evento, "description", state?.language)
