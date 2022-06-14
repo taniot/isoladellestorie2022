@@ -1,10 +1,6 @@
 import { gql } from "graphql-request";
 import { client } from "../client";
-import { faker } from "@faker-js/faker";
-import slugify from "slugify";
-import { Guest, wpGuest } from "../../store/types";
-
-faker.locale = "it";
+import { GuestType, wpGuest } from "../../store/types";
 
 //queries
 
@@ -59,12 +55,18 @@ const qGetGuest = gql`
               nodes {
                 name
                 slug
+                dettagliLuoghiEvento {
+                  nomeLuogoEn
+                }
               }
             }
             tipologieEventi {
               nodes {
                 name
                 slug
+                dettagliTipologieEvento {
+                  nomeTipologiaEn
+                }
               }
             }
             dettaglioEvento {
@@ -88,7 +90,9 @@ const qGetGuest = gql`
   }
 `;
 
-export const getGuestBySlug = async (slug: string) => {
+export const getGuestBySlug = async (
+  slug: string
+): Promise<GuestType | null> => {
   const query = qGetGuest;
   const variables = {
     slug,
@@ -118,7 +122,7 @@ export const getGuestBySlug = async (slug: string) => {
 /*
 / get ALL db pages
 */
-export const getGuests = async () => {
+export const getGuests = async (): Promise<GuestType[]> => {
   const query = qGetGuests;
 
   if (!client) return [];
@@ -126,7 +130,7 @@ export const getGuests = async () => {
   try {
     const data = await client.request(query);
 
-    let result = data?.ospiti?.nodes.map((item: wpGuest): Guest => {
+    let result = data?.ospiti?.nodes.map((item: wpGuest): GuestType => {
       return {
         title: item?.title,
         slug: item?.slug,
@@ -167,7 +171,7 @@ export const getGuests = async () => {
 };
 
 export const getGuestFieldByLang = (
-  guest: Guest,
+  guest: GuestType,
   field: string,
   language: string | undefined
 ): string => {

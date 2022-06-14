@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./guests.module.scss";
 import Link from "next/link";
@@ -6,19 +6,20 @@ import GuestImage from "./image";
 import { getGuestFieldByLang } from "../../lib/wp/guests";
 import AppContext from "../../store/AppContext";
 import { getTranslation } from "../../lib/wp/translations";
-import { Guest } from "../../store/types";
-const Guests = (info: any) => {
-  const context = useContext(AppContext);
-  const { state } = context;
-  const { data } = info;
-  const [posts, setPosts] = useState(data);
+import { GuestType } from "../../store/types";
+const Guests = ({ data }: { data: GuestType[] }) => {
+  const { state } = useContext(AppContext);
+  const [posts, setPosts] = useState<GuestType[]>([]);
+  useEffect(() => {
+    setPosts(data);
+  }, [data]);
 
   return (
     <>
       <div className={styles.contentContainer}>
         <div className={styles.pageContentContainer}>
           <div className={styles.grid_list}>
-            {posts?.map((data: Guest) => (
+            {posts?.map((data: GuestType) => (
               <div key={uuidv4()} className={styles.grid_item}>
                 <Link
                   href={`${getTranslation(

@@ -1,22 +1,13 @@
 import { PreviewData } from "next";
 
-export const createURI = (context: {
-  params: any;
-  preview?: boolean | undefined;
-  previewData?: PreviewData;
-  locale: any;
-  locales?: string[] | undefined;
-  defaultLocale: any;
-}) => {
-  const {
-    params: { uri },
-    locale,
-    defaultLocale,
-  } = context;
-
+export const createURI = (
+  uri: string[] | string | undefined,
+  locale: string = "it",
+  defaultLocale: string = "it"
+) => {
   let uriParts = [];
   if (locale !== defaultLocale) uriParts.push(locale);
-  uriParts = [...uriParts, ...uri];
+  if (uri && Array.isArray(uri)) uriParts = [...uriParts, ...uri];
 
   let pageURI = `/${uriParts.join("/")}/`;
 

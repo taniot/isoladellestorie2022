@@ -3,10 +3,10 @@ import Evento from "../evento/evento";
 import { setOreGroups } from "../../lib/wp/events";
 import styles from "./eventi.module.scss";
 import { v4 as uuidv4 } from "uuid";
-import { EventType } from "../../store/types";
+import { EventType, EventTypeTimeGroups } from "../../store/types";
 
 const LaboratoriList = ({ eventi }: { eventi: EventType[] }) => {
-  const [eventiGroups, setEventiGroups] = useState<any[]>([]);
+  const [eventiGroups, setEventiGroups] = useState<EventTypeTimeGroups[]>([]);
 
   useEffect(() => {
     const groups = setOreGroups(eventi);

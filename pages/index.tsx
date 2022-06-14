@@ -10,7 +10,12 @@ import { getPosts } from "../lib/wp/news";
 import { getSponsors } from "../lib/wp/sponsor";
 import { getTranslation, getTranslations } from "../lib/wp/translations";
 import AppContext from "../store/AppContext";
-import { Guest, Translation } from "../store/types";
+import {
+  GuestType,
+  PartnerType,
+  TranslationType,
+  wpNews,
+} from "../store/types";
 import { useRouter } from "next/router";
 
 const Home = ({
@@ -19,10 +24,10 @@ const Home = ({
   sponsors,
   translations,
 }: {
-  guests: Guest[];
-  news: {};
-  sponsors: {};
-  translations: Translation[];
+  guests: GuestType[];
+  news: wpNews;
+  sponsors: PartnerType[];
+  translations: TranslationType[];
 }) => {
   const context = useContext(AppContext);
   const router = useRouter();
@@ -138,15 +143,15 @@ export const getStaticProps: GetStaticProps = async () => {
   let news = await getPosts(1, "IT");
   let sponsors = await getSponsors("sostenuto-da");
   let translations = await getTranslations();
-
+  let latestNews = null;
   if (Array.isArray(news)) {
-    news = news[0];
+    latestNews = news[0];
   }
 
   return {
     props: {
       guests,
-      news,
+      news: latestNews,
       sponsors,
       translations,
     },

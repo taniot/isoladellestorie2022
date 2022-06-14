@@ -8,17 +8,17 @@ import { useEffect, useState, useContext } from "react";
 import { getGuestFieldByLang } from "../../lib/wp/guests";
 import AppContext from "../../store/AppContext";
 import { getTranslation } from "../../lib/wp/translations";
-import { Guest } from "../../store/types";
-const Guest = ({ guest }: { guest: Guest }) => {
+import { EventType, GuestType, wpEvent } from "../../store/types";
+const Guest = ({ guest }: { guest: GuestType }) => {
   const context = useContext(AppContext);
   const { state } = context;
   const isMobile = useMediaQuery("(max-width: 639px)");
 
-  const [days, setDays] = useState<any[]>([]);
+  const [days, setDays] = useState<string[]>([]);
 
   useEffect(() => {
-    const doMagic = (guest: Guest) => {
-      const result = guest?.eventi?.map((evento: any) => {
+    const doMagic = (guest: GuestType) => {
+      const result = guest?.eventi?.map((evento: wpEvent) => {
         return evento.dettaglioEvento.dataEvento;
       });
 
@@ -115,20 +115,21 @@ const Guest = ({ guest }: { guest: Guest }) => {
                 : ""
             )}
           </div>
-          <Back
-            link={getTranslation(
-              state?.translations,
-              "bottone_back_ospiti",
-              state?.language,
-              "link"
-            )}
-            text={getTranslation(
-              state?.translations,
-              "bottone_back_ospiti",
-              state?.language
-            )}
-          />
         </div>
+        <div>Eventi</div>
+        <Back
+          link={getTranslation(
+            state?.translations,
+            "bottone_back_ospiti",
+            state?.language,
+            "link"
+          )}
+          text={getTranslation(
+            state?.translations,
+            "bottone_back_ospiti",
+            state?.language
+          )}
+        />
       </div>
     </section>
   );

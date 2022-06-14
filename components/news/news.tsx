@@ -6,8 +6,9 @@ import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
 import { getTranslation } from "../../lib/wp/translations";
 import { useContext } from "react";
 import AppContext from "../../store/AppContext";
+import { wpNews } from "../../store/types";
 
-const News = ({ data }: { data: any }) => {
+const News = ({ data }: { data: wpNews }) => {
   const context = useContext(AppContext);
   const { state } = context;
 

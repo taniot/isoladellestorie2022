@@ -2,8 +2,9 @@ import styles from "./laboratorio.module.scss";
 import classNames from "classnames";
 import parse from "html-react-parser";
 import Link from "next/link";
+import { EventType } from "../../store/types";
 
-const Laboratorio = ({ evento }: { evento: any }) => {
+const Laboratorio = ({ evento }: { evento: EventType }) => {
   return (
     <div
       className={classNames(

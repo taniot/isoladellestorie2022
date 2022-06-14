@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import { EventType, EventTypeGroups } from "../../store/types";
+import { EventType, EventTypeGroups, wpEvent } from "../../store/types";
 import { client } from "../client";
 
 //queries
@@ -58,7 +58,9 @@ const qGetEvents = gql`
   }
 `;
 
-export const setLuogoTipologiaGroups = (eventi: EventType[]) => {
+export const setLuogoTipologiaGroups = (
+  eventi: EventType[]
+): EventTypeGroups[] => {
   let currentLuogo = null;
   let currentTipologia = null;
   let groups = [];
@@ -94,7 +96,7 @@ export const setLuogoTipologiaGroups = (eventi: EventType[]) => {
   return groups;
 };
 
-export const setOreGroups = (eventi: any) => {
+export const setOreGroups = (eventi: EventType[]) => {
   let currentOraInizio = null;
   let currentOraFine = null;
   let groups = [];
@@ -121,7 +123,7 @@ export const setOreGroups = (eventi: any) => {
 /*
 / get ALL db pages
 */
-export const getEvents = async (tipologia?: string) => {
+export const getEvents = async (tipologia?: string): Promise<EventType[]> => {
   const query = qGetEvents;
   if (!client) return [];
 
@@ -130,7 +132,7 @@ export const getEvents = async (tipologia?: string) => {
   try {
     const data = await client.request(query);
 
-    result = data?.eventi?.nodes.map((evento: any) => {
+    result = data?.eventi?.nodes.map((evento: wpEvent) => {
       const dataInizio = evento?.dettaglioEvento?.oraInizio
         ? evento?.dettaglioEvento?.dataEvento +
           "T" +
@@ -209,7 +211,8 @@ export const getEvents = async (tipologia?: string) => {
     });
 
     result.sort(
-      (a: any, b: any) => a.dataOrdA - b.dataOrdA || a.dataOrdB - b.dataOrdB
+      (a: EventType, b: EventType) =>
+        a.dataOrdA - b.dataOrdA || a.dataOrdB - b.dataOrdB
     );
     return result;
   } catch (error) {
@@ -218,7 +221,7 @@ export const getEvents = async (tipologia?: string) => {
   }
 };
 
-const changeLinkGuest = (text: string, language: string = "it") => {
+const changeLinkGuest = (text: string, language: string = "it"): string => {
   if (!text) return "";
   if (language === "it")
     return text.replaceAll(
@@ -231,6 +234,8 @@ const changeLinkGuest = (text: string, language: string = "it") => {
       "https://cms2022.isoladellestorie.it/guests/",
       "/en/guests/"
     );
+
+  return "";
 };
 
 export const getGroupsFieldByLang = (

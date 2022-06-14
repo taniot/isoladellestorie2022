@@ -4,10 +4,10 @@ import HomeSection from "../home/section";
 import { getTranslation } from "../../lib/wp/translations";
 import AppContext from "../../store/AppContext";
 import { useContext } from "react";
-const Partner = (info: any) => {
-  const context = useContext(AppContext);
-  const { state } = context;
-  const { data, page } = info;
+import { Page, PartnerType } from "../../store/types";
+const Partner = (info: { data: PartnerType[]; page: Page }) => {
+  const { state } = useContext(AppContext);
+  const { data } = info;
   return (
     <>
       <div className={styles.contentContainer}>

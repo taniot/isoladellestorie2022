@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import { PageChildren, wpPage } from "../../store/types";
+import { Page, PageChildren, wpPage } from "../../store/types";
 import { client } from "../client";
 
 //queries
@@ -61,9 +61,9 @@ const qGetPageByURI = gql`
 /*
 / get ALL db pages
 */
-export const getPages = async (locale?: string) => {
+export const getPages = async (locale?: string): Promise<wpPage[]> => {
   const query = qGetPages;
-  if (!client) return null;
+  if (!client) return [];
 
   try {
     const data = await client.request(query);
@@ -75,7 +75,7 @@ export const getPages = async (locale?: string) => {
   }
 };
 
-export const getPageByURI = async (uri: string) => {
+export const getPageByURI = async (uri: string): Promise<Page | null> => {
   const query = qGetPageByURI;
   const variables = {
     uri,

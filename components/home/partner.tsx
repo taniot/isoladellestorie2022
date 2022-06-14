@@ -1,13 +1,14 @@
 import styles from "./partner.module.scss";
 import Image from "next/image";
 import cls from "classnames";
+import { PartnerType } from "../../store/types";
 
-const HomePartner = ({ data }: { data: any }) => {
+const HomePartner = ({ data }: { data: PartnerType[] }) => {
   if (!data) return null;
   return (
     <div className={styles.container}>
       <div className={styles.sponsor_list}>
-        {data?.map((sponsor: any) => (
+        {data?.map((sponsor: PartnerType) => (
           <div key={sponsor.title} className={styles.sponsorContainer}>
             {sponsor.image ? (
               <a

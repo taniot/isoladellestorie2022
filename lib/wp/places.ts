@@ -1,4 +1,5 @@
 import { gql } from "graphql-request";
+import { PlaceType, wpPlace, wpPlaceTipologia } from "../../store/types";
 import { client } from "../client";
 
 const qGetPlaces = gql`
@@ -36,7 +37,7 @@ const qGetPlaces = gql`
   }
 `;
 
-export const setLuogoGroups = (places: any) => {
+export const setLuogoGroups = (places: PlaceType[]) => {
   let currentLuogo = null;
   let groups = [];
 
@@ -56,7 +57,7 @@ export const setLuogoGroups = (places: any) => {
   return groups;
 };
 
-export const getPlaces = async (tipologia?: string) => {
+export const getPlaces = async (tipologia?: string): Promise<PlaceType[]> => {
   const query = qGetPlaces;
   if (!client) return [];
 
@@ -65,7 +66,7 @@ export const getPlaces = async (tipologia?: string) => {
   try {
     const data = await client.request(query);
 
-    result = data?.luoghi?.nodes?.map((luogo: any) => {
+    result = data?.luoghi?.nodes?.map((luogo: wpPlace): PlaceType => {
       return {
         id: luogo?.id,
         title: luogo?.title,
@@ -76,21 +77,21 @@ export const getPlaces = async (tipologia?: string) => {
         web: luogo?.dettagliAccoglienza?.sitoWeb || null,
         city: luogo?.cittaLuoghi?.nodes[0] || null,
         tipologie:
-          luogo?.tipologieLuoghi?.nodes?.map((tipologia: any) => {
+          luogo?.tipologieLuoghi?.nodes?.map((tipologia: wpPlaceTipologia) => {
             return tipologia.slug;
           }) || [],
       };
     });
 
     result.sort(
-      (a: any, b: any) =>
-        a.city?.dettagliCitta?.distanzaGavoi -
-          b.city?.dettagliCitta?.distanzaGavoi ||
+      (a: PlaceType, b: PlaceType) =>
+        parseInt(a.city?.dettagliCitta.distanzaGavoi) -
+          parseInt(b.city?.dettagliCitta?.distanzaGavoi) ||
         a.city.name.localeCompare(b.city.name)
     );
 
     if (tipologia) {
-      result = result.filter((place: any) => {
+      result = result.filter((place: PlaceType) => {
         return place.tipologie.includes(tipologia);
       });
     }
