@@ -98,13 +98,6 @@ const Footer = () => {
           </a>
         </div>
         <div className={styles.taniotContainer}>
-          <div className={styles.team}>
-            {getTranslation(
-              state?.translations,
-              "nomi_collaboratori",
-              state?.language
-            )}
-          </div>
           <div className={styles.poweredBy}>
             <a
               href="https://taniot.net/?ref=isoladellestorie"
@@ -112,7 +105,8 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="items-center text-logo text-sm"
             >
-              handmade with <GoHeart className={styles.loveIcon} /> by taniot
+              - handmade with <GoHeart className={styles.loveIcon} /> by taniot
+              -
             </a>
           </div>
         </div>
