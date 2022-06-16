@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { useContext, useEffect } from "react";
 import Eventi from "../components/eventi/eventi";
 import Guests from "../components/guests/guests";
@@ -14,7 +14,16 @@ import { getPlaces } from "../lib/wp/places";
 import { getSponsors } from "../lib/wp/sponsor";
 import { getTranslations } from "../lib/wp/translations";
 import AppContext from "../store/AppContext";
-import { Guest, Page, Translation, wpPage } from "../store/types";
+import {
+  EventType,
+  GuestType,
+  Page,
+  PartnerType,
+  PlaceType,
+  TranslationType,
+  wpNews,
+  wpPage,
+} from "../store/types";
 import styles from "../styles/pageDefault.module.scss";
 import { createURI } from "../utils/createUri";
 
@@ -29,20 +38,15 @@ const PageDefault = ({
   translations,
 }: {
   page: Page;
-  guests: Guest[];
-  places: any;
-  partner: any;
-  events: any;
-  news: any;
+  guests: GuestType[];
+  places: PlaceType[];
+  partner: PartnerType[];
+  events: EventType[];
+  news: wpNews[];
   defaultPage: boolean;
-  translations: Translation[];
+  translations: TranslationType[];
 }) => {
-  const context = useContext(AppContext);
-  const { setEvents, setTranslations } = context;
-
-  useEffect(() => {
-    if (setEvents) setEvents(events);
-  }, [events, setEvents]);
+  const { setTranslations } = useContext(AppContext);
 
   useEffect(() => {
     if (setTranslations) setTranslations(translations);
@@ -65,10 +69,10 @@ const PageDefault = ({
           </section>
         )}
 
-        {guests && <Guests data={guests} page={page} />}
+        {guests && <Guests data={guests} />}
         {places && <Places data={places} page={page} />}
         {partner && <Partner data={partner} page={page} />}
-        {events && <Eventi data={page.eventi} page={page} />}
+        {events && <Eventi data={events} page={page} />}
         {news && <NewsList data={news} page={page} />}
       </div>
     </>
@@ -98,9 +102,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context: any) => {
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+) => {
   if (!context) return { props: {} };
-  const pageURI = createURI(context);
+
+  const pageURI = createURI(
+    context?.params?.uri,
+    context.locale,
+    context.defaultLocale
+  );
   const page = await getPageByURI(pageURI);
   const translations = await getTranslations();
   let defaultPage = false;
@@ -157,6 +168,6 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       defaultPage,
       translations,
     },
-    revalidate: 10800,
+    //revalidate: 10800,
   };
 };

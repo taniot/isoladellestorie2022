@@ -5,7 +5,7 @@ import { getGuestBySlug, getGuests } from "../../lib/wp/guests";
 import { getTranslations } from "../../lib/wp/translations";
 import { useContext, useEffect } from "react";
 import AppContext from "../../store/AppContext";
-import { Guest as GuestType, Translation } from "../../store/types";
+import { TranslationType, GuestType } from "../../store/types";
 import Seo from "../../components/seo/seo";
 
 const Ospite = ({
@@ -13,7 +13,7 @@ const Ospite = ({
   translations,
 }: {
   guest: GuestType;
-  translations: Translation[];
+  translations: TranslationType[];
 }) => {
   const context = useContext(AppContext);
   const { setTranslations } = context;
@@ -23,7 +23,7 @@ const Ospite = ({
   }, [setTranslations, translations]);
   return (
     <>
-      <Seo title={guest.title} />
+      <Seo title={guest?.title} />
       <Guest guest={guest} />
     </>
   );
@@ -32,7 +32,7 @@ const Ospite = ({
 export const getStaticPaths: GetStaticPaths = async () => {
   const guests = await getGuests();
 
-  const paths = guests?.map((guest: GuestType) => {
+  const paths = guests?.map((guest: any) => {
     return {
       params: {
         slug: guest.slug,
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       guest,
       translations,
     },
-    revalidate: 10800,
+    //revalidate: 10800,
   };
 };
 

@@ -1,10 +1,3 @@
-export type EventDay = {
-  id: number;
-  day: string;
-  textIT: string;
-  unavailable: boolean;
-};
-
 export enum Languages {
   "en",
   "it",
@@ -21,11 +14,12 @@ export interface Page {
   id: string;
   title: string;
   subtitleIt: string;
+  subtitleEn: string;
   content: string;
   template: string;
   parent: {
     title: string;
-    children: PageChildren;
+    children: PageChildren[];
   };
   accoglienza: {
     tipologia: string;
@@ -63,7 +57,7 @@ export interface wpGuest {
   featuredImage: { node: { guid: string } };
 }
 
-export interface Guest {
+export interface GuestType {
   title: string;
   nome: string | null;
   cognome: string | null;
@@ -74,53 +68,224 @@ export interface Guest {
   jobTitleEn: string | null;
   descrizioneIt?: string | null;
   descrizioneEn?: string | null;
-  eventi: any[];
+  eventi: EventType[];
 }
+
+export interface wpEvent {
+  id: string;
+  title: string;
+  dettaglioEvento: {
+    titoloEventoEn: string;
+    dataEvento: string;
+    oraInizio: string;
+    oraFine: string;
+    descrizioneEventoIt: string;
+    descrizioneEventoEn: string;
+    infoEventoIt: string;
+    infoEventoEn: string;
+    finanziamentoIt: string;
+    finanziamentoEn: string;
+    eventoPrincipale: boolean;
+    nascondiOraInizio: boolean;
+    nascondiTitolo: boolean;
+    etaRichiesta: string;
+    noteEtaRichiesta: string;
+    maxIscritti: string;
+    prenotazioneOnline: boolean;
+  };
+  categorieEventi: {
+    nodes: wpEventCategorie[];
+  };
+  tipologieEventi: {
+    nodes: wpEventTipologie[];
+  };
+  luoghiEventi: {
+    nodes: wpEventLuoghi[];
+  };
+}
+
+export type wpEventCategorie = {
+  slug: string;
+  name: string;
+};
+
+export type wpEventTipologie = {
+  slug: string;
+  name: string;
+  dettagliTipologieEvento: {
+    nomeTipologiaEn: string;
+  };
+};
+
+export type wpEventLuoghi = {
+  slug: string;
+  name: string;
+  dettagliLuoghiEvento: {
+    nomeLuogoEn: string;
+  };
+};
 
 export interface EventType {
   id: string;
   title: string;
-  titleEn: string;
+  titleEn: string | null;
   data: string;
-  oraInizio: string;
-  oraFine: string;
-  descrizioneIt: string;
-  descrizioneEn: string;
+  oraInizio: string | null;
+  oraFine: string | null;
+  descrizioneIt: string | null;
+  descrizioneEn: string | null;
   infoIt: string;
-  infoEn: string;
+  infoEn: string | null;
   finanziamentoIt: string;
-  finanziamentoEn: string;
-  dataOrd: Date;
-  dataOrdFine: Date;
-  dataOrdA: Date;
-  dataOrdB: Date;
-  categoria: string;
-  tipologia: string;
-  luogo: string;
-  categoriaName: string;
-  tipologiaName: string;
-  tipologiaNameEn: string;
-  luogoName: string;
-  luogoNameEn: string;
+  finanziamentoEn: string | null;
+  dataOrd: number;
+  dataOrdFine: number;
+  dataOrdA: number;
+  dataOrdB: number;
+  categoria: string | null;
+  tipologia: string | null;
+  luogo: string | null;
+  categoriaName: string | null;
+  tipologiaName: string | null;
+  tipologiaNameEn: string | null;
+  luogoName: string | null;
+  luogoNameEn: string | null;
   eventoPrincipale: boolean;
   nascondiOraInizio: boolean;
   nascondiTitolo: boolean;
-  etaRichiesta: string;
-  maxIscritti: string;
+  etaRichiesta: string | null;
+  noteEtaRichiesta: string | null;
+  maxIscritti: string | null;
   prenotazioneOnline: boolean;
 }
 
 export type EventTypeGroups = {
-  luogo: string;
-  tipologia: string;
+  luogo: string | null;
+  tipologia: string | null;
   luogoName: string | null;
   luogoNameEn: string | null;
   tipologiaName: string | null;
   tipologiaNameEn: string | null;
 };
 
-export interface Partner {}
+export type EventTypeDataGroups = {
+  data: string;
+};
 
-export interface News {}
+export type EventTypeTimeGroups = {
+  oraInizio: string | null;
+  oraFine: string | null;
+};
 
-export interface Translation {}
+export type wpPlace = {
+  id: string;
+  title: string;
+  dettagliAccoglienza: {
+    indirizzo: string;
+    email: string;
+    telefono1: string;
+    telefono2: string;
+    sitoWeb: string;
+  };
+  cittaLuoghi: {
+    nodes: wpPlaceCitta[];
+  };
+  tipologieLuoghi: {
+    nodes: wpPlaceTipologia[];
+  };
+};
+
+export type wpPlaceCitta = {
+  name: string;
+  slug: string;
+  dettagliCitta: {
+    distanzaGavoi: number;
+  };
+};
+
+export type wpPlaceTipologia = {
+  slug: string;
+};
+
+export type PlaceType = {
+  id: string;
+  title: string;
+  address: string | null;
+  email: string | null;
+  phone1: string | null;
+  phone2: string | null;
+  web: string | null;
+  city: wpPlaceCitta;
+  tipologie: string[];
+};
+
+export type PlaceGroupType = {
+  luogo: string;
+  slug: string;
+  distanza: number;
+};
+
+export interface PartnerType {
+  title: string;
+  image: string;
+  link: string;
+  type: string;
+  order: string;
+}
+
+export type wpPartner = {
+  title: string;
+  menuOrder: number;
+  tipologieSponsor: { nodes: wpPartnerTipologie[] };
+  dettagliSponsor: wpPartnerDettagli;
+  featuredImage: { node: wpPartnerImage };
+};
+
+export type wpPartnerTipologie = {
+  slug: string;
+};
+export type wpPartnerDettagli = {
+  sponsorLink: string;
+};
+export type wpPartnerImage = {
+  guid: string;
+};
+
+export type wpNews = {
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  dettagliArticoli: {
+    comunicatoStampa: {
+      guid: string;
+    };
+  };
+  featuredImage: {
+    node: {
+      guid: string;
+      caption: string;
+    };
+  };
+};
+
+export interface TranslationType {
+  id: string;
+  title: string;
+  slug: string | null;
+  link: {
+    url: string;
+  };
+  language: string | null;
+}
+export type wpTranslation = {
+  id: string;
+  title: string;
+  dettagliTraduzioni: {
+    slugTraduzione: string;
+    linkTraduzione: string;
+  };
+  language: {
+    slug: string;
+  };
+};

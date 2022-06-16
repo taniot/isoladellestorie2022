@@ -5,7 +5,8 @@ import { getEventFieldByLang } from "../../lib/wp/events";
 import AppContext from "../../store/AppContext";
 import { useContext } from "react";
 import { getTranslation } from "../../lib/wp/translations";
-const Programma = ({ evento }: { evento: any }) => {
+import { EventType } from "../../store/types";
+const Programma = ({ evento }: { evento: EventType }) => {
   const context = useContext(AppContext);
   const { state } = context;
 

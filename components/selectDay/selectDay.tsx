@@ -4,26 +4,28 @@ import Link from "next/link";
 import { useEffect, useState, useContext } from "react";
 import { getTranslation } from "../../lib/wp/translations";
 import AppContext from "../../store/AppContext";
+import { Page, PageChildren } from "../../store/types";
 
-const SelectDay = ({ page }: { page: any }) => {
+const SelectDay = ({ page }: { page: Page }) => {
   const context = useContext(AppContext);
   const { state } = context;
-  const [daysEventi, setDaysEventi] = useState([]);
+  const [daysEventi, setDaysEventi] = useState<PageChildren[]>([]);
 
   useEffect(() => {
-    const sortedChildren = (children: any) => {
+    const sortedChildren = (children: PageChildren[]) => {
       return children.sort(
-        (a: any, b: any) => Date.parse(a.dateEventi) - Date.parse(b.dateEventi)
+        (a: PageChildren, b: PageChildren) =>
+          Date.parse(a.dateEventi) - Date.parse(b.dateEventi)
       );
     };
 
-    setDaysEventi(sortedChildren(page?.parent?.children));
+    setDaysEventi(sortedChildren(page.parent.children));
   }, [daysEventi, page.parent]);
 
   return (
     <div className={styles.giorniFestival}>
       <ul>
-        {daysEventi?.map((day: any, index: number) => {
+        {daysEventi?.map((day: PageChildren, index: number) => {
           const date = new Date(day.dateEventi);
           return (
             <li key={index}>

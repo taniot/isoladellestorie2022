@@ -4,17 +4,18 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import AppContext from "../../store/AppContext";
 import { getTranslation } from "../../lib/wp/translations";
+import { GuestType } from "../../store/types";
 
-const Anteprima = ({ data }: { data: any }) => {
+const Anteprima = ({ data }: { data: GuestType[] }) => {
   const context = useContext(AppContext);
   const { state } = context;
-  const [anteprima, setAnteprima] = useState<any[]>([]);
+  const [anteprima, setAnteprima] = useState<GuestType[]>([]);
 
   useEffect(() => {
     const randomGuests = () => {
       if (data && data.length > 0) {
         const shuffled = data
-          .filter((ospite: any) => ospite.nome && ospite.cognome)
+          .filter((ospite: GuestType) => ospite.nome && ospite.cognome)
           .sort(() => 0.5 - Math.random());
 
         setAnteprima(shuffled.slice(0, 5));

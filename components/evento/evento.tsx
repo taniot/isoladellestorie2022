@@ -1,10 +1,24 @@
+import { EventType } from "../../store/types";
 import Laboratorio from "./laboratorio";
+import Ospite from "./ospite";
 import Programma from "./programma";
-const Evento = ({ evento }: { evento: any }) => {
+const Evento = ({
+  evento,
+  guest = false,
+}: {
+  evento: EventType;
+  guest?: boolean;
+}) => {
   return (
     <>
-      {evento.categoria === "laboratori" && <Laboratorio evento={evento} />}
-      {evento.categoria === "programma" && <Programma evento={evento} />}
+      {guest === true && <Ospite evento={evento} />}
+
+      {evento.categoria === "laboratori" && guest === false && (
+        <Laboratorio evento={evento} />
+      )}
+      {evento.categoria === "programma" && guest === false && (
+        <Programma evento={evento} />
+      )}
     </>
   );
 };

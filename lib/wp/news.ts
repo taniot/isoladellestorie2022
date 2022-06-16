@@ -1,4 +1,5 @@
 import { gql } from "graphql-request";
+import { wpNews } from "../../store/types";
 import { client } from "../client";
 
 //queries
@@ -60,7 +61,10 @@ const qGestPostBySlug = gql`
 /*
 / get ALL db pages
 */
-export const getPosts = async (count: number = 1, locale: string = "IT") => {
+export const getPosts = async (
+  count: number = 1,
+  locale: string = "IT"
+): Promise<wpNews[]> => {
   const query = qGetPosts;
   if (!client) return [];
 
@@ -78,7 +82,7 @@ export const getPosts = async (count: number = 1, locale: string = "IT") => {
   }
 };
 
-export const getPostBySlug = async (id: string) => {
+export const getPostBySlug = async (id: string): Promise<wpNews | null> => {
   const query = qGestPostBySlug;
   if (!client) return null;
 

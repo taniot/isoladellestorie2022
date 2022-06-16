@@ -1,6 +1,7 @@
+import { wpNews } from "../../store/types";
 import styles from "./newsHeader.module.scss";
 
-const NewsHeader = ({ page }: { page: any }) => (
+const NewsHeader = ({ page }: { page: wpNews }) => (
   <div className={styles.pageHeaderContainer}>
     <div className={styles.pageHeader}>
       <h1>News</h1>

@@ -1,7 +1,8 @@
 import styles from "./pageHeader.module.scss";
 import SelectDay from "../selectDay/selectDay";
 import Seo from "../seo/seo";
-const PageHeader = ({ page }: { page: any }) => (
+import { Page } from "../../store/types";
+const PageHeader = ({ page }: { page: Page }) => (
   <>
     <Seo
       title={

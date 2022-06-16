@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
 import Layout from "../components/layout/layout";
 import AppContext from "../store/AppContext";
-import { Languages } from "../store/types";
+import { Languages, TranslationType } from "../store/types";
 import "../styles/globals.scss";
 
 const GOOGLE_TAG_MANAGER_ID: string = process.env.NEXT_PUBLIC_GTM_ID!;
@@ -12,8 +12,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const [currentLanguage, setCurrentLanguage] =
     useState<keyof typeof Languages>("it");
   const [isMainMenuOpen, setIsMainMenuOpen] = useState<boolean>(false);
-  const [events, setEvents] = useState<any[]>([]);
-  const [translations, setTranslations] = useState<any[]>([]);
+  const [translations, setTranslations] = useState<TranslationType[]>([]);
 
   useEffect(() => {
     TagManager.initialize({ gtmId: GOOGLE_TAG_MANAGER_ID });
@@ -35,12 +34,10 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
         state: {
           language: currentLanguage,
           isMainMenuOpen,
-          events,
           translations,
         },
         setIsMainMenuOpen,
         setCurrentLanguage,
-        setEvents,
         setTranslations,
       }}
     >

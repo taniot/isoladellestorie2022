@@ -1,37 +1,36 @@
-import { useContext, useEffect, useState } from "react";
-import AppContext from "../../store/AppContext";
+import { useEffect, useState } from "react";
+
 import ProgrammaList from "./programma";
 import LaboratoriList from "./laboratori";
 import styles from "./eventi.module.scss";
 import parse from "html-react-parser";
+import { EventType, Page } from "../../store/types";
 
-const Eventi = (info: any) => {
-  const { data, page } = info;
-  const context = useContext(AppContext);
-  const { state } = context;
-
-  const [eventi, setEventi] = useState<any[] | undefined>([]);
+const Eventi = ({ data, page }: { data: EventType[]; page: Page }) => {
+  const [eventi, setEventi] = useState<EventType[]>([]);
 
   useEffect(() => {
-    let result: any[] | undefined = state?.events;
+    let result: EventType[] = data;
+    setEventi(data);
 
     if (result) {
-      if (data.categoria) {
-        result = result.filter((evento) => {
+      if (page.eventi.categoria) {
+        result = result.filter((evento: EventType) => {
           return (
-            evento?.categoria?.toLowerCase() === data?.categoria?.toLowerCase()
+            evento?.categoria?.toLowerCase() ===
+            page.eventi?.categoria?.toLowerCase()
           );
         });
       }
-      if (data.data) {
+      if (page.eventi.data) {
         result = result.filter((evento) => {
-          return evento.data == data.data;
+          return evento.data == page.eventi.data;
         });
       }
     }
 
     setEventi(result);
-  }, [data.data, data.categoria, info, state?.events]);
+  }, [data, page.eventi.categoria, page.eventi.data]);
 
   return (
     <section className={styles.eventi}>
@@ -42,10 +41,10 @@ const Eventi = (info: any) => {
       )}
 
       <div className={styles.contentContainer}>
-        {eventi && data.categoria === "programma" && (
+        {eventi && page.eventi.categoria === "programma" && (
           <ProgrammaList eventi={eventi} />
         )}
-        {eventi && data.categoria === "laboratori" && (
+        {eventi && page.eventi.categoria === "laboratori" && (
           <LaboratoriList eventi={eventi} />
         )}
       </div>

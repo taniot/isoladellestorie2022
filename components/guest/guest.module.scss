@@ -1,5 +1,4 @@
 .guestContentContainer {
-  margin-bottom: 50px;
   .guestHeader {
     text-align: center;
     font-family: "AbsaraSans-Thin", -apple-system, BlinkMacSystemFont, Segoe UI,
@@ -51,7 +50,7 @@
   }
 
   .guestBody {
-    margin: 25px 0;
+    margin: 25px 0 50px 0;
     .text {
       @apply w-10/12 mx-auto;
 
@@ -126,10 +125,37 @@
     }
   }
 }
+.guestEventsSection {
+  background-color: whitesmoke;
+  padding: 1rem;
+}
+
+.guestEvents {
+  @apply w-10/12 mx-auto;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+
+  .guestEventsHeader {
+    display: flex;
+    justify-content: center;
+  }
+
+  h3 {
+    font-size: 2rem;
+    color: var(--main-text-color);
+    line-height: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 3px solid var(--main-bg-color);
+    font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
+    display: inline-block;
+    text-transform: uppercase;
+  }
+}
 
 @screen md {
   .guestContentContainer {
-    margin-bottom: 50px;
     .guestHeader {
       text-align: center;
       font-family: "AbsaraSans-Thin", -apple-system, BlinkMacSystemFont,
@@ -181,7 +207,7 @@
     }
 
     .guestBody {
-      margin: 50px 0;
+      margin: 50px 0 50px 0;
       .text {
         @apply w-7/12 mx-auto;
 
@@ -256,5 +282,9 @@
         }
       }
     }
+  }
+
+  .guestEvents {
+    @apply w-7/12 mx-auto;
   }
 }
