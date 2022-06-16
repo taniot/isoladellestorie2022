@@ -23,42 +23,46 @@ const SelectDay = ({ page }: { page: Page }) => {
   }, [daysEventi, page.parent]);
 
   return (
-    <div className={styles.giorniFestival}>
-      <ul>
-        {daysEventi?.map((day: PageChildren, index: number) => {
-          const date = new Date(day.dateEventi);
-          return (
-            <li key={index}>
-              <Link href={day.uri}>
-                <a>
-                  <span
-                    className={classNames(
-                      styles.dayNumber,
-                      day.dateEventi === page.eventi.data && styles.active
-                    )}
-                  >
-                    {date.getDate() >= 10
-                      ? date.getDate()
-                      : `0` + date.getDate()}
-                    /
-                    {date.getMonth() >= 10
-                      ? date.getMonth() + 1
-                      : `0` + (date.getMonth() + 1)}
-                  </span>
-                </a>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-      <h4>
-        {getTranslation(
-          state?.translations,
-          "giorni_festival",
-          state?.language
-        )}
-      </h4>
-    </div>
+    <>
+      {daysEventi.length > 0 && (
+        <div className={styles.giorniFestival}>
+          <ul>
+            {daysEventi?.map((day: PageChildren, index: number) => {
+              const date = new Date(day.dateEventi);
+              return (
+                <li key={index}>
+                  <Link href={day.uri}>
+                    <a>
+                      <span
+                        className={classNames(
+                          styles.dayNumber,
+                          day.dateEventi === page.eventi.data && styles.active
+                        )}
+                      >
+                        {date.getDate() >= 10
+                          ? date.getDate()
+                          : `0` + date.getDate()}
+                        /
+                        {date.getMonth() >= 10
+                          ? date.getMonth() + 1
+                          : `0` + (date.getMonth() + 1)}
+                      </span>
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <h4>
+            {getTranslation(
+              state?.translations,
+              "giorni_festival",
+              state?.language
+            )}
+          </h4>
+        </div>
+      )}
+    </>
   );
 };
 

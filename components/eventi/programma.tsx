@@ -1,14 +1,14 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
-  getEventFieldByLang,
   getGroupsFieldByLang,
   setLuogoTipologiaGroups,
 } from "../../lib/wp/events";
-import Evento from "../evento/evento";
-import styles from "./eventi.module.scss";
+
 import { v4 as uuidv4 } from "uuid";
-import { EventType, EventTypeGroups } from "../../store/types";
 import AppContext from "../../store/AppContext";
+import { EventType, EventTypeGroups } from "../../store/types";
+import Programma from "../evento/programma";
+import styles from "./eventi.module.scss";
 
 const ProgrammaList = ({ eventi }: { eventi: EventType[] }) => {
   const context = useContext(AppContext);
@@ -52,7 +52,7 @@ const ProgrammaList = ({ eventi }: { eventi: EventType[] }) => {
               </div>
               <div className={styles.progContainer}>
                 {result?.map((evento: EventType) => (
-                  <Evento key={evento.id} evento={evento} />
+                  <Programma key={evento.id} evento={evento} />
                 ))}
               </div>
             </div>

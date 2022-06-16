@@ -43,6 +43,56 @@
   }
 }
 
+.mostreContainer {
+  flex-direction: column;
+
+  .luogoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 3rem;
+  }
+
+  .where {
+    font-size: 1.8rem;
+    line-height: 1.25;
+    margin-bottom: 0;
+    font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    &:after {
+      content: "";
+      border-bottom: 1px dashed var(--main-text-color);
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      display: block;
+      text-align: center;
+      width: 200px;
+    }
+  }
+
+  .theme {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-family: "MontSerrat", -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
+    text-align: right;
+    background-color: var(--new-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+}
+
 .whereContainer {
   border-bottom: 1px dashed var(--main-text-color);
   padding-bottom: 20px;
