@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Evento from "../evento/evento";
-import { setOreGroups } from "../../lib/wp/events";
-import styles from "./eventi.module.scss";
 import { v4 as uuidv4 } from "uuid";
+import { setOreGroups } from "../../lib/wp/events";
 import { EventType, EventTypeTimeGroups } from "../../store/types";
+import Laboratorio from "../evento/laboratorio";
+import styles from "./eventi.module.scss";
 
 const LaboratoriList = ({ eventi }: { eventi: EventType[] }) => {
   const [eventiGroups, setEventiGroups] = useState<EventTypeTimeGroups[]>([]);
@@ -31,7 +31,7 @@ const LaboratoriList = ({ eventi }: { eventi: EventType[] }) => {
             </div>
             <div className={styles.labContainer}>
               {result?.map((evento: EventType) => (
-                <Evento key={evento.id} evento={evento} />
+                <Laboratorio key={evento.id} evento={evento} />
               ))}
             </div>
           </div>

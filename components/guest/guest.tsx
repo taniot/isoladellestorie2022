@@ -8,8 +8,8 @@ import { useEffect, useState, useContext } from "react";
 import { getGuestFieldByLang } from "../../lib/wp/guests";
 import AppContext from "../../store/AppContext";
 import { getTranslation } from "../../lib/wp/translations";
-import { EventType, GuestType, wpEvent } from "../../store/types";
-import Evento from "../evento/evento";
+import { EventType, GuestType } from "../../store/types";
+import Ospite from "../evento/ospite";
 const Guest = ({ guest }: { guest: GuestType }) => {
   const context = useContext(AppContext);
   const { state } = context;
@@ -130,7 +130,7 @@ const Guest = ({ guest }: { guest: GuestType }) => {
         <section className={styles.guestEventsSection}>
           <div className={styles.guestEvents}>
             {guest.eventi.map((evento) => (
-              <Evento key={evento.id} evento={evento} guest={true} />
+              <Ospite key={evento.id} evento={evento} />
             ))}
           </div>
         </section>

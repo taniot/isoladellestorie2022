@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-
-import ProgrammaList from "./programma";
-import LaboratoriList from "./laboratori";
-import styles from "./eventi.module.scss";
 import parse from "html-react-parser";
 import { EventType, Page } from "../../store/types";
+import styles from "./eventi.module.scss";
+import LaboratoriList from "./laboratori";
+import MostraList from "./mostre";
+import ProgrammaList from "./programma";
 
 const Eventi = ({ data, page }: { data: EventType[]; page: Page }) => {
   const [eventi, setEventi] = useState<EventType[]>([]);
@@ -53,6 +53,22 @@ const Eventi = ({ data, page }: { data: EventType[]; page: Page }) => {
     setEventi(result);
   }, [data, page.eventi?.categoria, page.eventi.data, page.eventi?.programma]);
 
+  const renderSwitch = () => {
+    switch (true) {
+      case eventi && page.eventi.programma === true:
+        return <ProgrammaList eventi={eventi} />;
+
+      case eventi && page.eventi.categoria === "laboratorio":
+        return <LaboratoriList eventi={eventi} />;
+
+      case eventi && page.eventi.categoria === "mostra":
+        return <MostraList eventi={eventi} />;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <section className={styles.eventi}>
       {page.content && (
@@ -60,18 +76,7 @@ const Eventi = ({ data, page }: { data: EventType[]; page: Page }) => {
           <div className={styles.pageContent}>{parse(page.content)}</div>
         </div>
       )}
-
-      <div className={styles.contentContainer}>
-        {eventi && page.eventi.programma === true && (
-          <ProgrammaList eventi={eventi} />
-        )}
-        {eventi && page.eventi.categoria === "laboratorio" && (
-          <LaboratoriList eventi={eventi} />
-        )}
-        {eventi && page.eventi.categoria === "mostra" && (
-          <LaboratoriList eventi={eventi} />
-        )}
-      </div>
+      <div className={styles.contentContainer}>{renderSwitch()}</div>
     </section>
   );
 };

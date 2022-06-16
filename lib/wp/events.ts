@@ -3,6 +3,7 @@ import {
   EventType,
   EventTypeDataGroups,
   EventTypeGroups,
+  EventTypeLuogoGroups,
   wpEvent,
 } from "../../store/types";
 import { client } from "../client";
@@ -23,6 +24,8 @@ const qGetEvents = gql`
           titoloEventoEn
           descrizioneEventoIt
           descrizioneEventoEn
+          approfondimentoEventoIt
+          approfondimentoEventoEn
           infoEventoIt
           infoEventoEn
           eventoPrincipale
@@ -59,6 +62,8 @@ const qGetEvents = gql`
             slug
             dettagliLuoghiEvento {
               nomeLuogoEn
+              infoLuogo
+              infoLuogoEn
             }
           }
         }
@@ -79,6 +84,28 @@ export const setDataGroups = (eventi: EventType[]): EventTypeDataGroups[] => {
       currentData = evento.data;
     }
   }
+  return groups;
+};
+
+export const setLuogoGroups = (eventi: EventType[]) => {
+  let currentLuogo = null;
+  let groups = [];
+
+  if (!eventi) return [];
+
+  for (const evento of eventi) {
+    if (evento.luogo !== currentLuogo) {
+      groups.push({
+        luogo: evento.luogo,
+        luogoName: evento.luogoName || null,
+        luogoNameEn: evento.luogoNameEn || null,
+        infoLuogo: evento.infoLuogo || null,
+        infoLuogoEn: evento.infoLuogoEn || null,
+      });
+      currentLuogo = evento.luogo;
+    }
+  }
+
   return groups;
 };
 
@@ -197,6 +224,13 @@ export const shapeEvento = (evento: wpEvent): EventType => {
       changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoEn, "en") ||
       changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, "it") ||
       null,
+    approfondimentoIt:
+      changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoIt, "it") ||
+      null,
+    approfondimentoEn:
+      changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoEn, "en") ||
+      changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoEn, "it") ||
+      null,
     infoIt: evento?.dettaglioEvento?.infoEventoIt,
     infoEn:
       evento?.dettaglioEvento.infoEventoEn ||
@@ -238,6 +272,12 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     luogoNameEn:
       evento?.luoghiEventi?.nodes[0]?.dettagliLuoghiEvento?.nomeLuogoEn ||
       evento?.luoghiEventi?.nodes[0]?.name ||
+      null,
+    infoLuogo:
+      evento?.luoghiEventi?.nodes[0]?.dettagliLuoghiEvento?.infoLuogo || null,
+    infoLuogoEn:
+      evento?.luoghiEventi?.nodes[0]?.dettagliLuoghiEvento?.infoLuogoEn ||
+      evento?.luoghiEventi?.nodes[0]?.dettagliLuoghiEvento?.infoLuogo ||
       null,
     eventoPrincipale: evento?.dettaglioEvento?.eventoPrincipale || false,
     nascondiOraInizio: evento?.dettaglioEvento?.nascondiOraInizio || false,
@@ -285,6 +325,29 @@ export const getGroupsFieldByLang = (
         : group.tipologiaNameEn
         ? group.tipologiaNameEn
         : group.tipologia || "";
+    default:
+      return "";
+  }
+};
+
+export const getGroupsLuogoFieldByLang = (
+  group: EventTypeLuogoGroups,
+  field: string,
+  language: string | undefined
+): string => {
+  switch (field) {
+    case "luogo":
+      return language === "it"
+        ? group.luogoName || ""
+        : group.luogoNameEn
+        ? group.luogoNameEn
+        : group.luogoName || "";
+    case "info":
+      return language === "it"
+        ? group.infoLuogo || ""
+        : group.infoLuogoEn
+        ? group.infoLuogoEn
+        : group.infoLuogo || "";
     default:
       return "";
   }
