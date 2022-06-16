@@ -27,6 +27,7 @@ export interface Page {
   eventi: {
     categoria: string;
     data: string;
+    programma: boolean;
   };
 }
 
@@ -75,6 +76,7 @@ export interface wpEvent {
   id: string;
   title: string;
   dettaglioEvento: {
+    programma: boolean;
     titoloEventoEn: string;
     dataEvento: string;
     oraInizio: string;
@@ -107,6 +109,9 @@ export interface wpEvent {
 export type wpEventCategorie = {
   slug: string;
   name: string;
+  dettagliCategorieEvento: {
+    nomeCategoriaEn: string;
+  };
 };
 
 export type wpEventTipologie = {
@@ -146,6 +151,7 @@ export interface EventType {
   tipologia: string | null;
   luogo: string | null;
   categoriaName: string | null;
+  categoriaNameEn: string | null;
   tipologiaName: string | null;
   tipologiaNameEn: string | null;
   luogoName: string | null;
@@ -157,6 +163,7 @@ export interface EventType {
   noteEtaRichiesta: string | null;
   maxIscritti: string | null;
   prenotazioneOnline: boolean;
+  programma: boolean;
 }
 
 export type EventTypeGroups = {

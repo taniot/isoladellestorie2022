@@ -122,7 +122,7 @@ const Nav = () => {
             <Link href="/">
               <a onClick={closeMenu}>
                 <Image
-                  src="/images/l-isola-delle-storie.svg"
+                  src="/images/l-isola-delle-storie-logo-xvii-oriz.svg"
                   layout="fill"
                   alt="L’Isola delle Storie 2022"
                   className={styles.logo}

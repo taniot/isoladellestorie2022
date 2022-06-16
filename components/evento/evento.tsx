@@ -13,10 +13,10 @@ const Evento = ({
     <>
       {guest === true && <Ospite evento={evento} />}
 
-      {evento.categoria === "laboratori" && guest === false && (
+      {evento.categoria === "laboratorio" && guest === false && (
         <Laboratorio evento={evento} />
       )}
-      {evento.categoria === "programma" && guest === false && (
+      {evento.programma === true && guest === false && (
         <Programma evento={evento} />
       )}
     </>
