@@ -54,6 +54,8 @@ const qGetGuest = gql`
               titoloEventoEn
               descrizioneEventoIt
               descrizioneEventoEn
+              approfondimentoEventoIt
+              approfondimentoEventoEn
               infoEventoIt
               infoEventoEn
               eventoPrincipale
@@ -87,6 +89,8 @@ const qGetGuest = gql`
                 slug
                 dettagliLuoghiEvento {
                   nomeLuogoEn
+                  infoLuogo
+                  infoLuogoEn
                 }
               }
             }

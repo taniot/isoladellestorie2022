@@ -83,6 +83,8 @@ export interface wpEvent {
     oraFine: string;
     descrizioneEventoIt: string;
     descrizioneEventoEn: string;
+    approfondimentoEventoIt: string;
+    approfondimentoEventoEn: string;
     infoEventoIt: string;
     infoEventoEn: string;
     finanziamentoIt: string;
@@ -127,6 +129,8 @@ export type wpEventLuoghi = {
   name: string;
   dettagliLuoghiEvento: {
     nomeLuogoEn: string;
+    infoLuogo: string;
+    infoLuogoEn: string;
   };
 };
 
@@ -139,6 +143,8 @@ export interface EventType {
   oraFine: string | null;
   descrizioneIt: string | null;
   descrizioneEn: string | null;
+  approfondimentoIt: string | null;
+  approfondimentoEn: string | null;
   infoIt: string;
   infoEn: string | null;
   finanziamentoIt: string;
@@ -156,6 +162,8 @@ export interface EventType {
   tipologiaNameEn: string | null;
   luogoName: string | null;
   luogoNameEn: string | null;
+  infoLuogo: string | null;
+  infoLuogoEn: string | null;
   eventoPrincipale: boolean;
   nascondiOraInizio: boolean;
   nascondiTitolo: boolean;
@@ -173,6 +181,14 @@ export type EventTypeGroups = {
   luogoNameEn: string | null;
   tipologiaName: string | null;
   tipologiaNameEn: string | null;
+};
+
+export type EventTypeLuogoGroups = {
+  luogo: string | null;
+  luogoName: string | null;
+  luogoNameEn: string | null;
+  infoLuogo: string | null;
+  infoLuogoEn: string | null;
 };
 
 export type EventTypeDataGroups = {

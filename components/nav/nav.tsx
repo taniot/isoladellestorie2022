@@ -1,6 +1,6 @@
 import styles from "./nav.module.scss";
 import cls from "classnames";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import AppContext from "../../store/AppContext";
 import Link from "next/link";
 import Div100vh from "react-div-100vh";
@@ -9,78 +9,6 @@ import { v4 as uuidv4 } from "uuid";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { getTranslation } from "../../lib/wp/translations";
-const menus = [
-  {
-    class: "main",
-    title: "Edizione XVII",
-    menu: [
-      {
-        name: "Ospiti",
-        url: "/ospiti/",
-      },
-      {
-        name: "Programma",
-        url: "/programma/mercoledi-22-giugno-2022/",
-      },
-      {
-        name: "Laboratori",
-        url: "/laboratori/sabato-2-luglio-2022/",
-      },
-      {
-        name: "News & Stampa",
-        url: "/news/",
-      },
-      {
-        name: "Sponsor",
-        url: "/sponsor/",
-      },
-    ],
-  },
-  {
-    class: "visitatori",
-    title: "Info Visitatori",
-    menu: [
-      {
-        name: "Come fare",
-        url: "/info-visitatori/come-fare/",
-      },
-      {
-        name: "Dove dormire",
-        url: "/info-visitatori/dove-dormire/",
-      },
-      {
-        name: "Dove mangiare",
-        url: "/info-visitatori/dove-mangiare/",
-      },
-      {
-        name: "Sostieni l’Isola",
-        url: "/info-visitatori/sostieni-lisola/",
-      },
-      {
-        name: "Contatti",
-        url: "/info-visitatori/contatti/",
-      },
-    ],
-  },
-  {
-    class: "chisiamo",
-    title: "Chi siamo",
-    menu: [
-      {
-        name: "L’ASSOCIAZIONE L’ISOLA DELLE STORIE",
-        url: "/chi-siamo/lassociazione-lisola-delle-storie/",
-      },
-      {
-        name: "Il Festival",
-        url: "/chi-siamo/il-festival/",
-      },
-      {
-        name: "Il Luogo",
-        url: "/chi-siamo/il-luogo/",
-      },
-    ],
-  },
-];
 
 const Nav = () => {
   const context = useContext(AppContext);
@@ -89,6 +17,224 @@ const Nav = () => {
   const closeMenu = (e: { preventDefault: () => void }) => {
     if (setIsMainMenuOpen) setIsMainMenuOpen(false);
   };
+
+  const menus = useMemo(
+    () => [
+      {
+        class: "main",
+        title: getTranslation(
+          state?.translations,
+          "menu_edizione",
+          state?.language
+        ),
+        menu: [
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_ospiti",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_ospiti",
+              state?.language,
+              "link"
+            ),
+          },
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_programma",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_programma",
+              state?.language,
+              "link"
+            ),
+          },
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_laboratori",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_laboratori",
+              state?.language,
+              "link"
+            ),
+          },
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_mostre",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_mostre",
+              state?.language,
+              "link"
+            ),
+          },
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_news",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_news",
+              state?.language,
+              "link"
+            ),
+          },
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_sponsor",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_sponsor",
+              state?.language,
+              "link"
+            ),
+          },
+        ],
+      },
+      {
+        class: "visitatori",
+        title: getTranslation(
+          state?.translations,
+          "menu_info_visitatori",
+          state?.language
+        ),
+        menu: [
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_come_fare",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_come_fare",
+              state?.language,
+              "link"
+            ),
+          },
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_dove_dormire",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_dove_dormire",
+              state?.language,
+              "link"
+            ),
+          },
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_dove_mangiare",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_dove_dormire",
+              state?.language,
+              "link"
+            ),
+          },
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_sostieni_lisola",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_sostieni_lisola",
+              state?.language,
+              "link"
+            ),
+          },
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_contatti",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_contatti",
+              state?.language,
+              "link"
+            ),
+          },
+        ],
+      },
+      {
+        class: "chisiamo",
+        title: getTranslation(
+          state?.translations,
+          "menu_chi_siamo",
+          state?.language
+        ),
+        menu: [
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_associazione",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_associazione",
+              state?.language,
+              "link"
+            ),
+          },
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_festival",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_festival",
+              state?.language,
+              "link"
+            ),
+          },
+          {
+            name: getTranslation(
+              state?.translations,
+              "menu_luogo",
+              state?.language
+            ),
+            url: getTranslation(
+              state?.translations,
+              "menu_luogo",
+              state?.language,
+              "link"
+            ),
+          },
+        ],
+      },
+    ],
+    [state?.language, state?.translations]
+  );
 
   const changeLeft = (e: { preventDefault: () => void }) => {
     let newPosition = currentPosition - 1;
@@ -110,7 +256,7 @@ const Nav = () => {
   useEffect(() => {
     let menu = menus[currentPosition];
     setCurrentMenu(menu);
-  }, [currentPosition]);
+  }, [currentPosition, menus]);
 
   return (
     <Div100vh
@@ -326,7 +472,24 @@ const Nav = () => {
                       </a>
                     </Link>
                   </li>
-
+                  <li>
+                    <Link
+                      href={getTranslation(
+                        state?.translations,
+                        "menu_mostre",
+                        state?.language,
+                        "link"
+                      )}
+                    >
+                      <a onClick={closeMenu}>
+                        {getTranslation(
+                          state?.translations,
+                          "menu_mostre",
+                          state?.language
+                        )}
+                      </a>
+                    </Link>
+                  </li>
                   <li>
                     <Link
                       href={getTranslation(

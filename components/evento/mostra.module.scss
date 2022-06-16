@@ -1,0 +1,78 @@
+.evento {
+  @apply w-full;
+  margin-bottom: 2.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.title {
+  font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1.33rem;
+  line-height: 1.2;
+
+  font-style: italic;
+  @screen md {
+    font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.2;
+
+    font-style: italic;
+  }
+}
+
+.description,
+.moreInfo {
+  padding: 5px 0 0 0;
+  p {
+    font-family: "AbsaraSans-Thin", -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
+
+    font-size: 1.1rem;
+    line-height: 1.5;
+    @screen md {
+      font-size: 1.275rem;
+      line-height: 1.75;
+    }
+
+    strong,
+    b {
+      font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+        Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+        sans-serif;
+    }
+
+    a {
+      border-bottom: 1px dashed var(--main-bg-color);
+      &:hover {
+        color: var(--main-bg-color);
+      }
+    }
+  }
+}
+
+.moreInfo {
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:after {
+    content: "";
+    border-bottom: 3px solid var(--new-color);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    text-align: center;
+    width: 100px;
+  }
+}
