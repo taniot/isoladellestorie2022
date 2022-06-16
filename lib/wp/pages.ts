@@ -53,6 +53,7 @@ const qGetPageByURI = gql`
           slug
         }
         dateEventi
+        programma
       }
     }
   }
@@ -119,6 +120,7 @@ export const getPageByURI = async (uri: string): Promise<Page | null> => {
       eventi: {
         categoria: data?.page?.dettagliPagina?.categoriaEventi?.slug || null,
         data: data?.page?.dettagliPagina?.dateEventi || null,
+        programma: data?.page?.dettagliPagina?.programma || false,
       },
     };
   } catch (error) {

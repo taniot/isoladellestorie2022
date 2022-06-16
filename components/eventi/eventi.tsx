@@ -14,14 +14,35 @@ const Eventi = ({ data, page }: { data: EventType[]; page: Page }) => {
     setEventi(data);
 
     if (result) {
-      if (page.eventi.categoria) {
-        result = result.filter((evento: EventType) => {
-          return (
-            evento?.categoria?.toLowerCase() ===
-            page.eventi?.categoria?.toLowerCase()
-          );
-        });
+      switch (true) {
+        case page?.eventi?.programma === true:
+          result = result.filter((evento: EventType) => {
+            return evento?.programma === true;
+          });
+          break;
+
+        case page?.eventi?.categoria === "laboratorio":
+          result = result.filter((evento: EventType) => {
+            return (
+              evento?.categoria?.toLowerCase() ===
+              page.eventi?.categoria?.toLowerCase()
+            );
+          });
+          break;
+
+        case page?.eventi?.categoria === "mostra":
+          result = result.filter((evento: EventType) => {
+            return (
+              evento?.categoria?.toLowerCase() ===
+              page.eventi?.categoria?.toLowerCase()
+            );
+          });
+          break;
+
+        default:
+          break;
       }
+
       if (page.eventi.data) {
         result = result.filter((evento) => {
           return evento.data == page.eventi.data;
@@ -30,7 +51,7 @@ const Eventi = ({ data, page }: { data: EventType[]; page: Page }) => {
     }
 
     setEventi(result);
-  }, [data, page.eventi.categoria, page.eventi.data]);
+  }, [data, page.eventi?.categoria, page.eventi.data, page.eventi?.programma]);
 
   return (
     <section className={styles.eventi}>
@@ -41,10 +62,13 @@ const Eventi = ({ data, page }: { data: EventType[]; page: Page }) => {
       )}
 
       <div className={styles.contentContainer}>
-        {eventi && page.eventi.categoria === "programma" && (
+        {eventi && page.eventi.programma === true && (
           <ProgrammaList eventi={eventi} />
         )}
-        {eventi && page.eventi.categoria === "laboratori" && (
+        {eventi && page.eventi.categoria === "laboratorio" && (
+          <LaboratoriList eventi={eventi} />
+        )}
+        {eventi && page.eventi.categoria === "mostra" && (
           <LaboratoriList eventi={eventi} />
         )}
       </div>
