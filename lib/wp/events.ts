@@ -16,6 +16,7 @@ const qGetEvents = gql`
         id
         title
         dettaglioEvento {
+          programma
           dataEvento
           oraInizio
           oraFine
@@ -38,6 +39,9 @@ const qGetEvents = gql`
           nodes {
             name
             slug
+            dettagliCategorieEvento {
+              nomeCategoriaEn
+            }
           }
         }
         tipologieEventi {
@@ -219,6 +223,11 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     tipologia: evento?.tipologieEventi?.nodes[0]?.slug || null,
     luogo: evento?.luoghiEventi?.nodes[0]?.slug || null,
     categoriaName: evento?.categorieEventi?.nodes[0]?.name || null,
+    categoriaNameEn:
+      evento?.categorieEventi?.nodes[0]?.dettagliCategorieEvento
+        ?.nomeCategoriaEn ||
+      evento?.categorieEventi?.nodes[0]?.name ||
+      null,
     tipologiaName: evento?.tipologieEventi?.nodes[0]?.name || null,
     tipologiaNameEn:
       evento?.tipologieEventi?.nodes[0]?.dettagliTipologieEvento
@@ -237,6 +246,7 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     noteEtaRichiesta: evento?.dettaglioEvento?.noteEtaRichiesta || null,
     maxIscritti: evento?.dettaglioEvento?.maxIscritti || null,
     prenotazioneOnline: evento?.dettaglioEvento?.prenotazioneOnline || false,
+    programma: evento?.dettaglioEvento?.programma || false,
   };
 };
 
