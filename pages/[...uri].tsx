@@ -168,6 +168,6 @@ export const getStaticProps: GetStaticProps = async (
       defaultPage,
       translations,
     },
-    revalidate: 10800,
+    //revalidate: 10800,
   };
 };

@@ -155,7 +155,7 @@ export const getStaticProps: GetStaticProps = async () => {
       sponsors,
       translations,
     },
-    revalidate: 10800,
+    //revalidate: 10800,
   };
 };
 
