@@ -1,5 +1,10 @@
 import { gql } from "graphql-request";
-import { EventType, EventTypeGroups, wpEvent } from "../../store/types";
+import {
+  EventType,
+  EventTypeDataGroups,
+  EventTypeGroups,
+  wpEvent,
+} from "../../store/types";
 import { client } from "../client";
 
 //queries
@@ -57,6 +62,21 @@ const qGetEvents = gql`
     }
   }
 `;
+
+export const setDataGroups = (eventi: EventType[]): EventTypeDataGroups[] => {
+  let currentData = null;
+  let groups = [];
+  if (!eventi) return [];
+  for (const evento of eventi) {
+    if (evento.data !== currentData) {
+      groups.push({
+        data: evento.data,
+      });
+      currentData = evento.data;
+    }
+  }
+  return groups;
+};
 
 export const setLuogoTipologiaGroups = (
   eventi: EventType[]
@@ -126,99 +146,98 @@ export const setOreGroups = (eventi: EventType[]) => {
 export const getEvents = async (tipologia?: string): Promise<EventType[]> => {
   const query = qGetEvents;
   if (!client) return [];
-
-  let result = [];
-
   try {
     const data = await client.request(query);
-
-    result = data?.eventi?.nodes.map((evento: wpEvent) => {
-      const dataInizio = evento?.dettaglioEvento?.oraInizio
-        ? evento?.dettaglioEvento?.dataEvento +
-          "T" +
-          evento?.dettaglioEvento?.oraInizio +
-          ":00"
-        : evento?.dettaglioEvento?.dataEvento;
-
-      const dataFine = evento?.dettaglioEvento?.oraFine
-        ? evento?.dettaglioEvento?.dataEvento +
-          "T" +
-          evento?.dettaglioEvento?.oraFine +
-          ":00"
-        : evento?.dettaglioEvento?.dataEvento;
-
-      return {
-        id: evento?.id,
-        title: evento?.title,
-        titleEn:
-          evento?.dettaglioEvento?.titoloEventoEn || evento?.title || null,
-        data: evento?.dettaglioEvento?.dataEvento,
-        oraInizio: evento?.dettaglioEvento?.oraInizio || null,
-        oraFine: evento?.dettaglioEvento?.oraFine || null,
-        descrizioneIt:
-          changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, "it") ||
-          null,
-        descrizioneEn:
-          changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoEn, "en") ||
-          changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, "it") ||
-          null,
-        infoIt: evento?.dettaglioEvento?.infoEventoIt,
-        infoEn:
-          evento?.dettaglioEvento.infoEventoEn ||
-          evento?.dettaglioEvento?.infoEventoIt ||
-          null,
-        finanziamentoIt: evento?.dettaglioEvento?.finanziamentoIt,
-        finanziamentoEn:
-          evento?.dettaglioEvento.finanziamentoEn ||
-          evento?.dettaglioEvento?.finanziamentoIt ||
-          null,
-        dataOrd: Date.parse(
-          evento?.dettaglioEvento?.dataEvento +
-            " " +
-            evento?.dettaglioEvento?.oraInizio
-        ),
-        dataOrdFine: Date.parse(
-          evento?.dettaglioEvento?.dataEvento +
-            " " +
-            evento?.dettaglioEvento?.oraFine
-        ),
-        dataOrdA: Date.parse(dataInizio),
-        dataOrdB: Date.parse(dataFine),
-        categoria: evento?.categorieEventi?.nodes[0]?.slug || null,
-        tipologia: evento?.tipologieEventi?.nodes[0]?.slug || null,
-        luogo: evento?.luoghiEventi?.nodes[0]?.slug || null,
-        categoriaName: evento?.categorieEventi?.nodes[0]?.name || null,
-        tipologiaName: evento?.tipologieEventi?.nodes[0]?.name || null,
-        tipologiaNameEn:
-          evento?.tipologieEventi?.nodes[0]?.dettagliTipologieEvento
-            ?.nomeTipologiaEn ||
-          evento?.tipologieEventi?.nodes[0]?.name ||
-          null,
-        luogoName: evento?.luoghiEventi?.nodes[0]?.name || null,
-        luogoNameEn:
-          evento?.luoghiEventi?.nodes[0]?.dettagliLuoghiEvento?.nomeLuogoEn ||
-          evento?.luoghiEventi?.nodes[0]?.name ||
-          null,
-        eventoPrincipale: evento?.dettaglioEvento?.eventoPrincipale || false,
-        nascondiOraInizio: evento?.dettaglioEvento?.nascondiOraInizio || false,
-        nascondiTitolo: evento?.dettaglioEvento?.nascondiTitolo || false,
-        etaRichiesta: evento?.dettaglioEvento?.etaRichiesta || null,
-        noteEtaRichiesta: evento?.dettaglioEvento?.noteEtaRichiesta || null,
-        maxIscritti: evento?.dettaglioEvento?.maxIscritti || null,
-        prenotazioneOnline:
-          evento?.dettaglioEvento?.prenotazioneOnline || false,
-      };
-    });
-
-    result.sort(
-      (a: EventType, b: EventType) =>
-        a.dataOrdA - b.dataOrdA || a.dataOrdB - b.dataOrdB
-    );
-    return result;
+    return handleEventi(data.eventi.nodes);
   } catch (error) {
     console.log({ error });
     return [];
   }
+};
+
+export const handleEventi = (eventi: wpEvent[]): EventType[] => {
+  return eventi
+    .map((evento: wpEvent) => shapeEvento(evento))
+    .sort(
+      (a: EventType, b: EventType) =>
+        a.dataOrdA - b.dataOrdA || a.dataOrdB - b.dataOrdB
+    );
+};
+
+export const shapeEvento = (evento: wpEvent): EventType => {
+  const dataInizio = evento?.dettaglioEvento?.oraInizio
+    ? evento?.dettaglioEvento?.dataEvento +
+      "T" +
+      evento?.dettaglioEvento?.oraInizio +
+      ":00"
+    : evento?.dettaglioEvento?.dataEvento;
+
+  const dataFine = evento?.dettaglioEvento?.oraFine
+    ? evento?.dettaglioEvento?.dataEvento +
+      "T" +
+      evento?.dettaglioEvento?.oraFine +
+      ":00"
+    : evento?.dettaglioEvento?.dataEvento;
+
+  return {
+    id: evento?.id,
+    title: evento?.title,
+    titleEn: evento?.dettaglioEvento?.titoloEventoEn || evento?.title || null,
+    data: evento?.dettaglioEvento?.dataEvento,
+    oraInizio: evento?.dettaglioEvento?.oraInizio || null,
+    oraFine: evento?.dettaglioEvento?.oraFine || null,
+    descrizioneIt:
+      changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, "it") ||
+      null,
+    descrizioneEn:
+      changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoEn, "en") ||
+      changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, "it") ||
+      null,
+    infoIt: evento?.dettaglioEvento?.infoEventoIt,
+    infoEn:
+      evento?.dettaglioEvento.infoEventoEn ||
+      evento?.dettaglioEvento?.infoEventoIt ||
+      null,
+    finanziamentoIt: evento?.dettaglioEvento?.finanziamentoIt,
+    finanziamentoEn:
+      evento?.dettaglioEvento.finanziamentoEn ||
+      evento?.dettaglioEvento?.finanziamentoIt ||
+      null,
+    dataOrd: Date.parse(
+      evento?.dettaglioEvento?.dataEvento +
+        " " +
+        evento?.dettaglioEvento?.oraInizio
+    ),
+    dataOrdFine: Date.parse(
+      evento?.dettaglioEvento?.dataEvento +
+        " " +
+        evento?.dettaglioEvento?.oraFine
+    ),
+    dataOrdA: Date.parse(dataInizio),
+    dataOrdB: Date.parse(dataFine),
+    categoria: evento?.categorieEventi?.nodes[0]?.slug || null,
+    tipologia: evento?.tipologieEventi?.nodes[0]?.slug || null,
+    luogo: evento?.luoghiEventi?.nodes[0]?.slug || null,
+    categoriaName: evento?.categorieEventi?.nodes[0]?.name || null,
+    tipologiaName: evento?.tipologieEventi?.nodes[0]?.name || null,
+    tipologiaNameEn:
+      evento?.tipologieEventi?.nodes[0]?.dettagliTipologieEvento
+        ?.nomeTipologiaEn ||
+      evento?.tipologieEventi?.nodes[0]?.name ||
+      null,
+    luogoName: evento?.luoghiEventi?.nodes[0]?.name || null,
+    luogoNameEn:
+      evento?.luoghiEventi?.nodes[0]?.dettagliLuoghiEvento?.nomeLuogoEn ||
+      evento?.luoghiEventi?.nodes[0]?.name ||
+      null,
+    eventoPrincipale: evento?.dettaglioEvento?.eventoPrincipale || false,
+    nascondiOraInizio: evento?.dettaglioEvento?.nascondiOraInizio || false,
+    nascondiTitolo: evento?.dettaglioEvento?.nascondiTitolo || false,
+    etaRichiesta: evento?.dettaglioEvento?.etaRichiesta || null,
+    noteEtaRichiesta: evento?.dettaglioEvento?.noteEtaRichiesta || null,
+    maxIscritti: evento?.dettaglioEvento?.maxIscritti || null,
+    prenotazioneOnline: evento?.dettaglioEvento?.prenotazioneOnline || false,
+  };
 };
 
 const changeLinkGuest = (text: string, language: string = "it"): string => {

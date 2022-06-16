@@ -85,8 +85,8 @@ export const getPlaces = async (tipologia?: string): Promise<PlaceType[]> => {
 
     result.sort(
       (a: PlaceType, b: PlaceType) =>
-        parseInt(a.city?.dettagliCitta.distanzaGavoi) -
-          parseInt(b.city?.dettagliCitta?.distanzaGavoi) ||
+        a.city?.dettagliCitta.distanzaGavoi -
+          b.city?.dettagliCitta?.distanzaGavoi ||
         a.city.name.localeCompare(b.city.name)
     );
 

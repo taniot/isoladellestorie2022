@@ -68,7 +68,7 @@ export interface GuestType {
   jobTitleEn: string | null;
   descrizioneIt?: string | null;
   descrizioneEn?: string | null;
-  eventi: wpEvent[];
+  eventi: EventType[];
 }
 
 export interface wpEvent {
@@ -128,49 +128,53 @@ export type wpEventLuoghi = {
 export interface EventType {
   id: string;
   title: string;
-  titleEn: string;
+  titleEn: string | null;
   data: string;
-  oraInizio: string;
-  oraFine: string;
-  descrizioneIt: string;
-  descrizioneEn: string;
+  oraInizio: string | null;
+  oraFine: string | null;
+  descrizioneIt: string | null;
+  descrizioneEn: string | null;
   infoIt: string;
-  infoEn: string;
+  infoEn: string | null;
   finanziamentoIt: string;
-  finanziamentoEn: string;
+  finanziamentoEn: string | null;
   dataOrd: number;
   dataOrdFine: number;
   dataOrdA: number;
   dataOrdB: number;
-  categoria: string;
-  tipologia: string;
-  luogo: string;
-  categoriaName: string;
-  tipologiaName: string;
-  tipologiaNameEn: string;
-  luogoName: string;
-  luogoNameEn: string;
+  categoria: string | null;
+  tipologia: string | null;
+  luogo: string | null;
+  categoriaName: string | null;
+  tipologiaName: string | null;
+  tipologiaNameEn: string | null;
+  luogoName: string | null;
+  luogoNameEn: string | null;
   eventoPrincipale: boolean;
   nascondiOraInizio: boolean;
   nascondiTitolo: boolean;
-  etaRichiesta: string;
-  noteEtaRichiesta: string;
-  maxIscritti: string;
+  etaRichiesta: string | null;
+  noteEtaRichiesta: string | null;
+  maxIscritti: string | null;
   prenotazioneOnline: boolean;
 }
 
 export type EventTypeGroups = {
-  luogo: string;
-  tipologia: string;
+  luogo: string | null;
+  tipologia: string | null;
   luogoName: string | null;
   luogoNameEn: string | null;
   tipologiaName: string | null;
   tipologiaNameEn: string | null;
 };
 
+export type EventTypeDataGroups = {
+  data: string;
+};
+
 export type EventTypeTimeGroups = {
-  oraInizio: string;
-  oraFine: string;
+  oraInizio: string | null;
+  oraFine: string | null;
 };
 
 export type wpPlace = {
@@ -195,7 +199,7 @@ export type wpPlaceCitta = {
   name: string;
   slug: string;
   dettagliCitta: {
-    distanzaGavoi: string;
+    distanzaGavoi: number;
   };
 };
 
@@ -218,7 +222,7 @@ export type PlaceType = {
 export type PlaceGroupType = {
   luogo: string;
   slug: string;
-  distanza: string;
+  distanza: number;
 };
 
 export interface PartnerType {

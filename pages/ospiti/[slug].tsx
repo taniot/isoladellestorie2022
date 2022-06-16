@@ -23,7 +23,7 @@ const Ospite = ({
   }, [setTranslations, translations]);
   return (
     <>
-      <Seo title={guest.title} />
+      <Seo title={guest?.title} />
       <Guest guest={guest} />
     </>
   );
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       guest,
       translations,
     },
-    revalidate: 10800,
+    //revalidate: 10800,
   };
 };
 

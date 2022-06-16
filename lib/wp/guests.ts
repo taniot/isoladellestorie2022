@@ -1,6 +1,7 @@
 import { gql } from "graphql-request";
 import { client } from "../client";
-import { GuestType, wpGuest } from "../../store/types";
+import { GuestType, wpEvent, wpGuest } from "../../store/types";
+import { handleEventi, shapeEvento } from "./events";
 
 //queries
 
@@ -44,20 +45,31 @@ const qGetGuest = gql`
         descrizioneEn
         ospiteEvento {
           ... on Evento {
+            id
             title
+            dettaglioEvento {
+              dataEvento
+              oraInizio
+              oraFine
+              titoloEventoEn
+              descrizioneEventoIt
+              descrizioneEventoEn
+              infoEventoIt
+              infoEventoEn
+              eventoPrincipale
+              nascondiOraInizio
+              finanziamentoIt
+              finanziamentoEn
+              nascondiTitolo
+              etaRichiesta
+              noteEtaRichiesta
+              maxIscritti
+              prenotazioneOnline
+            }
             categorieEventi {
               nodes {
                 name
                 slug
-              }
-            }
-            luoghiEventi {
-              nodes {
-                name
-                slug
-                dettagliLuoghiEvento {
-                  nomeLuogoEn
-                }
               }
             }
             tipologieEventi {
@@ -69,14 +81,14 @@ const qGetGuest = gql`
                 }
               }
             }
-            dettaglioEvento {
-              descrizioneEventoIt
-              descrizioneEventoEn
-              dataEvento
-              oraInizio
-              oraFine
-              nascondiTitolo
-              nascondiOraInizio
+            luoghiEventi {
+              nodes {
+                name
+                slug
+                dettagliLuoghiEvento {
+                  nomeLuogoEn
+                }
+              }
             }
           }
         }
@@ -100,10 +112,13 @@ export const getGuestBySlug = async (
 
   try {
     const { ospite } = await client.request(query, variables);
+
+    //console.log({ ospite });
+
     return {
       title: ospite?.title,
-      nome: ospite.dettagliOspite.nome,
-      cognome: ospite.dettagliOspite.cognome,
+      nome: ospite?.dettagliOspite?.nome,
+      cognome: ospite?.dettagliOspite?.cognome,
       slug: ospite?.slug,
       ordinamento: ospite.dettagliOspite.ordinamento,
       image: ospite?.featuredImage?.node?.guid || null,
@@ -111,7 +126,10 @@ export const getGuestBySlug = async (
       jobTitleEn: ospite?.dettagliOspite?.jobTitleEn || null,
       descrizioneIt: ospite?.dettagliOspite?.descrizioneIt || null,
       descrizioneEn: ospite?.dettagliOspite?.descrizioneEn || null,
-      eventi: ospite?.dettagliOspite?.ospiteEvento || [],
+      eventi:
+        ospite?.dettagliOspite?.ospiteEvento?.length > 0
+          ? handleEventi(ospite?.dettagliOspite?.ospiteEvento)
+          : [],
     };
   } catch (error) {
     console.log({ error });
