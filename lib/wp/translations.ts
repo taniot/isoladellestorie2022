@@ -1,6 +1,7 @@
 import { gql } from "graphql-request";
 import { client } from "../client";
 import { replaceText } from "../../utils/replaceText";
+import { TranslationType, wpTranslation } from "../../store/types";
 
 const qGetTranslations = gql`
   query {
@@ -24,16 +25,16 @@ const qGetTranslations = gql`
   }
 `;
 
-export const getTranslations = async () => {
+export const getTranslations = async (): Promise<TranslationType[]> => {
   const query = qGetTranslations;
   if (!client) return [];
 
-  let result = [];
+  let result: TranslationType[] = [];
 
   try {
     const data = await client.request(query);
 
-    result = data?.traduzioni?.nodes?.map((traduzione: any) => {
+    result = data?.traduzioni?.nodes?.map((traduzione: wpTranslation) => {
       return {
         id: traduzione?.id,
         title: traduzione?.title,
@@ -52,22 +53,22 @@ export const getTranslations = async () => {
 };
 
 export const getTranslation = (
-  translations: any[] | undefined,
+  translations: TranslationType[] | undefined,
   slug: string,
   language: string = "it",
   what: string = "title"
-) => {
-  if (!translations) return null;
+): string => {
+  if (!translations || !what) return "";
   const result =
     translations
-      .filter((tr: any) => tr.language === language)
-      .find((tr: any) => tr.slug === slug) ||
+      .filter((tr: TranslationType) => tr.language === language)
+      .find((tr: TranslationType) => tr.slug === slug) ||
     translations
-      .filter((tr: any) => tr.language === "it")
-      .find((tr: any) => tr.slug === slug) ||
+      .filter((tr: TranslationType) => tr.language === "it")
+      .find((tr: TranslationType) => tr.slug === slug) ||
     null;
 
-  if (what === "title") return result?.title;
+  if (what === "title") return result?.title || "";
   if (what === "link") {
     return result?.link?.url
       ? replaceText(
@@ -77,4 +78,6 @@ export const getTranslation = (
         )
       : "#";
   }
+
+  return "";
 };

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.isoladellestorie.it
+
+# Sitemaps
+Sitemap: https://www.isoladellestorie.it/sitemap.xml

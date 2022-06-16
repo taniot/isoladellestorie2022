@@ -1,4 +1,5 @@
 import { gql } from "graphql-request";
+import { PartnerType, wpPartner } from "../../store/types";
 import { client } from "../client";
 
 //queries
@@ -35,7 +36,9 @@ const qGetSponsors = gql`
 /*
 / get ALL db pages
 */
-export const getSponsors = async (tipologia?: string) => {
+export const getSponsors = async (
+  tipologia?: string
+): Promise<PartnerType[]> => {
   const query = qGetSponsors;
   if (!client) return [];
 
@@ -44,7 +47,7 @@ export const getSponsors = async (tipologia?: string) => {
   try {
     const data = await client.request(query);
 
-    result = data?.sponsors?.nodes?.map((sponsor: any) => {
+    result = data?.sponsors?.nodes?.map((sponsor: wpPartner) => {
       return {
         title: sponsor?.title,
         order: sponsor?.menuOrder,
@@ -55,10 +58,14 @@ export const getSponsors = async (tipologia?: string) => {
     });
 
     if (tipologia) {
-      result = result.filter((sponsor: any) => sponsor.type === tipologia);
+      result = result.filter(
+        (sponsor: PartnerType) => sponsor.type === tipologia
+      );
     }
 
-    result.sort((a: any, b: any) => a.order - b.order);
+    result.sort(
+      (a: PartnerType, b: PartnerType) => parseInt(a.order) - parseInt(b.order)
+    );
 
     return result;
   } catch (error) {

@@ -8,8 +8,9 @@ import styles from "./newsDetail.module.scss";
 import { getTranslation } from "../../lib/wp/translations";
 import { useContext } from "react";
 import AppContext from "../../store/AppContext";
+import { wpNews } from "../../store/types";
 
-const NewsDetail = ({ data }: { data: any }) => {
+const NewsDetail = ({ data }: { data: wpNews }) => {
   const context = useContext(AppContext);
   const { state } = context;
   if (!data) return null;

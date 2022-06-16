@@ -1,10 +1,7 @@
 import { gql } from "graphql-request";
 import { client } from "../client";
-import { faker } from "@faker-js/faker";
-import slugify from "slugify";
-import { Guest, wpGuest } from "../../store/types";
-
-faker.locale = "it";
+import { GuestType, wpEvent, wpGuest } from "../../store/types";
+import { handleEventi, shapeEvento } from "./events";
 
 //queries
 
@@ -48,14 +45,28 @@ const qGetGuest = gql`
         descrizioneEn
         ospiteEvento {
           ... on Evento {
+            id
             title
-            categorieEventi {
-              nodes {
-                name
-                slug
-              }
+            dettaglioEvento {
+              dataEvento
+              oraInizio
+              oraFine
+              titoloEventoEn
+              descrizioneEventoIt
+              descrizioneEventoEn
+              infoEventoIt
+              infoEventoEn
+              eventoPrincipale
+              nascondiOraInizio
+              finanziamentoIt
+              finanziamentoEn
+              nascondiTitolo
+              etaRichiesta
+              noteEtaRichiesta
+              maxIscritti
+              prenotazioneOnline
             }
-            luoghiEventi {
+            categorieEventi {
               nodes {
                 name
                 slug
@@ -65,16 +76,19 @@ const qGetGuest = gql`
               nodes {
                 name
                 slug
+                dettagliTipologieEvento {
+                  nomeTipologiaEn
+                }
               }
             }
-            dettaglioEvento {
-              descrizioneEventoIt
-              descrizioneEventoEn
-              dataEvento
-              oraInizio
-              oraFine
-              nascondiTitolo
-              nascondiOraInizio
+            luoghiEventi {
+              nodes {
+                name
+                slug
+                dettagliLuoghiEvento {
+                  nomeLuogoEn
+                }
+              }
             }
           }
         }
@@ -88,7 +102,9 @@ const qGetGuest = gql`
   }
 `;
 
-export const getGuestBySlug = async (slug: string) => {
+export const getGuestBySlug = async (
+  slug: string
+): Promise<GuestType | null> => {
   const query = qGetGuest;
   const variables = {
     slug,
@@ -96,10 +112,13 @@ export const getGuestBySlug = async (slug: string) => {
 
   try {
     const { ospite } = await client.request(query, variables);
+
+    //console.log({ ospite });
+
     return {
       title: ospite?.title,
-      nome: ospite.dettagliOspite.nome,
-      cognome: ospite.dettagliOspite.cognome,
+      nome: ospite?.dettagliOspite?.nome,
+      cognome: ospite?.dettagliOspite?.cognome,
       slug: ospite?.slug,
       ordinamento: ospite.dettagliOspite.ordinamento,
       image: ospite?.featuredImage?.node?.guid || null,
@@ -107,7 +126,10 @@ export const getGuestBySlug = async (slug: string) => {
       jobTitleEn: ospite?.dettagliOspite?.jobTitleEn || null,
       descrizioneIt: ospite?.dettagliOspite?.descrizioneIt || null,
       descrizioneEn: ospite?.dettagliOspite?.descrizioneEn || null,
-      eventi: ospite?.dettagliOspite?.ospiteEvento || [],
+      eventi:
+        ospite?.dettagliOspite?.ospiteEvento?.length > 0
+          ? handleEventi(ospite?.dettagliOspite?.ospiteEvento)
+          : [],
     };
   } catch (error) {
     console.log({ error });
@@ -118,7 +140,7 @@ export const getGuestBySlug = async (slug: string) => {
 /*
 / get ALL db pages
 */
-export const getGuests = async () => {
+export const getGuests = async (): Promise<GuestType[]> => {
   const query = qGetGuests;
 
   if (!client) return [];
@@ -126,7 +148,7 @@ export const getGuests = async () => {
   try {
     const data = await client.request(query);
 
-    let result = data?.ospiti?.nodes.map((item: wpGuest): Guest => {
+    let result = data?.ospiti?.nodes.map((item: wpGuest): GuestType => {
       return {
         title: item?.title,
         slug: item?.slug,
@@ -167,7 +189,7 @@ export const getGuests = async () => {
 };
 
 export const getGuestFieldByLang = (
-  guest: Guest,
+  guest: GuestType,
   field: string,
   language: string | undefined
 ): string => {

@@ -1,17 +1,15 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { EventType, Languages, Translation } from "./types";
+import { EventType, Languages, TranslationType } from "./types";
 
 interface MyContext {
   state?: {
     language: keyof typeof Languages;
     isMainMenuOpen: boolean;
-    events: any[];
-    translations: any[];
+    translations: TranslationType[];
   };
   setIsMainMenuOpen?: Dispatch<SetStateAction<boolean>>;
   setCurrentLanguage?: Dispatch<SetStateAction<keyof typeof Languages>>;
-  setEvents?: Dispatch<SetStateAction<EventType[]>>;
-  setTranslations?: Dispatch<SetStateAction<Translation[]>>;
+  setTranslations?: Dispatch<SetStateAction<TranslationType[]>>;
 }
 
 const AppContext = createContext<MyContext>({});

@@ -1,10 +1,11 @@
-import styles from "./laboratorio.module.scss";
+import styles from "./ospite.module.scss";
 import classNames from "classnames";
 import parse from "html-react-parser";
 import Link from "next/link";
 import { EventType } from "../../store/types";
+import { format } from "date-fns";
 
-const Laboratorio = ({ evento }: { evento: EventType }) => {
+const Ospite = ({ evento }: { evento: EventType }) => {
   return (
     <div
       className={classNames(
@@ -12,10 +13,18 @@ const Laboratorio = ({ evento }: { evento: EventType }) => {
         evento.eventoPrincipale ? styles.main : ""
       )}
     >
+      <span className={styles.time}>
+        {format(evento.dataOrdA, "dd/MM")} - {evento.oraInizio}
+      </span>
       {!evento.nascondiTitolo && (
         <h4 className={styles.title}>{evento.title}</h4>
       )}
-      <p className={styles.where}>{evento.luogoName}</p>
+      <p className={styles.where}>
+        {evento.luogoName}
+        {evento.tipologiaName &&
+          !evento.tipologia?.includes("segnaposto") &&
+          ` - ${evento.tipologiaName}`}
+      </p>
       <div className={styles.description}>
         {parse(evento.descrizioneIt ? evento.descrizioneIt : "")}
         {evento.noteEtaRichiesta}
@@ -44,4 +53,4 @@ const Laboratorio = ({ evento }: { evento: EventType }) => {
   );
 };
 
-export default Laboratorio;
+export default Ospite;

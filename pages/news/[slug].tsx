@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import NewsDetail from "../../components/news/newsDetail";
 import { getPostBySlug, getPosts } from "../../lib/wp/news";
 import { getTranslations } from "../../lib/wp/translations";
-import { Translation } from "../../store/types";
+import { TranslationType, wpNews } from "../../store/types";
 import { useContext, useEffect } from "react";
 import AppContext from "../../store/AppContext";
 import Seo from "../../components/seo/seo";
@@ -10,8 +10,8 @@ const NewsPage = ({
   post,
   translations,
 }: {
-  post: any;
-  translations: Translation[];
+  post: wpNews;
+  translations: TranslationType[];
 }) => {
   const context = useContext(AppContext);
   const { setTranslations } = context;
@@ -30,7 +30,7 @@ const NewsPage = ({
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPosts(10);
 
-  const paths = posts?.map((post: any) => {
+  const paths = posts?.map((post: wpNews) => {
     return {
       params: {
         slug: post.slug,

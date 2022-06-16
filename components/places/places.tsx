@@ -8,12 +8,12 @@ import styles from "./places.module.scss";
 import { getTranslation } from "../../lib/wp/translations";
 import AppContext from "../../store/AppContext";
 import { useContext } from "react";
+import { Page, PlaceGroupType, PlaceType } from "../../store/types";
 
-const Places = (info: any) => {
-  const context = useContext(AppContext);
-  const { state } = context;
-  const { data, page } = info;
-  const [placesGroups, setPlacesGroups] = useState<any[]>([]);
+const Places = ({ data, page }: { data: PlaceType[]; page: Page }) => {
+  const { state } = useContext(AppContext);
+
+  const [placesGroups, setPlacesGroups] = useState<PlaceGroupType[]>([]);
   useEffect(() => {
     if (data) {
       const groups = setLuogoGroups(data);
@@ -23,10 +23,10 @@ const Places = (info: any) => {
 
   return (
     <div className={styles.placesSection}>
-      {placesGroups?.map((group: any) => {
+      {placesGroups?.map((group: PlaceGroupType) => {
         let places = data
-          .filter((place: any) => place.city.slug === group.slug)
-          .sort((a: any, b: any) => a.title.localeCompare(b.title));
+          .filter((place: PlaceType) => place.city.slug === group.slug)
+          .sort((a: PlaceType, b: PlaceType) => a.title.localeCompare(b.title));
 
         return (
           <div key={uuidv4()} className="flex flex-col  mb-10">
@@ -45,7 +45,7 @@ const Places = (info: any) => {
             </div>
 
             <div className={styles.placesContainer}>
-              {places?.map((place: any) => {
+              {places?.map((place: PlaceType) => {
                 return (
                   <div key={uuidv4()} className={styles.place}>
                     <div className={styles.placeBox}>
