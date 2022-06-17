@@ -17,6 +17,7 @@ import {
   wpNews,
 } from "../store/types";
 import { useRouter } from "next/router";
+import currentLocale from "../utils/currentLocale";
 
 const Home = ({
   guests,
@@ -111,17 +112,20 @@ const Home = ({
           >
             <Anteprima data={guests} />
           </HomeSection>
-          <HomeSection
-            bgColor="#f1e596"
-            title={getTranslation(
-              state?.translations,
-              "titolo_news_home",
-              state?.language
-            )}
-            linkTo={newsSection}
-          >
-            <News data={news} />
-          </HomeSection>
+          {news && (
+            <HomeSection
+              bgColor="#f1e596"
+              title={getTranslation(
+                state?.translations,
+                "titolo_news_home",
+                state?.language
+              )}
+              linkTo={newsSection}
+            >
+              <News data={news} />
+            </HomeSection>
+          )}
+
           <HomeSection
             title={getTranslation(
               state?.translations,
@@ -138,13 +142,13 @@ const Home = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
   let guests = await getGuests();
-  let news = await getPosts(1, "IT");
+  let news = await getPosts(1, currentLocale(context.locale));
   let sponsors = await getSponsors("sostenuto-da");
   let translations = await getTranslations();
   let latestNews = null;
-  if (Array.isArray(news)) {
+  if (Array.isArray(news) && news.length > 0) {
     latestNews = news[0];
   }
 
