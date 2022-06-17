@@ -26,6 +26,7 @@ import {
 } from "../store/types";
 import styles from "../styles/pageDefault.module.scss";
 import { createURI } from "../utils/createUri";
+import currentLocale from "../utils/currentLocale";
 
 const PageDefault = ({
   page,
@@ -73,7 +74,7 @@ const PageDefault = ({
         {places && <Places data={places} page={page} />}
         {partner && <Partner data={partner} page={page} />}
         {events && <Eventi data={events} page={page} />}
-        {news && <NewsList data={news} page={page} />}
+        {page.template === "news" && <NewsList data={news} page={page} />}
       </div>
     </>
   );
@@ -145,7 +146,7 @@ export const getStaticProps: GetStaticProps = async (
       break;
 
     case "news":
-      news = await getPosts(10);
+      news = await getPosts(10, currentLocale(context.locale));
       break;
 
     case "eventi":
