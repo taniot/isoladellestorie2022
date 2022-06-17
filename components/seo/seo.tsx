@@ -1,8 +1,17 @@
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import AppContext from "../../store/AppContext";
+import { getTranslation } from "../../lib/wp/translations";
 
 const Seo = ({ title }: { title?: string }) => {
-  const defaultTitle = "L’Isola delle Storie - dal 1 al 3 luglio 2022 a Gavoi";
+  const { state } = useContext(AppContext);
+
+  const defaultTitle = getTranslation(
+    state?.translations,
+    "titolo_sito",
+    state?.language
+  );
   const resultTitle = title ? `${title} - ${defaultTitle}` : defaultTitle;
   const router = useRouter();
 

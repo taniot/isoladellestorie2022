@@ -3,8 +3,12 @@ import classNames from "classnames";
 import parse from "html-react-parser";
 import Link from "next/link";
 import { EventType } from "../../store/types";
-
+import AppContext from "../../store/AppContext";
+import { useContext } from "react";
+import { getTranslation } from "../../lib/wp/translations";
+import { getEventFieldByLang } from "../../lib/wp/events";
 const Laboratorio = ({ evento }: { evento: EventType }) => {
+  const { state } = useContext(AppContext);
   return (
     <div
       className={classNames(
@@ -13,28 +17,45 @@ const Laboratorio = ({ evento }: { evento: EventType }) => {
       )}
     >
       {!evento.nascondiTitolo && (
-        <h4 className={styles.title}>{evento.title}</h4>
+        <h4 className={styles.title}>
+          {getEventFieldByLang(evento, "title", state?.language)}
+        </h4>
       )}
-      <p className={styles.where}>{evento.luogoName}</p>
+      <p className={styles.where}>
+        {getEventFieldByLang(evento, "luogo", state?.language)}
+      </p>
       <div className={styles.description}>
-        {parse(evento.descrizioneIt ? evento.descrizioneIt : "")}
+        {parse(getEventFieldByLang(evento, "description", state?.language))}
         {evento.noteEtaRichiesta}
       </div>
       <div className={styles.description}>
-        {parse(evento.infoIt ? evento.infoIt : "")}
+        {parse(getEventFieldByLang(evento, "info", state?.language))}
       </div>
 
       <div className={styles.finanziamento}>
-        {parse(evento.finanziamentoIt ? evento.finanziamentoIt : "")}
+        {parse(getEventFieldByLang(evento, "finanziamento", state?.language))}
       </div>
       {(evento.etaRichiesta || evento.maxIscritti) && (
         <div className={styles.info}>
           <span className={styles.etaLabel}>{evento.etaRichiesta}</span>
           <span className={styles.maxIscrittiLabel}>{evento.maxIscritti}</span>
           {evento.prenotazioneOnline && (
-            <Link href="/info-visitatori/come-fare/">
+            <Link
+              href={getTranslation(
+                state?.translations,
+                "bottone_prenota_online",
+                state?.language,
+                "link"
+              )}
+            >
               <a>
-                <span className={styles.prenotaOnline}>Prenota online</span>
+                <span className={styles.prenotaOnline}>
+                  {getTranslation(
+                    state?.translations,
+                    "bottone_prenota_online",
+                    state?.language
+                  )}
+                </span>
               </a>
             </Link>
           )}

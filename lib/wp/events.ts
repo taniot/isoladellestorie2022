@@ -374,6 +374,27 @@ export const getEventFieldByLang = (
         ? event.descrizioneEn
         : event.descrizioneIt || "";
 
+    case "luogo":
+      return language === "it"
+        ? event.luogoName || ""
+        : event.luogoNameEn
+        ? event.luogoNameEn
+        : event.luogoName || "";
+
+    case "info":
+      return language === "it"
+        ? event.infoIt || ""
+        : event.infoEn
+        ? event.infoEn
+        : event.infoIt || "";
+
+    case "finanziamento":
+      return language === "it"
+        ? event.finanziamentoIt || ""
+        : event.finanziamentoEn
+        ? event.finanziamentoEn
+        : event.finanziamentoIt || "";
+
     default:
       return "";
   }
