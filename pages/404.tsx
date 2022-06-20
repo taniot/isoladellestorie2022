@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import PageHeader from "../components/pageHeader/pageHeader";
 import { getTranslations, getTranslation } from "../lib/wp/translations";
 import styles from "../styles/pageDefault.module.scss";
-import { TranslationType } from "./types";
+import { TranslationType } from "../store/types";
 import { useContext, useEffect } from "react";
 import AppContext from "../store/AppContext";
 
