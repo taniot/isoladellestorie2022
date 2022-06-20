@@ -42,7 +42,6 @@ const ProgrammaList = ({ eventi }: { eventi: EventType[] }) => {
                   ).toUpperCase()}
                 </p>
                 <p className={styles.theme}>
-                  {" "}
                   {getGroupsFieldByLang(
                     group,
                     "tipologia",

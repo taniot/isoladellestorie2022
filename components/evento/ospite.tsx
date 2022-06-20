@@ -4,8 +4,12 @@ import parse from "html-react-parser";
 import Link from "next/link";
 import { EventType } from "../../store/types";
 import { format } from "date-fns";
-
+import { getEventFieldByLang } from "../../lib/wp/events";
+import AppContext from "../../store/AppContext";
+import { useContext } from "react";
+import { getTranslation } from "../../lib/wp/translations";
 const Ospite = ({ evento }: { evento: EventType }) => {
+  const { state } = useContext(AppContext);
   return (
     <div
       className={classNames(
@@ -17,33 +21,52 @@ const Ospite = ({ evento }: { evento: EventType }) => {
         {format(evento.dataOrdA, "dd/MM")} - {evento.oraInizio}
       </span>
       {!evento.nascondiTitolo && (
-        <h4 className={styles.title}>{evento.title}</h4>
+        <h4 className={styles.title}>
+          {getEventFieldByLang(evento, "title", state?.language)}
+        </h4>
       )}
       <p className={styles.where}>
-        {evento.luogoName}
+        {getEventFieldByLang(evento, "luogo", state?.language)}
         {evento.tipologiaName &&
           !evento.tipologia?.includes("segnaposto") &&
           ` - ${evento.tipologiaName}`}
       </p>
       <div className={styles.description}>
-        {parse(evento.descrizioneIt ? evento.descrizioneIt : "")}
-        {evento.noteEtaRichiesta}
+        {parse(getEventFieldByLang(evento, "description", state?.language))}
+        {getEventFieldByLang(evento, "note_eta_richiesta", state?.language)}
       </div>
       <div className={styles.description}>
-        {parse(evento.infoIt ? evento.infoIt : "")}
+        {parse(getEventFieldByLang(evento, "info", state?.language))}
       </div>
 
       <div className={styles.finanziamento}>
-        {parse(evento.finanziamentoIt ? evento.finanziamentoIt : "")}
+        {parse(getEventFieldByLang(evento, "finanziamento", state?.language))}
       </div>
       {(evento.etaRichiesta || evento.maxIscritti) && (
         <div className={styles.info}>
-          <span className={styles.etaLabel}>{evento.etaRichiesta}</span>
-          <span className={styles.maxIscrittiLabel}>{evento.maxIscritti}</span>
+          <span className={styles.etaLabel}>
+            {getEventFieldByLang(evento, "eta_richiesta", state?.language)}
+          </span>
+          <span className={styles.maxIscrittiLabel}>
+            {getEventFieldByLang(evento, "max_iscritti", state?.language)}
+          </span>
           {evento.prenotazioneOnline && (
-            <Link href="/info-visitatori/come-fare/">
+            <Link
+              href={getTranslation(
+                state?.translations,
+                "bottone_prenota_online",
+                state?.language,
+                "link"
+              )}
+            >
               <a>
-                <span className={styles.prenotaOnline}>Prenota online</span>
+                <span className={styles.prenotaOnline}>
+                  {getTranslation(
+                    state?.translations,
+                    "bottone_prenota_online",
+                    state?.language
+                  )}
+                </span>
               </a>
             </Link>
           )}

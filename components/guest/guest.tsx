@@ -36,18 +36,18 @@ const Guest = ({ guest }: { guest: GuestType }) => {
           <div className={styles.guestHeader}>
             <div className={styles.image}>
               <GuestImage
-                title={guest.title}
-                image={guest.image}
+                title={guest?.title}
+                image={guest?.image}
                 width={isMobile ? 200 : 280}
                 height={isMobile ? 200 : 280}
               />
             </div>
 
-            {guest.nome && guest.cognome ? (
+            {guest?.nome && guest?.cognome ? (
               <>
                 <h2>
-                  <span className={styles.nome}>{guest.nome}</span>{" "}
-                  <span className={styles.cognome}>{guest.cognome}</span>
+                  <span className={styles.nome}>{guest?.nome}</span>{" "}
+                  <span className={styles.cognome}>{guest?.cognome}</span>
                 </h2>
                 <h3>
                   {getGuestFieldByLang(guest, "jobTitle", state?.language)}
@@ -55,7 +55,7 @@ const Guest = ({ guest }: { guest: GuestType }) => {
               </>
             ) : (
               <>
-                <h2 className={styles.nomeLungo}>{guest.title}</h2>
+                <h2 className={styles.nomeLungo}>{guest?.title}</h2>
                 <h3>
                   {getGuestFieldByLang(guest, "jobTitle", state?.language)}
                 </h3>
