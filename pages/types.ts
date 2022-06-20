@@ -11,20 +11,20 @@ export interface PageChildren {
 }
 
 export interface Page {
-  id?: string;
+  id: string;
   title: string;
   subtitleIt: string;
-  subtitleEn?: string;
+  subtitleEn: string;
   content: string;
-  template?: string;
-  parent?: {
+  template: string;
+  parent: {
     title: string;
     children: PageChildren[];
   };
-  accoglienza?: {
+  accoglienza: {
     tipologia: string;
   };
-  eventi?: {
+  eventi: {
     categoria: string;
     data: string;
     programma: boolean;

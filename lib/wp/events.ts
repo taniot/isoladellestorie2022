@@ -34,8 +34,11 @@ const qGetEvents = gql`
           finanziamentoEn
           nascondiTitolo
           etaRichiesta
+          etaRichiestaEn
           noteEtaRichiesta
+          noteEtaRichiestaEn
           maxIscritti
+          maxIscrittiEn
           prenotazioneOnline
         }
         categorieEventi {
@@ -222,14 +225,14 @@ export const shapeEvento = (evento: wpEvent): EventType => {
       null,
     descrizioneEn:
       changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoEn, "en") ||
-      changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, "it") ||
+      changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, "en") ||
       null,
     approfondimentoIt:
       changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoIt, "it") ||
       null,
     approfondimentoEn:
       changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoEn, "en") ||
-      changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoEn, "it") ||
+      changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoEn, "en") ||
       null,
     infoIt: evento?.dettaglioEvento?.infoEventoIt,
     infoEn:
@@ -283,8 +286,11 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     nascondiOraInizio: evento?.dettaglioEvento?.nascondiOraInizio || false,
     nascondiTitolo: evento?.dettaglioEvento?.nascondiTitolo || false,
     etaRichiesta: evento?.dettaglioEvento?.etaRichiesta || null,
+    etaRichiestaEn: evento?.dettaglioEvento?.etaRichiestaEn || null,
     noteEtaRichiesta: evento?.dettaglioEvento?.noteEtaRichiesta || null,
+    noteEtaRichiestaEn: evento?.dettaglioEvento?.noteEtaRichiestaEn || null,
     maxIscritti: evento?.dettaglioEvento?.maxIscritti || null,
+    maxIscrittiEn: evento?.dettaglioEvento?.maxIscrittiEn || null,
     prenotazioneOnline: evento?.dettaglioEvento?.prenotazioneOnline || false,
     programma: evento?.dettaglioEvento?.programma || false,
   };
@@ -304,7 +310,7 @@ const changeLinkGuest = (text: string, language: string = "it"): string => {
       "/en/guests/"
     );
 
-  return "";
+  return text;
 };
 
 export const getGroupsFieldByLang = (
@@ -324,7 +330,7 @@ export const getGroupsFieldByLang = (
         ? group.tipologiaName || ""
         : group.tipologiaNameEn
         ? group.tipologiaNameEn
-        : group.tipologia || "";
+        : group.tipologiaName || "";
     default:
       return "";
   }
@@ -388,12 +394,90 @@ export const getEventFieldByLang = (
         ? event.infoEn
         : event.infoIt || "";
 
+    case "approfondimento":
+      return language === "it"
+        ? event.approfondimentoIt || ""
+        : event.approfondimentoEn
+        ? event.approfondimentoEn
+        : event.approfondimentoIt || "";
+
     case "finanziamento":
       return language === "it"
         ? event.finanziamentoIt || ""
         : event.finanziamentoEn
         ? event.finanziamentoEn
         : event.finanziamentoIt || "";
+
+    case "categoria":
+      return language === "it"
+        ? event.categoriaName || ""
+        : event.categoriaNameEn
+        ? event.categoriaNameEn
+        : event.categoriaName || "";
+
+    case "tipologia":
+      return language === "it"
+        ? event.tipologiaName || ""
+        : event.tipologiaNameEn
+        ? event.tipologiaNameEn
+        : event.tipologiaName || "";
+
+    case "luogo":
+      return language === "it"
+        ? event.luogoName || ""
+        : event.luogoNameEn
+        ? event.luogoNameEn
+        : event.luogoName || "";
+
+    case "info_luogo":
+      return language === "it"
+        ? event.infoLuogo || ""
+        : event.infoLuogoEn
+        ? event.infoLuogoEn
+        : event.infoLuogo || "";
+
+    case "eta_richiesta":
+      return language === "it"
+        ? event.etaRichiesta || ""
+        : event.etaRichiestaEn
+        ? event.etaRichiestaEn
+        : event.etaRichiesta || "";
+
+    case "note_eta_richiesta":
+      return language === "it"
+        ? event.noteEtaRichiesta || ""
+        : event.noteEtaRichiestaEn
+        ? event.noteEtaRichiestaEn
+        : event.noteEtaRichiesta || "";
+
+    case "max_iscritti":
+      return language === "it"
+        ? event.maxIscritti || ""
+        : event.maxIscrittiEn
+        ? event.maxIscrittiEn
+        : event.maxIscritti || "";
+
+    /*
+
+      categoriaName: string | null;
+  categoriaNameEn: string | null;
+  tipologiaName: string | null;
+  tipologiaNameEn: string | null;
+  luogoName: string | null;
+  luogoNameEn: string | null;
+  infoLuogo: string | null;
+  infoLuogoEn: string | null;
+  eventoPrincipale: boolean;
+  nascondiOraInizio: boolean;
+  nascondiTitolo: boolean;
+  etaRichiesta: string | null;
+  etaRichiestaEn: string | null;
+  noteEtaRichiesta: string | null;
+  noteEtaRichiestaEn: string | null;
+  maxIscritti: string | null;
+  maxIscrittiEn: string | null;
+
+  */
 
     default:
       return "";

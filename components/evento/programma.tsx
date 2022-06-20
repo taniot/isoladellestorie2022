@@ -7,8 +7,7 @@ import { useContext } from "react";
 import { getTranslation } from "../../lib/wp/translations";
 import { EventType } from "../../store/types";
 const Programma = ({ evento }: { evento: EventType }) => {
-  const context = useContext(AppContext);
-  const { state } = context;
+  const { state } = useContext(AppContext);
 
   return (
     <div

@@ -26,7 +26,7 @@ const Laboratorio = ({ evento }: { evento: EventType }) => {
       </p>
       <div className={styles.description}>
         {parse(getEventFieldByLang(evento, "description", state?.language))}
-        {evento.noteEtaRichiesta}
+        {getEventFieldByLang(evento, "note_eta_richiesta", state?.language)}
       </div>
       <div className={styles.description}>
         {parse(getEventFieldByLang(evento, "info", state?.language))}
@@ -37,8 +37,12 @@ const Laboratorio = ({ evento }: { evento: EventType }) => {
       </div>
       {(evento.etaRichiesta || evento.maxIscritti) && (
         <div className={styles.info}>
-          <span className={styles.etaLabel}>{evento.etaRichiesta}</span>
-          <span className={styles.maxIscrittiLabel}>{evento.maxIscritti}</span>
+          <span className={styles.etaLabel}>
+            {getEventFieldByLang(evento, "eta_richiesta", state?.language)}
+          </span>
+          <span className={styles.maxIscrittiLabel}>
+            {getEventFieldByLang(evento, "max_iscritti", state?.language)}
+          </span>
           {evento.prenotazioneOnline && (
             <Link
               href={getTranslation(
