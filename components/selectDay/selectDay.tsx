@@ -9,22 +9,22 @@ import { Page, PageChildren } from "../../store/types";
 const SelectDay = ({ page }: { page: Page }) => {
   const context = useContext(AppContext);
   const { state } = context;
-  const [daysEventi, setDaysEventi] = useState<PageChildren[]>([]);
+  const [daysEventi, setDaysEventi] = useState<PageChildren[] | undefined>([]);
 
   useEffect(() => {
-    const sortedChildren = (children: PageChildren[]) => {
-      return children.sort(
+    const sortedChildren = (children: PageChildren[] | undefined) => {
+      return children?.sort(
         (a: PageChildren, b: PageChildren) =>
           Date.parse(a.dateEventi) - Date.parse(b.dateEventi)
       );
     };
 
-    setDaysEventi(sortedChildren(page.parent.children));
+    setDaysEventi(sortedChildren(page?.parent?.children));
   }, [daysEventi, page.parent]);
 
   return (
     <>
-      {daysEventi.length > 0 && (
+      {daysEventi && daysEventi?.length > 0 && (
         <div className={styles.giorniFestival}>
           <ul>
             {daysEventi?.map((day: PageChildren, index: number) => {
@@ -36,7 +36,7 @@ const SelectDay = ({ page }: { page: Page }) => {
                       <span
                         className={classNames(
                           styles.dayNumber,
-                          day.dateEventi === page.eventi.data && styles.active
+                          day.dateEventi === page?.eventi?.data && styles.active
                         )}
                       >
                         {date.getDate() >= 10

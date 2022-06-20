@@ -43,25 +43,30 @@ const Eventi = ({ data, page }: { data: EventType[]; page: Page }) => {
           break;
       }
 
-      if (page.eventi.data) {
+      if (page?.eventi?.data) {
         result = result.filter((evento) => {
-          return evento.data == page.eventi.data;
+          return evento.data == page?.eventi?.data;
         });
       }
     }
 
     setEventi(result);
-  }, [data, page.eventi?.categoria, page.eventi.data, page.eventi?.programma]);
+  }, [
+    data,
+    page.eventi?.categoria,
+    page?.eventi?.data,
+    page.eventi?.programma,
+  ]);
 
   const renderSwitch = () => {
     switch (true) {
-      case eventi && page.eventi.programma === true:
+      case eventi && page?.eventi?.programma === true:
         return <ProgrammaList eventi={eventi} />;
 
-      case eventi && page.eventi.categoria === "laboratorio":
+      case eventi && page?.eventi?.categoria === "laboratorio":
         return <LaboratoriList eventi={eventi} />;
 
-      case eventi && page.eventi.categoria === "mostra":
+      case eventi && page?.eventi?.categoria === "mostra":
         return <MostraList eventi={eventi} />;
 
       default:
