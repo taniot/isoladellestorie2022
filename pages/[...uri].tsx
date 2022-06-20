@@ -63,7 +63,7 @@ const PageDefault = ({
               <div className={styles.pageContentContainer}>
                 <div
                   className={styles.pageContent}
-                  dangerouslySetInnerHTML={{ __html: page.content }}
+                  dangerouslySetInnerHTML={{ __html: page?.content }}
                 />
               </div>
             </div>
