@@ -63,7 +63,7 @@ const PageDefault = ({
               <div className={styles.pageContentContainer}>
                 <div
                   className={styles.pageContent}
-                  dangerouslySetInnerHTML={{ __html: page.content }}
+                  dangerouslySetInnerHTML={{ __html: page?.content }}
                 />
               </div>
             </div>
@@ -99,7 +99,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: false,
   };
 };
 

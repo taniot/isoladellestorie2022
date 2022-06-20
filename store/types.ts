@@ -11,20 +11,20 @@ export interface PageChildren {
 }
 
 export interface Page {
-  id: string;
+  id?: string;
   title: string;
   subtitleIt: string;
-  subtitleEn: string;
+  subtitleEn?: string;
   content: string;
-  template: string;
-  parent: {
+  template?: string;
+  parent?: {
     title: string;
     children: PageChildren[];
   };
-  accoglienza: {
+  accoglienza?: {
     tipologia: string;
   };
-  eventi: {
+  eventi?: {
     categoria: string;
     data: string;
     programma: boolean;
@@ -93,8 +93,11 @@ export interface wpEvent {
     nascondiOraInizio: boolean;
     nascondiTitolo: boolean;
     etaRichiesta: string;
+    etaRichiestaEn: string;
     noteEtaRichiesta: string;
+    noteEtaRichiestaEn: string;
     maxIscritti: string;
+    maxIscrittiEn: string;
     prenotazioneOnline: boolean;
   };
   categorieEventi: {
@@ -168,8 +171,11 @@ export interface EventType {
   nascondiOraInizio: boolean;
   nascondiTitolo: boolean;
   etaRichiesta: string | null;
+  etaRichiestaEn: string | null;
   noteEtaRichiesta: string | null;
+  noteEtaRichiestaEn: string | null;
   maxIscritti: string | null;
+  maxIscrittiEn: string | null;
   prenotazioneOnline: boolean;
   programma: boolean;
 }
