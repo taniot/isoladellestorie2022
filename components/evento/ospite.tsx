@@ -8,6 +8,8 @@ import { getEventFieldByLang } from "../../lib/wp/events";
 import AppContext from "../../store/AppContext";
 import { useContext } from "react";
 import { getTranslation } from "../../lib/wp/translations";
+import { BsHandIndexThumb } from "react-icons/bs";
+
 const Ospite = ({ evento }: { evento: EventType }) => {
   const { state } = useContext(AppContext);
   return (
@@ -35,13 +37,17 @@ const Ospite = ({ evento }: { evento: EventType }) => {
         {parse(getEventFieldByLang(evento, "description", state?.language))}
         {getEventFieldByLang(evento, "note_eta_richiesta", state?.language)}
       </div>
-      <div className={styles.description}>
-        {parse(getEventFieldByLang(evento, "info", state?.language))}
-      </div>
+      {getEventFieldByLang(evento, "info", state?.language) && (
+        <div className={styles.description}>
+          {parse(getEventFieldByLang(evento, "info", state?.language))}
+        </div>
+      )}
 
-      <div className={styles.finanziamento}>
-        {parse(getEventFieldByLang(evento, "finanziamento", state?.language))}
-      </div>
+      {getEventFieldByLang(evento, "finanziamento", state?.language) && (
+        <div className={styles.finanziamento}>
+          {parse(getEventFieldByLang(evento, "finanziamento", state?.language))}
+        </div>
+      )}
       {(evento.etaRichiesta || evento.maxIscritti) && (
         <div className={styles.info}>
           <span className={styles.etaLabel}>
@@ -70,6 +76,14 @@ const Ospite = ({ evento }: { evento: EventType }) => {
               </a>
             </Link>
           )}
+        </div>
+      )}
+      {evento.eventoAnnullato && (
+        <div className={styles.annullatoMessage}>
+          <BsHandIndexThumb className={styles.icon} />
+          <span className={styles.text}>
+            {getEventFieldByLang(evento, "annullato", state?.language)}
+          </span>
         </div>
       )}
     </div>
