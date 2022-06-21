@@ -7,6 +7,8 @@ import AppContext from "../../store/AppContext";
 import { useContext } from "react";
 import { getTranslation } from "../../lib/wp/translations";
 import { getEventFieldByLang } from "../../lib/wp/events";
+import { BsHandIndexThumb } from "react-icons/bs";
+
 const Laboratorio = ({ evento }: { evento: EventType }) => {
   const { state } = useContext(AppContext);
   return (
@@ -62,6 +64,14 @@ const Laboratorio = ({ evento }: { evento: EventType }) => {
                 </span>
               </a>
             </Link>
+          )}
+          {evento.eventoAnnullato && (
+            <div className={styles.annullatoMessage}>
+              <BsHandIndexThumb className={styles.icon} />
+              <span className={styles.text}>
+                {getEventFieldByLang(evento, "annullato", state?.language)}
+              </span>
+            </div>
           )}
         </div>
       )}
