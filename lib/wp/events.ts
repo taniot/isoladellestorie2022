@@ -40,6 +40,9 @@ const qGetEvents = gql`
           maxIscritti
           maxIscrittiEn
           prenotazioneOnline
+          eventoAnnullato
+          motivazioneAnnullatoIt
+          motivazioneAnnullatoEn
         }
         categorieEventi {
           nodes {
@@ -293,6 +296,9 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     maxIscrittiEn: evento?.dettaglioEvento?.maxIscrittiEn || null,
     prenotazioneOnline: evento?.dettaglioEvento?.prenotazioneOnline || false,
     programma: evento?.dettaglioEvento?.programma || false,
+    eventoAnnullato: evento.dettaglioEvento.eventoAnnullato || false,
+    motivazioneAnnullatoIt: evento.dettaglioEvento.motivazioneAnnullatoIt,
+    motivazioneAnnullatoEn: evento.dettaglioEvento.motivazioneAnnullatoEn,
   };
 };
 
@@ -456,6 +462,13 @@ export const getEventFieldByLang = (
         : event.maxIscrittiEn
         ? event.maxIscrittiEn
         : event.maxIscritti || "";
+
+    case "annullato":
+      return language === "it"
+        ? event.motivazioneAnnullatoIt || ""
+        : event.motivazioneAnnullatoEn
+        ? event.motivazioneAnnullatoEn
+        : event.motivazioneAnnullatoIt || "";
 
     /*
 

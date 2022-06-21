@@ -99,6 +99,9 @@ export interface wpEvent {
     maxIscritti: string;
     maxIscrittiEn: string;
     prenotazioneOnline: boolean;
+    eventoAnnullato: boolean;
+    motivazioneAnnullatoIt: string;
+    motivazioneAnnullatoEn: string;
   };
   categorieEventi: {
     nodes: wpEventCategorie[];
@@ -178,6 +181,9 @@ export interface EventType {
   maxIscrittiEn: string | null;
   prenotazioneOnline: boolean;
   programma: boolean;
+  eventoAnnullato: boolean;
+  motivazioneAnnullatoIt: string;
+  motivazioneAnnullatoEn: string;
 }
 
 export type EventTypeGroups = {

@@ -67,6 +67,9 @@ const qGetGuest = gql`
               noteEtaRichiesta
               maxIscritti
               prenotazioneOnline
+              eventoAnnullato
+              motivazioneAnnullatoIt
+              motivazioneAnnullatoEn
             }
             categorieEventi {
               nodes {
