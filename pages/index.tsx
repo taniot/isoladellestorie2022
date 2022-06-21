@@ -82,6 +82,21 @@ const Home = ({
     target: "",
   };
 
+  const streamingSection = {
+    title: getTranslation(
+      state?.translations,
+      "bottone_streaming_home",
+      state?.language
+    ),
+    url: getTranslation(
+      state?.translations,
+      "bottone_streaming_home",
+      state?.language,
+      "link"
+    ),
+    target: "",
+  };
+
   const sponsorSection = {
     title: getTranslation(
       state?.translations,
@@ -112,6 +127,7 @@ const Home = ({
           >
             <Anteprima data={guests} />
           </HomeSection>
+
           {news && (
             <HomeSection
               bgColor="#f1e596"
