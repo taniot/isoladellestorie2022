@@ -34,7 +34,7 @@ const NewsLight = ({ data }: { data: wpNews }) => {
           )}
         </div>
         <div className={styles.text}>
-          <Link href={`/news/${data.slug}/`}>
+          <Link href={`/news/${data.slug}/`} locale={data.language.slug}>
             <a>
               <h2>{data.title}</h2>
             </a>

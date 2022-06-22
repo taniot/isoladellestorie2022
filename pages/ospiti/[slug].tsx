@@ -32,13 +32,25 @@ const Ospite = ({
 export const getStaticPaths: GetStaticPaths = async () => {
   const guests = await getGuests();
 
-  const paths = guests?.map((guest: any) => {
+  const pathsIt = guests?.map((guest: any) => {
     return {
       params: {
         slug: guest.slug,
       },
+      locale: "it",
     };
   });
+
+  const pathsEn = guests?.map((guest: any) => {
+    return {
+      params: {
+        slug: guest.slug,
+      },
+      locale: "en",
+    };
+  });
+
+  const paths = [...pathsIt, ...pathsEn];
 
   return {
     paths,

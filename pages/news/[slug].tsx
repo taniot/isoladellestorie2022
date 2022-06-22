@@ -35,6 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: {
         slug: post.slug,
       },
+      locale: post.language.slug,
     };
   });
 

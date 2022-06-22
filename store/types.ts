@@ -43,6 +43,20 @@ export interface wpPage {
   };
 }
 
+export interface wpFaq {
+  id: string;
+  title: string;
+  content: string;
+  menuOrder: string;
+}
+
+export interface FaqType {
+  id: string;
+  title: string;
+  content: string;
+  order: string;
+}
+
 export interface wpGuest {
   title: string;
   slug: string;
@@ -301,6 +315,9 @@ export type wpNews = {
       guid: string;
       caption: string;
     };
+  };
+  language: {
+    slug: string;
   };
 };
 

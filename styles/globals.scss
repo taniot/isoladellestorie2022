@@ -52,7 +52,9 @@ a:focus,
 a > *,
 .icon,
 .hamburger-react,
-.logoImg {
+.logoImg,
+button,
+button > * {
   cursor: url(/images/cursor-hover.png), auto !important;
 }
 

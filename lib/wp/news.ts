@@ -30,6 +30,9 @@ const qGetPosts = gql`
             guid
           }
         }
+        language {
+          slug
+        }
       }
     }
   }
@@ -54,6 +57,9 @@ const qGestPostBySlug = gql`
           guid
         }
       }
+      language {
+        slug
+      }
     }
   }
 `;
@@ -63,7 +69,7 @@ const qGestPostBySlug = gql`
 */
 export const getPosts = async (
   count: number = 1,
-  locale: string = "IT"
+  locale: string = "ALL"
 ): Promise<wpNews[]> => {
   const query = qGetPosts;
   if (!client) return [];
