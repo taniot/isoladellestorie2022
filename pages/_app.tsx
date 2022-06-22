@@ -19,9 +19,8 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   }, []);
 
   useEffect(() => {
-    if ((router.isReady && router.locale === "en") || router.locale === "it") {
+    if (router.locale === "it" || router.locale === "en")
       setCurrentLanguage(router.locale);
-    }
   }, [router]);
 
   useEffect(() => {

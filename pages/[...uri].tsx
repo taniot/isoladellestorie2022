@@ -1,12 +1,14 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { useContext, useEffect } from "react";
 import Eventi from "../components/eventi/eventi";
+import FaqList from "../components/faqList/faqList";
 import Guests from "../components/guests/guests";
 import NewsList from "../components/newsList/newsList";
 import PageHeader from "../components/pageHeader/pageHeader";
 import Partner from "../components/partner/partner";
 import Places from "../components/places/places";
 import { getEvents } from "../lib/wp/events";
+import { getFaq } from "../lib/wp/faq";
 import { getGuests } from "../lib/wp/guests";
 import { getPosts } from "../lib/wp/news";
 import { getPageByURI, getPages } from "../lib/wp/pages";
@@ -16,6 +18,7 @@ import { getTranslations } from "../lib/wp/translations";
 import AppContext from "../store/AppContext";
 import {
   EventType,
+  FaqType,
   GuestType,
   Page,
   PartnerType,
@@ -37,6 +40,7 @@ const PageDefault = ({
   news,
   defaultPage,
   translations,
+  faq,
 }: {
   page: Page;
   guests: GuestType[];
@@ -46,6 +50,7 @@ const PageDefault = ({
   news: wpNews[];
   defaultPage: boolean;
   translations: TranslationType[];
+  faq: FaqType[];
 }) => {
   const { setTranslations } = useContext(AppContext);
 
@@ -57,7 +62,7 @@ const PageDefault = ({
     <>
       <div className={styles.pageContainer}>
         <PageHeader page={page} />
-        {defaultPage && (
+        {defaultPage && page?.content && (
           <section className={styles.sectionContainer}>
             <div className={styles.contentContainer}>
               <div className={styles.pageContentContainer}>
@@ -75,6 +80,7 @@ const PageDefault = ({
         {partner && <Partner data={partner} page={page} />}
         {events && <Eventi data={events} page={page} />}
         {page.template === "news" && <NewsList data={news} page={page} />}
+        {page.template === "faq" && faq && <FaqList data={faq} page={page} />}
       </div>
     </>
   );
@@ -90,7 +96,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       return {
         params: {
           uri: page.uri.split("/").filter((element: string) => {
-            return element !== "";
+            return element !== "" && element !== "en";
           }),
         },
         locale: page.language.slug,
@@ -121,6 +127,7 @@ export const getStaticProps: GetStaticProps = async (
   let partner = null;
   let events = null;
   let news = null;
+  let faq = null;
 
   if (!page?.id)
     return {
@@ -153,6 +160,9 @@ export const getStaticProps: GetStaticProps = async (
       events = await getEvents();
       break;
 
+    case "faq":
+      faq = await getFaq(currentLocale(context.locale));
+
     default:
       defaultPage = true;
       break;
@@ -168,6 +178,7 @@ export const getStaticProps: GetStaticProps = async (
       news,
       defaultPage,
       translations,
+      faq,
     },
     //revalidate: 10800,
   };

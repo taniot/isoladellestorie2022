@@ -1,0 +1,10 @@
+.listContainer {
+  @apply w-11/12 mx-auto;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  @screen md {
+    @apply w-7/12 mx-auto;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+}
