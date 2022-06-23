@@ -1,266 +1,266 @@
-import styles from "./nav.module.scss";
-import cls from "classnames";
-import { useContext, useEffect, useMemo, useState } from "react";
-import AppContext from "../../store/AppContext";
-import Link from "next/link";
-import Div100vh from "react-div-100vh";
-import Image from "next/image";
-import { v4 as uuidv4 } from "uuid";
-import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { getTranslation } from "../../lib/wp/translations";
+import cls from 'classnames'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useContext, useEffect, useMemo, useState } from 'react'
+import Div100vh from 'react-div-100vh'
+import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io'
+import { v4 as uuidv4 } from 'uuid'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
+import { getTranslation } from '../../lib/wp/translations'
+import AppContext from '../../store/AppContext'
+import styles from './nav.module.scss'
 
 const Nav = () => {
-  const context = useContext(AppContext);
-  const { state, setIsMainMenuOpen } = context;
-  const isMobile = useMediaQuery("(max-width: 1023px)");
-  const closeMenu = (e: { preventDefault: () => void }) => {
-    if (setIsMainMenuOpen) setIsMainMenuOpen(false);
-  };
+  const context = useContext(AppContext)
+  const { state, setIsMainMenuOpen } = context
+  const isMobile = useMediaQuery('(max-width: 1023px)')
+  const closeMenu = () => {
+    if (setIsMainMenuOpen) setIsMainMenuOpen(false)
+  }
 
   const menus = useMemo(
     () => [
       {
-        class: "main",
+        class: 'main',
         title: getTranslation(
           state?.translations,
-          "menu_edizione",
+          'menu_edizione',
           state?.language
         ),
         menu: [
           {
             name: getTranslation(
               state?.translations,
-              "menu_ospiti",
+              'menu_ospiti',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_ospiti",
+              'menu_ospiti',
               state?.language,
-              "link"
+              'link'
             ),
           },
           {
             name: getTranslation(
               state?.translations,
-              "menu_programma",
+              'menu_programma',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_programma",
+              'menu_programma',
               state?.language,
-              "link"
+              'link'
             ),
           },
           {
             name: getTranslation(
               state?.translations,
-              "menu_laboratori",
+              'menu_laboratori',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_laboratori",
+              'menu_laboratori',
               state?.language,
-              "link"
+              'link'
             ),
           },
           {
             name: getTranslation(
               state?.translations,
-              "menu_mostre",
+              'menu_mostre',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_mostre",
+              'menu_mostre',
               state?.language,
-              "link"
+              'link'
             ),
           },
           {
             name: getTranslation(
               state?.translations,
-              "menu_news",
+              'menu_news',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_news",
+              'menu_news',
               state?.language,
-              "link"
+              'link'
             ),
           },
           {
             name: getTranslation(
               state?.translations,
-              "menu_sponsor",
+              'menu_sponsor',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_sponsor",
+              'menu_sponsor',
               state?.language,
-              "link"
+              'link'
             ),
           },
         ],
       },
       {
-        class: "visitatori",
+        class: 'visitatori',
         title: getTranslation(
           state?.translations,
-          "menu_info_visitatori",
+          'menu_info_visitatori',
           state?.language
         ),
         menu: [
           {
             name: getTranslation(
               state?.translations,
-              "menu_come_fare",
+              'menu_come_fare',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_come_fare",
+              'menu_come_fare',
               state?.language,
-              "link"
+              'link'
             ),
           },
           {
             name: getTranslation(
               state?.translations,
-              "menu_dove_dormire",
+              'menu_dove_dormire',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_dove_dormire",
+              'menu_dove_dormire',
               state?.language,
-              "link"
+              'link'
             ),
           },
           {
             name: getTranslation(
               state?.translations,
-              "menu_dove_mangiare",
+              'menu_dove_mangiare',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_dove_dormire",
+              'menu_dove_dormire',
               state?.language,
-              "link"
+              'link'
             ),
           },
           {
             name: getTranslation(
               state?.translations,
-              "menu_sostieni_lisola",
+              'menu_sostieni_lisola',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_sostieni_lisola",
+              'menu_sostieni_lisola',
               state?.language,
-              "link"
+              'link'
             ),
           },
           {
             name: getTranslation(
               state?.translations,
-              "menu_contatti",
+              'menu_contatti',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_contatti",
+              'menu_contatti',
               state?.language,
-              "link"
+              'link'
             ),
           },
         ],
       },
       {
-        class: "chisiamo",
+        class: 'chisiamo',
         title: getTranslation(
           state?.translations,
-          "menu_chi_siamo",
+          'menu_chi_siamo',
           state?.language
         ),
         menu: [
           {
             name: getTranslation(
               state?.translations,
-              "menu_associazione",
+              'menu_associazione',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_associazione",
+              'menu_associazione',
               state?.language,
-              "link"
+              'link'
             ),
           },
           {
             name: getTranslation(
               state?.translations,
-              "menu_festival",
+              'menu_festival',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_festival",
+              'menu_festival',
               state?.language,
-              "link"
+              'link'
             ),
           },
           {
             name: getTranslation(
               state?.translations,
-              "menu_luogo",
+              'menu_luogo',
               state?.language
             ),
             url: getTranslation(
               state?.translations,
-              "menu_luogo",
+              'menu_luogo',
               state?.language,
-              "link"
+              'link'
             ),
           },
         ],
       },
     ],
     [state?.language, state?.translations]
-  );
+  )
 
-  const changeLeft = (e: { preventDefault: () => void }) => {
-    let newPosition = currentPosition - 1;
-    if (newPosition < 0) newPosition = menus.length - 1;
+  const changeLeft = () => {
+    let newPosition = currentPosition - 1
+    if (newPosition < 0) newPosition = menus.length - 1
 
-    setCurrentPosition(newPosition);
-  };
+    setCurrentPosition(newPosition)
+  }
 
-  const changeRight = (e: { preventDefault: () => void }) => {
-    let newPosition = currentPosition + 1;
-    if (newPosition > menus.length - 1) newPosition = 0;
+  const changeRight = () => {
+    let newPosition = currentPosition + 1
+    if (newPosition > menus.length - 1) newPosition = 0
 
-    setCurrentPosition(newPosition);
-  };
+    setCurrentPosition(newPosition)
+  }
 
-  const [currentMenu, setCurrentMenu] = useState(menus[0]);
-  const [currentPosition, setCurrentPosition] = useState(0);
+  const [currentMenu, setCurrentMenu] = useState(menus[0])
+  const [currentPosition, setCurrentPosition] = useState(0)
 
   useEffect(() => {
-    let menu = menus[currentPosition];
-    setCurrentMenu(menu);
-  }, [currentPosition, menus]);
+    const menu = menus[currentPosition]
+    setCurrentMenu(menu)
+  }, [currentPosition, menus])
 
   return (
     <Div100vh
-      className={cls(styles.nav, state?.isMainMenuOpen ? styles.visible : "")}
+      className={cls(styles.nav, state?.isMainMenuOpen ? styles.visible : '')}
     >
       <div className={styles.navCointainer}>
         <div className={styles.navHeader}>
@@ -291,7 +291,7 @@ const Nav = () => {
                           <a onClick={closeMenu}>{menu.name}</a>
                         </Link>
                       </li>
-                    );
+                    )
                   })}
                 </ul>
               </div>
@@ -306,13 +306,13 @@ const Nav = () => {
         )}
         {!isMobile && (
           <>
-            {" "}
+            {' '}
             <div className={styles.menuContainer}>
               <div className={cls(styles.menu, styles.visitatori)}>
                 <h2>
                   {getTranslation(
                     state?.translations,
-                    "menu_info_visitatori",
+                    'menu_info_visitatori',
                     state?.language
                   )}
                 </h2>
@@ -321,15 +321,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_come_fare",
+                        'menu_come_fare',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_come_fare",
+                          'menu_come_fare',
                           state?.language
                         )}
                       </a>
@@ -339,15 +339,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_dove_dormire",
+                        'menu_dove_dormire',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_dove_dormire",
+                          'menu_dove_dormire',
                           state?.language
                         )}
                       </a>
@@ -357,15 +357,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_dove_mangiare",
+                        'menu_dove_mangiare',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_dove_mangiare",
+                          'menu_dove_mangiare',
                           state?.language
                         )}
                       </a>
@@ -375,15 +375,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_sostieni_lisola",
+                        'menu_sostieni_lisola',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_sostieni_lisola",
+                          'menu_sostieni_lisola',
                           state?.language
                         )}
                       </a>
@@ -393,15 +393,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_contatti",
+                        'menu_contatti',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_contatti",
+                          'menu_contatti',
                           state?.language
                         )}
                       </a>
@@ -413,7 +413,7 @@ const Nav = () => {
                 <h2>
                   {getTranslation(
                     state?.translations,
-                    "menu_edizione",
+                    'menu_edizione',
                     state?.language
                   )}
                 </h2>
@@ -422,15 +422,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_ospiti",
+                        'menu_ospiti',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_ospiti",
+                          'menu_ospiti',
                           state?.language
                         )}
                       </a>
@@ -440,15 +440,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_programma",
+                        'menu_programma',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_programma",
+                          'menu_programma',
                           state?.language
                         )}
                       </a>
@@ -458,15 +458,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_laboratori",
+                        'menu_laboratori',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_laboratori",
+                          'menu_laboratori',
                           state?.language
                         )}
                       </a>
@@ -476,15 +476,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_mostre",
+                        'menu_mostre',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_mostre",
+                          'menu_mostre',
                           state?.language
                         )}
                       </a>
@@ -494,15 +494,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_news",
+                        'menu_news',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_news",
+                          'menu_news',
                           state?.language
                         )}
                       </a>
@@ -513,15 +513,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_sponsor",
+                        'menu_sponsor',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_sponsor",
+                          'menu_sponsor',
                           state?.language
                         )}
                       </a>
@@ -534,7 +534,7 @@ const Nav = () => {
                 <h2>
                   {getTranslation(
                     state?.translations,
-                    "menu_chi_siamo",
+                    'menu_chi_siamo',
                     state?.language
                   )}
                 </h2>
@@ -543,15 +543,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_associazione",
+                        'menu_associazione',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_associazione",
+                          'menu_associazione',
                           state?.language
                         )}
                       </a>
@@ -562,15 +562,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_festival",
+                        'menu_festival',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_festival",
+                          'menu_festival',
                           state?.language
                         )}
                       </a>
@@ -581,15 +581,15 @@ const Nav = () => {
                     <Link
                       href={getTranslation(
                         state?.translations,
-                        "menu_luogo",
+                        'menu_luogo',
                         state?.language,
-                        "link"
+                        'link'
                       )}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
                           state?.translations,
-                          "menu_luogo",
+                          'menu_luogo',
                           state?.language
                         )}
                       </a>
@@ -602,7 +602,7 @@ const Nav = () => {
         )}
       </div>
     </Div100vh>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

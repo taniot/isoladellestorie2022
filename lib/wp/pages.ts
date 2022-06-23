@@ -1,6 +1,6 @@
-import { gql } from "graphql-request";
-import { Page, PageChildren, wpPage } from "../../store/types";
-import { client } from "../client";
+import { gql } from 'graphql-request'
+import { Page, wpPage } from '../../store/types'
+import { client } from '../client'
 
 //queries
 
@@ -15,7 +15,7 @@ const qGetPages = gql`
       }
     }
   }
-`;
+`
 
 const qGetPageByURI = gql`
   query getPageByURI($uri: ID!) {
@@ -57,38 +57,38 @@ const qGetPageByURI = gql`
       }
     }
   }
-`;
+`
 
 /*
 / get ALL db pages
 */
-export const getPages = async (locale?: string): Promise<wpPage[]> => {
-  const query = qGetPages;
-  if (!client) return [];
+export const getPages = async (): Promise<wpPage[]> => {
+  const query = qGetPages
+  if (!client) return []
 
   try {
-    const data = await client.request(query);
+    const data = await client.request(query)
 
-    return data?.pages?.nodes;
+    return data?.pages?.nodes
   } catch (error) {
-    console.log({ error });
-    return [];
+    console.log({ error })
+    return []
   }
-};
+}
 
 export const getPageByURI = async (uri: string): Promise<Page | null> => {
-  const query = qGetPageByURI;
+  const query = qGetPageByURI
   const variables = {
     uri,
-  };
+  }
 
   try {
-    const data = await client.request(query, variables);
+    const data = await client.request(query, variables)
 
-    let setChildren = [];
+    let setChildren = []
 
     if (data?.page?.parent?.node?.children) {
-      const pageChildren = data?.page?.parent?.node?.children.nodes;
+      const pageChildren = data?.page?.parent?.node?.children.nodes
 
       setChildren = pageChildren?.map((child: wpPage) => {
         return {
@@ -96,8 +96,8 @@ export const getPageByURI = async (uri: string): Promise<Page | null> => {
           uri: child?.uri,
           template: child?.dettagliPagina?.template || null,
           dateEventi: child?.dettagliPagina?.dateEventi || null,
-        };
-      });
+        }
+      })
     }
     return {
       id: data?.page?.id || null,
@@ -122,9 +122,9 @@ export const getPageByURI = async (uri: string): Promise<Page | null> => {
         data: data?.page?.dettagliPagina?.dateEventi || null,
         programma: data?.page?.dettagliPagina?.programma || false,
       },
-    };
+    }
   } catch (error) {
-    console.log({ error });
-    return null;
+    console.log({ error })
+    return null
   }
-};
+}

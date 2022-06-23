@@ -1,12 +1,12 @@
-import { gql } from "graphql-request";
+import { gql } from 'graphql-request'
 import {
   EventType,
   EventTypeDataGroups,
   EventTypeGroups,
   EventTypeLuogoGroups,
   wpEvent,
-} from "../../store/types";
-import { client } from "../client";
+} from '../../store/types'
+import { client } from '../client'
 
 //queries
 
@@ -76,28 +76,28 @@ const qGetEvents = gql`
       }
     }
   }
-`;
+`
 
 export const setDataGroups = (eventi: EventType[]): EventTypeDataGroups[] => {
-  let currentData = null;
-  let groups = [];
-  if (!eventi) return [];
+  let currentData = null
+  const groups = []
+  if (!eventi) return []
   for (const evento of eventi) {
     if (evento.data !== currentData) {
       groups.push({
         data: evento.data,
-      });
-      currentData = evento.data;
+      })
+      currentData = evento.data
     }
   }
-  return groups;
-};
+  return groups
+}
 
 export const setLuogoGroups = (eventi: EventType[]) => {
-  let currentLuogo = null;
-  let groups = [];
+  let currentLuogo = null
+  const groups = []
 
-  if (!eventi) return [];
+  if (!eventi) return []
 
   for (const evento of eventi) {
     if (evento.luogo !== currentLuogo) {
@@ -107,22 +107,22 @@ export const setLuogoGroups = (eventi: EventType[]) => {
         luogoNameEn: evento.luogoNameEn || null,
         infoLuogo: evento.infoLuogo || null,
         infoLuogoEn: evento.infoLuogoEn || null,
-      });
-      currentLuogo = evento.luogo;
+      })
+      currentLuogo = evento.luogo
     }
   }
 
-  return groups;
-};
+  return groups
+}
 
 export const setLuogoTipologiaGroups = (
   eventi: EventType[]
 ): EventTypeGroups[] => {
-  let currentLuogo = null;
-  let currentTipologia = null;
-  let groups = [];
+  let currentLuogo = null
+  let currentTipologia = null
+  const groups = []
 
-  if (!eventi) return [];
+  if (!eventi) return []
 
   for (const evento of eventi) {
     if (
@@ -135,30 +135,30 @@ export const setLuogoTipologiaGroups = (
         luogoName: evento.luogoName || null,
         luogoNameEn: evento.luogoNameEn || null,
         tipologiaName:
-          evento.tipologia === "segnaposto-a" ||
-          evento.tipologia === "segnaposto-b"
+          evento.tipologia === 'segnaposto-a' ||
+          evento.tipologia === 'segnaposto-b'
             ? null
             : evento.tipologiaName,
         tipologiaNameEn:
-          evento.tipologia === "segnaposto-a" ||
-          evento.tipologia === "segnaposto-b"
+          evento.tipologia === 'segnaposto-a' ||
+          evento.tipologia === 'segnaposto-b'
             ? null
             : evento.tipologiaNameEn,
-      });
-      currentLuogo = evento.luogo;
-      currentTipologia = evento.tipologia;
+      })
+      currentLuogo = evento.luogo
+      currentTipologia = evento.tipologia
     }
   }
 
-  return groups;
-};
+  return groups
+}
 
 export const setOreGroups = (eventi: EventType[]) => {
-  let currentOraInizio = null;
-  let currentOraFine = null;
-  let groups = [];
+  let currentOraInizio = null
+  let currentOraFine = null
+  const groups = []
 
-  if (!eventi) return [];
+  if (!eventi) return []
 
   for (const evento of eventi) {
     if (
@@ -168,29 +168,29 @@ export const setOreGroups = (eventi: EventType[]) => {
       groups.push({
         oraInizio: evento.oraInizio,
         oraFine: evento.oraFine,
-      });
-      currentOraInizio = evento.oraInizio;
-      currentOraFine = evento.oraFine;
+      })
+      currentOraInizio = evento.oraInizio
+      currentOraFine = evento.oraFine
     }
   }
 
-  return groups;
-};
+  return groups
+}
 
 /*
 / get ALL db pages
 */
-export const getEvents = async (tipologia?: string): Promise<EventType[]> => {
-  const query = qGetEvents;
-  if (!client) return [];
+export const getEvents = async (): Promise<EventType[]> => {
+  const query = qGetEvents
+  if (!client) return []
   try {
-    const data = await client.request(query);
-    return handleEventi(data.eventi.nodes);
+    const data = await client.request(query)
+    return handleEventi(data.eventi.nodes)
   } catch (error) {
-    console.log({ error });
-    return [];
+    console.log({ error })
+    return []
   }
-};
+}
 
 export const handleEventi = (eventi: wpEvent[]): EventType[] => {
   return eventi
@@ -198,23 +198,23 @@ export const handleEventi = (eventi: wpEvent[]): EventType[] => {
     .sort(
       (a: EventType, b: EventType) =>
         a.dataOrdA - b.dataOrdA || a.dataOrdB - b.dataOrdB
-    );
-};
+    )
+}
 
 export const shapeEvento = (evento: wpEvent): EventType => {
   const dataInizio = evento?.dettaglioEvento?.oraInizio
     ? evento?.dettaglioEvento?.dataEvento +
-      "T" +
+      'T' +
       evento?.dettaglioEvento?.oraInizio +
-      ":00"
-    : evento?.dettaglioEvento?.dataEvento;
+      ':00'
+    : evento?.dettaglioEvento?.dataEvento
 
   const dataFine = evento?.dettaglioEvento?.oraFine
     ? evento?.dettaglioEvento?.dataEvento +
-      "T" +
+      'T' +
       evento?.dettaglioEvento?.oraFine +
-      ":00"
-    : evento?.dettaglioEvento?.dataEvento;
+      ':00'
+    : evento?.dettaglioEvento?.dataEvento
 
   return {
     id: evento?.id,
@@ -224,18 +224,18 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     oraInizio: evento?.dettaglioEvento?.oraInizio || null,
     oraFine: evento?.dettaglioEvento?.oraFine || null,
     descrizioneIt:
-      changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, "it") ||
+      changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, 'it') ||
       null,
     descrizioneEn:
-      changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoEn, "en") ||
-      changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, "en") ||
+      changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoEn, 'en') ||
+      changeLinkGuest(evento?.dettaglioEvento?.descrizioneEventoIt, 'en') ||
       null,
     approfondimentoIt:
-      changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoIt, "it") ||
+      changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoIt, 'it') ||
       null,
     approfondimentoEn:
-      changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoEn, "en") ||
-      changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoEn, "en") ||
+      changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoEn, 'en') ||
+      changeLinkGuest(evento?.dettaglioEvento?.approfondimentoEventoEn, 'en') ||
       null,
     infoIt: evento?.dettaglioEvento?.infoEventoIt,
     infoEn:
@@ -249,12 +249,12 @@ export const shapeEvento = (evento: wpEvent): EventType => {
       null,
     dataOrd: Date.parse(
       evento?.dettaglioEvento?.dataEvento +
-        " " +
+        ' ' +
         evento?.dettaglioEvento?.oraInizio
     ),
     dataOrdFine: Date.parse(
       evento?.dettaglioEvento?.dataEvento +
-        " " +
+        ' ' +
         evento?.dettaglioEvento?.oraFine
     ),
     dataOrdA: Date.parse(dataInizio),
@@ -299,25 +299,25 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     eventoAnnullato: evento.dettaglioEvento.eventoAnnullato || false,
     motivazioneAnnullatoIt: evento.dettaglioEvento.motivazioneAnnullatoIt,
     motivazioneAnnullatoEn: evento.dettaglioEvento.motivazioneAnnullatoEn,
-  };
-};
+  }
+}
 
-const changeLinkGuest = (text: string, language: string = "it"): string => {
-  if (!text) return "";
-  if (language === "it")
+const changeLinkGuest = (text: string, language = 'it'): string => {
+  if (!text) return ''
+  if (language === 'it')
     return text.replaceAll(
-      "https://cms2022.isoladellestorie.it/guests/",
-      "/ospiti/"
-    );
+      'https://cms2022.isoladellestorie.it/guests/',
+      '/ospiti/'
+    )
 
-  if (language === "en")
+  if (language === 'en')
     return text.replaceAll(
-      "https://cms2022.isoladellestorie.it/guests/",
-      "/en/guests/"
-    );
+      'https://cms2022.isoladellestorie.it/guests/',
+      '/en/guests/'
+    )
 
-  return text;
-};
+  return text
+}
 
 export const getGroupsFieldByLang = (
   group: EventTypeGroups,
@@ -325,22 +325,22 @@ export const getGroupsFieldByLang = (
   language: string | undefined
 ): string => {
   switch (field) {
-    case "luogo":
-      return language === "it"
-        ? group.luogoName || ""
+    case 'luogo':
+      return language === 'it'
+        ? group.luogoName || ''
         : group.luogoNameEn
         ? group.luogoNameEn
-        : group.luogoName || "";
-    case "tipologia":
-      return language === "it"
-        ? group.tipologiaName || ""
+        : group.luogoName || ''
+    case 'tipologia':
+      return language === 'it'
+        ? group.tipologiaName || ''
         : group.tipologiaNameEn
         ? group.tipologiaNameEn
-        : group.tipologiaName || "";
+        : group.tipologiaName || ''
     default:
-      return "";
+      return ''
   }
-};
+}
 
 export const getGroupsLuogoFieldByLang = (
   group: EventTypeLuogoGroups,
@@ -348,127 +348,127 @@ export const getGroupsLuogoFieldByLang = (
   language: string | undefined
 ): string => {
   switch (field) {
-    case "luogo":
-      return language === "it"
-        ? group.luogoName || ""
+    case 'luogo':
+      return language === 'it'
+        ? group.luogoName || ''
         : group.luogoNameEn
         ? group.luogoNameEn
-        : group.luogoName || "";
-    case "info":
-      return language === "it"
-        ? group.infoLuogo || ""
+        : group.luogoName || ''
+    case 'info':
+      return language === 'it'
+        ? group.infoLuogo || ''
         : group.infoLuogoEn
         ? group.infoLuogoEn
-        : group.infoLuogo || "";
+        : group.infoLuogo || ''
     default:
-      return "";
+      return ''
   }
-};
+}
 
 export const getEventFieldByLang = (
   event: EventType,
   field: string,
   language: string | undefined
 ): string => {
-  if (!language) language = "it";
+  if (!language) language = 'it'
   switch (field) {
-    case "title":
-      return language === "it"
-        ? event.title || ""
+    case 'title':
+      return language === 'it'
+        ? event.title || ''
         : event.titleEn
         ? event.titleEn
-        : event.title || "";
+        : event.title || ''
 
-    case "description":
-      return language === "it"
-        ? event.descrizioneIt || ""
+    case 'description':
+      return language === 'it'
+        ? event.descrizioneIt || ''
         : event.descrizioneEn
         ? event.descrizioneEn
-        : event.descrizioneIt || "";
+        : event.descrizioneIt || ''
 
-    case "luogo":
-      return language === "it"
-        ? event.luogoName || ""
+    case 'luogo':
+      return language === 'it'
+        ? event.luogoName || ''
         : event.luogoNameEn
         ? event.luogoNameEn
-        : event.luogoName || "";
+        : event.luogoName || ''
 
-    case "info":
-      return language === "it"
-        ? event.infoIt || ""
+    case 'info':
+      return language === 'it'
+        ? event.infoIt || ''
         : event.infoEn
         ? event.infoEn
-        : event.infoIt || "";
+        : event.infoIt || ''
 
-    case "approfondimento":
-      return language === "it"
-        ? event.approfondimentoIt || ""
+    case 'approfondimento':
+      return language === 'it'
+        ? event.approfondimentoIt || ''
         : event.approfondimentoEn
         ? event.approfondimentoEn
-        : event.approfondimentoIt || "";
+        : event.approfondimentoIt || ''
 
-    case "finanziamento":
-      return language === "it"
-        ? event.finanziamentoIt || ""
+    case 'finanziamento':
+      return language === 'it'
+        ? event.finanziamentoIt || ''
         : event.finanziamentoEn
         ? event.finanziamentoEn
-        : event.finanziamentoIt || "";
+        : event.finanziamentoIt || ''
 
-    case "categoria":
-      return language === "it"
-        ? event.categoriaName || ""
+    case 'categoria':
+      return language === 'it'
+        ? event.categoriaName || ''
         : event.categoriaNameEn
         ? event.categoriaNameEn
-        : event.categoriaName || "";
+        : event.categoriaName || ''
 
-    case "tipologia":
-      return language === "it"
-        ? event.tipologiaName || ""
+    case 'tipologia':
+      return language === 'it'
+        ? event.tipologiaName || ''
         : event.tipologiaNameEn
         ? event.tipologiaNameEn
-        : event.tipologiaName || "";
+        : event.tipologiaName || ''
 
-    case "luogo":
-      return language === "it"
-        ? event.luogoName || ""
+    case 'luogo':
+      return language === 'it'
+        ? event.luogoName || ''
         : event.luogoNameEn
         ? event.luogoNameEn
-        : event.luogoName || "";
+        : event.luogoName || ''
 
-    case "info_luogo":
-      return language === "it"
-        ? event.infoLuogo || ""
+    case 'info_luogo':
+      return language === 'it'
+        ? event.infoLuogo || ''
         : event.infoLuogoEn
         ? event.infoLuogoEn
-        : event.infoLuogo || "";
+        : event.infoLuogo || ''
 
-    case "eta_richiesta":
-      return language === "it"
-        ? event.etaRichiesta || ""
+    case 'eta_richiesta':
+      return language === 'it'
+        ? event.etaRichiesta || ''
         : event.etaRichiestaEn
         ? event.etaRichiestaEn
-        : event.etaRichiesta || "";
+        : event.etaRichiesta || ''
 
-    case "note_eta_richiesta":
-      return language === "it"
-        ? event.noteEtaRichiesta || ""
+    case 'note_eta_richiesta':
+      return language === 'it'
+        ? event.noteEtaRichiesta || ''
         : event.noteEtaRichiestaEn
         ? event.noteEtaRichiestaEn
-        : event.noteEtaRichiesta || "";
+        : event.noteEtaRichiesta || ''
 
-    case "max_iscritti":
-      return language === "it"
-        ? event.maxIscritti || ""
+    case 'max_iscritti':
+      return language === 'it'
+        ? event.maxIscritti || ''
         : event.maxIscrittiEn
         ? event.maxIscrittiEn
-        : event.maxIscritti || "";
+        : event.maxIscritti || ''
 
-    case "annullato":
-      return language === "it"
-        ? event.motivazioneAnnullatoIt || ""
+    case 'annullato':
+      return language === 'it'
+        ? event.motivazioneAnnullatoIt || ''
         : event.motivazioneAnnullatoEn
         ? event.motivazioneAnnullatoEn
-        : event.motivazioneAnnullatoIt || "";
+        : event.motivazioneAnnullatoIt || ''
 
     /*
 
@@ -493,6 +493,6 @@ export const getEventFieldByLang = (
   */
 
     default:
-      return "";
+      return ''
   }
-};
+}

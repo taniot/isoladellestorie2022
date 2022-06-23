@@ -1,6 +1,6 @@
-import { FaqType, Page } from "../../store/types";
-import Faq from "../faq/faq";
-import styles from "./faqList.module.scss";
+import { FaqType, Page } from '../../store/types'
+import Faq from '../faq/faq'
+import styles from './faqList.module.scss'
 
 const FaqList = ({ data }: { data: FaqType[]; page: Page }) => {
   return (
@@ -11,6 +11,6 @@ const FaqList = ({ data }: { data: FaqType[]; page: Page }) => {
         ))}
       </div>
     </section>
-  );
-};
-export default FaqList;
+  )
+}
+export default FaqList

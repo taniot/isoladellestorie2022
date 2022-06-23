@@ -1,31 +1,31 @@
-import styles from "./anteprima.module.scss";
-import cls from "classnames";
-import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
-import AppContext from "../../store/AppContext";
-import { getTranslation } from "../../lib/wp/translations";
-import { GuestType } from "../../store/types";
+import styles from './anteprima.module.scss'
+import cls from 'classnames'
+import Link from 'next/link'
+import { useContext, useEffect, useState } from 'react'
+import AppContext from '../../store/AppContext'
+import { getTranslation } from '../../lib/wp/translations'
+import { GuestType } from '../../store/types'
 
 const Anteprima = ({ data }: { data: GuestType[] }) => {
-  const context = useContext(AppContext);
-  const { state } = context;
-  const [anteprima, setAnteprima] = useState<GuestType[]>([]);
+  const context = useContext(AppContext)
+  const { state } = context
+  const [anteprima, setAnteprima] = useState<GuestType[]>([])
 
   useEffect(() => {
     const randomGuests = () => {
       if (data && data.length > 0) {
         const shuffled = data
           .filter((ospite: GuestType) => ospite.nome && ospite.cognome)
-          .sort(() => 0.5 - Math.random());
+          .sort(() => 0.5 - Math.random())
 
-        setAnteprima(shuffled.slice(0, 5));
+        setAnteprima(shuffled.slice(0, 5))
       }
-    };
+    }
 
     //setInterval(randomGuests, 5000);
 
-    randomGuests();
-  }, [data]);
+    randomGuests()
+  }, [data])
 
   return (
     <div className={styles.container}>
@@ -41,23 +41,23 @@ const Anteprima = ({ data }: { data: GuestType[] }) => {
                   <Link
                     href={`${getTranslation(
                       state?.translations,
-                      "menu_ospiti",
+                      'menu_ospiti',
                       state?.language,
-                      "link"
+                      'link'
                     )}${ospite.slug}/`}
                   >
                     <a>
-                      <span className={styles.lowLight}>{ospite.nome}</span>{" "}
+                      <span className={styles.lowLight}>{ospite.nome}</span>{' '}
                       <span className={styles.highLight}>
                         {ospite.cognome}
                         {index + 1 !== anteprima.length && (
                           <span className={styles.trattino}>,</span>
-                        )}{" "}
+                        )}{' '}
                       </span>
                     </a>
                   </Link>
                 </li>
-              );
+              )
             }
           })}
         </ul>
@@ -65,7 +65,7 @@ const Anteprima = ({ data }: { data: GuestType[] }) => {
         <div></div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Anteprima;
+export default Anteprima

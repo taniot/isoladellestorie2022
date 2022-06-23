@@ -1,18 +1,18 @@
-import { useState, useContext, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
-import styles from "./guests.module.scss";
-import Link from "next/link";
-import GuestImage from "./image";
-import { getGuestFieldByLang } from "../../lib/wp/guests";
-import AppContext from "../../store/AppContext";
-import { getTranslation } from "../../lib/wp/translations";
-import { GuestType } from "../../store/types";
+import Link from 'next/link'
+import { useContext, useEffect, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import { getGuestFieldByLang } from '../../lib/wp/guests'
+import { getTranslation } from '../../lib/wp/translations'
+import AppContext from '../../store/AppContext'
+import { GuestType } from '../../store/types'
+import styles from './guests.module.scss'
+import GuestImage from './image'
 const Guests = ({ data }: { data: GuestType[] }) => {
-  const { state } = useContext(AppContext);
-  const [posts, setPosts] = useState<GuestType[]>([]);
+  const { state } = useContext(AppContext)
+  const [posts, setPosts] = useState<GuestType[]>([])
   useEffect(() => {
-    setPosts(data);
-  }, [data]);
+    setPosts(data)
+  }, [data])
 
   return (
     <>
@@ -24,9 +24,9 @@ const Guests = ({ data }: { data: GuestType[] }) => {
                 <Link
                   href={`${getTranslation(
                     state?.translations,
-                    "menu_ospiti",
+                    'menu_ospiti',
                     state?.language,
-                    "link"
+                    'link'
                   )}${data.slug}/`}
                 >
                   <a className={styles.grid_item_link}>
@@ -38,7 +38,7 @@ const Guests = ({ data }: { data: GuestType[] }) => {
 
                     <h2 className={styles.grid_item_title}>{data.title}</h2>
                     <p className={styles.grid_item_description}>
-                      {getGuestFieldByLang(data, "jobTitle", state?.language)}
+                      {getGuestFieldByLang(data, 'jobTitle', state?.language)}
                     </p>
                   </a>
                 </Link>
@@ -48,7 +48,7 @@ const Guests = ({ data }: { data: GuestType[] }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Guests;
+export default Guests

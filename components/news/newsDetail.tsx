@@ -1,19 +1,19 @@
-import parse from "html-react-parser";
-import Image from "next/image";
-import Link from "next/link";
-import { BsCloudDownload } from "react-icons/bs";
-import Back from "../back/back";
-import NewsHeader from "../newsHeader/newsHeader";
-import styles from "./newsDetail.module.scss";
-import { getTranslation } from "../../lib/wp/translations";
-import { useContext } from "react";
-import AppContext from "../../store/AppContext";
-import { wpNews } from "../../store/types";
+import parse from 'html-react-parser'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useContext } from 'react'
+import { BsCloudDownload } from 'react-icons/bs'
+import { getTranslation } from '../../lib/wp/translations'
+import AppContext from '../../store/AppContext'
+import { wpNews } from '../../store/types'
+import Back from '../back/back'
+import NewsHeader from '../newsHeader/newsHeader'
+import styles from './newsDetail.module.scss'
 
 const NewsDetail = ({ data }: { data: wpNews }) => {
-  const context = useContext(AppContext);
-  const { state } = context;
-  if (!data) return null;
+  const context = useContext(AppContext)
+  const { state } = context
+  if (!data) return null
 
   return (
     <>
@@ -24,19 +24,19 @@ const NewsDetail = ({ data }: { data: wpNews }) => {
             <div className={styles.text}>
               <div className={styles.intro}>
                 <div className={styles.image}>
-                  <div className={"image-container"}>
+                  <div className={'image-container'}>
                     {data?.featuredImage?.node?.guid && (
                       <Image
                         src={data.featuredImage.node.guid}
                         alt={data.title}
-                        className={"image"}
+                        className={'image'}
                         layout="fill"
                       />
                     )}
                   </div>
                   {data?.featuredImage?.node?.caption && (
                     <div className={styles.caption}>
-                      {parse(data?.featuredImage?.node?.caption || "")}
+                      {parse(data?.featuredImage?.node?.caption || '')}
                     </div>
                   )}
                 </div>
@@ -53,7 +53,7 @@ const NewsDetail = ({ data }: { data: wpNews }) => {
                       <span>
                         {getTranslation(
                           state?.translations,
-                          "download_comunicato",
+                          'download_comunicato',
                           state?.language
                         )}
                       </span>
@@ -65,13 +65,13 @@ const NewsDetail = ({ data }: { data: wpNews }) => {
               <Back
                 link={getTranslation(
                   state?.translations,
-                  "bottone_back_news",
+                  'bottone_back_news',
                   state?.language,
-                  "link"
+                  'link'
                 )}
                 text={getTranslation(
                   state?.translations,
-                  "bottone_back_news",
+                  'bottone_back_news',
                   state?.language
                 )}
               />
@@ -80,7 +80,7 @@ const NewsDetail = ({ data }: { data: wpNews }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default NewsDetail;
+export default NewsDetail

@@ -1,7 +1,7 @@
-import { gql } from "graphql-request";
-import { client } from "../client";
-import { GuestType, wpEvent, wpGuest } from "../../store/types";
-import { handleEventi, shapeEvento } from "./events";
+import { gql } from 'graphql-request'
+import { GuestType, wpGuest } from '../../store/types'
+import { client } from '../client'
+import { handleEventi } from './events'
 
 //queries
 
@@ -28,7 +28,7 @@ const qGetGuests = gql`
       }
     }
   }
-`;
+`
 
 const qGetGuest = gql`
   query getGuest($slug: ID!) {
@@ -107,18 +107,18 @@ const qGetGuest = gql`
       }
     }
   }
-`;
+`
 
 export const getGuestBySlug = async (
   slug: string
 ): Promise<GuestType | null> => {
-  const query = qGetGuest;
+  const query = qGetGuest
   const variables = {
     slug,
-  };
+  }
 
   try {
-    const { ospite } = await client.request(query, variables);
+    const { ospite } = await client.request(query, variables)
 
     //console.log({ ospite });
 
@@ -137,25 +137,25 @@ export const getGuestBySlug = async (
         ospite?.dettagliOspite?.ospiteEvento?.length > 0
           ? handleEventi(ospite?.dettagliOspite?.ospiteEvento)
           : [],
-    };
+    }
   } catch (error) {
-    console.log({ error });
-    return null;
+    console.log({ error })
+    return null
   }
-};
+}
 
 /*
 / get ALL db pages
 */
 export const getGuests = async (): Promise<GuestType[]> => {
-  const query = qGetGuests;
+  const query = qGetGuests
 
-  if (!client) return [];
+  if (!client) return []
 
   try {
-    const data = await client.request(query);
+    const data = await client.request(query)
 
-    let result = data?.ospiti?.nodes.map((item: wpGuest): GuestType => {
+    const result = data?.ospiti?.nodes.map((item: wpGuest): GuestType => {
       return {
         title: item?.title,
         slug: item?.slug,
@@ -168,54 +168,54 @@ export const getGuests = async (): Promise<GuestType[]> => {
         descrizioneIt: item.dettagliOspite.descrizioneIt || null,
         descrizioneEn: item.dettagliOspite.descrizioneEn || null,
         eventi: [],
-      };
-    });
+      }
+    })
 
     // sort by name
     result.sort(function (
       a: { ordinamento: string },
       b: { ordinamento: string }
     ) {
-      const nameA = a.ordinamento.toUpperCase(); // ignore upper and lowercase
-      const nameB = b.ordinamento.toUpperCase(); // ignore upper and lowercase
+      const nameA = a.ordinamento.toUpperCase() // ignore upper and lowercase
+      const nameB = b.ordinamento.toUpperCase() // ignore upper and lowercase
       if (nameA < nameB) {
-        return -1;
+        return -1
       }
       if (nameA > nameB) {
-        return 1;
+        return 1
       }
       // names must be equal
-      return 0;
-    });
+      return 0
+    })
 
-    return result;
+    return result
   } catch (error) {
-    console.log({ error });
-    return [];
+    console.log({ error })
+    return []
   }
-};
+}
 
 export const getGuestFieldByLang = (
   guest: GuestType,
   field: string,
   language: string | undefined
 ): string => {
-  if (!language) language = "it";
+  if (!language) language = 'it'
   switch (field) {
-    case "jobTitle":
-      return language === "it"
-        ? guest.jobTitleIt || ""
+    case 'jobTitle':
+      return language === 'it'
+        ? guest.jobTitleIt || ''
         : guest.jobTitleEn
         ? guest.jobTitleEn
-        : guest.jobTitleIt || "";
-    case "description":
-      return language === "it"
-        ? guest.descrizioneIt || ""
+        : guest.jobTitleIt || ''
+    case 'description':
+      return language === 'it'
+        ? guest.descrizioneIt || ''
         : guest.descrizioneEn
         ? guest.descrizioneEn
-        : guest.descrizioneIt || "";
+        : guest.descrizioneIt || ''
 
     default:
-      return "";
+      return ''
   }
-};
+}

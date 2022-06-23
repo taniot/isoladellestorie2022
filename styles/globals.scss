@@ -1,8 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./variables.scss";
-@import "./fonts.scss";
+@import './fonts.scss';
 
 :root {
   --main-bg-color: #e6cd00;

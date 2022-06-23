@@ -1,6 +1,6 @@
-import { gql } from "graphql-request";
-import { FaqType, PartnerType, wpFaq, wpPartner } from "../../store/types";
-import { client } from "../client";
+import { gql } from 'graphql-request'
+import { FaqType, wpFaq } from '../../store/types'
+import { client } from '../client'
 
 //queries
 
@@ -17,23 +17,23 @@ const qGetFaq = gql`
       }
     }
   }
-`;
+`
 
 /*
 / get ALL db pages
 */
-export const getFaq = async (locale: string = "IT"): Promise<FaqType[]> => {
-  const query = qGetFaq;
-  if (!client) return [];
+export const getFaq = async (locale = 'IT'): Promise<FaqType[]> => {
+  const query = qGetFaq
+  if (!client) return []
 
-  let result = [];
+  let result = []
 
   const variables = {
     locale,
-  };
+  }
 
   try {
-    const data = await client.request(query, variables);
+    const data = await client.request(query, variables)
 
     result = data?.informazioni?.nodes?.map((info: wpFaq) => {
       return {
@@ -41,16 +41,16 @@ export const getFaq = async (locale: string = "IT"): Promise<FaqType[]> => {
         title: info?.title,
         content: info?.content,
         order: info?.menuOrder,
-      };
-    });
+      }
+    })
 
     // result.sort(
     //   (a: FaqType, b: FaqType) => parseInt(a.order) - parseInt(b.order)
     // );
 
-    return result;
+    return result
   } catch (error) {
-    console.log({ error });
-    return [];
+    console.log({ error })
+    return []
   }
-};
+}

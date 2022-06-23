@@ -1,27 +1,27 @@
-import { GetStaticProps } from "next";
-import PageHeader from "../components/pageHeader/pageHeader";
-import { getTranslations, getTranslation } from "../lib/wp/translations";
-import styles from "../styles/pageDefault.module.scss";
-import { TranslationType } from "../store/types";
-import { useContext, useEffect } from "react";
-import AppContext from "../store/AppContext";
+import { GetStaticProps } from 'next'
+import PageHeader from '../components/pageHeader/pageHeader'
+import { getTranslations, getTranslation } from '../lib/wp/translations'
+import styles from '../styles/pageDefault.module.scss'
+import { TranslationType } from '../store/types'
+import { useContext, useEffect } from 'react'
+import AppContext from '../store/AppContext'
 
 const ErrorPage = ({ translations }: { translations: TranslationType[] }) => {
-  const { setTranslations, state } = useContext(AppContext);
+  const { setTranslations, state } = useContext(AppContext)
 
   useEffect(() => {
-    if (setTranslations) setTranslations(translations);
-  }, [setTranslations, translations]);
+    if (setTranslations) setTranslations(translations)
+  }, [setTranslations, translations])
 
   const page = {
-    title: getTranslation(state?.translations, "404_title", state?.language),
+    title: getTranslation(state?.translations, '404_title', state?.language),
     subtitleIt: getTranslation(
       state?.translations,
-      "404_subtitle",
+      '404_subtitle',
       state?.language
     ),
-    content: "",
-  };
+    content: '',
+  }
 
   return (
     <>
@@ -35,7 +35,7 @@ const ErrorPage = ({ translations }: { translations: TranslationType[] }) => {
                 dangerouslySetInnerHTML={{
                   __html: getTranslation(
                     state?.translations,
-                    "404_content",
+                    '404_content',
                     state?.language
                   ),
                 }}
@@ -45,17 +45,17 @@ const ErrorPage = ({ translations }: { translations: TranslationType[] }) => {
         </section>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ErrorPage;
+export default ErrorPage
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  let translations = await getTranslations();
+export const getStaticProps: GetStaticProps = async () => {
+  const translations = await getTranslations()
 
   return {
     props: {
       translations,
     },
-  };
-};
+  }
+}

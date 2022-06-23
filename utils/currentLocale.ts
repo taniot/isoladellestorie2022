@@ -1,5 +1,5 @@
-const currentLocale = (locale: string = "it") => {
-  return locale.toUpperCase();
-};
+const currentLocale = (locale = 'it') => {
+  return locale.toUpperCase()
+}
 
-export default currentLocale;
+export default currentLocale

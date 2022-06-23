@@ -1,13 +1,13 @@
-import styles from "../../styles/pageDefault.module.scss";
-import HomePartner from "../home/partner";
-import HomeSection from "../home/section";
-import { getTranslation } from "../../lib/wp/translations";
-import AppContext from "../../store/AppContext";
-import { useContext } from "react";
-import { Page, PartnerType } from "../../store/types";
+import { useContext } from 'react'
+import { getTranslation } from '../../lib/wp/translations'
+import AppContext from '../../store/AppContext'
+import { Page, PartnerType } from '../../store/types'
+import styles from '../../styles/pageDefault.module.scss'
+import HomePartner from '../home/partner'
+import HomeSection from '../home/section'
 const Partner = (info: { data: PartnerType[]; page: Page }) => {
-  const { state } = useContext(AppContext);
-  const { data } = info;
+  const { state } = useContext(AppContext)
+  const { data } = info
   return (
     <>
       <div className={styles.contentContainer}>
@@ -15,7 +15,7 @@ const Partner = (info: { data: PartnerType[]; page: Page }) => {
           <HomeSection
             title={getTranslation(
               state?.translations,
-              "sponsor_sostenuto_da",
+              'sponsor_sostenuto_da',
               state?.language
             )}
             showButton={false}
@@ -23,14 +23,14 @@ const Partner = (info: { data: PartnerType[]; page: Page }) => {
           >
             <HomePartner
               data={data.filter(
-                (partner: { type: string }) => partner.type === "sostenuto-da"
+                (partner: { type: string }) => partner.type === 'sostenuto-da'
               )}
             />
           </HomeSection>
           <HomeSection
             title={getTranslation(
               state?.translations,
-              "sponsor_collaborazione_contributo",
+              'sponsor_collaborazione_contributo',
               state?.language
             )}
             showButton={false}
@@ -38,14 +38,14 @@ const Partner = (info: { data: PartnerType[]; page: Page }) => {
           >
             <HomePartner
               data={data.filter(
-                (partner: { type: string }) => partner.type === "collaborazioni"
+                (partner: { type: string }) => partner.type === 'collaborazioni'
               )}
             />
           </HomeSection>
           <HomeSection
             title={getTranslation(
               state?.translations,
-              "sponsor_patrocinio",
+              'sponsor_patrocinio',
               state?.language
             )}
             showButton={false}
@@ -53,14 +53,14 @@ const Partner = (info: { data: PartnerType[]; page: Page }) => {
           >
             <HomePartner
               data={data.filter(
-                (partner: { type: string }) => partner.type === "patrocinio"
+                (partner: { type: string }) => partner.type === 'patrocinio'
               )}
             />
           </HomeSection>
           <HomeSection
             title={getTranslation(
               state?.translations,
-              "sponsor_collaborazione",
+              'sponsor_collaborazione',
               state?.language
             )}
             showButton={false}
@@ -69,14 +69,14 @@ const Partner = (info: { data: PartnerType[]; page: Page }) => {
             <HomePartner
               data={data.filter(
                 (partner: { type: string }) =>
-                  partner.type === "in-collaborazione-con"
+                  partner.type === 'in-collaborazione-con'
               )}
             />
           </HomeSection>
           <HomeSection
             title={getTranslation(
               state?.translations,
-              "sponsor_tecnici",
+              'sponsor_tecnici',
               state?.language
             )}
             showButton={false}
@@ -85,14 +85,14 @@ const Partner = (info: { data: PartnerType[]; page: Page }) => {
             <HomePartner
               data={data.filter(
                 (partner: { type: string }) =>
-                  partner.type === "sponsor-tecnici"
+                  partner.type === 'sponsor-tecnici'
               )}
             />
           </HomeSection>
           <HomeSection
             title={getTranslation(
               state?.translations,
-              "sponsor_media",
+              'sponsor_media',
               state?.language
             )}
             showButton={false}
@@ -101,14 +101,14 @@ const Partner = (info: { data: PartnerType[]; page: Page }) => {
             <HomePartner
               data={data.filter(
                 (partner: { type: string }) =>
-                  partner.type === "media-technical-partner"
+                  partner.type === 'media-technical-partner'
               )}
             />
           </HomeSection>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Partner;
+export default Partner

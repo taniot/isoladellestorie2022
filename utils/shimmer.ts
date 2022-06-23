@@ -10,4 +10,4 @@ export const shimmer = (w: number, h: number) => `
   <rect width="${w}" height="${h}" fill="#e6cd00" />
   <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
   <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`;
+</svg>`

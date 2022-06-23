@@ -23,12 +23,12 @@
   font-size: 1.8rem;
   line-height: 1.25;
   margin-bottom: 0;
-  font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+  font-family: 'AbsaraSans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   text-align: center;
 
   &:after {
-    content: "";
+    content: '';
     border-bottom: 1px dashed var(--main-text-color);
     margin-top: 0.5rem;
     margin-bottom: 1rem;
@@ -42,7 +42,7 @@
   font-size: 1rem;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
-  font-family: "MontSerrat", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+  font-family: 'MontSerrat', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   text-align: right;
   background-color: var(--new-color);
@@ -68,7 +68,7 @@
 }
 
 .title {
-  font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+  font-family: 'AbsaraSans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 1.1rem;
 }
@@ -87,14 +87,14 @@
 }
 
 .description {
-  font-family: "MontSerrat", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+  font-family: 'MontSerrat', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 0.875rem;
   line-height: 1.75;
 
   strong,
   b {
-    font-family: "AbsaraSans", -apple-system, BlinkMacSystemFont, Segoe UI,
+    font-family: 'AbsaraSans', -apple-system, BlinkMacSystemFont, Segoe UI,
       Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
       sans-serif;
   }
