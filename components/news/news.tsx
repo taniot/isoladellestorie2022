@@ -1,36 +1,36 @@
-import styles from "./news.module.scss";
-import Link from "next/link";
-import parse from "html-react-parser";
-import Image from "next/image";
-import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
-import { getTranslation } from "../../lib/wp/translations";
-import { useContext } from "react";
-import AppContext from "../../store/AppContext";
-import { wpNews } from "../../store/types";
+import { ArrowNarrowRightIcon } from '@heroicons/react/solid'
+import parse from 'html-react-parser'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useContext } from 'react'
+import { getTranslation } from '../../lib/wp/translations'
+import AppContext from '../../store/AppContext'
+import { wpNews } from '../../store/types'
+import styles from './news.module.scss'
 
 const News = ({ data }: { data: wpNews }) => {
-  const context = useContext(AppContext);
-  const { state } = context;
+  const context = useContext(AppContext)
+  const { state } = context
 
-  if (!data) return null;
+  if (!data) return null
 
   return (
     <div className={styles.container}>
       <div className={styles.newsContainer}>
         <div className={styles.image}>
-          <div className={"image-container"}>
+          <div className={'image-container'}>
             {data?.featuredImage?.node?.guid && (
               <Image
                 src={data.featuredImage.node.guid}
                 alt={data.title}
-                className={"image"}
+                className={'image'}
                 layout="fill"
               />
             )}
           </div>
           {data?.featuredImage?.node?.caption && (
             <div className={styles.caption}>
-              {parse(data?.featuredImage?.node?.caption || "")}
+              {parse(data?.featuredImage?.node?.caption || '')}
             </div>
           )}
         </div>
@@ -51,7 +51,7 @@ const News = ({ data }: { data: wpNews }) => {
                 <span>
                   {getTranslation(
                     state?.translations,
-                    "read_more",
+                    'read_more',
                     state?.language
                   )}
                 </span>
@@ -62,7 +62,7 @@ const News = ({ data }: { data: wpNews }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default News;
+export default News

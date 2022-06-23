@@ -1,6 +1,6 @@
-import { gql } from "graphql-request";
-import { PlaceType, wpPlace, wpPlaceTipologia } from "../../store/types";
-import { client } from "../client";
+import { gql } from 'graphql-request'
+import { PlaceType, wpPlace, wpPlaceTipologia } from '../../store/types'
+import { client } from '../client'
 
 const qGetPlaces = gql`
   query {
@@ -35,13 +35,13 @@ const qGetPlaces = gql`
       }
     }
   }
-`;
+`
 
 export const setLuogoGroups = (places: PlaceType[]) => {
-  let currentLuogo = null;
-  let groups = [];
+  let currentLuogo = null
+  const groups = []
 
-  if (!places) return [];
+  if (!places) return []
 
   for (const place of places) {
     if (place.city.slug !== currentLuogo) {
@@ -49,22 +49,22 @@ export const setLuogoGroups = (places: PlaceType[]) => {
         luogo: place.city.name,
         slug: place.city.slug,
         distanza: place.city?.dettagliCitta?.distanzaGavoi,
-      });
-      currentLuogo = place.city.slug;
+      })
+      currentLuogo = place.city.slug
     }
   }
 
-  return groups;
-};
+  return groups
+}
 
 export const getPlaces = async (tipologia?: string): Promise<PlaceType[]> => {
-  const query = qGetPlaces;
-  if (!client) return [];
+  const query = qGetPlaces
+  if (!client) return []
 
-  let result = [];
+  let result = []
 
   try {
-    const data = await client.request(query);
+    const data = await client.request(query)
 
     result = data?.luoghi?.nodes?.map((luogo: wpPlace): PlaceType => {
       return {
@@ -78,26 +78,26 @@ export const getPlaces = async (tipologia?: string): Promise<PlaceType[]> => {
         city: luogo?.cittaLuoghi?.nodes[0] || null,
         tipologie:
           luogo?.tipologieLuoghi?.nodes?.map((tipologia: wpPlaceTipologia) => {
-            return tipologia.slug;
+            return tipologia.slug
           }) || [],
-      };
-    });
+      }
+    })
 
     result.sort(
       (a: PlaceType, b: PlaceType) =>
         a.city?.dettagliCitta.distanzaGavoi -
           b.city?.dettagliCitta?.distanzaGavoi ||
         a.city.name.localeCompare(b.city.name)
-    );
+    )
 
     if (tipologia) {
       result = result.filter((place: PlaceType) => {
-        return place.tipologie.includes(tipologia);
-      });
+        return place.tipologie.includes(tipologia)
+      })
     }
 
-    return result;
+    return result
   } catch (error) {
-    return [];
+    return []
   }
-};
+}

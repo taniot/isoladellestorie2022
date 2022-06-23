@@ -1,18 +1,18 @@
-import styles from "./footer.module.scss";
-import Image from "next/image";
-import { GrFacebookOption, GrInstagram, GrTwitter } from "react-icons/gr";
-import { GoHeart } from "react-icons/go";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
-import Script from "next/script";
-import Link from "next/link";
-import { getTranslation } from "../../lib/wp/translations";
-import AppContext from "../../store/AppContext";
-import { useContext } from "react";
+import Image from 'next/image'
+import Link from 'next/link'
+import Script from 'next/script'
+import { useContext } from 'react'
+import { GoHeart } from 'react-icons/go'
+import { GrFacebookOption, GrInstagram, GrTwitter } from 'react-icons/gr'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
+import { getTranslation } from '../../lib/wp/translations'
+import AppContext from '../../store/AppContext'
+import styles from './footer.module.scss'
 
 const Footer = () => {
-  const context = useContext(AppContext);
-  const { state } = context;
-  const isMobile = useMediaQuery("(max-width: 767px)");
+  const context = useContext(AppContext)
+  const { state } = context
+  const isMobile = useMediaQuery('(max-width: 767px)')
 
   return (
     <footer className={styles.footer}>
@@ -49,21 +49,21 @@ const Footer = () => {
               title="Privacy Policy"
             >
               Privacy Policy
-            </a>{" "}
-            -{" "}
+            </a>{' '}
+            -{' '}
             <a
               href="https://www.iubenda.com/privacy-policy/96389350/cookie-policy"
               className="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe "
               title="Cookie Policy"
             >
               Cookie Policy
-            </a>{" "}
-            -{" "}
+            </a>{' '}
+            -{' '}
             <Link href="/info-visitatori/contatti/">
               <a>
                 {getTranslation(
                   state?.translations,
-                  "menu_contatti",
+                  'menu_contatti',
                   state?.language
                 )}
               </a>
@@ -130,7 +130,7 @@ const Footer = () => {
         }}
       />
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

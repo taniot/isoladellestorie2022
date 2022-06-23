@@ -1,33 +1,33 @@
-import styles from "./guest.module.scss";
-import parse from "html-react-parser";
-import GuestImage from "../guests/image";
-import cls from "classnames";
-import Back from "../back/back";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { useEffect, useState, useContext } from "react";
-import { getGuestFieldByLang } from "../../lib/wp/guests";
-import AppContext from "../../store/AppContext";
-import { getTranslation } from "../../lib/wp/translations";
-import { EventType, GuestType } from "../../store/types";
-import Ospite from "../evento/ospite";
+import cls from 'classnames'
+import parse from 'html-react-parser'
+import { useContext, useEffect, useState } from 'react'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
+import { getGuestFieldByLang } from '../../lib/wp/guests'
+import { getTranslation } from '../../lib/wp/translations'
+import AppContext from '../../store/AppContext'
+import { EventType, GuestType } from '../../store/types'
+import Back from '../back/back'
+import Ospite from '../evento/ospite'
+import GuestImage from '../guests/image'
+import styles from './guest.module.scss'
 const Guest = ({ guest }: { guest: GuestType }) => {
-  const context = useContext(AppContext);
-  const { state } = context;
-  const isMobile = useMediaQuery("(max-width: 639px)");
+  const context = useContext(AppContext)
+  const { state } = context
+  const isMobile = useMediaQuery('(max-width: 639px)')
 
-  const [days, setDays] = useState<(string | null)[]>([]);
+  const [days, setDays] = useState<(string | null)[]>([])
 
   useEffect(() => {
     const doMagic = (guest: GuestType) => {
       const result = guest?.eventi?.map((evento: EventType) => {
-        return evento.data;
-      });
+        return evento.data
+      })
 
-      return result;
-    };
+      return result
+    }
 
-    setDays(doMagic(guest));
-  }, [guest]);
+    setDays(doMagic(guest))
+  }, [guest])
 
   return (
     <>
@@ -46,18 +46,18 @@ const Guest = ({ guest }: { guest: GuestType }) => {
             {guest?.nome && guest?.cognome ? (
               <>
                 <h2>
-                  <span className={styles.nome}>{guest?.nome}</span>{" "}
+                  <span className={styles.nome}>{guest?.nome}</span>{' '}
                   <span className={styles.cognome}>{guest?.cognome}</span>
                 </h2>
                 <h3>
-                  {getGuestFieldByLang(guest, "jobTitle", state?.language)}
+                  {getGuestFieldByLang(guest, 'jobTitle', state?.language)}
                 </h3>
               </>
             ) : (
               <>
                 <h2 className={styles.nomeLungo}>{guest?.title}</h2>
                 <h3>
-                  {getGuestFieldByLang(guest, "jobTitle", state?.language)}
+                  {getGuestFieldByLang(guest, 'jobTitle', state?.language)}
                 </h3>
               </>
             )}
@@ -67,7 +67,7 @@ const Guest = ({ guest }: { guest: GuestType }) => {
                   <span
                     className={cls(
                       styles.dayNumber,
-                      days?.includes("2022-06-22") && styles.active
+                      days?.includes('2022-06-22') && styles.active
                     )}
                   >
                     22/06
@@ -77,7 +77,7 @@ const Guest = ({ guest }: { guest: GuestType }) => {
                   <span
                     className={cls(
                       styles.dayNumber,
-                      days?.includes("2022-07-01") && styles.active
+                      days?.includes('2022-07-01') && styles.active
                     )}
                   >
                     01/07
@@ -87,7 +87,7 @@ const Guest = ({ guest }: { guest: GuestType }) => {
                   <span
                     className={cls(
                       styles.dayNumber,
-                      days?.includes("2022-07-02") && styles.active
+                      days?.includes('2022-07-02') && styles.active
                     )}
                   >
                     02/07
@@ -97,7 +97,7 @@ const Guest = ({ guest }: { guest: GuestType }) => {
                   <span
                     className={cls(
                       styles.dayNumber,
-                      days?.includes("2022-07-03") && styles.active
+                      days?.includes('2022-07-03') && styles.active
                     )}
                   >
                     03/07
@@ -107,19 +107,19 @@ const Guest = ({ guest }: { guest: GuestType }) => {
               <h4>
                 {getTranslation(
                   state?.translations,
-                  "giorni_festival",
+                  'giorni_festival',
                   state?.language
                 )}
               </h4>
             </div>
           </div>
-          {getGuestFieldByLang(guest, "description", state?.language) && (
+          {getGuestFieldByLang(guest, 'description', state?.language) && (
             <div className={styles.guestBody}>
               <div className={styles.text}>
                 {parse(
-                  getGuestFieldByLang(guest, "description", state?.language)
-                    ? getGuestFieldByLang(guest, "description", state?.language)
-                    : ""
+                  getGuestFieldByLang(guest, 'description', state?.language)
+                    ? getGuestFieldByLang(guest, 'description', state?.language)
+                    : ''
                 )}
               </div>
             </div>
@@ -139,19 +139,19 @@ const Guest = ({ guest }: { guest: GuestType }) => {
         <Back
           link={getTranslation(
             state?.translations,
-            "bottone_back_ospiti",
+            'bottone_back_ospiti',
             state?.language,
-            "link"
+            'link'
           )}
           text={getTranslation(
             state?.translations,
-            "bottone_back_ospiti",
+            'bottone_back_ospiti',
             state?.language
           )}
         />
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Guest;
+export default Guest

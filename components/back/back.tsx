@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { CgArrowLeft } from "react-icons/cg";
-import styles from "./back.module.scss";
+import Link from 'next/link'
+import { CgArrowLeft } from 'react-icons/cg'
+import styles from './back.module.scss'
 
 const Back = ({ link, text }: { link: string; text: string }) => (
   <>
@@ -13,6 +13,6 @@ const Back = ({ link, text }: { link: string; text: string }) => (
       </a>
     </Link>
   </>
-);
+)
 
-export default Back;
+export default Back

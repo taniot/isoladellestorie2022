@@ -1,5 +1,5 @@
-import cls from "classnames";
-import styles from "./about.module.scss";
+import cls from 'classnames'
+import styles from './about.module.scss'
 
 const About = () => {
   return (
@@ -15,7 +15,7 @@ const About = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About

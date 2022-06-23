@@ -1,12 +1,12 @@
-import styles from "./intro.module.scss";
-import Image from "next/image";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { toBase64 } from "../../utils/toBase64";
-import { shimmer } from "../../utils/shimmer";
+import Image from 'next/image'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
+import { shimmer } from '../../utils/shimmer'
+import { toBase64 } from '../../utils/toBase64'
+import styles from './intro.module.scss'
 const Intro = () => {
-  const isMobile = useMediaQuery("(max-width: 639px)");
-  const isTablet = useMediaQuery("(min-width: 640px) and (max-width: 1023px)");
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const isMobile = useMediaQuery('(max-width: 639px)')
+  const isTablet = useMediaQuery('(min-width: 640px) and (max-width: 1023px)')
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
 
   return (
     <>
@@ -84,7 +84,7 @@ const Intro = () => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Intro;
+export default Intro
