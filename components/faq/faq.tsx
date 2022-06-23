@@ -1,9 +1,9 @@
-import { Disclosure, Transition } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/solid";
-import classNames from "classnames";
-import parse from "html-react-parser";
-import { FaqType } from "../../store/types";
-import styles from "./faq.module.scss";
+import { Disclosure, Transition } from '@headlessui/react'
+import { ChevronUpIcon } from '@heroicons/react/solid'
+import classNames from 'classnames'
+import parse from 'html-react-parser'
+import { FaqType } from '../../store/types'
+import styles from './faq.module.scss'
 const Faq = ({ count, faq }: { count: number; faq: FaqType }) => {
   return (
     <Disclosure
@@ -17,7 +17,7 @@ const Faq = ({ count, faq }: { count: number; faq: FaqType }) => {
             <h3>{faq.title}</h3>
             <ChevronUpIcon
               className={classNames(
-                `${open ? "rotate-180 transform" : ""}`,
+                `${open ? 'rotate-180 transform' : ''}`,
                 styles.icon
               )}
             />
@@ -31,13 +31,13 @@ const Faq = ({ count, faq }: { count: number; faq: FaqType }) => {
             leaveTo="transform scale-95 opacity-0"
           >
             <Disclosure.Panel className={styles.panel}>
-              {parse(faq?.content || "")}
+              {parse(faq?.content || '')}
             </Disclosure.Panel>
           </Transition>
         </>
       )}
     </Disclosure>
-  );
-};
+  )
+}
 
-export default Faq;
+export default Faq

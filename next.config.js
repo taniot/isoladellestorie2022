@@ -2,27 +2,40 @@
 const nextConfig = {
   reactStrictMode: true,
   i18n: {
-    locales: ["it", "en"],
-    defaultLocale: "it",
+    locales: ['it', 'en'],
+    defaultLocale: 'it',
     localeDetection: false,
   },
   trailingSlash: true,
   images: {
     domains: [
-      "cloudflare-ipfs.com",
-      "loremflickr.com",
-      "cms2022.isoladellestorie.it",
+      'cloudflare-ipfs.com',
+      'loremflickr.com',
+      'cms2022.isoladellestorie.it',
     ],
   },
   async rewrites() {
     return [
       {
-        source: "/en/guests/:slug/",
-        destination: "/en/ospiti/:slug/",
+        source: '/en/guests/:slug/',
+        destination: '/en/ospiti/:slug/',
         locale: false,
       },
-    ];
+    ]
   },
-};
+  async headers() {
+    return [
+      {
+        source: '/(.*).(jpg|jpeg|png|svg)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=360, s-maxage=360',
+          },
+        ],
+      },
+    ]
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

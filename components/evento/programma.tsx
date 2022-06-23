@@ -1,20 +1,20 @@
-import styles from "./programma.module.scss";
-import classNames from "classnames";
-import parse from "html-react-parser";
-import { getEventFieldByLang } from "../../lib/wp/events";
-import AppContext from "../../store/AppContext";
-import { useContext } from "react";
-import { getTranslation } from "../../lib/wp/translations";
-import { EventType } from "../../store/types";
-import { BsHandIndexThumb } from "react-icons/bs";
+import classNames from 'classnames'
+import parse from 'html-react-parser'
+import { useContext } from 'react'
+import { BsHandIndexThumb } from 'react-icons/bs'
+import { getEventFieldByLang } from '../../lib/wp/events'
+import { getTranslation } from '../../lib/wp/translations'
+import AppContext from '../../store/AppContext'
+import { EventType } from '../../store/types'
+import styles from './programma.module.scss'
 const Programma = ({ evento }: { evento: EventType }) => {
-  const { state } = useContext(AppContext);
+  const { state } = useContext(AppContext)
 
   return (
     <div
       className={classNames(
         styles.evento,
-        evento.eventoPrincipale ? styles.main : "",
+        evento.eventoPrincipale ? styles.main : '',
         evento.eventoAnnullato && styles.annullato
       )}
     >
@@ -22,14 +22,14 @@ const Programma = ({ evento }: { evento: EventType }) => {
         {evento.nascondiOraInizio
           ? getTranslation(
               state?.translations,
-              "testo_a_seguire",
+              'testo_a_seguire',
               state?.language
             )
           : `${evento.oraInizio}`}
       </span>
       {!evento.nascondiTitolo && (
         <h4 className={styles.title}>
-          {getEventFieldByLang(evento, "title", state?.language)}
+          {getEventFieldByLang(evento, 'title', state?.language)}
         </h4>
       )}
 
@@ -40,21 +40,21 @@ const Programma = ({ evento }: { evento: EventType }) => {
         )}
       >
         {parse(
-          getEventFieldByLang(evento, "description", state?.language)
-            ? getEventFieldByLang(evento, "description", state?.language)
-            : ""
+          getEventFieldByLang(evento, 'description', state?.language)
+            ? getEventFieldByLang(evento, 'description', state?.language)
+            : ''
         )}
       </div>
       {evento.eventoAnnullato && (
         <div className={styles.annullatoMessage}>
           <BsHandIndexThumb className={styles.icon} />
           <span className={styles.text}>
-            {getEventFieldByLang(evento, "annullato", state?.language)}
+            {getEventFieldByLang(evento, 'annullato', state?.language)}
           </span>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Programma;
+export default Programma

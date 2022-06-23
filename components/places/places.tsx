@@ -1,32 +1,31 @@
-import { MailIcon } from "@heroicons/react/solid";
-import { useEffect, useState } from "react";
-import { BsFillTelephoneFill } from "react-icons/bs";
-import { BiWorld } from "react-icons/bi";
-import { v4 as uuidv4 } from "uuid";
-import { setLuogoGroups } from "../../lib/wp/places";
-import styles from "./places.module.scss";
-import { getTranslation } from "../../lib/wp/translations";
-import AppContext from "../../store/AppContext";
-import { useContext } from "react";
-import { Page, PlaceGroupType, PlaceType } from "../../store/types";
+import { MailIcon } from '@heroicons/react/solid'
+import { useContext, useEffect, useState } from 'react'
+import { BiWorld } from 'react-icons/bi'
+import { BsFillTelephoneFill } from 'react-icons/bs'
+import { v4 as uuidv4 } from 'uuid'
+import { setLuogoGroups } from '../../lib/wp/places'
+import { getTranslation } from '../../lib/wp/translations'
+import AppContext from '../../store/AppContext'
+import { Page, PlaceGroupType, PlaceType } from '../../store/types'
+import styles from './places.module.scss'
 
-const Places = ({ data, page }: { data: PlaceType[]; page: Page }) => {
-  const { state } = useContext(AppContext);
+const Places = ({ data }: { data: PlaceType[]; page: Page }) => {
+  const { state } = useContext(AppContext)
 
-  const [placesGroups, setPlacesGroups] = useState<PlaceGroupType[]>([]);
+  const [placesGroups, setPlacesGroups] = useState<PlaceGroupType[]>([])
   useEffect(() => {
     if (data) {
-      const groups = setLuogoGroups(data);
-      setPlacesGroups(groups);
+      const groups = setLuogoGroups(data)
+      setPlacesGroups(groups)
     }
-  }, [data]);
+  }, [data])
 
   return (
     <div className={styles.placesSection}>
       {placesGroups?.map((group: PlaceGroupType) => {
-        let places = data
+        const places = data
           .filter((place: PlaceType) => place.city.slug === group.slug)
-          .sort((a: PlaceType, b: PlaceType) => a.title.localeCompare(b.title));
+          .sort((a: PlaceType, b: PlaceType) => a.title.localeCompare(b.title))
 
         return (
           <div key={uuidv4()} className="flex flex-col  mb-10">
@@ -34,10 +33,10 @@ const Places = ({ data, page }: { data: PlaceType[]; page: Page }) => {
               <p className={styles.where}>{group.luogo.toUpperCase()}</p>
               {group.distanza && (
                 <p className={styles.theme}>
-                  {group.distanza}{" "}
+                  {group.distanza}{' '}
                   {getTranslation(
                     state?.translations,
-                    "km_da_gavoi",
+                    'km_da_gavoi',
                     state?.language
                   )}
                 </p>
@@ -85,14 +84,14 @@ const Places = ({ data, page }: { data: PlaceType[]; page: Page }) => {
                       </div>
                     </div>
                   </div>
-                );
+                )
               })}
             </div>
           </div>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
-export default Places;
+export default Places

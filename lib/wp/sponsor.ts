@@ -1,6 +1,6 @@
-import { gql } from "graphql-request";
-import { PartnerType, wpPartner } from "../../store/types";
-import { client } from "../client";
+import { gql } from 'graphql-request'
+import { PartnerType, wpPartner } from '../../store/types'
+import { client } from '../client'
 
 //queries
 
@@ -31,7 +31,7 @@ const qGetSponsors = gql`
       }
     }
   }
-`;
+`
 
 /*
 / get ALL db pages
@@ -39,13 +39,13 @@ const qGetSponsors = gql`
 export const getSponsors = async (
   tipologia?: string
 ): Promise<PartnerType[]> => {
-  const query = qGetSponsors;
-  if (!client) return [];
+  const query = qGetSponsors
+  if (!client) return []
 
-  let result = [];
+  let result = []
 
   try {
-    const data = await client.request(query);
+    const data = await client.request(query)
 
     result = data?.sponsors?.nodes?.map((sponsor: wpPartner) => {
       return {
@@ -54,22 +54,22 @@ export const getSponsors = async (
         type: sponsor?.tipologieSponsor.nodes[0]?.slug || null,
         link: sponsor?.dettagliSponsor?.sponsorLink || null,
         image: sponsor.featuredImage?.node?.guid || null,
-      };
-    });
+      }
+    })
 
     if (tipologia) {
       result = result.filter(
         (sponsor: PartnerType) => sponsor.type === tipologia
-      );
+      )
     }
 
     result.sort(
       (a: PartnerType, b: PartnerType) => parseInt(a.order) - parseInt(b.order)
-    );
+    )
 
-    return result;
+    return result
   } catch (error) {
-    console.log({ error });
-    return [];
+    console.log({ error })
+    return []
   }
-};
+}

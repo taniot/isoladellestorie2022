@@ -1,21 +1,21 @@
-import styles from "./header.module.scss";
-import Image from "next/image";
-import { Squash as Hamburger } from "hamburger-react";
-import Nav from "../nav/nav";
-import { useContext } from "react";
-import AppContext from "../../store/AppContext";
-import Link from "next/link";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
-import cls from "classnames";
+import cls from 'classnames'
+import { Squash as Hamburger } from 'hamburger-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useContext } from 'react'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
+import AppContext from '../../store/AppContext'
+import Nav from '../nav/nav'
+import styles from './header.module.scss'
 const Header = () => {
-  const context = useContext(AppContext);
-  const { state, setIsMainMenuOpen } = context;
-  const isSmall = useMediaQuery("(max-width: 1023px)");
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const context = useContext(AppContext)
+  const { state, setIsMainMenuOpen } = context
+  const isSmall = useMediaQuery('(max-width: 1023px)')
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
 
-  const closeMenu = (e: { preventDefault: () => void }) => {
-    if (setIsMainMenuOpen) setIsMainMenuOpen(false);
-  };
+  const closeMenu = () => {
+    if (setIsMainMenuOpen) setIsMainMenuOpen(false)
+  }
 
   return (
     <header className={styles.header}>
@@ -29,7 +29,7 @@ const Header = () => {
                   alt="L”Isola delle Storie XVII"
                   width="160px"
                   height="60px"
-                  className={cls(styles.logo, "logoImg")}
+                  className={cls(styles.logo, 'logoImg')}
                   priority
                 />
               )}
@@ -39,7 +39,7 @@ const Header = () => {
                   alt="L”Isola delle Storie XVII"
                   width="80px"
                   height="180px"
-                  className={cls(styles.logo, "logoImg")}
+                  className={cls(styles.logo, 'logoImg')}
                   priority
                 />
               )}
@@ -53,7 +53,7 @@ const Header = () => {
             toggled={state?.isMainMenuOpen}
             toggle={setIsMainMenuOpen}
             size={24}
-            color={state?.isMainMenuOpen ? "whitesmoke" : "black"}
+            color={state?.isMainMenuOpen ? 'whitesmoke' : 'black'}
             label="Show menu"
           />
         )}
@@ -62,7 +62,7 @@ const Header = () => {
             toggled={state?.isMainMenuOpen}
             toggle={setIsMainMenuOpen}
             size={30}
-            color={state?.isMainMenuOpen ? "whitesmoke" : "black"}
+            color={state?.isMainMenuOpen ? 'whitesmoke' : 'black'}
             label="Show menu"
           />
         )}
@@ -70,7 +70,7 @@ const Header = () => {
 
       <Nav />
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

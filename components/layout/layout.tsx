@@ -1,13 +1,12 @@
-import { FC, ReactNode } from "react";
-import Footer from "../footer/footer";
-import Header from "../header/header";
-import Scroll from "../scroll/scroll";
-import styles from "./layout.module.scss";
-import { NextSeo } from "next-seo";
-import Seo from "../seo/seo";
+import { FC, ReactNode } from 'react'
+import Footer from '../footer/footer'
+import Header from '../header/header'
+import Scroll from '../scroll/scroll'
+import Seo from '../seo/seo'
+import styles from './layout.module.scss'
 
 interface Props {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const Layout: FC<Props> = ({ children }) => {
@@ -20,7 +19,7 @@ const Layout: FC<Props> = ({ children }) => {
       <main className={styles.main}>{children}</main>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

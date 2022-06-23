@@ -1,6 +1,6 @@
-import { gql } from "graphql-request";
-import { wpNews } from "../../store/types";
-import { client } from "../client";
+import { gql } from 'graphql-request'
+import { wpNews } from '../../store/types'
+import { client } from '../client'
 
 //queries
 
@@ -36,7 +36,7 @@ const qGetPosts = gql`
       }
     }
   }
-`;
+`
 
 const qGestPostBySlug = gql`
   query ($id: ID!) {
@@ -62,45 +62,45 @@ const qGestPostBySlug = gql`
       }
     }
   }
-`;
+`
 
 /*
 / get ALL db pages
 */
 export const getPosts = async (
-  count: number = 1,
-  locale: string = "ALL"
+  count = 1,
+  locale = 'ALL'
 ): Promise<wpNews[]> => {
-  const query = qGetPosts;
-  if (!client) return [];
+  const query = qGetPosts
+  if (!client) return []
 
   const variables = {
     locale,
     count,
-  };
+  }
 
   try {
-    const data = await client.request(query, variables);
-    return data?.posts?.nodes;
+    const data = await client.request(query, variables)
+    return data?.posts?.nodes
   } catch (error) {
-    console.log({ error });
-    return [];
+    console.log({ error })
+    return []
   }
-};
+}
 
 export const getPostBySlug = async (id: string): Promise<wpNews | null> => {
-  const query = qGestPostBySlug;
-  if (!client) return null;
+  const query = qGestPostBySlug
+  if (!client) return null
 
   const variables = {
     id,
-  };
+  }
 
   try {
-    const data = await client.request(query, variables);
-    return data?.post;
+    const data = await client.request(query, variables)
+    return data?.post
   } catch (error) {
-    console.log({ error });
-    return null;
+    console.log({ error })
+    return null
   }
-};
+}

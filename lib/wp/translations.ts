@@ -1,7 +1,7 @@
-import { gql } from "graphql-request";
-import { client } from "../client";
-import { replaceText } from "../../utils/replaceText";
-import { TranslationType, wpTranslation } from "../../store/types";
+import { gql } from 'graphql-request'
+import { client } from '../client'
+import { replaceText } from '../../utils/replaceText'
+import { TranslationType, wpTranslation } from '../../store/types'
 
 const qGetTranslations = gql`
   query {
@@ -23,16 +23,16 @@ const qGetTranslations = gql`
       }
     }
   }
-`;
+`
 
 export const getTranslations = async (): Promise<TranslationType[]> => {
-  const query = qGetTranslations;
-  if (!client) return [];
+  const query = qGetTranslations
+  if (!client) return []
 
-  let result: TranslationType[] = [];
+  let result: TranslationType[] = []
 
   try {
-    const data = await client.request(query);
+    const data = await client.request(query)
 
     result = data?.traduzioni?.nodes?.map((traduzione: wpTranslation) => {
       return {
@@ -41,43 +41,43 @@ export const getTranslations = async (): Promise<TranslationType[]> => {
         slug: traduzione?.dettagliTraduzioni?.slugTraduzione || null,
         link: traduzione?.dettagliTraduzioni?.linkTraduzione || null,
         language: traduzione?.language.slug || null,
-      };
-    });
+      }
+    })
 
     //console.log({ result });
 
-    return result;
+    return result
   } catch (error) {
-    return [];
+    return []
   }
-};
+}
 
 export const getTranslation = (
   translations: TranslationType[] | undefined,
   slug: string,
-  language: string = "it",
-  what: string = "title"
+  language = 'it',
+  what = 'title'
 ): string => {
-  if (!translations || !what) return "";
+  if (!translations || !what) return ''
   const result =
     translations
       .filter((tr: TranslationType) => tr.language === language)
       .find((tr: TranslationType) => tr.slug === slug) ||
     translations
-      .filter((tr: TranslationType) => tr.language === "it")
+      .filter((tr: TranslationType) => tr.language === 'it')
       .find((tr: TranslationType) => tr.slug === slug) ||
-    null;
+    null
 
-  if (what === "title") return result?.title || "";
-  if (what === "link") {
+  if (what === 'title') return result?.title || ''
+  if (what === 'link') {
     return result?.link?.url
       ? replaceText(
           result?.link?.url,
-          "https://cms2022.isoladellestorie.it/",
-          "/"
+          'https://cms2022.isoladellestorie.it/',
+          '/'
         )
-      : "#";
+      : '#'
   }
 
-  return "";
-};
+  return ''
+}

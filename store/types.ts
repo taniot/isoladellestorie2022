@@ -1,343 +1,343 @@
 export enum Languages {
-  "en",
-  "it",
+  'en',
+  'it',
 }
 
 export interface PageChildren {
-  id: string;
-  uri: string;
-  template: string;
-  dateEventi: string;
+  id: string
+  uri: string
+  template: string
+  dateEventi: string
 }
 
 export interface Page {
-  id?: string;
-  title: string;
-  subtitleIt: string;
-  subtitleEn?: string;
-  content: string;
-  template?: string;
+  id?: string
+  title: string
+  subtitleIt: string
+  subtitleEn?: string
+  content: string
+  template?: string
   parent?: {
-    title: string;
-    children: PageChildren[];
-  };
+    title: string
+    children: PageChildren[]
+  }
   accoglienza?: {
-    tipologia: string;
-  };
+    tipologia: string
+  }
   eventi?: {
-    categoria: string;
-    data: string;
-    programma: boolean;
-  };
+    categoria: string
+    data: string
+    programma: boolean
+  }
 }
 
 export interface wpPage {
-  id: string;
-  uri: string;
+  id: string
+  uri: string
   dettagliPagina: {
-    template: string;
-    dateEventi: string;
-  };
+    template: string
+    dateEventi: string
+  }
   language: {
-    slug: string;
-  };
+    slug: string
+  }
 }
 
 export interface wpFaq {
-  id: string;
-  title: string;
-  content: string;
-  menuOrder: string;
+  id: string
+  title: string
+  content: string
+  menuOrder: string
 }
 
 export interface FaqType {
-  id: string;
-  title: string;
-  content: string;
-  order: string;
+  id: string
+  title: string
+  content: string
+  order: string
 }
 
 export interface wpGuest {
-  title: string;
-  slug: string;
+  title: string
+  slug: string
   dettagliOspite: {
-    ordinamento: string;
-    jobTitleIt: string;
-    jobTitleEn: string;
-    nome: string;
-    cognome: string;
-    descrizioneIt: string;
-    descrizioneEn: string;
-  };
-  featuredImage: { node: { guid: string } };
+    ordinamento: string
+    jobTitleIt: string
+    jobTitleEn: string
+    nome: string
+    cognome: string
+    descrizioneIt: string
+    descrizioneEn: string
+  }
+  featuredImage: { node: { guid: string } }
 }
 
 export interface GuestType {
-  title: string;
-  nome: string | null;
-  cognome: string | null;
-  slug: string | null;
-  ordinamento: string;
-  image: string | null;
-  jobTitleIt: string | null;
-  jobTitleEn: string | null;
-  descrizioneIt?: string | null;
-  descrizioneEn?: string | null;
-  eventi: EventType[];
+  title: string
+  nome: string | null
+  cognome: string | null
+  slug: string | null
+  ordinamento: string
+  image: string | null
+  jobTitleIt: string | null
+  jobTitleEn: string | null
+  descrizioneIt?: string | null
+  descrizioneEn?: string | null
+  eventi: EventType[]
 }
 
 export interface wpEvent {
-  id: string;
-  title: string;
+  id: string
+  title: string
   dettaglioEvento: {
-    programma: boolean;
-    titoloEventoEn: string;
-    dataEvento: string;
-    oraInizio: string;
-    oraFine: string;
-    descrizioneEventoIt: string;
-    descrizioneEventoEn: string;
-    approfondimentoEventoIt: string;
-    approfondimentoEventoEn: string;
-    infoEventoIt: string;
-    infoEventoEn: string;
-    finanziamentoIt: string;
-    finanziamentoEn: string;
-    eventoPrincipale: boolean;
-    nascondiOraInizio: boolean;
-    nascondiTitolo: boolean;
-    etaRichiesta: string;
-    etaRichiestaEn: string;
-    noteEtaRichiesta: string;
-    noteEtaRichiestaEn: string;
-    maxIscritti: string;
-    maxIscrittiEn: string;
-    prenotazioneOnline: boolean;
-    eventoAnnullato: boolean;
-    motivazioneAnnullatoIt: string;
-    motivazioneAnnullatoEn: string;
-  };
+    programma: boolean
+    titoloEventoEn: string
+    dataEvento: string
+    oraInizio: string
+    oraFine: string
+    descrizioneEventoIt: string
+    descrizioneEventoEn: string
+    approfondimentoEventoIt: string
+    approfondimentoEventoEn: string
+    infoEventoIt: string
+    infoEventoEn: string
+    finanziamentoIt: string
+    finanziamentoEn: string
+    eventoPrincipale: boolean
+    nascondiOraInizio: boolean
+    nascondiTitolo: boolean
+    etaRichiesta: string
+    etaRichiestaEn: string
+    noteEtaRichiesta: string
+    noteEtaRichiestaEn: string
+    maxIscritti: string
+    maxIscrittiEn: string
+    prenotazioneOnline: boolean
+    eventoAnnullato: boolean
+    motivazioneAnnullatoIt: string
+    motivazioneAnnullatoEn: string
+  }
   categorieEventi: {
-    nodes: wpEventCategorie[];
-  };
+    nodes: wpEventCategorie[]
+  }
   tipologieEventi: {
-    nodes: wpEventTipologie[];
-  };
+    nodes: wpEventTipologie[]
+  }
   luoghiEventi: {
-    nodes: wpEventLuoghi[];
-  };
+    nodes: wpEventLuoghi[]
+  }
 }
 
 export type wpEventCategorie = {
-  slug: string;
-  name: string;
+  slug: string
+  name: string
   dettagliCategorieEvento: {
-    nomeCategoriaEn: string;
-  };
-};
+    nomeCategoriaEn: string
+  }
+}
 
 export type wpEventTipologie = {
-  slug: string;
-  name: string;
+  slug: string
+  name: string
   dettagliTipologieEvento: {
-    nomeTipologiaEn: string;
-  };
-};
+    nomeTipologiaEn: string
+  }
+}
 
 export type wpEventLuoghi = {
-  slug: string;
-  name: string;
+  slug: string
+  name: string
   dettagliLuoghiEvento: {
-    nomeLuogoEn: string;
-    infoLuogo: string;
-    infoLuogoEn: string;
-  };
-};
+    nomeLuogoEn: string
+    infoLuogo: string
+    infoLuogoEn: string
+  }
+}
 
 export interface EventType {
-  id: string;
-  title: string;
-  titleEn: string | null;
-  data: string;
-  oraInizio: string | null;
-  oraFine: string | null;
-  descrizioneIt: string | null;
-  descrizioneEn: string | null;
-  approfondimentoIt: string | null;
-  approfondimentoEn: string | null;
-  infoIt: string;
-  infoEn: string | null;
-  finanziamentoIt: string;
-  finanziamentoEn: string | null;
-  dataOrd: number;
-  dataOrdFine: number;
-  dataOrdA: number;
-  dataOrdB: number;
-  categoria: string | null;
-  tipologia: string | null;
-  luogo: string | null;
-  categoriaName: string | null;
-  categoriaNameEn: string | null;
-  tipologiaName: string | null;
-  tipologiaNameEn: string | null;
-  luogoName: string | null;
-  luogoNameEn: string | null;
-  infoLuogo: string | null;
-  infoLuogoEn: string | null;
-  eventoPrincipale: boolean;
-  nascondiOraInizio: boolean;
-  nascondiTitolo: boolean;
-  etaRichiesta: string | null;
-  etaRichiestaEn: string | null;
-  noteEtaRichiesta: string | null;
-  noteEtaRichiestaEn: string | null;
-  maxIscritti: string | null;
-  maxIscrittiEn: string | null;
-  prenotazioneOnline: boolean;
-  programma: boolean;
-  eventoAnnullato: boolean;
-  motivazioneAnnullatoIt: string;
-  motivazioneAnnullatoEn: string;
+  id: string
+  title: string
+  titleEn: string | null
+  data: string
+  oraInizio: string | null
+  oraFine: string | null
+  descrizioneIt: string | null
+  descrizioneEn: string | null
+  approfondimentoIt: string | null
+  approfondimentoEn: string | null
+  infoIt: string
+  infoEn: string | null
+  finanziamentoIt: string
+  finanziamentoEn: string | null
+  dataOrd: number
+  dataOrdFine: number
+  dataOrdA: number
+  dataOrdB: number
+  categoria: string | null
+  tipologia: string | null
+  luogo: string | null
+  categoriaName: string | null
+  categoriaNameEn: string | null
+  tipologiaName: string | null
+  tipologiaNameEn: string | null
+  luogoName: string | null
+  luogoNameEn: string | null
+  infoLuogo: string | null
+  infoLuogoEn: string | null
+  eventoPrincipale: boolean
+  nascondiOraInizio: boolean
+  nascondiTitolo: boolean
+  etaRichiesta: string | null
+  etaRichiestaEn: string | null
+  noteEtaRichiesta: string | null
+  noteEtaRichiestaEn: string | null
+  maxIscritti: string | null
+  maxIscrittiEn: string | null
+  prenotazioneOnline: boolean
+  programma: boolean
+  eventoAnnullato: boolean
+  motivazioneAnnullatoIt: string
+  motivazioneAnnullatoEn: string
 }
 
 export type EventTypeGroups = {
-  luogo: string | null;
-  tipologia: string | null;
-  luogoName: string | null;
-  luogoNameEn: string | null;
-  tipologiaName: string | null;
-  tipologiaNameEn: string | null;
-};
+  luogo: string | null
+  tipologia: string | null
+  luogoName: string | null
+  luogoNameEn: string | null
+  tipologiaName: string | null
+  tipologiaNameEn: string | null
+}
 
 export type EventTypeLuogoGroups = {
-  luogo: string | null;
-  luogoName: string | null;
-  luogoNameEn: string | null;
-  infoLuogo: string | null;
-  infoLuogoEn: string | null;
-};
+  luogo: string | null
+  luogoName: string | null
+  luogoNameEn: string | null
+  infoLuogo: string | null
+  infoLuogoEn: string | null
+}
 
 export type EventTypeDataGroups = {
-  data: string;
-};
+  data: string
+}
 
 export type EventTypeTimeGroups = {
-  oraInizio: string | null;
-  oraFine: string | null;
-};
+  oraInizio: string | null
+  oraFine: string | null
+}
 
 export type wpPlace = {
-  id: string;
-  title: string;
+  id: string
+  title: string
   dettagliAccoglienza: {
-    indirizzo: string;
-    email: string;
-    telefono1: string;
-    telefono2: string;
-    sitoWeb: string;
-  };
+    indirizzo: string
+    email: string
+    telefono1: string
+    telefono2: string
+    sitoWeb: string
+  }
   cittaLuoghi: {
-    nodes: wpPlaceCitta[];
-  };
+    nodes: wpPlaceCitta[]
+  }
   tipologieLuoghi: {
-    nodes: wpPlaceTipologia[];
-  };
-};
+    nodes: wpPlaceTipologia[]
+  }
+}
 
 export type wpPlaceCitta = {
-  name: string;
-  slug: string;
+  name: string
+  slug: string
   dettagliCitta: {
-    distanzaGavoi: number;
-  };
-};
+    distanzaGavoi: number
+  }
+}
 
 export type wpPlaceTipologia = {
-  slug: string;
-};
+  slug: string
+}
 
 export type PlaceType = {
-  id: string;
-  title: string;
-  address: string | null;
-  email: string | null;
-  phone1: string | null;
-  phone2: string | null;
-  web: string | null;
-  city: wpPlaceCitta;
-  tipologie: string[];
-};
+  id: string
+  title: string
+  address: string | null
+  email: string | null
+  phone1: string | null
+  phone2: string | null
+  web: string | null
+  city: wpPlaceCitta
+  tipologie: string[]
+}
 
 export type PlaceGroupType = {
-  luogo: string;
-  slug: string;
-  distanza: number;
-};
+  luogo: string
+  slug: string
+  distanza: number
+}
 
 export interface PartnerType {
-  title: string;
-  image: string;
-  link: string;
-  type: string;
-  order: string;
+  title: string
+  image: string
+  link: string
+  type: string
+  order: string
 }
 
 export type wpPartner = {
-  title: string;
-  menuOrder: number;
-  tipologieSponsor: { nodes: wpPartnerTipologie[] };
-  dettagliSponsor: wpPartnerDettagli;
-  featuredImage: { node: wpPartnerImage };
-};
+  title: string
+  menuOrder: number
+  tipologieSponsor: { nodes: wpPartnerTipologie[] }
+  dettagliSponsor: wpPartnerDettagli
+  featuredImage: { node: wpPartnerImage }
+}
 
 export type wpPartnerTipologie = {
-  slug: string;
-};
+  slug: string
+}
 export type wpPartnerDettagli = {
-  sponsorLink: string;
-};
+  sponsorLink: string
+}
 export type wpPartnerImage = {
-  guid: string;
-};
+  guid: string
+}
 
 export type wpNews = {
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: string;
+  title: string
+  slug: string
+  excerpt: string
+  content: string
   dettagliArticoli: {
     comunicatoStampa: {
-      guid: string;
-    };
-  };
+      guid: string
+    }
+  }
   featuredImage: {
     node: {
-      guid: string;
-      caption: string;
-    };
-  };
+      guid: string
+      caption: string
+    }
+  }
   language: {
-    slug: string;
-  };
-};
+    slug: string
+  }
+}
 
 export interface TranslationType {
-  id: string;
-  title: string;
-  slug: string | null;
+  id: string
+  title: string
+  slug: string | null
   link: {
-    url: string;
-  };
-  language: string | null;
+    url: string
+  }
+  language: string | null
 }
 export type wpTranslation = {
-  id: string;
-  title: string;
+  id: string
+  title: string
   dettagliTraduzioni: {
-    slugTraduzione: string;
-    linkTraduzione: string;
-  };
+    slugTraduzione: string
+    linkTraduzione: string
+  }
   language: {
-    slug: string;
-  };
-};
+    slug: string
+  }
+}
