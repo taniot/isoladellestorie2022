@@ -28,24 +28,9 @@ const Home = ({
   const context = useContext(AppContext)
   const router = useRouter()
   const { state, setTranslations } = context
-  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     if (setTranslations) setTranslations(translations)
-  }, [translations, setTranslations])
-
-  useEffect(() => {
-    const handleComplete = () => {
-      setIsLoading(false)
-    }
-
-    router.events.on('routeChangeComplete', handleComplete)
-    router.events.on('routeChangeError', handleComplete)
-
-    return () => {
-      router.events.off('routeChangeComplete', handleComplete)
-      router.events.off('routeChangeError', handleComplete)
-    }
-  }, [router])
+  }, [translations, setTranslations, router])
 
   const ospitiSection = {
     title: getTranslation(
@@ -95,45 +80,44 @@ const Home = ({
   return (
     <>
       <Intro />
-      {!isLoading && (
-        <>
-          <HomeSection
-            title={getTranslation(
-              state?.translations,
-              'titolo_ospiti_home',
-              state?.language
-            )}
-            linkTo={ospitiSection}
-          >
-            <Anteprima data={guests} />
-          </HomeSection>
 
-          {news && (
-            <HomeSection
-              bgColor="#f1e596"
-              title={getTranslation(
-                state?.translations,
-                'titolo_news_home',
-                state?.language
-              )}
-              linkTo={newsSection}
-            >
-              <News data={news} />
-            </HomeSection>
+      <>
+        <HomeSection
+          title={getTranslation(
+            state?.translations,
+            'titolo_ospiti_home',
+            state?.language
           )}
+          linkTo={ospitiSection}
+        >
+          <Anteprima data={guests} />
+        </HomeSection>
 
+        {news && (
           <HomeSection
+            bgColor="#f1e596"
             title={getTranslation(
               state?.translations,
-              'titolo_sponsor_home',
+              'titolo_news_home',
               state?.language
             )}
-            linkTo={sponsorSection}
+            linkTo={newsSection}
           >
-            <HomePartner data={sponsors} />
+            <News data={news} />
           </HomeSection>
-        </>
-      )}
+        )}
+
+        <HomeSection
+          title={getTranslation(
+            state?.translations,
+            'titolo_sponsor_home',
+            state?.language
+          )}
+          linkTo={sponsorSection}
+        >
+          <HomePartner data={sponsors} />
+        </HomeSection>
+      </>
     </>
   )
 }
