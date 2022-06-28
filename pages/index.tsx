@@ -1,6 +1,6 @@
 import type { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import Anteprima from '../components/anteprima/anteprima'
 import HomePartner from '../components/home/partner'
 import HomeSection from '../components/home/section'
