@@ -36,7 +36,7 @@ const HomeSection: FC<Section> = (props) => {
       <h2 className={styles.title}>{title}</h2>
       {children}
       {showButton && linkTo && (
-        <Link href={linkTo?.url} title={linkTo?.title}>
+        <Link href={linkTo?.url} title={linkTo?.title} prefetch={false}>
           <a className={styles.button}>{linkTo?.title}</a>
         </Link>
       )}
