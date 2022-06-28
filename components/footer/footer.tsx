@@ -59,7 +59,14 @@ const Footer = () => {
               Cookie Policy
             </a>{' '}
             -{' '}
-            <Link href="/info-visitatori/contatti/">
+            <Link
+              href={getTranslation(
+                state?.translations,
+                'menu_contatti',
+                state?.language,
+                'link'
+              )}
+            >
               <a>
                 {getTranslation(
                   state?.translations,
