@@ -19,9 +19,12 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   }, [])
 
   useEffect(() => {
-    if (router.locale === 'it' || router.locale === 'en')
+    if (router.locale === 'it' || router.locale === 'en') {
       setCurrentLanguage(router.locale)
-  }, [router])
+    } else {
+      setCurrentLanguage('it')
+    }
+  }, [router.locale])
 
   useEffect(() => {
     document.body.className = isMainMenuOpen ? 'menu-open' : 'menu-closed'

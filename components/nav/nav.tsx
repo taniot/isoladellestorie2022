@@ -264,6 +264,26 @@ const Nav = () => {
     >
       <div className={styles.navCointainer}>
         <div className={styles.navHeader}>
+          <div className={styles.langMenu}>
+            <Link
+              href={getTranslation(
+                state?.translations,
+                'menu_lingua',
+                state?.language,
+                'link'
+              )}
+              locale={state?.language === 'it' ? 'en' : 'it'}
+            >
+              <a onClick={closeMenu}>
+                {getTranslation(
+                  state?.translations,
+                  'menu_lingua',
+                  state?.language
+                )}
+              </a>
+            </Link>
+          </div>
+
           <div className={styles.logoContainer}>
             <Link href="/">
               <a onClick={closeMenu}>
@@ -304,6 +324,28 @@ const Nav = () => {
             </div>
           </>
         )}
+        <div className={styles.navFooter}>
+          {' '}
+          <div className={styles.langMenu}>
+            <Link
+              href={getTranslation(
+                state?.translations,
+                'menu_lingua',
+                state?.language,
+                'link'
+              )}
+              locale={state?.language === 'it' ? 'en' : 'it'}
+            >
+              <a onClick={closeMenu}>
+                {getTranslation(
+                  state?.translations,
+                  'menu_lingua',
+                  state?.language
+                )}
+              </a>
+            </Link>
+          </div>
+        </div>
         {!isMobile && (
           <>
             {' '}

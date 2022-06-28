@@ -213,7 +213,7 @@ export const getGuestFieldByLang = (
         ? guest.descrizioneIt || ''
         : guest.descrizioneEn
         ? guest.descrizioneEn
-        : guest.descrizioneIt || ''
+        : '' || ''
 
     default:
       return ''
