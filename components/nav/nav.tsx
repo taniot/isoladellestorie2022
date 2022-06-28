@@ -285,17 +285,13 @@ const Nav = () => {
           </div>
 
           <div className={styles.logoContainer}>
-            <Link href="/">
-              <a onClick={closeMenu}>
-                <Image
-                  src="/images/l-isola-delle-storie-logo-xvii-oriz.svg"
-                  layout="fill"
-                  alt="L’Isola delle Storie 2022"
-                  className={styles.logo}
-                  priority
-                />
-              </a>
-            </Link>
+            <Image
+              src="/images/l-isola-delle-storie-logo-xvii-oriz.svg"
+              layout="fill"
+              alt="L’Isola delle Storie 2022"
+              className={styles.logo}
+              priority
+            />
           </div>
         </div>
         {isMobile && (
@@ -367,6 +363,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -385,6 +382,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -403,6 +401,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -421,6 +420,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -439,6 +439,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -468,6 +469,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -486,6 +488,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -504,6 +507,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -522,6 +526,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -540,6 +545,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -559,6 +565,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -589,6 +596,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -608,6 +616,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(
@@ -627,6 +636,7 @@ const Nav = () => {
                         state?.language,
                         'link'
                       )}
+                      prefetch={false}
                     >
                       <a onClick={closeMenu}>
                         {getTranslation(

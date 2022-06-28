@@ -66,6 +66,7 @@ const Footer = () => {
                 state?.language,
                 'link'
               )}
+              prefetch={false}
             >
               <a>
                 {getTranslation(

@@ -45,6 +45,7 @@ const Anteprima = ({ data }: { data: GuestType[] }) => {
                       state?.language,
                       'link'
                     )}${ospite.slug}/`}
+                    prefetch={false}
                   >
                     <a>
                       <span className={styles.lowLight}>{ospite.nome}</span>{' '}
