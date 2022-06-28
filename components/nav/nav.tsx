@@ -285,8 +285,8 @@ const Nav = () => {
           </div>
 
           <div className={styles.logoContainer}>
-            <Link href="/" onClick={closeMenu}>
-              <a>
+            <Link href="/">
+              <a onClick={closeMenu}>
                 <Image
                   src="/images/l-isola-delle-storie-logo-xvii-oriz.svg"
                   layout="fill"
