@@ -19,9 +19,11 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   }, [])
 
   useEffect(() => {
-    console.log('cambio lingua?')
-    if (router.locale === 'it' || router.locale === 'en')
+    if (router.locale === 'it' || router.locale === 'en') {
       setCurrentLanguage(router.locale)
+    } else {
+      setCurrentLanguage('it')
+    }
   }, [router.locale])
 
   useEffect(() => {

@@ -35,6 +35,9 @@
   justify-content: center;
   align-items: center;
   margin: 50px 0 0px 0;
+  .langMenu {
+    display: none;
+  }
 
   .logoContainer {
     display: unset;
@@ -42,6 +45,20 @@
     height: 2.5rem;
     a {
       display: block;
+    }
+  }
+}
+
+.navFooter {
+  .langMenu {
+    display: block;
+
+    z-index: 50;
+
+    & > * {
+      color: white;
+      font-family: 'AbsaraSans';
+      text-transform: uppercase;
     }
   }
 }
@@ -119,6 +136,7 @@
   .navHeader {
     margin: 50px 0 50px 0;
     .langMenu {
+      display: block;
       position: absolute;
       left: 75px;
       z-index: 50;
@@ -129,6 +147,10 @@
         text-transform: uppercase;
       }
     }
+  }
+
+  .navFooter {
+    display: none;
   }
 
   .menuContainer {
