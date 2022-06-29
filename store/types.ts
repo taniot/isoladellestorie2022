@@ -116,6 +116,9 @@ export interface wpEvent {
     eventoAnnullato: boolean
     motivazioneAnnullatoIt: string
     motivazioneAnnullatoEn: string
+    streaming: boolean
+    urlStreaming: string
+    urlYoutube: string
   }
   categorieEventi: {
     nodes: wpEventCategorie[]
@@ -198,6 +201,9 @@ export interface EventType {
   eventoAnnullato: boolean
   motivazioneAnnullatoIt: string
   motivazioneAnnullatoEn: string
+  streaming: boolean
+  urlStreaming: string | null
+  urlYoutube: string | null
 }
 
 export type EventTypeGroups = {

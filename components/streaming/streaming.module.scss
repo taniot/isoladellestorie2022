@@ -1,0 +1,21 @@
+.container {
+  @apply w-11/12 mx-auto;
+}
+
+.number_slide {
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  max-height: 100vh;
+}
+
+.live {
+  background: var(--main-bg-color);
+  background: linear-gradient(
+    128deg,
+    var(--main-bg-color) 0%,
+    var(--main-bg-color) 100%
+  );
+}

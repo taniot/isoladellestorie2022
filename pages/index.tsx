@@ -6,12 +6,20 @@ import HomePartner from '../components/home/partner'
 import HomeSection from '../components/home/section'
 import Intro from '../components/intro/intro'
 import News from '../components/news/news'
+import Streaming from '../components/streaming/streaming'
+import { getEvents } from '../lib/wp/events'
 import { getGuests } from '../lib/wp/guests'
 import { getPosts } from '../lib/wp/news'
 import { getSponsors } from '../lib/wp/sponsor'
 import { getTranslation, getTranslations } from '../lib/wp/translations'
 import AppContext from '../store/AppContext'
-import { GuestType, PartnerType, TranslationType, wpNews } from '../store/types'
+import {
+  EventType,
+  GuestType,
+  PartnerType,
+  TranslationType,
+  wpNews,
+} from '../store/types'
 import currentLocale from '../utils/currentLocale'
 
 const Home = ({
@@ -19,11 +27,13 @@ const Home = ({
   news,
   sponsors,
   translations,
+  events,
 }: {
   guests: GuestType[]
   news: wpNews
   sponsors: PartnerType[]
   translations: TranslationType[]
+  events: EventType[]
 }) => {
   const context = useContext(AppContext)
   const router = useRouter()
@@ -33,6 +43,21 @@ const Home = ({
   }, [translations, setTranslations, router])
 
   const ospitiSection = {
+    title: getTranslation(
+      state?.translations,
+      'bottone_ospiti_home',
+      state?.language
+    ),
+    url: getTranslation(
+      state?.translations,
+      'bottone_ospiti_home',
+      state?.language,
+      'link'
+    ),
+    target: '',
+  }
+
+  const streamingSection = {
     title: getTranslation(
       state?.translations,
       'bottone_ospiti_home',
@@ -92,6 +117,17 @@ const Home = ({
         >
           <Anteprima data={guests} />
         </HomeSection>
+        <HomeSection
+          bgColor="whitesmoke"
+          title={getTranslation(
+            state?.translations,
+            'titolo_streaming_home',
+            state?.language
+          )}
+          linkTo={streamingSection}
+        >
+          <Streaming data={events} />
+        </HomeSection>
 
         {news && (
           <HomeSection
@@ -127,6 +163,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const news = await getPosts(1, currentLocale(context.locale))
   const sponsors = await getSponsors('sostenuto-da')
   const translations = await getTranslations()
+  const events = await getEvents()
   let latestNews = null
   if (Array.isArray(news) && news.length > 0) {
     latestNews = news[0]
@@ -138,6 +175,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       news: latestNews,
       sponsors,
       translations,
+      events,
     },
     //revalidate: 10800,
   }

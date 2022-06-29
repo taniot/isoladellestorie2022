@@ -43,6 +43,9 @@ const qGetEvents = gql`
           eventoAnnullato
           motivazioneAnnullatoIt
           motivazioneAnnullatoEn
+          streaming
+          urlStreaming
+          urlYoutube
         }
         categorieEventi {
           nodes {
@@ -299,6 +302,9 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     eventoAnnullato: evento.dettaglioEvento.eventoAnnullato || false,
     motivazioneAnnullatoIt: evento.dettaglioEvento.motivazioneAnnullatoIt,
     motivazioneAnnullatoEn: evento.dettaglioEvento.motivazioneAnnullatoEn,
+    streaming: evento.dettaglioEvento.streaming || false,
+    urlStreaming: evento.dettaglioEvento.urlStreaming || null,
+    urlYoutube: evento.dettaglioEvento.urlYoutube || null,
   }
 }
 
