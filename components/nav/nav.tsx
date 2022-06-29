@@ -151,7 +151,7 @@ const Nav = () => {
             ),
             url: getTranslation(
               state?.translations,
-              'menu_dove_dormire',
+              'menu_dove_mangiare',
               state?.language,
               'link'
             ),
