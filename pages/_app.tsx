@@ -13,6 +13,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
     useState<keyof typeof Languages>('it')
   const [isMainMenuOpen, setIsMainMenuOpen] = useState<boolean>(false)
   const [translations, setTranslations] = useState<TranslationType[]>([])
+  //const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     TagManager.initialize({ gtmId: GOOGLE_TAG_MANAGER_ID })
@@ -29,6 +30,26 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   useEffect(() => {
     document.body.className = isMainMenuOpen ? 'menu-open' : 'menu-closed'
   }, [isMainMenuOpen])
+
+  // useEffect(() => {
+  //   router.events.on('routeChangeError', () => setLoading(false))
+  //   router.events.on('routeChangeStart', () => setLoading(false))
+  //   router.events.on('routeChangeComplete', () =>
+  //     setTimeout(() => {
+  //       setLoading(true)
+  //     }, 1000)
+  //   )
+
+  //   return () => {
+  //     router.events.off('routeChangeError', () => setLoading(false))
+  //     router.events.off('routeChangeStart', () => setLoading(false))
+  //     router.events.off('routeChangeComplete', () =>
+  //       setTimeout(() => {
+  //         setLoading(true)
+  //       }, 1000)
+  //     )
+  //   }
+  // }, [router.events])
 
   return (
     <AppContext.Provider
