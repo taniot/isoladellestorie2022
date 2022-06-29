@@ -1,7 +1,7 @@
 import cls from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useContext, useEffect, useMemo, useState } from 'react'
+import { useContext, useEffect, useMemo, useState, useCallback } from 'react'
 import Div100vh from 'react-div-100vh'
 import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io'
 import { v4 as uuidv4 } from 'uuid'
@@ -14,9 +14,10 @@ const Nav = () => {
   const context = useContext(AppContext)
   const { state, setIsMainMenuOpen } = context
   const isMobile = useMediaQuery('(max-width: 1023px)')
-  const closeMenu = () => {
-    if (setIsMainMenuOpen) setIsMainMenuOpen(false)
-  }
+
+  const closeMenu = useCallback(() => {
+    if (setIsMainMenuOpen) setTimeout(() => setIsMainMenuOpen(false), 250)
+  }, [setIsMainMenuOpen])
 
   const menus = useMemo(
     () => [
@@ -150,7 +151,7 @@ const Nav = () => {
             ),
             url: getTranslation(
               state?.translations,
-              'menu_dove_dormire',
+              'menu_dove_mangiare',
               state?.language,
               'link'
             ),
@@ -274,7 +275,7 @@ const Nav = () => {
               )}
               locale={state?.language === 'it' ? 'en' : 'it'}
             >
-              <a onClick={closeMenu}>
+              <a>
                 {getTranslation(
                   state?.translations,
                   'menu_lingua',
@@ -332,7 +333,7 @@ const Nav = () => {
               )}
               locale={state?.language === 'it' ? 'en' : 'it'}
             >
-              <a onClick={closeMenu}>
+              <a>
                 {getTranslation(
                   state?.translations,
                   'menu_lingua',
