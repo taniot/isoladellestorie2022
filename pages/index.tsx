@@ -183,7 +183,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const guests = await getGuests()
   const news = await getPosts(1, currentLocale(context.locale))
   const sponsors = await getSponsors('sostenuto-da')
-  const translations = await getTranslations()
+  const translations = await getTranslations(currentLocale(context.locale))
+
   const events = await getEvents()
   let latestNews = null
   if (Array.isArray(news) && news.length > 0) {

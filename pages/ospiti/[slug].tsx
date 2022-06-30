@@ -7,6 +7,7 @@ import { useContext, useEffect } from 'react'
 import AppContext from '../../store/AppContext'
 import { TranslationType, GuestType } from '../../store/types'
 import Seo from '../../components/seo/seo'
+import currentLocale from '../../utils/currentLocale'
 
 const Ospite = ({
   guest,
@@ -64,7 +65,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context?.params?.slug
 
   let guest = null
-  const translations = await getTranslations()
+  const translations = await getTranslations(currentLocale(context.locale))
   if (typeof slug === 'string') guest = await getGuestBySlug(slug)
 
   return {
@@ -72,7 +73,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       guest,
       translations,
     },
-    //revalidate: 10800,
   }
 }
 

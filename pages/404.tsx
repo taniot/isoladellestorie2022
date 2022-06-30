@@ -5,6 +5,7 @@ import styles from '../styles/pageDefault.module.scss'
 import { TranslationType } from '../store/types'
 import { useContext, useEffect } from 'react'
 import AppContext from '../store/AppContext'
+import currentLocale from '../utils/currentLocale'
 
 const ErrorPage = ({ translations }: { translations: TranslationType[] }) => {
   const { setTranslations, state } = useContext(AppContext)
@@ -50,8 +51,8 @@ const ErrorPage = ({ translations }: { translations: TranslationType[] }) => {
 
 export default ErrorPage
 
-export const getStaticProps: GetStaticProps = async () => {
-  const translations = await getTranslations()
+export const getStaticProps: GetStaticProps = async (context) => {
+  const translations = await getTranslations(currentLocale(context.locale))
 
   return {
     props: {
