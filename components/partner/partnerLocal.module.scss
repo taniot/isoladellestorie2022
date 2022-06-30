@@ -1,0 +1,30 @@
+.partnerContainer {
+  @apply w-10/12 mx-auto;
+}
+
+.sponsor {
+  font-family: 'AbsaraSans-Thin';
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  border-bottom: 1px dashed #efefef;
+  padding: 10px 0;
+  @screen md {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    border-bottom: unset;
+  }
+}
+
+.description {
+  @apply w-10/12 mx-auto;
+  font-family: 'AbsaraSans-Thin';
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  @screen md {
+    @apply w-6/12 mx-auto;
+    font-size: 1.2rem;
+  }
+}
