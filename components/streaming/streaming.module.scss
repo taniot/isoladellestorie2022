@@ -1,0 +1,18 @@
+.container {
+  @apply w-10/12 mx-auto;
+  @screen md {
+    @apply w-11/12 mx-auto;
+  }
+}
+
+.number_slide {
+  background: var(--main-bg-color);
+}
+
+.live {
+  background: linear-gradient(128deg, #c7839c 0%, #c7839c 100%);
+}
+
+.finished {
+  background: linear-gradient(128deg, #99ccad 0%, #99ccad 100%);
+}

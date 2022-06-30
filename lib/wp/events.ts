@@ -1,4 +1,6 @@
 import { gql } from 'graphql-request'
+import { format } from 'date-fns'
+import it from 'date-fns/locale/it'
 import {
   EventType,
   EventTypeDataGroups,
@@ -43,6 +45,9 @@ const qGetEvents = gql`
           eventoAnnullato
           motivazioneAnnullatoIt
           motivazioneAnnullatoEn
+          streaming
+          urlStreaming
+          urlYoutube
         }
         categorieEventi {
           nodes {
@@ -299,6 +304,9 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     eventoAnnullato: evento.dettaglioEvento.eventoAnnullato || false,
     motivazioneAnnullatoIt: evento.dettaglioEvento.motivazioneAnnullatoIt,
     motivazioneAnnullatoEn: evento.dettaglioEvento.motivazioneAnnullatoEn,
+    streaming: evento.dettaglioEvento.streaming || false,
+    urlStreaming: evento.dettaglioEvento.urlStreaming || null,
+    urlYoutube: evento.dettaglioEvento.urlYoutube || null,
   }
 }
 
@@ -469,6 +477,13 @@ export const getEventFieldByLang = (
         : event.motivazioneAnnullatoEn
         ? event.motivazioneAnnullatoEn
         : event.motivazioneAnnullatoIt || ''
+
+    case 'date_formatted':
+      return language === 'it'
+        ? `${format(event.dataOrdA, 'd MMMM', { locale: it })} ore ${' '}
+          ${format(event.dataOrdA, 'H:mm', { locale: it })}`
+        : `${format(event.dataOrdA, 'd MMMM')} 
+          ${format(event.dataOrdA, 'h:mm aaa')}`
 
     /*
 

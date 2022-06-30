@@ -7,7 +7,7 @@ import { client } from '../client'
 const qGetSponsors = gql`
   query {
     sponsors(
-      last: 100
+      last: 200
       where: { orderby: { field: MENU_ORDER, order: DESC } }
     ) {
       nodes {
