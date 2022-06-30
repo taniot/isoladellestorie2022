@@ -6,8 +6,8 @@ import parse from 'html-react-parser'
 import classNames from 'classnames'
 import styles from './eventoStreaming.module.scss'
 import { AiFillYoutube } from 'react-icons/ai'
-import { format } from 'date-fns'
-import it from 'date-fns/locale/it'
+import { getTranslation } from '../../lib/wp/translations'
+
 const EventoStreaming = ({ evento }: { evento: EventType }) => {
   const { state } = useContext(AppContext)
   return (
@@ -19,10 +19,31 @@ const EventoStreaming = ({ evento }: { evento: EventType }) => {
         <span className={styles.time}>
           {!evento.currentLive &&
             !evento.finished &&
-            ` ${format(evento.dataOrdA, 'd MMMM', { locale: it })} ore ${' '}
-          ${format(evento.dataOrdA, 'H:mm', { locale: it })}`}
-          {evento.currentLive && `Live Streaming`}
-          {evento.finished && `Evento concluso`}
+            getEventFieldByLang(evento, 'date_formatted', state?.language)}
+          <a
+            title="Streaming Live"
+            target="_blank"
+            rel="noreferrer"
+            href={getTranslation(
+              state?.translations,
+              'live_streaming',
+              state?.language,
+              'link'
+            )}
+          >
+            {evento.currentLive &&
+              getTranslation(
+                state?.translations,
+                'live_streaming',
+                state?.language
+              )}
+          </a>
+          {evento.finished &&
+            getTranslation(
+              state?.translations,
+              'evento_concluso',
+              state?.language
+            )}
         </span>
       </p>
 
@@ -45,7 +66,9 @@ const EventoStreaming = ({ evento }: { evento: EventType }) => {
       </div>
 
       {evento.tipologiaName && !evento.tipologia?.includes('segnaposto') && (
-        <p className={styles.tipologia}>{evento.tipologiaName}</p>
+        <p className={styles.tipologia}>
+          {getEventFieldByLang(evento, 'tipologia', state?.language)}
+        </p>
       )}
     </div>
   )

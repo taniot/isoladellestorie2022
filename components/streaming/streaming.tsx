@@ -14,8 +14,8 @@ const Streaming = ({ data }: { data: EventType[] }) => {
   const [currentDate, setCurrentDate] = useState(0)
 
   useEffect(() => {
-    //setCurrentDate(Date.parse('2022-07-03T21:45:00'))
     setCurrentDate(Date.parse(new Date().toISOString()))
+    //setCurrentDate(Date.parse('2022-07-01T19:31:00'))
   }, [])
 
   useEffect(() => {
@@ -48,8 +48,6 @@ const Streaming = ({ data }: { data: EventType[] }) => {
     const result = data
       .filter((event) => event.streaming === true)
       .map((event) => {
-        //const current = Date.parse(new Date().toISOString())
-
         return {
           ...event,
           currentLive:
