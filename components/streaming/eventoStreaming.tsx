@@ -5,11 +5,27 @@ import AppContext from '../../store/AppContext'
 import parse from 'html-react-parser'
 import classNames from 'classnames'
 import styles from './eventoStreaming.module.scss'
+import { AiFillYoutube } from 'react-icons/ai'
+import { format } from 'date-fns'
+import it from 'date-fns/locale/it'
 const EventoStreaming = ({ evento }: { evento: EventType }) => {
   const { state } = useContext(AppContext)
   return (
     <div className={styles.streaming}>
-      <span className={styles.time}>{evento.oraInizio}</span>
+      <p className={styles.quando}>
+        <span className={styles.video}>
+          <AiFillYoutube />
+        </span>
+        <span className={styles.time}>
+          {!evento.currentLive &&
+            !evento.finished &&
+            ` ${format(evento.dataOrdA, 'd MMMM', { locale: it })} ore ${' '}
+          ${format(evento.dataOrdA, 'H:mm', { locale: it })}`}
+          {evento.currentLive && `Live Streaming`}
+          {evento.finished && `Evento concluso`}
+        </span>
+      </p>
+
       {!evento.nascondiTitolo && (
         <h4 className={styles.title}>
           {getEventFieldByLang(evento, 'title', state?.language)}
@@ -27,6 +43,10 @@ const EventoStreaming = ({ evento }: { evento: EventType }) => {
             : ''
         )}
       </div>
+
+      {evento.tipologiaName && !evento.tipologia?.includes('segnaposto') && (
+        <p className={styles.tipologia}>{evento.tipologiaName}</p>
+      )}
     </div>
   )
 }

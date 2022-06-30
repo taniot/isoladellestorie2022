@@ -1,20 +1,80 @@
 .streaming {
   display: flex;
   flex-direction: column;
+  padding: 1rem 2.5rem;
+  position: relative;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 5rem;
+
+  @screen md {
+    padding: 2rem 3.5rem;
+  }
 }
 
 .title {
-  color: white;
-  font-family: 'AbsaraSans-Thin';
-  font-size: 1.5rem;
+  color: whitesmoke;
+  font-family: 'AbsaraSans-Thin-Italic';
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+
+  @screen md {
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
+}
+
+.tipologia {
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  font-family: 'AbsaraSans';
   margin-bottom: 0.25rem;
+  margin-top: 0.25rem;
+  color: whitesmoke;
 }
 
 .description {
   font-family: 'AbsaraSans-Thin';
+  font-size: 1rem;
+  line-height: 1.4rem;
+  p {
+    display: inline;
+  }
+  b,
+  strong {
+    font-family: 'AbsaraSans';
+  }
+
+  @screen md {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}
+
+.quando {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.video {
+  font-size: 2rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+
+  @screen md {
+    font-size: 3rem;
+  }
+}
+
+.time {
   font-size: 1.2rem;
+  font-family: 'AbsaraSans-TF-Light';
+  display: inline-block;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+
+  @screen md {
+    font-size: 1.3rem;
+  }
 }

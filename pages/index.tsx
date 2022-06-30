@@ -1,6 +1,6 @@
 import type { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Anteprima from '../components/anteprima/anteprima'
 import HomePartner from '../components/home/partner'
 import HomeSection from '../components/home/section'
@@ -38,6 +38,24 @@ const Home = ({
   const context = useContext(AppContext)
   const router = useRouter()
   const { state, setTranslations } = context
+  const [showStreaming, setShowStreaming] = useState(false)
+  const [showButtonStreaming, setShowButtonStreaming] = useState(false)
+
+  useEffect(() => {
+    const currentDate = Date.parse(new Date().toISOString())
+    const dateStart = Date.parse('2022-07-01T17:30:00')
+    const dateStartStreaming = Date.parse('2022-07-01T19:00:00')
+    const dateEndStreaming = Date.parse('2022-07-03T21:00:00')
+
+    if (currentDate > dateStart) {
+      setShowStreaming(true)
+    }
+
+    if (currentDate >= dateStartStreaming && dateEndStreaming <= currentDate) {
+      setShowButtonStreaming(true)
+    }
+  }, [])
+
   useEffect(() => {
     if (setTranslations) setTranslations(translations)
   }, [translations, setTranslations, router])
@@ -60,12 +78,12 @@ const Home = ({
   const streamingSection = {
     title: getTranslation(
       state?.translations,
-      'bottone_ospiti_home',
+      'bottone_streaming_home',
       state?.language
     ),
     url: getTranslation(
       state?.translations,
-      'bottone_ospiti_home',
+      'bottone_streaming_home',
       state?.language,
       'link'
     ),
@@ -117,17 +135,20 @@ const Home = ({
         >
           <Anteprima data={guests} />
         </HomeSection>
-        <HomeSection
-          bgColor="whitesmoke"
-          title={getTranslation(
-            state?.translations,
-            'titolo_streaming_home',
-            state?.language
-          )}
-          linkTo={streamingSection}
-        >
-          <Streaming data={events} />
-        </HomeSection>
+        {showStreaming && (
+          <HomeSection
+            bgColor="whitesmoke"
+            title={getTranslation(
+              state?.translations,
+              'titolo_streaming_home',
+              state?.language
+            )}
+            linkTo={streamingSection}
+            showButton={showButtonStreaming}
+          >
+            <Streaming data={events} />
+          </HomeSection>
+        )}
 
         {news && (
           <HomeSection

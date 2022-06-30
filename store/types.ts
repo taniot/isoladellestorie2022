@@ -204,6 +204,8 @@ export interface EventType {
   streaming: boolean
   urlStreaming: string | null
   urlYoutube: string | null
+  currentLive?: boolean
+  finished?: boolean
 }
 
 export type EventTypeGroups = {
