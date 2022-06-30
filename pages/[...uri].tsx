@@ -120,7 +120,7 @@ export const getStaticProps: GetStaticProps = async (
     context.defaultLocale
   )
   const page = await getPageByURI(pageURI)
-  const translations = await getTranslations()
+  const translations = await getTranslations(currentLocale(context.locale))
   let defaultPage = false
   let guests = null
   let places = null
