@@ -60,6 +60,9 @@ const Intro = () => {
               objectPosition="center bottom"
               priority
               placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                shimmer(800, 600)
+              )}`}
             />
           </>
         )}
