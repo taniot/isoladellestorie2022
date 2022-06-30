@@ -5,6 +5,7 @@ import { Page, PartnerType } from '../../store/types'
 import styles from '../../styles/pageDefault.module.scss'
 import HomePartner from '../home/partner'
 import HomeSection from '../home/section'
+import PartnerLocal from './partnerLocal'
 const Partner = (info: { data: PartnerType[]; page: Page }) => {
   const { state } = useContext(AppContext)
   const { data } = info
@@ -102,6 +103,21 @@ const Partner = (info: { data: PartnerType[]; page: Page }) => {
               data={data.filter(
                 (partner: { type: string }) =>
                   partner.type === 'media-technical-partner'
+              )}
+            />
+          </HomeSection>
+          <HomeSection
+            title={getTranslation(
+              state?.translations,
+              'sponsor_locali',
+              state?.language
+            )}
+            showButton={false}
+            paddingY={50}
+          >
+            <PartnerLocal
+              data={data.filter(
+                (partner: { type: string }) => partner.type === 'sponsor-locali'
               )}
             />
           </HomeSection>
