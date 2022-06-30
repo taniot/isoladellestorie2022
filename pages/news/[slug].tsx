@@ -6,6 +6,7 @@ import { TranslationType, wpNews } from '../../store/types'
 import { useContext, useEffect } from 'react'
 import AppContext from '../../store/AppContext'
 import Seo from '../../components/seo/seo'
+import currentLocale from '../../utils/currentLocale'
 const NewsPage = ({
   post,
   translations,
@@ -49,7 +50,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context?.params?.slug
 
   let post = null
-  const translations = await getTranslations()
+  const translations = await getTranslations(currentLocale(context.locale))
 
   if (typeof slug === 'string') post = await getPostBySlug(slug)
 

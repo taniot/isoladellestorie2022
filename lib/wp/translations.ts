@@ -4,8 +4,8 @@ import { replaceText } from '../../utils/replaceText'
 import { TranslationType, wpTranslation } from '../../store/types'
 
 const qGetTranslations = gql`
-  query {
-    traduzioni(last: 1000) {
+  query ($language: LanguageCodeFilterEnum) {
+    traduzioni(last: 100, where: { language: $language }) {
       nodes {
         id
         title
@@ -25,14 +25,20 @@ const qGetTranslations = gql`
   }
 `
 
-export const getTranslations = async (): Promise<TranslationType[]> => {
+export const getTranslations = async (
+  locale = 'IT'
+): Promise<TranslationType[]> => {
   const query = qGetTranslations
   if (!client) return []
+
+  const variables = {
+    language: locale,
+  }
 
   let result: TranslationType[] = []
 
   try {
-    const data = await client.request(query)
+    const data = await client.request(query, variables)
 
     result = data?.traduzioni?.nodes?.map((traduzione: wpTranslation) => {
       return {
@@ -44,10 +50,9 @@ export const getTranslations = async (): Promise<TranslationType[]> => {
       }
     })
 
-    //console.log({ result });
-
     return result
   } catch (error) {
+    console.log({ error })
     return []
   }
 }
@@ -59,14 +64,11 @@ export const getTranslation = (
   what = 'title'
 ): string => {
   if (!translations || !what) return ''
+
   const result =
     translations
       .filter((tr: TranslationType) => tr.language === language)
-      .find((tr: TranslationType) => tr.slug === slug) ||
-    translations
-      .filter((tr: TranslationType) => tr.language === 'it')
-      .find((tr: TranslationType) => tr.slug === slug) ||
-    null
+      .find((tr: TranslationType) => tr.slug === slug) || null
 
   if (what === 'title') return result?.title || ''
   if (what === 'link') {
