@@ -48,6 +48,10 @@ const Streaming = ({ data }: { data: EventType[] }) => {
     const result = data
       .filter((event) => event.streaming === true)
       .map((event) => {
+        console.log({ currentDate })
+        console.log('dataA', event.dataOrdA)
+        console.log('dataB', event.dataOrdB)
+
         return {
           ...event,
           currentLive:
