@@ -1,5 +1,5 @@
 import { gql } from 'graphql-request'
-import { format } from 'date-fns'
+import { format } from 'date-fns-tz'
 import it from 'date-fns/locale/it'
 import {
   EventType,
@@ -480,10 +480,20 @@ export const getEventFieldByLang = (
 
     case 'date_formatted':
       return language === 'it'
-        ? `${format(event.dataOrdA, 'd MMMM', { locale: it })} ore ${' '}
-          ${format(event.dataOrdA, 'H:mm', { locale: it })}`
-        : `${format(event.dataOrdA, 'd MMMM')} 
-          ${format(event.dataOrdA, 'h:mm aaa')}`
+        ? `${format(event.dataOrdA, 'd MMMM', {
+            locale: it,
+            timeZone: 'Europe/Rome',
+          })} ore ${' '}
+          ${format(event.dataOrdA, 'H:mm', {
+            locale: it,
+            timeZone: 'Europe/Rome',
+          })}`
+        : `${format(event.dataOrdA, 'd MMMM', {
+            timeZone: 'Europe/Rome',
+          })} 
+          ${format(event.dataOrdA, 'h:mm aaa', {
+            timeZone: 'Europe/Rome',
+          })}`
 
     /*
 
