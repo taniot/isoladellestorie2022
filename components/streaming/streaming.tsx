@@ -11,12 +11,6 @@ const Streaming = ({ data }: { data: EventType[] }) => {
   const [ref, slider] = useKeenSlider<HTMLDivElement>(options)
   const [streaming, setStreaming] = useState<EventType[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [currentDate, setCurrentDate] = useState(0)
-
-  useEffect(() => {
-    setCurrentDate(Date.parse(new Date().toISOString()))
-    //setCurrentDate(Date.parse('2022-07-01T19:31:00'))
-  }, [])
 
   useEffect(() => {
     setCurrentIndex(
@@ -45,9 +39,11 @@ const Streaming = ({ data }: { data: EventType[] }) => {
   }, [slider, currentIndex])
 
   useEffect(() => {
+    const currentDate = Date.parse(new Date().toISOString())
     const result = data
       .filter((event) => event.streaming === true)
       .map((event) => {
+        console.log('title', event.title)
         console.log({ currentDate })
         console.log('dataA', event.dataOrdA)
         console.log('dataB', event.dataOrdB)
@@ -63,7 +59,7 @@ const Streaming = ({ data }: { data: EventType[] }) => {
       })
 
     setStreaming(result)
-  }, [data, currentDate])
+  }, [data])
 
   return (
     <section className={styles.container}>
