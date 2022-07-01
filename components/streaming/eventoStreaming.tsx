@@ -17,9 +17,6 @@ const EventoStreaming = ({ evento }: { evento: EventType }) => {
           <AiFillYoutube />
         </span>
         <span className={styles.time}>
-          {!evento.currentLive &&
-            !evento.finished &&
-            getEventFieldByLang(evento, 'date_formatted', state?.language)}
           <a
             title="Streaming Live"
             target="_blank"
