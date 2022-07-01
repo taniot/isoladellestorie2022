@@ -5,7 +5,7 @@ import cls from 'classnames'
 import { EventType } from '../../store/types'
 import { useEffect, useState } from 'react'
 import EventoStreaming from './eventoStreaming'
-import { format } from 'date-fns-tz'
+import { format } from 'date-fns'
 
 const Streaming = ({ data }: { data: EventType[] }) => {
   const [options] = useState({})
