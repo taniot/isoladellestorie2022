@@ -1,5 +1,5 @@
 import { gql } from 'graphql-request'
-import { format } from 'date-fns-tz'
+import { format, utcToZonedTime } from 'date-fns-tz'
 import it from 'date-fns/locale/it'
 import {
   EventType,
@@ -479,21 +479,17 @@ export const getEventFieldByLang = (
         : event.motivazioneAnnullatoIt || ''
 
     case 'date_formatted':
+      const eventDate = utcToZonedTime(event.dataOrdA, 'Europe/Rome')
+
       return language === 'it'
-        ? `${format(event.dataOrdA, 'd MMMM', {
+        ? `${format(eventDate, 'd MMMM', {
             locale: it,
-            timeZone: 'Europe/Rome',
           })} ore ${' '}
-          ${format(event.dataOrdA, 'H:mm', {
+          ${format(eventDate, 'H:mm', {
             locale: it,
-            timeZone: 'Europe/Rome',
           })}`
-        : `${format(event.dataOrdA, 'd MMMM', {
-            timeZone: 'Europe/Rome',
-          })} 
-          ${format(event.dataOrdA, 'h:mm aaa', {
-            timeZone: 'Europe/Rome',
-          })}`
+        : `${format(eventDate, 'd MMMM')} 
+          ${format(eventDate, 'h:mm aaa')}`
 
     /*
 
