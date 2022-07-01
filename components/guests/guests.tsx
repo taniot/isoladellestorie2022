@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { useContext, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { getGuestFieldByLang } from '../../lib/wp/guests'
@@ -36,7 +35,8 @@ const Guests = ({ data }: { data: GuestType[] }) => {
             {isLoading && <GuestsLoading />}
             {posts?.map((data: GuestType) => (
               <div key={uuidv4()} className={styles.grid_item}>
-                <Link
+                <a
+                  className={styles.grid_item_link}
                   href={`${getTranslation(
                     state?.translations,
                     'menu_ospiti',
@@ -44,19 +44,17 @@ const Guests = ({ data }: { data: GuestType[] }) => {
                     'link'
                   )}${data.slug}/`}
                 >
-                  <a className={styles.grid_item_link}>
-                    <GuestImage
-                      title={data.title}
-                      image={data.image}
-                      borderColor="#e6cd00"
-                    />
+                  <GuestImage
+                    title={data.title}
+                    image={data.image}
+                    borderColor="#e6cd00"
+                  />
 
-                    <h2 className={styles.grid_item_title}>{data.title}</h2>
-                    <p className={styles.grid_item_description}>
-                      {getGuestFieldByLang(data, 'jobTitle', state?.language)}
-                    </p>
-                  </a>
-                </Link>
+                  <h2 className={styles.grid_item_title}>{data.title}</h2>
+                  <p className={styles.grid_item_description}>
+                    {getGuestFieldByLang(data, 'jobTitle', state?.language)}
+                  </p>
+                </a>
               </div>
             ))}
           </div>
