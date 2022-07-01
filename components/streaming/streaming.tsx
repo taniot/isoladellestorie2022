@@ -47,6 +47,9 @@ const Streaming = ({ data }: { data: EventType[] }) => {
         console.log({ currentDate })
         console.log('dataA', event.dataOrdA)
         console.log('dataB', event.dataOrdB)
+        console.log(new Date())
+        console.log(event.data, event.oraInizio)
+        console.log(event.data, event.oraFine)
 
         return {
           ...event,
