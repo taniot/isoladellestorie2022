@@ -40,11 +40,19 @@ const Streaming = ({ data }: { data: EventType[] }) => {
   }, [slider, currentIndex])
 
   useEffect(() => {
-    const currentDate = format(new Date(), 'T')
+    const theDate = format(new Date(), 'yyyy-MM-dd')
+    const theTime = format(new Date(), 'HH:mm:ss')
+    const myDate = `${theDate}T${theTime}`
+    const currentDate = Date.parse(myDate)
+
     const result = data
       .filter((event) => event.streaming === true)
       .map((event) => {
-        console.log('title', event.title)
+        // console.log('title', event.title)
+        // console.log('currentDate', currentDate)
+        // console.log('theDate', theDate)
+        // console.log('theTime', theTime)
+        // console.log('myDate', myDate)
         console.log('currentDate', currentDate)
         console.log('dataA', event.dataOrdA)
         console.log('dataB', event.dataOrdB)
@@ -52,11 +60,10 @@ const Streaming = ({ data }: { data: EventType[] }) => {
         return {
           ...event,
           currentLive:
-            parseInt(currentDate) >= event.dataOrdA &&
-            parseInt(currentDate) <= event.dataOrdB
+            currentDate >= event.dataOrdA && currentDate <= event.dataOrdB
               ? true
               : false,
-          finished: parseInt(currentDate) > event.dataOrdB,
+          finished: currentDate > event.dataOrdB,
         }
       })
 
