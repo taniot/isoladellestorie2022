@@ -485,11 +485,9 @@ export const getEventFieldByLang = (
         ? `${format(eventDate, 'd MMMM', {
             locale: it,
           })} ore ${' '}
-          ${format(eventDate, 'H:mm', {
-            locale: it,
-          })}`
+          ${event.oraInizio}`
         : `${format(eventDate, 'd MMMM')} 
-          ${format(eventDate, 'h:mm aaa')}`
+          ${event.oraInizio}`
 
     /*
 
