@@ -5,6 +5,7 @@ import cls from 'classnames'
 import { EventType } from '../../store/types'
 import { useEffect, useState } from 'react'
 import EventoStreaming from './eventoStreaming'
+import { format } from 'date-fns-tz'
 
 const Streaming = ({ data }: { data: EventType[] }) => {
   const [options] = useState({})
@@ -39,25 +40,23 @@ const Streaming = ({ data }: { data: EventType[] }) => {
   }, [slider, currentIndex])
 
   useEffect(() => {
-    const currentDate = Date.parse(new Date().toISOString())
+    const currentDate = format(new Date(), 'T')
     const result = data
       .filter((event) => event.streaming === true)
       .map((event) => {
         console.log('title', event.title)
-        console.log({ currentDate })
+        console.log('currentDate', currentDate)
         console.log('dataA', event.dataOrdA)
         console.log('dataB', event.dataOrdB)
-        console.log(new Date())
-        console.log(event.data, event.oraInizio)
-        console.log(event.data, event.oraFine)
 
         return {
           ...event,
           currentLive:
-            currentDate >= event.dataOrdA && currentDate <= event.dataOrdB
+            parseInt(currentDate) >= event.dataOrdA &&
+            parseInt(currentDate) <= event.dataOrdB
               ? true
               : false,
-          finished: currentDate > event.dataOrdB,
+          finished: parseInt(currentDate) > event.dataOrdB,
         }
       })
 
