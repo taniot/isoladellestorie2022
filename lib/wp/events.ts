@@ -1,5 +1,5 @@
 import { gql } from 'graphql-request'
-import { format, utcToZonedTime } from 'date-fns-tz'
+import { format } from 'date-fns'
 import it from 'date-fns/locale/it'
 import {
   EventType,
@@ -211,14 +211,14 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     ? evento?.dettaglioEvento?.dataEvento +
       'T' +
       evento?.dettaglioEvento?.oraInizio +
-      ':00'
+      ':00+02:00'
     : evento?.dettaglioEvento?.dataEvento
 
   const dataFine = evento?.dettaglioEvento?.oraFine
     ? evento?.dettaglioEvento?.dataEvento +
       'T' +
       evento?.dettaglioEvento?.oraFine +
-      ':00'
+      ':00+02:00'
     : evento?.dettaglioEvento?.dataEvento
 
   return {
@@ -479,15 +479,11 @@ export const getEventFieldByLang = (
         : event.motivazioneAnnullatoIt || ''
 
     case 'date_formatted':
-      const eventDate = utcToZonedTime(event.dataOrdA, 'Europe/Rome')
-
       return language === 'it'
-        ? `${format(eventDate, 'd MMMM', {
-            locale: it,
-          })} ore ${' '}
-          ${event.oraInizio}`
-        : `${format(eventDate, 'd MMMM')} 
-          ${event.oraInizio}`
+        ? `${format(event.dataOrdA, 'd MMMM', { locale: it })} ore ${' '}
+          ${format(event.dataOrdA, 'H:mm', { locale: it })}`
+        : `${format(event.dataOrdA, 'd MMMM')} 
+          ${format(event.dataOrdA, 'h:mm aaa')}`
 
     /*
 

@@ -5,13 +5,18 @@ import cls from 'classnames'
 import { EventType } from '../../store/types'
 import { useEffect, useState } from 'react'
 import EventoStreaming from './eventoStreaming'
-import { format } from 'date-fns'
 
 const Streaming = ({ data }: { data: EventType[] }) => {
   const [options] = useState({})
   const [ref, slider] = useKeenSlider<HTMLDivElement>(options)
   const [streaming, setStreaming] = useState<EventType[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentDate, setCurrentDate] = useState(0)
+
+  useEffect(() => {
+    setCurrentDate(Date.parse(new Date().toISOString()))
+    //setCurrentDate(Date.parse('2022-07-01T19:31:00'))
+  }, [])
 
   useEffect(() => {
     setCurrentIndex(
@@ -40,20 +45,11 @@ const Streaming = ({ data }: { data: EventType[] }) => {
   }, [slider, currentIndex])
 
   useEffect(() => {
-    const theDate = format(new Date(), 'yyyy-MM-dd')
-    const theTime = format(new Date(), 'HH:mm:ss')
-    const myDate = `${theDate}T${theTime}`
-    const currentDate = Date.parse(myDate)
-
     const result = data
       .filter((event) => event.streaming === true)
       .map((event) => {
-        // console.log('title', event.title)
-        // console.log('currentDate', currentDate)
-        // console.log('theDate', theDate)
-        // console.log('theTime', theTime)
-        // console.log('myDate', myDate)
-        console.log('currentDate', currentDate)
+        console.log('title', event.title)
+        console.log('current', currentDate)
         console.log('dataA', event.dataOrdA)
         console.log('dataB', event.dataOrdB)
 
@@ -68,7 +64,7 @@ const Streaming = ({ data }: { data: EventType[] }) => {
       })
 
     setStreaming(result)
-  }, [data])
+  }, [data, currentDate])
 
   return (
     <section className={styles.container}>
