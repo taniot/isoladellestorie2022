@@ -20,6 +20,7 @@ const EventoStreaming = ({ evento }: { evento: EventType }) => {
           {!evento.currentLive &&
             !evento.finished &&
             getEventFieldByLang(evento, 'date_formatted', state?.language)}
+
           <a
             title="Streaming Live"
             target="_blank"
