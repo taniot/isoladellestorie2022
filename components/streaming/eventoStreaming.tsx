@@ -40,11 +40,27 @@ const EventoStreaming = ({ evento }: { evento: EventType }) => {
               )}
           </a>
           {evento.finished &&
+            evento.urlStreaming === '' &&
             getTranslation(
               state?.translations,
               'evento_concluso',
               state?.language
             )}
+
+          {evento.finished && evento.urlStreaming !== '' && (
+            <a
+              title="Streaming Live"
+              target="_blank"
+              rel="noreferrer"
+              href={evento.urlStreaming || `#`}
+            >
+              {getTranslation(
+                state?.translations,
+                'evento_video',
+                state?.language
+              )}
+            </a>
+          )}
         </span>
       </p>
 

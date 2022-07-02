@@ -156,6 +156,7 @@ const Home = ({
             )}
             linkTo={streamingSection}
             showButton={true}
+            target="_blank"
           >
             <Streaming data={events} />
           </HomeSection>
