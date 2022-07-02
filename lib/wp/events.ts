@@ -211,14 +211,14 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     ? evento?.dettaglioEvento?.dataEvento +
       'T' +
       evento?.dettaglioEvento?.oraInizio +
-      ':00'
+      ':00+02:00'
     : evento?.dettaglioEvento?.dataEvento
 
   const dataFine = evento?.dettaglioEvento?.oraFine
     ? evento?.dettaglioEvento?.dataEvento +
       'T' +
       evento?.dettaglioEvento?.oraFine +
-      ':00'
+      ':00+02:00'
     : evento?.dettaglioEvento?.dataEvento
 
   return {
@@ -262,8 +262,8 @@ export const shapeEvento = (evento: wpEvent): EventType => {
         ' ' +
         evento?.dettaglioEvento?.oraFine
     ),
-    dataOrdA: Date.parse(dataInizio),
-    dataOrdB: Date.parse(dataFine),
+    dataOrdA: Date.parse(new Date(dataInizio).toISOString()),
+    dataOrdB: Date.parse(new Date(dataFine).toISOString()),
     categoria: evento?.categorieEventi?.nodes[0]?.slug || null,
     tipologia: evento?.tipologieEventi?.nodes[0]?.slug || null,
     luogo: evento?.luoghiEventi?.nodes[0]?.slug || null,
