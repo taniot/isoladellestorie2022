@@ -12,6 +12,7 @@ interface Section {
   showButton?: boolean
   children: React.ReactNode
   paddingY?: number
+  target?: string
 }
 
 const HomeSection: FC<Section> = (props) => {
@@ -23,6 +24,7 @@ const HomeSection: FC<Section> = (props) => {
     children,
     showButton = true,
     paddingY = isMobile ? 50 : 100,
+    target = '_self',
   } = props
   return (
     <div
@@ -35,10 +37,21 @@ const HomeSection: FC<Section> = (props) => {
     >
       <h2 className={styles.title}>{title}</h2>
       {children}
-      {showButton && linkTo && (
+      {showButton && linkTo && target === '_self' && (
         <Link href={linkTo?.url} title={linkTo?.title} prefetch={false}>
           <a className={styles.button}>{linkTo?.title}</a>
         </Link>
+      )}
+      {showButton && linkTo && target === '_blank' && (
+        <a
+          className={styles.button}
+          href={linkTo?.url}
+          title={linkTo?.title}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {linkTo?.title}
+        </a>
       )}
     </div>
   )
