@@ -43,9 +43,13 @@ const Home = ({
 
   useEffect(() => {
     const currentDate = Date.parse(new Date().toISOString())
-    const dateStart = Date.parse('2022-07-01T17:30:00')
-    const dateStartStreaming = Date.parse('2022-07-01T19:00:00')
-    const dateEndStreaming = Date.parse('2022-07-03T21:00:00')
+    const dateStart = Date.parse(new Date('2022-07-01T17:30:00').toISOString())
+    const dateStartStreaming = Date.parse(
+      new Date('2022-07-01T19:00:00+02:00').toISOString()
+    )
+    const dateEndStreaming = Date.parse(
+      new Date('2022-07-03T21:00:00+02:00').toISOString()
+    )
 
     if (currentDate > dateStart) {
       setShowStreaming(true)
