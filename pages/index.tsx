@@ -43,7 +43,9 @@ const Home = ({
 
   useEffect(() => {
     const currentDate = Date.parse(new Date().toISOString())
-    const dateStart = Date.parse(new Date('2022-07-01T17:30:00').toISOString())
+    const dateStart = Date.parse(
+      new Date('2022-07-01T17:30:00+02:00').toISOString()
+    )
     const dateStartStreaming = Date.parse(
       new Date('2022-07-01T19:00:00+02:00').toISOString()
     )

@@ -211,14 +211,14 @@ export const shapeEvento = (evento: wpEvent): EventType => {
     ? evento?.dettaglioEvento?.dataEvento +
       'T' +
       evento?.dettaglioEvento?.oraInizio +
-      ':00'
+      ':00+02:00'
     : evento?.dettaglioEvento?.dataEvento
 
   const dataFine = evento?.dettaglioEvento?.oraFine
     ? evento?.dettaglioEvento?.dataEvento +
       'T' +
       evento?.dettaglioEvento?.oraFine +
-      ':00'
+      ':00+02:00'
     : evento?.dettaglioEvento?.dataEvento
 
   return {
