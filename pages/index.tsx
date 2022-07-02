@@ -57,9 +57,9 @@ const Home = ({
       setShowStreaming(true)
     }
 
-    console.log({ currentDate })
-    console.log({ dateStartStreaming })
-    console.log({ dateEndStreaming })
+    // console.log({ currentDate })
+    // console.log({ dateStartStreaming })
+    // console.log({ dateEndStreaming })
 
     if (currentDate >= dateStartStreaming && dateEndStreaming <= currentDate) {
       setShowButtonStreaming(true)
