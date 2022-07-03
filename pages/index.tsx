@@ -53,13 +53,11 @@ const Home = ({
       new Date('2022-07-03T21:00:00+02:00').toISOString()
     )
 
-    if (currentDate > dateStart) {
-      setShowStreaming(true)
-    }
+    // if (currentDate > dateStart) {
+    //   setShowStreaming(true)
+    // }
 
-    // console.log({ currentDate })
-    // console.log({ dateStartStreaming })
-    // console.log({ dateEndStreaming })
+    setShowStreaming(false)
 
     if (currentDate >= dateStartStreaming && dateEndStreaming <= currentDate) {
       setShowButtonStreaming(true)
