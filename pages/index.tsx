@@ -39,30 +39,33 @@ const Home = ({
   const router = useRouter()
   const { state, setTranslations } = context
   const [showStreaming, setShowStreaming] = useState(false)
-  const [showButtonStreaming, setShowButtonStreaming] = useState(false)
+  const [showButtonStreaming] = useState(false)
 
   useEffect(() => {
-    const currentDate = Date.parse(new Date().toISOString())
-    const dateStart = Date.parse(
-      new Date('2022-07-01T17:30:00+02:00').toISOString()
-    )
-    const dateStartStreaming = Date.parse(
-      new Date('2022-07-01T19:00:00+02:00').toISOString()
-    )
-    const dateEndStreaming = Date.parse(
-      new Date('2022-07-03T21:00:00+02:00').toISOString()
-    )
+    // const currentDate = Date.parse(new Date().toISOString())
+    // const dateStart = Date.parse(
+    //   new Date('2022-07-01T17:30:00+02:00').toISOString()
+    // )
+    // const dateStartStreaming = Date.parse(
+    //   new Date('2022-07-01T19:00:00+02:00').toISOString()
+    // )
+    // const dateEndStreaming = Date.parse(
+    //   new Date('2022-07-03T21:00:00+02:00').toISOString()
+    // )
 
-    // if (currentDate > dateStart) {
-    //   setShowStreaming(true)
-    // }
+    // // if (currentDate > dateStart) {
+    // //   setShowStreaming(true)
+    // // }
+
+    //     if (
+    //       currentDate >= dateStartStreaming &&
+    //       dateEndStreaming <= currentDate
+    //     ) {
+    //       setShowButtonStreaming(true)
+    //       console.log({ showButtonStreaming })
+    //     }
 
     setShowStreaming(false)
-
-    if (currentDate >= dateStartStreaming && dateEndStreaming <= currentDate) {
-      setShowButtonStreaming(true)
-      console.log({ showButtonStreaming })
-    }
   }, [showButtonStreaming])
 
   useEffect(() => {
