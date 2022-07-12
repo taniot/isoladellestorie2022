@@ -12,6 +12,7 @@
     @apply w-full;
 
     .image {
+      margin-bottom: 2rem;
       .caption {
         padding: 5px 0px;
         font-size: 0.875rem;
@@ -19,6 +20,14 @@
           Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
           Helvetica Neue, sans-serif;
       }
+    }
+
+    .segnaposto {
+      background-color: var(--main-bg-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
     }
 
     .text {
